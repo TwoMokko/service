@@ -1,0 +1,122 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.btn {
+	font-size: 16px;
+	line-height: 100%;
+	font-weight: 600;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 16px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+
+	background: none;
+
+	@include mobile {
+		width: 100%;
+		padding: 15px;
+	}
+
+	&[data-min-width] {
+		min-width: attr(data-min-width px);
+	}
+}
+
+.primary {
+	color: $color-light;
+	background-color: $color-primary;
+
+	&:not(.btnArrowWrap):hover {
+		background-color: $color-dark-gray;
+	}
+}
+
+.secondary {
+	background-color: $color-dark-gray;
+	color: $color-light;
+
+	&:not(.btnArrowWrap):hover {
+		background-color: $color-dark;
+	}
+}
+
+.outline {
+	background-color: transparent;
+	border: 1px solid $color-primary;
+	height: fit-content;
+
+	&:not(.btnArrowWrap):hover {
+		color: $color-primary;
+	}
+}
+
+.btnArrowIcons {
+	position: relative;
+	padding-right: 30px;
+	white-space: nowrap;
+	transition: all 0.3s ease;
+	display: flex;
+	align-items: center;
+	width: 100%;
+
+	@include mobile {
+		padding-right: 25px;
+	}
+
+	.arrowLeft,
+	.arrowRight {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 18px;
+		height: 18px;
+		transition:
+			opacity 0.3s ease,
+			transform 0.3s ease;
+	}
+
+	.arrowRight {
+		right: 0;
+		opacity: 1;
+	}
+
+	.arrowLeft {
+		left: 0;
+		opacity: 0;
+		transform: translateY(-50%) translateX(-12px);
+	}
+
+	.btnText {
+		transition: all 0.3s ease;
+		position: absolute;
+		left: 0;
+	}
+
+	.btnArrowWrap:hover & {
+		padding-right: 0;
+		padding-left: 30px;
+
+		@include mobile {
+			padding-left: 25px;
+		}
+	}
+
+	.btnArrowWrap:hover & .btnText {
+		left: auto;
+		right: 0;
+	}
+
+	.btnArrowWrap:hover & .arrowRight {
+		opacity: 0;
+		transform: translateY(-50%) translateX(12px);
+	}
+
+	.btnArrowWrap:hover & .arrowLeft {
+		opacity: 1;
+		transform: translateY(-50%) translateX(0);
+	}
+}

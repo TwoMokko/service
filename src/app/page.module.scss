@@ -1,0 +1,6 @@
+@use "../shared/styles/variables" as *;
+
+.title {
+	color: $color-primary;
+	font-size: 2.5rem;
+}

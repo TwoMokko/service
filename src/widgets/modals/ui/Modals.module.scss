@@ -1,0 +1,171 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.modalOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10000;
+	backdrop-filter: blur(5px);
+}
+
+.modalContent {
+	background: white;
+	padding: 40px;
+	max-width: 500px;
+	width: 90%;
+	max-height: 90vh;
+	overflow-y: auto;
+	position: relative;
+	animation: modalAppear 0.3s ease-out;
+
+	@include mobile {
+		max-width: 360px;
+		padding: 40px 30px 40px;
+	}
+}
+
+@keyframes modalAppear {
+	from {
+		opacity: 0;
+		transform: scale(0.9) translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+
+.closeButton {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	background: none;
+	border: none;
+	font-size: 24px;
+	cursor: pointer;
+	color: $color-gray;
+
+	&:hover {
+		color: $color-dark;
+	}
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	width: 370px;
+	gap: 10px;
+	padding-top: 40px;
+
+	@include mobile {
+		width: 100%;
+	}
+
+	input {
+		width: 100%;
+		background-color: $color-light-gray;
+		border: none;
+		height: 43px;
+		padding: 10px;
+
+		&::placeholder {
+			text-transform: uppercase;
+		}
+	}
+
+	.checkboxWrap {
+		display: flex;
+		gap: 10px;
+		font-size: 12px;
+		line-height: 110%;
+		width: fit-content;
+		align-items: center;
+
+		input[type="checkbox"] {
+			display: none;
+		}
+
+		.checkbox {
+			width: 20px;
+			height: 20px;
+			border: 1px solid $color-gray;
+			flex: none;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.policyLink {
+			text-decoration: underline;
+			padding-left: 4px;
+		}
+	}
+}
+
+.title {
+	font-size: 36px;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	margin: 0;
+	padding: 0;
+	font-weight: 400;
+
+	@include mobile {
+		font-size: 24px;
+		line-height: 100%;
+	}
+}
+
+.subtitle {
+	padding-top: 14px;
+	font-size: 16px;
+	line-height: 120%;
+
+	@include mobile {
+		font-size: 14px;
+	}
+}
+
+.list {
+	list-style: none;
+	padding-top: 40px;
+
+	@include mobile {
+		padding-top: 20px;
+	}
+
+	> li {
+		font-size: 16px;
+		padding-left: 20px;
+		position: relative;
+		list-style: none;
+
+		&:not(:last-child) {
+			margin-bottom: 20px;
+
+			@include mobile {
+				margin-bottom: 10px;
+			}
+		}
+
+		&::before {
+			content: "";
+			background-color: $color-primary;
+			width: 9px;
+			height: 9px;
+			border-radius: 50%;
+			position: absolute;
+			right: calc(100% - 9px);
+			top: 50%;
+			transform: translateY(-50%);
+			line-height: 1;
+		}
+	}
+}

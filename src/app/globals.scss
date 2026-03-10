@@ -1,0 +1,132 @@
+@use "../shared/styles/variables" as *;
+@use "../shared/styles/mixins" as *;
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 84px;
+
+	@include mobile {
+		scroll-padding-top: 70px;
+	}
+}
+
+html,
+body {
+	max-width: 100vw;
+	height: 100%;
+	background-color: $color-more-light-gray;
+	// overflow-x: hidden;
+}
+
+body {
+	font-family: var(--font-montserrat), sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	&.modal-open,
+	&.lock {
+		overflow: hidden;
+	}
+}
+
+header {
+	flex: none;
+}
+main {
+	flex: auto;
+}
+footer {
+	flex: none;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+input:focus-visible,
+input:focus {
+	outline: none;
+}
+
+.container {
+	padding: 0 16%;
+
+	@include laptop {
+		padding: 0 4%;
+	}
+
+	@include tablet {
+		padding: 0 4%;
+	}
+
+	@include mobile {
+		padding: 0 10px;
+	}
+}
+
+.section-title {
+	font-size: 36px;
+	line-height: 100%;
+	font-weight: 400;
+
+	@include mobile {
+		font-size: 24px;
+	}
+}
+
+.inst {
+	position: relative;
+	display: inline-block;
+	width: fit-content;
+
+	&::after {
+		content: "*";
+		position: absolute;
+		top: -4px;
+		left: 100%;
+	}
+}
+
+.mob-hide {
+	@include mobile {
+		display: none !important;
+	}
+}
+
+.desk-hide {
+	@include desktop {
+		display: none !important;
+	}
+}
+
+.laptop-hide {
+	@include laptop {
+		display: none !important;
+	}
+}
+
+.tablet-hide {
+	@include tablet {
+		display: none !important;
+	}
+}
+
+.other-page {
+	padding-top: 180px;
+	padding-bottom: 100px;
+
+	h1 {
+		font-weight: 700;
+		padding-bottom: 30px;
+	}
+}

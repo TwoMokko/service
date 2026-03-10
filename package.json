@@ -1,0 +1,37 @@
+{
+	"name": "land",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "eslint",
+		"lint:fix": "eslint --fix",
+		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+		"format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+	},
+	"dependencies": {
+		"@fancyapps/ui": "^6.1.0",
+		"@trivago/prettier-plugin-sort-imports": "^6.0.0",
+		"next": "16.1.6",
+		"react": "19.2.1",
+		"react-dom": "19.2.1",
+		"react-icons": "^5.5.0",
+		"react-select": "^5.10.2",
+		"sharp": "^0.34.4",
+		"swiper": "^12.0.3"
+	},
+	"devDependencies": {
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"eslint": "^9",
+		"eslint-config-next": "16.0.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-prettier": "^5.5.4",
+		"prettier": "^3.6.2",
+		"sass": "^1.93.2",
+		"typescript": "^5"
+	}
+}

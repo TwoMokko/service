@@ -1,0 +1,59 @@
+@use "./variables" as *;
+
+@mixin swiperPagination {
+}
+
+@mixin swiperButtons {
+}
+
+// адаптив
+// Mobile (до 767px)
+@mixin mobile {
+	@media (max-width: #{$breakpoint-mobile - 1px}) {
+		@content;
+	}
+}
+
+// Tablet & Mobile (до 1023px)
+@mixin tablet {
+	@media (max-width: #{$breakpoint-tablet - 1px}) {
+		@content;
+	}
+}
+
+// Tablet & Mobile & Laptop (до 1599px)
+@mixin laptop {
+	@media (max-width: #{$breakpoint-laptop - 1px}) {
+		@content;
+	}
+}
+
+// Desktop (1024px и выше)
+@mixin desktop {
+	@media (min-width: #{$breakpoint-tablet}) {
+		@content;
+	}
+}
+
+@mixin fadeInCard {
+	animation: fadeInUp 0.5s ease forwards;
+	opacity: 0;
+
+	// Последовательное появление карточек
+	@for $i from 1 through 10 {
+		&:nth-child(#{$i}) {
+			animation-delay: #{$i * 0.1}s;
+		}
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

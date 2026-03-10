@@ -1,0 +1,117 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.hero {
+	position: relative;
+	margin-bottom: 110px;
+}
+
+.heroSwiper {
+	:global(.swiper-wrapper) {
+		width: 100%;
+		height: 92vh;
+
+		@include mobile {
+			height: 90vh;
+		}
+	}
+}
+
+.heroItem {
+	padding-top: 234px;
+	color: var(--color-light);
+
+	@include mobile {
+		padding-top: 90px;
+	}
+
+	.heroImage {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		z-index: -2;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.slideTop {
+		padding-bottom: 30px;
+
+		@include mobile {
+			padding-bottom: 5px;
+			padding-top: 10px;
+		}
+
+		.subTitle {
+			font-weight: 500;
+			font-size: 22px;
+			line-height: 100%;
+			color: $color-light;
+
+			@include mobile {
+				font-size: 16px;
+			}
+
+			.heroAccent {
+				color: $color-primary;
+			}
+		}
+
+		.heroTitle {
+			font-weight: 600;
+			font-size: 80px;
+			line-height: 100%;
+			padding: 16px 0 18px 0;
+			color: $color-light;
+
+			@include mobile {
+				font-size: 30px;
+				padding-bottom: 18px;
+			}
+
+			.titleBanner {
+				font-size: 55px;
+				color: #e73843;
+				font-weight: 700;
+
+				@include mobile {
+					font-size: 30px;
+					padding-bottom: 90px;
+				}
+			}
+		}
+	}
+
+	.slideBottom {
+		.btn {
+			width: 242px;
+
+			@include mobile {
+				width: 212px;
+			}
+		}
+	}
+}
+
+// пагинация
+:global(.swiper-pagination-bullet) {
+	width: 12px;
+	height: 12px;
+	background: transparent;
+	opacity: 1;
+	border: 1px solid $color-light;
+
+	&:global(.swiper-pagination-bullet-active) {
+		background: $color-light;
+	}
+}
+
+:global(.swiper-pagination) {
+	bottom: 30px !important;
+
+	@media (max-width: 768px) {
+		bottom: 20px !important;
+	}
+}

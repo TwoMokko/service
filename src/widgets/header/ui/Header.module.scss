@@ -1,0 +1,329 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.headerWrapper {
+	width: 100%;
+	display: block;
+	z-index: 10;
+	position: fixed;
+	top: 0;
+	margin-top: 16px;
+
+	.headerContacts {
+		height: 40px;
+		background-color: $color-bg;
+		border-radius: 10px;
+		margin-bottom: 4px;
+
+		.container {
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: $color-light;
+			font-size: 14px;
+			font-weight: 500;
+
+			> div {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				padding: 0 16px;
+			}
+		}
+	}
+
+	&.active {
+		@include laptop {
+			.headerBurgerMenu {
+				right: 0;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.header {
+	padding: 12px 16px;
+	border-radius: 10px;
+	background-color: $color-light;
+	transition: $transition-0-3s;
+
+	.headerLogo {
+		background-image: url("/images/icons/logo.svg");
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+		width: 245px;
+		height: 30px;
+		margin-right: 70px;
+		display: block;
+
+		@include tablet {
+			margin-right: auto;
+		}
+
+		@include mobile {
+			max-width: 150px;
+			height: 20px;
+		}
+	}
+
+	.headerInner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		@include tablet {
+			justify-content: flex-start;
+		}
+
+		nav {
+			flex: auto;
+
+			@include tablet {
+				display: none;
+			}
+
+			.headerNav {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				column-gap: 24px;
+
+				li {
+					position: relative;
+					font-size: 14px;
+					font-weight: 500;
+
+					a {
+						transition: $transition-0-3s;
+						color: $color-dark;
+
+						&:hover {
+							color: $color-primary;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.headerBtnCall {
+		margin-left: 70px;
+		font-size: 14px;
+		background-color: $color-light;
+	}
+
+	.headerPhone {
+		color: $color-dark;
+		font-size: 16px;
+		padding-right: 16px;
+		font-weight: 600;
+	}
+
+	.headerBurger {
+		display: none;
+		position: relative;
+		width: 25px;
+		height: 14px;
+
+		@include tablet {
+			display: block;
+			z-index: 101;
+			margin-left: 22px;
+		}
+
+		span {
+			position: absolute;
+			top: 6px;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background-color: $color-dark;
+			transition: all 0.2s ease-in-out;
+		}
+
+		&::before,
+		&::after {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			content: "";
+			background-color: $color-dark;
+			transition: all 0.2s ease-in-out;
+		}
+
+		&::before {
+			top: 0;
+		}
+
+		&::after {
+			bottom: 0;
+		}
+
+		&.active {
+			@include tablet {
+				z-index: 101;
+			}
+
+			span {
+				transform: scale(0);
+			}
+
+			&::before {
+				top: 6px;
+				transform: rotate(45deg);
+			}
+
+			&::after {
+				bottom: 6px;
+				transform: rotate(-45deg);
+			}
+		}
+	}
+
+	.headerBurgerMenu {
+		position: absolute;
+		right: -100%;
+		opacity: 0;
+		transition: $transition-0-3s;
+
+		@include tablet {
+			top: 50px;
+			width: 100%;
+			border-radius: 0;
+			height: calc(100svh - 50px);
+		}
+
+		.headerBurgerMenuWrapper {
+			position: relative;
+			padding: 35px 20px 30px;
+			border-radius: 30px;
+			background-color: $color-light;
+
+			@include tablet {
+				border-radius: 0;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				height: 100%;
+			}
+
+			.headerBurgerMenuList {
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 42px;
+				row-gap: 14px;
+
+				@include tablet {
+					flex: auto;
+					row-gap: 36px;
+					align-items: center;
+					justify-content: center;
+				}
+
+				li {
+					a {
+						color: $color-dark;
+						font-weight: 500;
+						transition: $transition-0-3s;
+
+						&:hover {
+							color: $color-primary;
+						}
+					}
+				}
+			}
+
+			.headerBurgerMenuContacts {
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 21px;
+				row-gap: 7px;
+
+				@include tablet {
+					flex: none;
+					align-items: center;
+				}
+
+				.headerBurgerMenuContactsItem {
+					display: flex;
+					font-size: 14px;
+					column-gap: 7px;
+
+					a {
+						color: $color-dark;
+						transition: $transition-0-3s;
+
+						&:hover {
+							color: $color-primary;
+						}
+					}
+				}
+			}
+
+			.headerBurgerMenuBtns {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+
+				button {
+					width: 100%;
+					height: 43px;
+					text-transform: uppercase;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}
+
+// Другие цвета для страниц политики
+.coloredHeader {
+	.header {
+		background-color: $color-light;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+		.headerLogo {
+			background-image: url("/images/icons/logo-scroll.svg");
+		}
+
+		nav .headerNav li a {
+			color: $color-dark;
+
+			&:hover {
+				color: $color-primary;
+			}
+		}
+	}
+
+	.headerContacts {
+		background-color: $color-primary;
+
+		.container {
+			background-color: transparent;
+
+			a,
+			div {
+				color: #fff;
+			}
+		}
+
+		.headerTopBtn {
+			background-color: transparent;
+			color: #fff;
+			border-color: #fff;
+
+			svg path {
+				fill: #fff;
+			}
+
+			&:hover {
+				color: #fff;
+				border-color: #fff;
+			}
+		}
+	}
+}

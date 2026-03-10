@@ -1,0 +1,132 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.footer {
+	background-color: $color-bg;
+	color: $color-light;
+	padding: 32px 0;
+
+	.iconsWrap {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 28px;
+		border-bottom: 1px solid $color-transparent-light;
+
+		@include mobile {
+			flex-direction: column;
+		}
+
+		.logoImage {
+			width: 245px;
+			height: auto;
+		}
+	}
+
+	.main {
+		display: flex;
+		padding-top: 32px;
+		padding-bottom: 60px;
+		justify-content: space-between;
+
+		@include mobile {
+			flex-direction: column;
+			gap: 32px;
+			padding-top: 20px;
+			padding-bottom: 30px;
+		}
+
+		.navSections {
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 120%;
+			color: $color-gray;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
+			.navLink {
+				cursor: pointer;
+
+				&:hover {
+					color: $color-primary;
+				}
+			}
+		}
+
+		.contactsTitle {
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 120%;
+			color: $color-gray;
+			margin-bottom: 20px;
+		}
+
+		.contactsList {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
+			.contactsItem {
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 120%;
+				color: $color-light;
+			}
+
+			a.contactsItem:hover {
+				color: $color-primary;
+			}
+		}
+	}
+
+	.info {
+		padding-bottom: 16px;
+		border-bottom: 1px solid $color-transparent-light;
+		font-size: 12px;
+		color: $color-transparent-light;
+
+		@include mobile {
+			border: none;
+			padding-bottom: 0;
+		}
+
+		.disclaimer {
+			overflow: hidden;
+
+			&.show {
+				max-height: 500px;
+			}
+			&:not(.show) {
+				max-height: 1rem;
+			}
+		}
+
+		.btnDisclaimer {
+			padding-bottom: 10px;
+			text-decoration: underline;
+
+			&:hover {
+				color: $color-primary;
+			}
+		}
+	}
+
+	.links {
+		font-size: 12px;
+		line-height: 100%;
+		font-weight: 400;
+		color: $color-gray;
+		padding-top: 16px;
+		display: flex;
+		justify-content: space-between;
+
+		@include mobile {
+			flex-direction: column;
+			gap: 18px;
+		}
+
+		.link {
+			text-decoration: underline;
+		}
+	}
+}

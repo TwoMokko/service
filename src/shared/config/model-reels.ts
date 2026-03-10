@@ -1,0 +1,58 @@
+export const modelReels = [
+	{
+		id: 1,
+		url: "https://plt-detailing.ru/themes/mult-detailing-peleton/assets/img/socials/reels-video/1.mp4",
+		title: "title 1",
+		subtitle: "subtitle 1",
+		icon: "https://peleton.ru/samovar/front/img/svg/social-inst-bg.svg",
+	},
+	{
+		id: 2,
+		url: "https://plt-detailing.ru/themes/mult-detailing-peleton/assets/img/socials/reels-video/4.mp4",
+		title: "title 2",
+		subtitle: "subtitle 2",
+		icon: "https://peleton.ru/samovar/front/img/svg/social-inst-bg.svg",
+	},
+	{
+		id: 3,
+		url: "https://plt-detailing.ru/themes/mult-detailing-peleton/assets/img/socials/reels-video/6.mp4",
+		title: "title 3",
+		subtitle: "subtitle 3",
+		icon: "https://peleton.ru/samovar/front/img/svg/social-inst-bg.svg",
+	},
+	{
+		id: 4,
+		url: "https://peleton.ru/samovar/front/img/reels-video/5.mp4",
+		title: "title 4",
+		subtitle: "subtitle 4",
+		icon: "https://peleton.ru/samovar/front/img/svg/reels-peleton-1.svg",
+	},
+	{
+		id: 5,
+		url: "https://peleton.ru/samovar/front/img/reels-video/6.mp4",
+		title: "title 5",
+		subtitle: "subtitle 5",
+		icon: "https://peleton.ru/samovar/front/img/svg/reels-peleton-1.svg",
+	},
+	{
+		id: 6,
+		url: "https://peleton.ru/samovar/front/img/reels-video/7.mp4",
+		title: "title 6",
+		subtitle: "subtitle 6",
+		icon: "https://peleton.ru/samovar/front/img/svg/reels-peleton-1.svg",
+	},
+	{
+		id: 7,
+		url: "https://peleton.ru/samovar/front/img/reels-video/8.mov",
+		title: "title 7",
+		subtitle: "subtitle 7",
+		icon: "https://peleton.ru/samovar/front/img/svg/reels-peleton-1.svg",
+	},
+	{
+		id: 8,
+		url: "https://peleton.ru/samovar/front/img/reels-video/11.mp4",
+		title: "title 6",
+		subtitle: "subtitle 6",
+		icon: "https://peleton.ru/samovar/front/img/svg/reels-peleton-1.svg",
+	},
+];

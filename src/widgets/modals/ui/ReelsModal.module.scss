@@ -1,0 +1,270 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.reelsModalOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10000;
+	backdrop-filter: blur(5px);
+}
+
+.modalContent {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	max-width: 100vw;
+	max-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.closeButton {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	border: none;
+	color: $color-light;
+	font-size: 2rem;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.3s ease;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.videoSwiper {
+	width: 100%;
+	padding: 0 60px;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+
+	:global(.swiper-wrapper) {
+		display: flex;
+		align-items: center;
+		//justify-content: center;
+	}
+
+	:global(.swiper-slide) {
+		//width: 210px !important;
+		width: 300px !important;
+		height: 453px !important;
+		transition: all 0.3s ease;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-self: center !important;
+		flex-shrink: 0; // Важно: запрещаем сжатие слайдов
+		cursor: pointer;
+		//transform-origin: center center;
+	}
+
+	:global(.swiper-slide-active) {
+		//width: 300px !important;
+		height: 533px !important;
+		//transform: translateX(0) !important;
+	}
+}
+
+.videoSlide {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.videoContainer {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		border-radius: 16px;
+		overflow: hidden;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+		transition: all 0.3s ease;
+		background-color: $color-bg;
+
+		video {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 140px;
+			background: linear-gradient(
+				180deg,
+				rgba(0, 0, 0, 0) 0%,
+				rgba(0, 0, 0, 0.61) 50%,
+				#000000 100%
+			);
+			pointer-events: none; // Чтобы не мешал кликам
+			z-index: 1;
+		}
+
+		// дубликат вынести в миксин
+		.videoInfo {
+			.videoIconWrap {
+				height: 30px;
+				width: fit-content;
+				position: absolute;
+				top: 0;
+				padding: 16px 16px 0;
+
+				img {
+					height: 30px;
+					width: auto;
+				}
+			}
+
+			.videoText {
+				color: $color-light;
+				line-height: 100%;
+				font-size: 16px;
+				position: absolute;
+				bottom: 0;
+				padding: 0 16px 16px;
+				z-index: 2;
+
+				.videoTitle {
+					padding-bottom: 4px;
+					font-weight: 600;
+				}
+
+				.videoSubtitle {
+				}
+			}
+		}
+	}
+
+	.play {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $color-light;
+		transition: scale 0.3s ease-in-out;
+	}
+}
+
+/* Навигация */
+.swiperButtonPrev,
+.swiperButtonNext {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 2;
+	color: $color-primary !important;
+	background-color: $color-light;
+	width: 50px !important;
+	height: 50px !important;
+	border-radius: 50%;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&:hover {
+		opacity: 0.7;
+	}
+
+	&::after {
+		font-size: 20px !important;
+		font-weight: bold;
+		color: white;
+	}
+
+	&:global(.swiper-button-disabled) {
+		opacity: 0.7;
+		cursor: default;
+	}
+}
+
+.swiperButtonPrev {
+	left: 20px !important;
+
+	@include mobile {
+		left: 10px !important;
+	}
+}
+
+.swiperButtonNext {
+	right: 20px !important;
+
+	@include mobile {
+		right: 10px !important;
+	}
+}
+
+/* Анимация появления */
+@keyframes reelsAppear {
+	from {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.reelsModalOverlay {
+	animation: reelsAppear 0.3s ease-out;
+}
+
+/* Мобильная адаптация (сделать как везде внутри эл-тов) */
+@include mobile {
+	.videoSwiper {
+		padding: 0 10px;
+
+		:global(.swiper-slide) {
+			//width: 140px !important;
+			width: 200px !important;
+			height: 300px !important;
+		}
+
+		:global(.swiper-slide-active) {
+			//width: 200px !important;
+			height: 355px !important;
+		}
+	}
+
+	.closeButton {
+		top: 10px;
+		right: 10px;
+		width: 40px;
+		height: 40px;
+		font-size: 1.5rem;
+	}
+
+	.swiperButtonPrev,
+	.swiperButtonNext {
+		width: 40px !important;
+		height: 40px !important;
+
+		&::after {
+			font-size: 16px !important;
+		}
+	}
+}

@@ -1,0 +1,142 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.trade {
+	position: relative;
+	margin-bottom: 120px;
+
+	@include mobile {
+		margin: 0 10px 60px;
+	}
+
+	.imgWrap {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+
+		> img {
+			object-fit: cover;
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.info {
+		color: $color-light;
+		padding: 60px 0;
+
+		@include mobile {
+			margin-top: auto;
+			padding: 280px 0 30px;
+		}
+
+		.title {
+			font-size: 36px;
+			font-weight: 400;
+			line-height: 100%;
+			letter-spacing: -0.04em;
+			margin: 0;
+			padding-bottom: 40px;
+
+			@include mobile {
+				font-size: 24px;
+				padding-bottom: 20px;
+			}
+		}
+
+		.list {
+			margin-bottom: 90px;
+			font-size: 20px;
+			font-weight: 500;
+			line-height: 110%;
+			list-style: none;
+			padding-left: 24px;
+
+			@include mobile {
+				margin-bottom: 30px;
+				font-size: 14px;
+				font-weight: 400;
+			}
+
+			> li {
+				position: relative;
+				padding-left: 22px;
+
+				@include mobile {
+					padding-left: 16px;
+					max-width: 90%;
+				}
+			}
+
+			> li:not(:last-child) {
+				margin-bottom: 20px;
+			}
+
+			> li::before {
+				content: "";
+				background-color: $color-primary;
+				width: 9px;
+				height: 9px;
+				border-radius: 50%;
+				position: absolute;
+				right: calc(100% + 10px);
+				top: 50%;
+				transform: translateY(-50%);
+				line-height: 1;
+			}
+		}
+	}
+}
+
+.form {
+	.formInputs {
+		display: flex;
+		gap: 6px;
+		margin-bottom: 6px;
+
+		@include mobile {
+			flex-direction: column;
+		}
+
+		input {
+			width: 310px;
+			padding: 10px;
+			border: 0;
+			text-transform: uppercase;
+			height: 43px;
+			background-color: $color-light;
+
+			@include mobile {
+				width: 100%;
+			}
+		}
+	}
+
+	.checkboxWrap {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-size: 12px;
+		line-height: 110%;
+		width: fit-content;
+
+		input[type="checkbox"] {
+			display: none;
+		}
+
+		.checkbox {
+			width: 20px;
+			height: 20px;
+			border: 1px solid $color-gray;
+			flex: none;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.policyLink {
+			text-decoration: underline;
+			padding-left: 4px;
+		}
+	}
+}
