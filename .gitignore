@@ -1,1 +1,4 @@
-/src/app/page.module.scss
+/.next/
+/node_modules/
+/out/
+/.env
