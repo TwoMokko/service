@@ -1,6 +1,8 @@
 import nextPlugin from "@next/eslint-plugin-next";
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 
 export default [
+	// Next.js уже включает TypeScript правила!
 	{
 		plugins: {
 			"@next/next": nextPlugin,
@@ -8,22 +10,12 @@ export default [
 		rules: {
 			...nextPlugin.configs.recommended.rules,
 			...nextPlugin.configs["core-web-vitals"].rules,
+			"prettier/prettier": ["error", {}, { usePrettierrc: true }],
+		},
+	},
 
-			// Отключаем все что вызывает ошибки
-			"@typescript-eslint/no-explicit-any": "off",
-			"@typescript-eslint/no-unused-vars": "off",
-			"@typescript-eslint/ban-ts-comment": "off",
-			"react-hooks/exhaustive-deps": "off",
-			"react-hooks/rules-of-hooks": "off",
-			"react-hooks/preserve-manual-memoization": "off",
-			"prettier/prettier": "error",
-		},
-	},
-	{
-		plugins: {
-			prettier: (await import("eslint-plugin-prettier")).default,
-		},
-	},
+	eslintPluginPrettierRecommended,
+
 	{
 		ignores: [".next/**", "out/**", "build/**", "node_modules/**"],
 	},

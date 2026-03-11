@@ -1,7 +1,7 @@
 import { mockService } from "@/src/shared/api/mocks/services";
-import {Service, ServiceItem} from "@/src/shared/types/types";
+import { ServiceCategory, ServiceItem } from "@/src/shared/types/types";
 
-export async function getServices(): Promise<Service[]> {
+export async function getServices(): Promise<ServiceCategory[]> {
 	return new Promise((resolve) => {
 		setTimeout(() => resolve(mockService), 500);
 	});
@@ -33,18 +33,17 @@ export async function getServices(): Promise<Service[]> {
 	// }
 }
 
-export async function getService(category: string, slug: string): Promise<ServiceItem> {
-	const currentCategory  = mockService.find(item => item.href === category)
-	const service = currentCategory?.items.find((p) => p.href === slug)
+export async function getServiceCategory(href: string): Promise<ServiceCategory> {
+	const currentCategory = mockService.find((item) => item.href === href);
+	// const service = currentCategory?.items.find((p) => p.href === slug)
 
-	console.log({service})
+	// console.log({service})
 
-	if (!service) {
+	if (!currentCategory) {
 		throw new Error("service not found");
 	}
 
-	return service;
-
+	return currentCategory;
 
 	// try {
 	// 	const response = await fetch('https://peleton-box.ru/api/v2/site-info/services', {

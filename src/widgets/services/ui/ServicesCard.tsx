@@ -1,22 +1,29 @@
-// "use client";
-import { Service } from "@/src/shared/types/types";
-
-import styles from "./Services.module.scss";
+"use client";
 import Link from "next/link";
 
+import { ServiceCategory } from "@/src/shared/types/types";
+
+import styles from "./Services.module.scss";
+
 interface ServicesCardProps {
-	service: Service;
+	category: ServiceCategory;
 }
-export async function ServicesCard({ service }: ServicesCardProps) {
+export function ServicesCard({ category }: ServicesCardProps) {
 	return (
 		<article className={styles.servicesCard}>
-			<h3>{service.title}</h3>
+			<h3>
+				<Link href={`/services/${category.href}`}>{category.title}</Link>
+			</h3>
 
 			<div>
-				{service.items.map((itm, index) => <div key={itm.href}>
-					<span>{index}</span>
-					<Link href={`/services/${service.href}/${itm.href}`}>{ itm.title }</Link>
-				</div> )}
+				{category.items.map((service, index) => (
+					<div key={service.href || index}>
+						<span>{index}</span>
+						<Link href={`/services/${category.href}/${service.href}`}>
+							{service.title}
+						</Link>
+					</div>
+				))}
 			</div>
 		</article>
 	);
