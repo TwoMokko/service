@@ -47,10 +47,12 @@
 .outline {
 	background-color: transparent;
 	border: 1px solid $color-primary;
+	color: $color-primary;
 	height: fit-content;
 
 	&:not(.btnArrowWrap):hover {
-		color: $color-primary;
+		color: $color-dark;
+		border: 1px solid $color-dark;
 	}
 }
 

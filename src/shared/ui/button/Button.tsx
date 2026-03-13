@@ -27,7 +27,7 @@ export function Button({
 }: ButtonProps) {
 	const buttonClass = `${styles.btn} ${styles[`${variant}`]} ${
 		withArrow ? styles.btnArrowWrap : ""
-	} ${className}`;
+	} ${className ? className : ""}`;
 
 	return (
 		<button

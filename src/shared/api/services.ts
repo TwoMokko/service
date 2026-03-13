@@ -1,73 +1,42 @@
-import { mockService } from "@/src/shared/api/mocks/services";
-import { ServiceCategory, ServiceItem } from "@/src/shared/types/types";
+import {
+	type CategorySlug,
+	type CategoryWithServices,
+	type Service,
+	type ServiceSlug,
+	getAllCategories,
+	getAllCategorySlugs,
+	getAllServiceSlugs,
+	getCategoryWithServices,
+	getServiceWithCategory,
+	getServicesByCategory,
+} from "@/src/shared/data/services";
 
-export async function getServices(): Promise<ServiceCategory[]> {
-	return new Promise((resolve) => {
-		setTimeout(() => resolve(mockService), 500);
-	});
-
-	// try {
-	// 	const response = await fetch('https://peleton-box.ru/api/v2/site-info/services', {
-	// 		method: 'POST',
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-	// 		},
-	// 		body: JSON.stringify({"site_id": 186}),
-	// 		// next: { revalidate: 86400 } // раз в сутки обновление
-	// 	});
-	//
-	// 	if (!response.ok) {
-	// 		throw new Error(`HTTP error! status: ${response.status}`);
-	// 	}
-	//
-	// 	// console.log('models:', response.json());
-	// 	return await response.json();
-	// } catch (error) {
-	// 	console.error('Error:', error);
-	// 	throw error;
-	// } finally {
-	// 	// Для разработки - моки
-	// 	return new Promise((resolve) => {
-	// 		setTimeout(() => resolve(mockModels), 500);
-	// 	});
-	// }
+// получение всех категорий и добавление массива услуг к каждой (можно и без этого переписать, но и в компонентах переписать)
+export function getServices(): CategoryWithServices[] {
+	return getAllCategories().map((category) => ({
+		...category,
+		items: getServicesByCategory(category.href as CategorySlug),
+	}));
 }
 
-export async function getServiceCategory(href: string): Promise<ServiceCategory> {
-	const currentCategory = mockService.find((item) => item.href === href);
-	// const service = currentCategory?.items.find((p) => p.href === slug)
+// получение информации только об одной категории по href/slug, но со всей инфо о подкатегориях
+export function getServiceCategory(href: string): CategoryWithServices {
+	const category = getCategoryWithServices(href as CategorySlug);
+	if (!category) throw new Error(`Category ${href} not found`);
+	return category;
+}
 
-	// console.log({service})
-
-	if (!currentCategory) {
-		throw new Error("service not found");
+// получение подкатегории с доп информацие о категории
+export function getServiceItem(
+	categoryHref: string,
+	serviceSlug: string,
+): Service & { category: CategoryWithServices } {
+	const service = getServiceWithCategory(serviceSlug as ServiceSlug);
+	if (!service || service.category.href !== categoryHref) {
+		throw new Error(`Service ${serviceSlug} not found in category ${categoryHref}`);
 	}
-
-	return currentCategory;
-
-	// try {
-	// 	const response = await fetch('https://peleton-box.ru/api/v2/site-info/services', {
-	// 		method: 'POST',
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-	// 		},
-	// 		body: JSON.stringify({"site_id": 186, slug}),
-	// 		// next: { revalidate: 86400 } // раз в сутки обновление
-	// 	});
-	//
-	// 	if (!response.ok) {
-	// 		throw new Error(`HTTP error! status: ${response.status}`);
-	// 	}
-	//
-	// 	// console.log('services:', response.json());
-	// 	return await response.json();
-	// } catch (error) {
-	// 	console.error('Error:', error);
-	// 	throw error;
-	// } finally {
-	// 	// Для разработки - моки
-	// 	return new Promise((resolve) => {
-	// 		setTimeout(() => resolve(mockService), 500);
-	// 	});
-	// }
+	return service;
 }
+
+// Для статических путей в page.tsx
+export { getAllCategorySlugs, getAllServiceSlugs };

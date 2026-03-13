@@ -1,22 +1,22 @@
 import { Metadata } from "next";
 
-import { getServiceCategory } from "@/src/shared/api/services";
+import { getAllCategorySlugs, getServiceCategory } from "@/src/shared/api/services";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
 
 interface ServicePageProps {
 	params: Promise<{ category: string }>;
 }
 
+export async function generateStaticParams() {
+	return getAllCategorySlugs();
+}
+
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
 	const { category } = await params;
 
 	try {
-		const serviceCategory = await getServiceCategory(category);
-
-		return {
-			title: serviceCategory.title,
-			description: serviceCategory.description,
-		};
+		const serviceCategory = getServiceCategory(category);
+		return serviceCategory.meta;
 	} catch {
 		return {
 			title: "Услуга не найдена",
@@ -25,9 +25,9 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 	}
 }
 
-export default async function ServicePage({ params }: ServicePageProps) {
+export default async function CategoryPage({ params }: ServicePageProps) {
 	const { category } = await params;
-	const currentCategory = await getServiceCategory(category);
+	const currentCategory = getServiceCategory(category);
 
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },

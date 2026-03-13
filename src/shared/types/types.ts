@@ -1,18 +1,3 @@
-import { ModalType } from "@/src/app/_providers/ModalProvider";
-
-export interface ServiceCategory {
-	id: number;
-	title: string;
-	href: string;
-	description: string;
-	items: ServiceItem[];
-}
-
-export interface ServiceItem {
-	title: string;
-	href: string;
-	description: string;
-}
 export interface Model {
 	id: number;
 	brand: string;

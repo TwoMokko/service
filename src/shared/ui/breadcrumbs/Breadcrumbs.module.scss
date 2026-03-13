@@ -1,7 +1,27 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
 .breadcrumbs {
+	margin-bottom: 40px;
+
 	.list {
 		display: flex;
 		align-items: center;
 		list-style: none;
+
+		.crumb {
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			font-weight: 500;
+
+			&:not(:last-child) {
+				color: $color-gray;
+			}
+
+			a:hover {
+				color: $color-primary;
+			}
+		}
 	}
 }

@@ -3,15 +3,16 @@ import { useState } from "react";
 
 import Link from "next/link";
 
+import type { CategoryWithServices } from "@/src/shared/data/services/categories";
 import { useDevice } from "@/src/shared/lib/hooks/useDevice";
-import { SectionId, ServiceCategory } from "@/src/shared/types/types";
+import { SectionId } from "@/src/shared/types/types";
 import { Button } from "@/src/shared/ui/button/Button";
 import { ServicesCard } from "@/src/widgets/services/ui/ServicesCard";
 
 import styles from "./Services.module.scss";
 
 interface ServicesProps {
-	services: ServiceCategory[];
+	services: CategoryWithServices[];
 	buttonShowAll?: boolean;
 }
 export function ServicesClient({ services, buttonShowAll = false }: ServicesProps) {
@@ -19,7 +20,12 @@ export function ServicesClient({ services, buttonShowAll = false }: ServicesProp
 	const [showAllCards, setShowAllCards] = useState<boolean>(false);
 	const initCardCount: number = isMobile ? 3 : 6;
 
-	const visibleServices = showAllCards ? services : services.slice(0, initCardCount);
+	const allCards = services.map((service) => (
+		<ServicesCard key={service.id} category={service} />
+	));
+
+	const visibleCards = allCards.slice(0, initCardCount);
+	const hiddenCards = allCards.slice(initCardCount);
 
 	return (
 		<div className={`${styles.services} container`}>
@@ -41,14 +47,20 @@ export function ServicesClient({ services, buttonShowAll = false }: ServicesProp
 			</div>
 			{/*вынести в отдельный компонент*/}
 
-			<div className={styles.servicesCards}>
-				{visibleServices.map((service) => (
-					<ServicesCard key={service.id} category={service} />
-				))}
+			<div className={styles.servicesCards}>{visibleCards}</div>
+			<div className={`${styles.servicesCards} ${!showAllCards ? styles.hidden : ""}`}>
+				{hiddenCards}
 			</div>
-			<Button variant="secondary" onClick={() => setShowAllCards((prev) => !prev)}>
-				{showAllCards ? "Свернуть список" : "Показать еще"}
-			</Button>
+
+			{allCards.length > initCardCount && (
+				<Button
+					variant="secondary"
+					onClick={() => setShowAllCards((prev) => !prev)}
+					className={styles.showMore}
+				>
+					{showAllCards ? "Свернуть список" : "Показать еще"}
+				</Button>
+			)}
 		</div>
 	);
 }

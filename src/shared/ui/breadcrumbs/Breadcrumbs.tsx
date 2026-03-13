@@ -23,28 +23,28 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
 					const isLast = index === items.length - 1;
 
 					return (
-						<>
-							<li
-								key={item.href}
-								itemProp="itemListElement"
-								itemScope
-								itemType="https://schema.org/ListItem"
-							>
-								{!isLast ? (
-									<Link href={item.href} itemProp="item">
-										<span itemProp="name">{item.title}</span>
-									</Link>
-								) : (
+						<li
+							key={item.href}
+							itemProp="itemListElement"
+							itemScope
+							itemType="https://schema.org/ListItem"
+							className={styles.crumb}
+						>
+							{!isLast ? (
+								<Link href={item.href} itemProp="item">
 									<span itemProp="name">{item.title}</span>
-								)}
-								<meta itemProp="position" content={String(index + 1)} />
-							</li>
+								</Link>
+							) : (
+								<span itemProp="name">{item.title}</span>
+							)}
+							<meta itemProp="position" content={String(index + 1)} />
+
 							{!isLast && (
 								<span className={styles.separator}>
 									<LuDot size={24} />
 								</span>
 							)}
-						</>
+						</li>
 					);
 				})}
 			</ol>

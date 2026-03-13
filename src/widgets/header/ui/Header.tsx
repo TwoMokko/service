@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
 import { about, navigationLinks } from "@/src/shared/config";
@@ -76,86 +75,91 @@ export function Header() {
 		));
 
 	return (
-		<header className={`${styles.headerWrapper} ${burgerOpen ? styles.active : ""} container`}>
-			{isReady && !isMobile && (
-				<div className={styles.headerContacts}>
-					<div className={`${styles.container}`}>
-						<div>{about.address}</div>
-						<div>{about.addressSecond}</div>
-						<div>с 8:00 до 22:00</div>
-					</div>
-				</div>
-			)}
-
-			<div className={`${styles.header}`}>
-				<div className={`${styles.container}`}>
-					<div className={styles.headerInner}>
-						<Link
-							href="/"
-							className={styles.headerLogo}
-							aria-label="Главная страница"
-						/>
-
-						<nav>
-							<ul className={styles.headerNav}>{renderNavLinks()}</ul>
-						</nav>
-
-						{isReady && !isMobile && (
-							<>
-								<a className={styles.headerPhone} href={`tel:${about.phoneLink}`}>
-									{about.phone}
-								</a>
-								<Button onClick={handleOpenCreditModal}>
-									Записаться на сервис
-								</Button>
-							</>
-						)}
-
-						{isReady && isMobile && (
-							<div className={styles.headerPhone}>
-								<a href={`tel:${about.phoneLink}`}>{about.phone}</a>
-							</div>
-						)}
-
-						<div
-							ref={burgerButtonRef}
-							className={`${styles.headerBurger} ${burgerOpen ? styles.active : ""}`}
-							onClick={toggleBurgerMenu}
-							aria-label="Меню"
-							role="button"
-							tabIndex={0}
-							aria-expanded={burgerOpen}
-						>
-							<span></span>
+		<header className={`${styles.headerWrapper} ${burgerOpen ? styles.active : ""}`}>
+			<div className="container">
+				{isReady && !isMobile && (
+					<div className={styles.headerContacts}>
+						<div className={`${styles.container}`}>
+							<div>{about.address}</div>
+							<div>{about.addressSecond}</div>
+							<div>с 8:00 до 22:00</div>
 						</div>
 					</div>
+				)}
 
-					<div ref={burgerMenuRef} className={styles.headerBurgerMenu}>
-						<div className={styles.headerBurgerMenuWrapper}>
-							<ul className={styles.headerBurgerMenuList}>
-								{renderNavLinks(closeBurgerMenu)}
-							</ul>
+				<div className={`${styles.header}`}>
+					<div className={`${styles.container}`}>
+						<div className={styles.headerInner}>
+							<Link
+								href="/"
+								className={styles.headerLogo}
+								aria-label="Главная страница"
+							/>
 
-							<ul className={styles.headerBurgerMenuContacts}>
-								<li className={styles.headerBurgerMenuContactsItem}>
-									{about.address}
-								</li>
-								<li className={styles.headerBurgerMenuContactsItem}>
-									<a href={`tel:${about.phoneLink}`}>
-										<strong>{about.phone}</strong>
+							<nav>
+								<ul className={styles.headerNav}>{renderNavLinks()}</ul>
+							</nav>
+
+							{isReady && !isMobile && (
+								<>
+									<a
+										className={styles.headerPhone}
+										href={`tel:${about.phoneLink}`}
+									>
+										{about.phone}
 									</a>
-								</li>
-							</ul>
+									<Button onClick={handleOpenCreditModal}>
+										Записаться на сервис
+									</Button>
+								</>
+							)}
 
-							<div className={styles.headerBurgerMenuBtns}>
-								<Button onClick={handleOpenCreditModal}>Обратный звонок</Button>
-								<Button
-									variant="secondary"
-									withArrow
-									onClick={handleOpenCreditModal}
-								>
-									Рассчитать кредит
-								</Button>
+							{isReady && isMobile && (
+								<div className={styles.headerPhone}>
+									<a href={`tel:${about.phoneLink}`}>{about.phone}</a>
+								</div>
+							)}
+
+							<div
+								ref={burgerButtonRef}
+								className={`${styles.headerBurger} ${burgerOpen ? styles.active : ""}`}
+								onClick={toggleBurgerMenu}
+								aria-label="Меню"
+								role="button"
+								tabIndex={0}
+								aria-expanded={burgerOpen}
+							>
+								<span></span>
+							</div>
+						</div>
+
+						<div ref={burgerMenuRef} className={styles.headerBurgerMenu}>
+							<div className={styles.headerBurgerMenuWrapper}>
+								<ul className={styles.headerBurgerMenuList}>
+									{renderNavLinks(closeBurgerMenu)}
+								</ul>
+
+								<ul className={styles.headerBurgerMenuContacts}>
+									<li className={styles.headerBurgerMenuContactsItem}>
+										{about.address}
+									</li>
+									<li className={styles.headerBurgerMenuContactsItem}>
+										<a href={`tel:${about.phoneLink}`}>
+											<strong>{about.phone}</strong>
+										</a>
+									</li>
+								</ul>
+
+								<div className={styles.headerBurgerMenuBtns}>
+									<Button onClick={handleOpenCreditModal}>Обратный звонок</Button>
+									<Button
+										variant="secondary"
+										withArrow
+										onClick={handleOpenCreditModal}
+									>
+										Рассчитать кредит
+									</Button>
+								</div>
 							</div>
 						</div>
 					</div>

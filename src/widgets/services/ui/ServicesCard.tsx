@@ -1,29 +1,44 @@
 "use client";
+import { LuArrowUpRight } from "react-icons/lu";
+
 import Link from "next/link";
 
-import { ServiceCategory } from "@/src/shared/types/types";
+import { CategoryWithServices } from "@/src/shared/data/services/categories";
+import { Button } from "@/src/shared/ui/button/Button";
 
 import styles from "./Services.module.scss";
 
 interface ServicesCardProps {
-	category: ServiceCategory;
+	category: CategoryWithServices;
 }
 export function ServicesCard({ category }: ServicesCardProps) {
 	return (
 		<article className={styles.servicesCard}>
-			<h3>
-				<Link href={`/services/${category.href}`}>{category.title}</Link>
-			</h3>
+			<div className={styles.top}>
+				<h3 className={styles.title}>{category.title}</h3>
+				<span className={styles.topCount}>({category.items.length})</span>
+			</div>
 
-			<div>
-				{category.items.map((service, index) => (
-					<div key={service.href || index}>
-						<span>{index}</span>
-						<Link href={`/services/${category.href}/${service.href}`}>
-							{service.title}
+			<Link href={`/services/${category.href}`} className={styles.topLink}>
+				<Button variant="outline">Подробнее</Button>
+			</Link>
+
+			<div className={styles.listWrap}>
+				<div className={styles.list}>
+					{category.items.map((service, index) => (
+						<Link
+							key={service.id || index}
+							href={`/services/${category.href}/${service.slug}`}
+							className={styles.listItem}
+						>
+							<span className={styles.listCount}>{index + 1}</span>
+							<div className={styles.listTitle}>{service.title}</div>
+							<div className={styles.listArrow}>
+								<LuArrowUpRight size={18} />
+							</div>
 						</Link>
-					</div>
-				))}
+					))}
+				</div>
 			</div>
 		</article>
 	);
