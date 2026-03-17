@@ -121,3 +121,9 @@ export interface UseYandexMapReturn {
 	isLoading: boolean;
 	error: string | null;
 }
+
+export interface SearchResult {
+	title: string;
+	href: string;
+	type: "category" | "service";
+}

@@ -7,6 +7,7 @@ import type { CategoryWithServices } from "@/src/shared/data/services/categories
 import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import { SectionId } from "@/src/shared/types/types";
 import { Button } from "@/src/shared/ui/button/Button";
+import ServiceSearchAndResults from "@/src/widgets/services/ui/ServiceSearchAndResults";
 import { ServicesCard } from "@/src/widgets/services/ui/ServicesCard";
 
 import styles from "./Services.module.scss";
@@ -33,7 +34,7 @@ export function ServicesClient({ services, buttonShowAll = false }: ServicesProp
 
 			{/*вынести в отдельный компонент*/}
 			<div style={{ display: "flex", gap: "20px" }}>
-				<input style={{ width: "100%" }} />
+				<ServiceSearchAndResults />
 				{buttonShowAll && (
 					<Link
 						style={{ flex: "none" }}

@@ -48,6 +48,7 @@
 	border-radius: 10px;
 	background-color: $color-light;
 	transition: $transition-0-3s;
+	position: relative;
 
 	.headerLogo {
 		background-image: url("/images/icons/logo.svg");
@@ -276,6 +277,18 @@
 					font-size: 14px;
 				}
 			}
+		}
+	}
+
+	.headerServicesNav {
+		//opacity: 0;
+		position: absolute;
+		background-color: $color-light;
+		top: calc(100% + 10px);
+		left: 0;
+
+		&.active {
+			opacity: 1;
 		}
 	}
 }

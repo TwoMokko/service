@@ -9,6 +9,7 @@ import { about, navigationLinks } from "@/src/shared/config";
 import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import { NavigationLink } from "@/src/shared/types/types";
 import { Button } from "@/src/shared/ui/button/Button";
+import { HeaderServicesNav } from "@/src/widgets/header/ui/HeaderServicesNav";
 
 import styles from "./Header.module.scss";
 
@@ -163,6 +164,7 @@ export function Header() {
 							</div>
 						</div>
 					</div>
+					<HeaderServicesNav />
 				</div>
 			</div>
 		</header>
