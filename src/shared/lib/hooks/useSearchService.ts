@@ -1,32 +1,44 @@
 import { useState } from "react";
 
+import { getAllCategories, getServicesByCategory } from "@/src/shared/data/services";
 import { SearchResult } from "@/src/shared/types/types";
 
 export function useSearchService() {
 	const [searchQuery, setSearchQuery] = useState("");
 	// добавть debounce можно
 
-	const searchResult = () => {
-		if (!searchQuery.trim()) return [];
+	const query = searchQuery.toLowerCase().trim();
+	const categories = getAllCategories();
+	const results: SearchResult[] = categories.flatMap((category) => {
+		const categoryResults = [];
 
-		const query = searchQuery.toLowerCase().trim();
-		const results: SearchResult[] = [];
+		if (category.title.toLowerCase().includes(query)) {
+			categoryResults.push({
+				title: category.title,
+				href: category.href,
+				type: "category" as const,
+			});
+		}
 
-		// получить все категории
-		// поиск по категорям и title при совадении пушим в результат (category.title.toLowerCase().includes(query))
-		// прямо в цикле с категориями ищем подкатегории getServicesByCategory и тоже пушим
+		const services = getServicesByCategory(category.href);
+		const servicesResults = services
+			.filter((service) => service.title.toLowerCase().includes(query))
+			.map((service) => ({
+				title: service.title,
+				href: service.slug,
+				type: "service" as const,
+			}));
 
-		return results;
-	};
+		return [...categoryResults, ...servicesResults];
+	});
 
 	const handleSearch = (query: string) => setSearchQuery(query);
 	const clearSearch = () => setSearchQuery("");
 
 	return {
 		searchQuery,
-		searchResult,
+		results,
 		handleSearch,
 		clearSearch,
-		hasResults: searchResult.length > 0,
 	};
 }

@@ -1,22 +1,17 @@
 "use client";
 import { useState } from "react";
 
-import Link from "next/link";
-
 import type { CategoryWithServices } from "@/src/shared/data/services/categories";
 import { useDevice } from "@/src/shared/lib/hooks/useDevice";
-import { SectionId } from "@/src/shared/types/types";
 import { Button } from "@/src/shared/ui/button/Button";
-import ServiceSearchAndResults from "@/src/widgets/services/ui/ServiceSearchAndResults";
 import { ServicesCard } from "@/src/widgets/services/ui/ServicesCard";
 
 import styles from "./Services.module.scss";
 
 interface ServicesProps {
 	services: CategoryWithServices[];
-	buttonShowAll?: boolean;
 }
-export function ServicesClient({ services, buttonShowAll = false }: ServicesProps) {
+export function ServicesClient({ services }: ServicesProps) {
 	const { isMobile } = useDevice();
 	const [showAllCards, setShowAllCards] = useState<boolean>(false);
 	const initCardCount: number = isMobile ? 3 : 6;
@@ -31,23 +26,6 @@ export function ServicesClient({ services, buttonShowAll = false }: ServicesProp
 	return (
 		<div className={`${styles.services} container`}>
 			<h2>Наши услуги</h2>
-
-			{/*вынести в отдельный компонент*/}
-			<div style={{ display: "flex", gap: "20px" }}>
-				<ServiceSearchAndResults />
-				{buttonShowAll && (
-					<Link
-						style={{ flex: "none" }}
-						href={`/${SectionId.SERVICES}`}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<Button variant="secondary">Показать все услуги</Button>
-					</Link>
-				)}
-			</div>
-			{/*вынести в отдельный компонент*/}
-
 			<div className={styles.servicesCards}>{visibleCards}</div>
 			<div className={`${styles.servicesCards} ${!showAllCards ? styles.hidden : ""}`}>
 				{hiddenCards}

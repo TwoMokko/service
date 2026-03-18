@@ -53,9 +53,11 @@ a {
 	color: inherit;
 	text-decoration: none;
 }
+input,
 input:focus-visible,
 input:focus {
 	outline: none;
+	border: none;
 }
 
 .container {
@@ -63,6 +65,7 @@ input:focus {
 	max-width: 1500px;
 	margin: 0 auto;
 	padding: 0 10px;
+	position: relative;
 
 	@include laptop {
 		max-width: 1200px;

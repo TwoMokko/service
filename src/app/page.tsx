@@ -13,7 +13,7 @@ export default async function Home() {
 		<>
 			<Hero />
 
-			<Services buttonShowAll />
+			<Services />
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}

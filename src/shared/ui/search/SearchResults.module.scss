@@ -1,0 +1,79 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.searchWrap {
+	width: 400px;
+
+	.inputWrap {
+		background-color: $color-light-gray;
+		padding: 6px;
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+
+		> svg {
+			flex: none;
+		}
+
+		input {
+			width: 100%;
+		}
+
+		.inputClear {
+			width: 24px;
+			height: 24px;
+			background-color: $color-light;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex: none;
+			cursor: pointer;
+		}
+	}
+}
+
+.searchResults {
+	border-radius: 10px;
+	background-color: $color-more-light-gray;
+	padding: 20px;
+	position: absolute;
+	top: calc(100% + 10px);
+	left: 10px;
+	right: 10px;
+	z-index: 1;
+	box-shadow: 4px 4px 30px 0 #00000059;
+
+	.resultsTop {
+		padding: 20px 0;
+		color: $color-gray;
+	}
+
+	.resultsContent {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		max-height: 500px;
+		overflow-y: auto;
+		padding-right: 40px;
+
+		.resultsItem {
+			background-color: $color-light;
+			padding: 24px;
+			border-radius: 8px;
+			box-shadow: 0 2px 6px 0 #00000026;
+			transition: all 0.03s ease;
+
+			&:hover {
+				background-color: $color-bg;
+				color: $color-light;
+			}
+
+			.resultsItemLink {
+				color: $color-primary;
+				font-size: 14px;
+			}
+		}
+	}
+}

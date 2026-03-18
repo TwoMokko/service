@@ -10,15 +10,18 @@
 	margin-top: 16px;
 
 	.headerContacts {
-		height: 40px;
+		height: 44px;
+		padding: 4px;
 		background-color: $color-bg;
 		border-radius: 10px;
 		margin-bottom: 4px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
 		.container {
 			height: 100%;
 			display: flex;
-			justify-content: center;
 			align-items: center;
 			color: $color-light;
 			font-size: 14px;
@@ -93,13 +96,14 @@
 				column-gap: 24px;
 
 				li {
-					position: relative;
+					//position: relative;
 					font-size: 14px;
 					font-weight: 500;
 
-					a {
+					a.link {
 						transition: $transition-0-3s;
 						color: $color-dark;
+						display: flex;
 
 						&:hover {
 							color: $color-primary;
@@ -121,6 +125,11 @@
 		font-size: 16px;
 		padding-right: 16px;
 		font-weight: 600;
+
+		@include mobile {
+			font-size: 14px;
+			padding-right: 0;
+		}
 	}
 
 	.headerBurger {
@@ -205,11 +214,11 @@
 			background-color: $color-light;
 
 			@include tablet {
-				border-radius: 0;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
-				height: 100%;
+				height: fit-content;
+				border-radius: 8px;
 			}
 
 			.headerBurgerMenuList {
@@ -280,15 +289,21 @@
 		}
 	}
 
-	.headerServicesNav {
-		//opacity: 0;
-		position: absolute;
-		background-color: $color-light;
-		top: calc(100% + 10px);
-		left: 0;
+	.servicesMenuWrapper {
+		&:not(.active) {
+			display: none;
+		}
 
-		&.active {
+		.headerServicesNav {
 			opacity: 1;
+			position: absolute;
+			top: calc(100% + 10px);
+			left: 0;
+			width: 490px;
+			padding: 20px;
+			border-radius: 10px;
+			background-color: $color-more-light-gray;
+			box-shadow: 4px 4px 30px 0 #00000059;
 		}
 	}
 }
