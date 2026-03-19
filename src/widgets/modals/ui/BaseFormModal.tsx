@@ -71,7 +71,7 @@ export function BaseFormModal({ title, content }: BaseFormModalProps) {
 					<input
 						type="text"
 						name="name"
-						placeholder="Ваше имя"
+						placeholder="Имя"
 						value={formData.name}
 						onChange={handleInputChange}
 						required
@@ -85,7 +85,7 @@ export function BaseFormModal({ title, content }: BaseFormModalProps) {
 						required
 					/>
 					<Button type="submit" disabled={!isAgreed || isLoading}>
-						{isLoading ? "Отправка..." : "Отправить заявку"}
+						{isLoading ? "Отправка..." : "Записаться на сервис"}
 					</Button>
 
 					<label className={styles.checkboxWrap}>

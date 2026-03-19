@@ -16,9 +16,10 @@
 }
 
 .modalContent {
-	background: white;
+	background-color: $color-more-light-gray;
 	padding: 40px;
-	max-width: 500px;
+	max-width: 620px;
+	border-radius: 14px;
 	width: 90%;
 	max-height: 90vh;
 	overflow-y: auto;
@@ -60,7 +61,6 @@
 .form {
 	display: flex;
 	flex-direction: column;
-	width: 370px;
 	gap: 10px;
 	padding-top: 40px;
 
@@ -70,13 +70,15 @@
 
 	input {
 		width: 100%;
-		background-color: $color-light-gray;
+		background-color: $color-light;
 		border: none;
-		height: 43px;
+		height: 48px;
 		padding: 10px;
+		text-align: center;
+		border-radius: 8px;
 
 		&::placeholder {
-			text-transform: uppercase;
+			//text-transform: uppercase;
 		}
 	}
 
@@ -127,6 +129,11 @@
 	padding-top: 14px;
 	font-size: 16px;
 	line-height: 120%;
+
+	a {
+		color: $color-primary;
+		font-weight: 600;
+	}
 
 	@include mobile {
 		font-size: 14px;

@@ -90,6 +90,10 @@
 						border-bottom: 1px solid $color-light-gray;
 					}
 
+					/**
+						TODO: дублирование стилей с Header.module.scss
+						(объединить: можно вынести в компонент отдельный или в миксин)
+					*/
 					&:hover {
 						background-color: $color-more-light-gray;
 						border-radius: 10px;
