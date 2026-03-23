@@ -1,97 +1,102 @@
-// "use client";
-import { AiFillYoutube } from "react-icons/ai";
-import { BiLogoInstagramAlt } from "react-icons/bi";
-import { RiTelegram2Fill, RiVkFill } from "react-icons/ri";
+"use client";
 
-import { about, socialLinks } from "@/src/shared/config";
+import { useState } from "react";
+import { FaClock, FaPhone } from "react-icons/fa";
+import { HiMapPin } from "react-icons/hi2";
+import { IoMdMail } from "react-icons/io";
+
+import { about } from "@/src/shared/config";
 import { YaMap } from "@/src/widgets/contact/ui/YaMap";
 
 import styles from "./Contacts.module.scss";
 
+// вынести в отдельный файл
+function ContactItem({
+	address,
+	phone,
+	email,
+	time,
+	isActive,
+}: {
+	address: string;
+	phone: string;
+	email: string;
+	time: string;
+	isActive: boolean;
+}) {
+	return (
+		<div
+			className={`${styles.contactsItem} ${isActive ? styles.active : ""}`}
+			aria-hidden={!isActive}
+			inert={!isActive ? true : undefined}
+		>
+			<div className={styles.contactsInfo}>
+				<h3>Официальный сервис:</h3>
+				<ul>
+					<li>
+						<HiMapPin />
+						{address}
+					</li>
+					<li>
+						<FaPhone />
+						{phone}
+					</li>
+					<li>
+						<IoMdMail />
+						{email}
+					</li>
+					<li>
+						<FaClock />
+						{time}
+					</li>
+				</ul>
+			</div>
+			<YaMap address={address} />
+		</div>
+	);
+}
+
 export function Contacts({ idSection, titleSection }: { idSection: string; titleSection: string }) {
+	const [activeAddress, setActiveAddress] = useState<"first" | "second">("first");
+
 	return (
 		<section id={idSection} className={styles.contacts}>
 			<div className="container">
 				<h2 className={`${styles.contactsTitle} section-title`}>{titleSection}</h2>
 				<div className={styles.contactsWrap}>
-					<div className={styles.contactsInfo}>
-						<div>
-							<div className={styles.contactsInfoItem}>
-								<div className={styles.contactsInfoName}>(телефон)</div>
-								<div className={styles.contactsInfoValue}>
-									<a
-										href={`tel:${about.phoneLink}`}
-										className={styles.primaryPhone}
-									>
-										{about.phone}
-									</a>
-								</div>
-							</div>
-							<div className={styles.contactsInfoItem}>
-								<div className={styles.contactsInfoName}>(электронная почта)</div>
-								<div className={styles.contactsInfoValue}>
-									<a href={`mailto:${about.email}`}>{about.email}</a>
-								</div>
-							</div>
-							<div className={styles.contactsInfoItem}>
-								<div className={styles.contactsInfoName}>(Адрес)</div>
-								<div className={styles.contactsInfoValue}>{about.address}</div>
-							</div>
-							<div className={styles.contactsInfoItem}>
-								<div className={styles.contactsInfoName}>(часы работы)</div>
-								<div className={styles.contactsInfoValue}>{about.time}</div>
-							</div>
-							<div className={styles.contactsInfoItem}>
-								<div className={styles.contactsInfoName}>(социальные сети)</div>
-								<div
-									className={`${styles.contactsInfoValue} ${styles.contactsInfoSocial}`}
-								>
-									<a
-										href={socialLinks.instagram}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="inst"
-									>
-										<BiLogoInstagramAlt size={25} />
-									</a>
-									<a
-										href={socialLinks.youtube}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<AiFillYoutube size={25} />
-									</a>
-									<a
-										href={socialLinks.vkontakte}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<RiVkFill size={25} />
-									</a>
-									<a
-										href={socialLinks.telegram}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<RiTelegram2Fill size={25} />
-									</a>
-								</div>
-							</div>
-							<div className={styles.contactsInfoItem}>
-								<div className={styles.contactsInfoName}>(сервисный центр)</div>
-								<div className={styles.contactsInfoValue}>
-									<a href={`tel:${about.servicePhoneLink}`}>
-										{about.servicePhone}
-									</a>
-								</div>
-							</div>
-						</div>
-						<div className={styles.contactsInfoInst}>
-							*Instagram — проект Meta Platforms Inc., деятельность которой запрещена
-							в России
-						</div>
+					<nav className={styles.contactsSwitcher}>
+						<button
+							onClick={() => setActiveAddress("first")}
+							className={`${styles.contactsSwitcherBtn} ${activeAddress === "first" ? styles.active : ""}`}
+							aria-pressed={activeAddress === "first"}
+						>
+							{about.address}
+						</button>
+						<button
+							onClick={() => setActiveAddress("second")}
+							className={`${styles.contactsSwitcherBtn} ${activeAddress === "second" ? styles.active : ""}`}
+							aria-pressed={activeAddress === "second"}
+						>
+							{about.addressSecond}
+						</button>
+					</nav>
+
+					<div className={styles.contactsItemsContainer}>
+						<ContactItem
+							address={about.address}
+							phone={about.phone}
+							email={about.email}
+							time={about.time}
+							isActive={activeAddress === "first"}
+						/>
+						<ContactItem
+							address={about.addressSecond}
+							phone={about.phoneSecond}
+							email={about.email}
+							time={about.time}
+							isActive={activeAddress === "second"}
+						/>
 					</div>
-					<YaMap address="МКАД, 44-й километр, 1Вс2" />
 				</div>
 			</div>
 		</section>

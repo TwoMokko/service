@@ -2,10 +2,11 @@
 
 import React from "react";
 
+import { about } from "@/src/shared/config";
+
 import { BaseFormModal } from "./BaseFormModal";
 
 import styles from "./Modals.module.scss";
-import {about} from "@/src/shared/config";
 
 export function OrderModal() {
 	const title: React.ReactNode = (
@@ -18,7 +19,8 @@ export function OrderModal() {
 	const content: React.ReactNode = (
 		<p className={styles.subtitle}>
 			Отправьте заявку на обратный звонок или позвоните
-			<br/>по номеру телефона: <a href={`tel:${about.phoneLink}`}>{about.phone}</a>
+			<br />
+			по номеру телефона: <a href={`tel:${about.phoneLink}`}>{about.phone}</a>
 		</p>
 	);
 

@@ -21,95 +21,73 @@
 	}
 
 	.contactsWrap {
-		display: flex;
-		column-gap: 36px;
+		background-color: $color-light-gray;
+		padding: 32px;
+		border-radius: 20px;
 
 		@include mobile {
 			flex-direction: column-reverse;
 			row-gap: 15px;
 		}
 
-		.contactsInfo {
-			flex: 1;
+		.contactsSwitcher {
+			display: flex;
+			padding: 4px;
+			gap: 4px;
 
-			@include mobile {
-				flex: none;
+			.contactsSwitcherBtn {
+				flex: 1;
 			}
+		}
 
-			.contactsInfoItem {
+		.contactsItemsContainer {
+			position: relative;
+
+			.contactsItem {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
 				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				border-top: 1px solid $color-light-gray;
-				padding-top: 10px;
+				column-gap: 20px;
+				opacity: 0;
+				visibility: hidden;
+				transition:
+					opacity 0.2s ease,
+					visibility 0.2s ease;
+				pointer-events: none;
 
-				&:not(:last-child) {
-					padding-bottom: 40px;
-
-					@include mobile {
-						padding-bottom: 17px;
-					}
+				&.active {
+					opacity: 1;
+					visibility: visible;
+					position: relative;
+					pointer-events: auto;
 				}
 
-				.contactsInfoName {
-					color: $color-gray;
-					text-transform: uppercase;
-					font-size: 14px;
-					line-height: 100%;
-				}
-
-				.contactsInfoValue {
-					font-size: 14px;
-					line-height: 100%;
-
-					a {
-						color: $color-dark;
-
-						&:hover {
-							color: $color-primary;
-						}
-
-						&.primaryPhone {
-							color: $color-primary;
-						}
-					}
-
-					&.contactsInfoSocial {
-						display: flex;
-						gap: 6px;
-						align-items: center;
-
-						a {
-							display: flex;
-							align-items: center;
-							justify-content: center;
-							color: $color-primary;
-							transition: $transition-0-3s;
-
-							&:hover {
-								opacity: 0.7;
-							}
-						}
-					}
-				}
-			}
-
-			.contactsInfoInst {
-				border-top: 1px solid $color-light-gray;
-				padding-top: 20px;
-				margin-top: 10px;
-				font-size: 10px;
-				line-height: 100%;
-				color: $color-gray;
-
-				@include mobile {
-					border-top: none;
+				@media (prefers-reduced-motion: reduce) {
+					transition: none;
 				}
 			}
 		}
 
+		.contactsInfo {
+			flex: 30%;
+			padding: 24px;
+			background-color: $color-light;
+			border-radius: 14px;
+			box-shadow: 0 2px 10px 0 #00000040;
+
+			@include mobile {
+				flex: none;
+			}
+		}
+
 		:global(#map) {
-			flex: 1;
+			flex: 70%;
+			height: 400px;
+			border-radius: 14px;
+			overflow: hidden;
+			box-shadow: 0 2px 10px 0 #00000040;
 
 			@include mobile {
 				height: 220px;
