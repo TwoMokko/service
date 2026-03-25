@@ -33,10 +33,26 @@
 		.contactsSwitcher {
 			display: flex;
 			padding: 4px;
-			gap: 4px;
+			gap: 8px;
+			background-color: $color-more-light-gray;
+			border-radius: 10px;
+			margin-bottom: 20px;
 
 			.contactsSwitcherBtn {
 				flex: 1;
+				padding: 12px;
+				border-radius: 8px;
+				font-size: 16px;
+				font-weight: 600;
+
+				&.active {
+					background-color: $color-bg;
+					color: $color-light;
+				}
+
+				&:not(.active):hover {
+					background-color: $color-light-gray;
+				}
 			}
 		}
 
@@ -67,18 +83,45 @@
 				@media (prefers-reduced-motion: reduce) {
 					transition: none;
 				}
-			}
-		}
 
-		.contactsInfo {
-			flex: 30%;
-			padding: 24px;
-			background-color: $color-light;
-			border-radius: 14px;
-			box-shadow: 0 2px 10px 0 #00000040;
+				.contactsInfo {
+					flex: 30%;
+					padding: 24px;
+					background-color: $color-light;
+					border-radius: 14px;
+					box-shadow: 0 2px 10px 0 #00000040;
 
-			@include mobile {
-				flex: none;
+					@include mobile {
+						flex: none;
+					}
+
+					.contactsItemTitle {
+						font-size: 18px;
+						font-weight: 600;
+						line-height: 1.1;
+						text-transform: uppercase;
+						margin-bottom: 20px;
+					}
+
+					.contactsItemList {
+						> li {
+							display: flex;
+							align-items: center;
+							column-gap: 8px;
+							font-size: 16px;
+							font-weight: 600;
+
+							&:not(:last-child) {
+								margin-bottom: 12px;
+							}
+
+							svg {
+								fill: $color-primary;
+								stroke: $color-primary;
+							}
+						}
+					}
+				}
 			}
 		}
 

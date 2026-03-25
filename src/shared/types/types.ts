@@ -80,7 +80,9 @@ export type FormData = Pick<SubmitData, "name" | "phone">;
 
 export enum SectionId {
 	SERVICES = "services",
+	BRANDS = "brands",
 	PRICE = "price",
+	ACTIONS = "actions",
 	ABOUT = "about",
 	REVIEWS = "reviews",
 	ARTICLE = "article",

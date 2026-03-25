@@ -21,7 +21,7 @@ export function Header() {
 	const { isMobile } = useDevice();
 	const { isOpen: burgerOpen, menuRef, buttonRef, toggle, close } = useBurgerMenu();
 
-	const handleOpenCreditModal = () => {
+	const handleOpenModal = () => {
 		openModal("order");
 	};
 
@@ -45,9 +45,7 @@ export function Header() {
 								{about.phone}
 							</a>
 							{!isMobile && (
-								<Button onClick={handleOpenCreditModal}>
-									Записаться на сервис
-								</Button>
+								<Button onClick={handleOpenModal}>Записаться на сервис</Button>
 							)}
 
 							<div
@@ -67,7 +65,7 @@ export function Header() {
 							ref={menuRef}
 							isOpen={burgerOpen}
 							onClose={close}
-							onOpenCreditModal={handleOpenCreditModal}
+							onOpenCreditModal={handleOpenModal}
 						/>
 					</div>
 				</div>
