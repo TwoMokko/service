@@ -20,7 +20,7 @@ export default function SearchResults({ results, onClose, onSelect }: SearchResu
 				{results.map((res) => (
 					<Link
 						key={`${res.type}-${res.href}`}
-						href={res.href}
+						href={`/services/${res.href}`}
 						onClick={() => {
 							onSelect();
 							onClose();

@@ -39,15 +39,17 @@ export default function SearchAndResults() {
 					}}
 					placeholder="Поиск по названию услуги..."
 				/>
-				<div
-					className={styles.inputClear}
-					onClick={() => {
-						setIsOpen(false);
-						clearSearch();
-					}}
-				>
-					<IoClose size={16} />
-				</div>
+				{searchQuery && (
+					<div
+						className={styles.inputClear}
+						onClick={() => {
+							setIsOpen(false);
+							clearSearch();
+						}}
+					>
+						<IoClose size={16} />
+					</div>
+				)}
 			</div>
 			{isOpen && searchQuery && (
 				<SearchResults

@@ -25,7 +25,7 @@ export function Footer() {
 						<Link href="/" target="_blank" rel="noopener noreferrer">
 							<Image
 								src="/images/icons/logo-footer.svg"
-								alt="logo"
+								alt="логотип"
 								width={245}
 								height={30}
 								className={styles.logoImage}
@@ -35,9 +35,9 @@ export function Footer() {
 					<nav className={styles.navSections}>
 						{navigationLinks.map((link: NavigationLink) => (
 							<Link
+								key={link.title}
 								href={link.href}
 								className={styles.navLink}
-								target="_blank"
 								rel="noopener noreferrer"
 							>
 								{link.title}
@@ -86,20 +86,10 @@ export function Footer() {
 					</button>
 				</div>
 				<div className={styles.links}>
-					<Link
-						href="/policy"
-						className={styles.link}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
+					<Link href="/policy" className={styles.link} rel="noopener noreferrer">
 						Политика конфиденциальности
 					</Link>
-					<Link
-						href="/link"
-						className={styles.link}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
+					<Link href="/link" className={styles.link} rel="noopener noreferrer">
 						Условия использования
 					</Link>
 					<span>© 2026, все права защищены</span>

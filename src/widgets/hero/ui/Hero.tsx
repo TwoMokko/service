@@ -41,7 +41,7 @@ export function Hero() {
 				<SwiperSlide className={styles.heroItem}>
 					<Image
 						src={imageSrc}
-						alt="hero"
+						alt=""
 						width={100}
 						height={100}
 						sizes="100vw"

@@ -241,7 +241,7 @@ export function ReelsModal() {
 										<div className={styles.videoIconWrap}>
 											<Image
 												src={video.icon}
-												alt={video.title ?? "icon"}
+												alt={video.title ?? ""}
 												width={30}
 												height={30}
 												className={styles.videoIcon}

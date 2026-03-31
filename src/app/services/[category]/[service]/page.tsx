@@ -2,7 +2,10 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getAllServiceSlugs, getServiceItem } from "@/src/shared/api/services";
+import { sectionTitles } from "@/src/shared/config";
+import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
+import { Contacts } from "@/src/widgets/contact";
 
 interface ServicePageProps {
 	params: Promise<{ category: string; service: string }>;
@@ -48,6 +51,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
 			<div>{serviceItem.description}</div>
 			{serviceItem.price && <div>Цена: {serviceItem.price} ₽</div>}
 			{serviceItem.time && <div>Время: {serviceItem.time}</div>}
+			<Contacts
+				idSection={SectionId.CONTACTS}
+				titleSection={sectionTitles[SectionId.CONTACTS]}
+			/>
 		</div>
 	);
 }

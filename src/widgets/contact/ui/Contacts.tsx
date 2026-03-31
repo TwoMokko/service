@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { about } from "@/src/shared/config";
+import { brandsData } from "@/src/shared/data/brands/brands";
 import ContactItem from "@/src/widgets/contact/ui/ContactItem";
 
 import styles from "./Contacts.module.scss";
@@ -11,7 +12,7 @@ export function Contacts({ idSection, titleSection }: { idSection: string; title
 	const [activeAddress, setActiveAddress] = useState<"first" | "second">("first");
 
 	return (
-		<section id={idSection} className={styles.contacts}>
+		<section id={idSection} className={`${styles.contacts} block-bottom`}>
 			<div className="container">
 				<h2 className={`${styles.contactsTitle} section-title`}>{titleSection}</h2>
 				<div className={styles.contactsWrap}>
@@ -39,6 +40,7 @@ export function Contacts({ idSection, titleSection }: { idSection: string; title
 							email={about.email}
 							time={about.time}
 							isActive={activeAddress === "first"}
+							brands={brandsData.official44}
 						/>
 						<ContactItem
 							address={about.addressSecond}
@@ -46,6 +48,7 @@ export function Contacts({ idSection, titleSection }: { idSection: string; title
 							email={about.email}
 							time={about.time}
 							isActive={activeAddress === "second"}
+							brands={brandsData.official33}
 						/>
 					</div>
 				</div>

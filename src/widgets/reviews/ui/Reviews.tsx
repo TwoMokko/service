@@ -71,7 +71,7 @@ function ReviewHeader({ card, variant }: ReviewHeaderProps) {
 			{card.author.avatarSrc && (
 				<Image
 					src={card.author.avatarSrc}
-					alt={card.author.name}
+					alt={`Фото клиента ${card.author.name}`}
 					width={64}
 					height={64}
 					className={styles.reviews__avatar}

@@ -5,6 +5,8 @@ import { SectionId } from "@/src/shared/types/types";
 import { Contacts } from "@/src/widgets/contact";
 import { Hero } from "@/src/widgets/hero";
 import { Services } from "@/src/widgets/services";
+import {Actions} from "@/src/widgets/actions";
+import {Rating} from "@/src/widgets/rating";
 
 export const metadata: Metadata = metaDataHomePage;
 
@@ -14,10 +16,15 @@ export default async function Home() {
 			<Hero />
 
 			<Services />
+			<Actions
+				idSection={SectionId.ACTIONS}
+				titleSection={sectionTitles[SectionId.ACTIONS]}
+			/>
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}
 			/>
+			<Rating />
 		</>
 	);
 }

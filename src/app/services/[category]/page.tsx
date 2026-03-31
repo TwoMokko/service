@@ -1,7 +1,10 @@
 import { Metadata } from "next";
 
 import { getAllCategorySlugs, getServiceCategory } from "@/src/shared/api/services";
+import { sectionTitles } from "@/src/shared/config";
+import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
+import { Contacts } from "@/src/widgets/contact";
 
 interface ServicePageProps {
 	params: Promise<{ category: string }>;
@@ -40,6 +43,10 @@ export default async function CategoryPage({ params }: ServicePageProps) {
 			<Breadcrumbs items={breadcrumbs} />
 			<h1>{currentCategory.title}</h1>
 			<div>{currentCategory.description}</div>
+			<Contacts
+				idSection={SectionId.CONTACTS}
+				titleSection={sectionTitles[SectionId.CONTACTS]}
+			/>
 		</div>
 	);
 }

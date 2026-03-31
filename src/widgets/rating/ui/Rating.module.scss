@@ -1,0 +1,22 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.rating {
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  .rating__wrapper {
+    margin-top: 32px;
+
+    .rating__card {
+      background-color: #6f6f74;
+    }
+  }
+
+
+
+}

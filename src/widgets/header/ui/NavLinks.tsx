@@ -30,7 +30,6 @@ export function NavLinks({ onClick, isMobile }: NavLinksProps) {
 									className={styles.link}
 									href={link.href}
 									onClick={onClick}
-									target="_blank"
 									rel="noopener noreferrer"
 								>
 									{link.title}
@@ -47,7 +46,6 @@ export function NavLinks({ onClick, isMobile }: NavLinksProps) {
 									<Link
 										className={styles.link}
 										href={link.href}
-										target="_blank"
 										rel="noopener noreferrer"
 									>
 										{link.title}
@@ -72,7 +70,6 @@ export function NavLinks({ onClick, isMobile }: NavLinksProps) {
 								className={styles.link}
 								href={link.href}
 								onClick={onClick}
-								target="_blank"
 								rel="noopener noreferrer"
 							>
 								{link.title}

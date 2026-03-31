@@ -2,8 +2,6 @@
 @use "../../../shared/styles/mixins" as *;
 
 .services {
-	margin-bottom: 110px;
-
 	.servicesCards {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);

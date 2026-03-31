@@ -52,7 +52,7 @@ export function Form({ idSection }: { idSection: string }) {
 	return (
 		<section id={idSection} className={styles.trade}>
 			<div className={styles.imgWrap}>
-				<Image src={imageSrc} alt="hero" fill sizes="100vw" className={styles.image} />
+				<Image src={imageSrc} alt="" fill sizes="100vw" className={styles.image} />
 			</div>
 			<div className="container">
 				<div className={styles.info}>

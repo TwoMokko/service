@@ -1,0 +1,13 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.actions {
+
+  .actions__wrapper {
+    margin-top: 32px;
+
+    .actions__card {
+      background-color: #8bb998;
+    }
+  }
+}

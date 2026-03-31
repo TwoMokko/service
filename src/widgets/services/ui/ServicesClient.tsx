@@ -24,8 +24,8 @@ export function ServicesClient({ services }: ServicesProps) {
 	const hiddenCards = allCards.slice(initCardCount);
 
 	return (
-		<div className={`${styles.services} container`}>
-			<h2>Наши услуги</h2>
+		<section className={`${styles.services} container block-bottom`}>
+			<h2 className={`section-title`}>Наши услуги</h2>
 			<div className={styles.servicesCards}>{visibleCards}</div>
 			<div className={`${styles.servicesCards} ${!showAllCards ? styles.hidden : ""}`}>
 				{hiddenCards}
@@ -40,6 +40,6 @@ export function ServicesClient({ services }: ServicesProps) {
 					{showAllCards ? "Свернуть список" : "Показать еще"}
 				</Button>
 			)}
-		</div>
+		</section>
 	);
 }

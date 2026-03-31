@@ -128,11 +128,19 @@ input:focus {
 
 .other-page {
 	padding-top: 180px;
-	padding-bottom: 100px;
+	//padding-bottom: 100px;
 
 	h1 {
 		font-weight: 700;
-		padding-bottom: 30px;
+		//padding-bottom: 30px;
+	}
+}
+
+.block-bottom {
+	margin-bottom: 120px;
+
+	@include mobile {
+		margin-bottom: 60px;
 	}
 }
 

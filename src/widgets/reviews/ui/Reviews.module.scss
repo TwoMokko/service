@@ -43,32 +43,6 @@
 	}
 }
 
-%reviews-button {
-	width: 48px;
-	height: 48px;
-	border-radius: 50%;
-	background: #0000000d;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	transition: all 0.3s ease;
-	border: none;
-
-	&:hover {
-		background: rgba(0, 0, 0, 0.2);
-	}
-
-	&:focus-visible {
-		outline: 2px solid #ff9e18;
-		outline-offset: 2px;
-	}
-
-	@include mobile {
-		width: 40px;
-		height: 40px;
-	}
-}
 
 .reviews {
 	margin-bottom: 120px;
@@ -76,14 +50,6 @@
 
 	@include mobile {
 		margin-bottom: 60px;
-	}
-
-	:global(.section-title) {
-		margin-bottom: 40px;
-
-		@include mobile {
-			margin-bottom: 24px;
-		}
 	}
 
 	&__wrapper {
@@ -109,44 +75,6 @@
 		@include mobile {
 			margin-top: 0;
 			gap: 8px;
-		}
-	}
-
-	&__buttonPrev,
-	&__buttonNext,
-	&__buttonMobPrev,
-	&__buttonMobNext {
-		@extend %reviews-button;
-	}
-
-	&__paginationMobile {
-		display: flex;
-		flex-direction: row-reverse;
-		justify-content: space-between;
-		align-items: center;
-		margin-top: 16px;
-	}
-
-	&__pagination {
-		display: flex;
-		justify-content: center;
-		width: max-content !important;
-
-		:global(.swiper-pagination-bullet) {
-			width: 4px;
-			height: 4px;
-			border-radius: 2px;
-			background: rgba(0, 0, 0, 0.3);
-			opacity: 1;
-			margin: 0 4px !important;
-			transition: all 0.3s ease;
-		}
-
-		:global(.swiper-pagination-bullet-active) {
-			width: 20px;
-			height: 4px;
-			border-radius: 2px;
-			background: rgba(0, 0, 0, 0.3);
 		}
 	}
 

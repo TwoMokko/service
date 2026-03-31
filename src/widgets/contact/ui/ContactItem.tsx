@@ -2,7 +2,10 @@ import { FaClock, FaPhone } from "react-icons/fa";
 import { HiMapPin } from "react-icons/hi2";
 import { IoMdMail } from "react-icons/io";
 
-import { YaMap } from "@/src/widgets/contact/ui/YaMap";
+import Image from "next/image";
+
+import { Brands, BrandsKey } from "@/src/shared/data/brands/brands";
+import { YaMapIframe } from "@/src/widgets/contact/ui/YaMapIframe";
 
 import styles from "./Contacts.module.scss";
 
@@ -12,15 +15,17 @@ export default function ContactItem({
 	email,
 	time,
 	isActive,
+	brands,
 }: {
 	address: string;
 	phone: string;
 	email: string;
 	time: string;
 	isActive: boolean;
+	brands: Brands[BrandsKey];
 }) {
 	return (
-		<div
+		<article
 			className={`${styles.contactsItem} ${isActive ? styles.active : ""}`}
 			aria-hidden={!isActive}
 			inert={!isActive ? true : undefined}
@@ -45,8 +50,15 @@ export default function ContactItem({
 						{time}
 					</li>
 				</ul>
+				<div className={`${styles.brandWrap} ${styles[`brandsCount${brands.length}`]}`}>
+					{brands.map((brand) => (
+						<div key={brand} className={styles.brand}>
+							<Image src={`/images/brands/${brand}.svg`} alt="" fill />
+						</div>
+					))}
+				</div>
 			</div>
-			<YaMap address={address} />
-		</div>
+			<YaMapIframe address={address} />
+		</article>
 	);
 }

@@ -2,12 +2,6 @@
 @use "../../../shared/styles/mixins" as *;
 
 .contacts {
-	margin-bottom: 120px;
-
-	@include mobile {
-		margin-bottom: 60px;
-	}
-
 	.contactsTitle {
 		font-size: 36px;
 		line-height: 100%;
@@ -85,7 +79,9 @@
 				}
 
 				.contactsInfo {
-					flex: 30%;
+					//flex: 30%;
+					width: 455px;
+					flex: none;
 					padding: 24px;
 					background-color: $color-light;
 					border-radius: 14px;
@@ -118,6 +114,36 @@
 							svg {
 								fill: $color-primary;
 								stroke: $color-primary;
+							}
+
+							a:hover {
+								color: $color-primary;
+							}
+						}
+					}
+
+					.brandWrap {
+						display: grid;
+						height: 184px;
+						grid-template-columns: repeat(4, 1fr);
+						grid-template-rows: repeat(2, 1fr);
+						gap: 8px;
+						margin-top: 20px;
+
+						&.brandsCount2 {
+							grid-template-columns: repeat(2, 1fr);
+							grid-template-rows: repeat(1, 1fr);
+						}
+
+						.brand {
+							position: relative;
+							padding: 8px;
+							border-radius: 10px;
+							border: 1px solid #0000001a;
+							box-shadow: 0 2px 6px 0 #00000040;
+
+							img {
+								scale: 0.8;
 							}
 						}
 					}
