@@ -6,4 +6,3 @@ export { modelMarquee } from "./model-marquee";
 export { customSelectStyles } from "./model-select-styles";
 export { yaMapConfig, pinConfig, mapControls, scrollLoadThreshold } from "./model-map";
 export { modelReels } from "./model-reels";
-export { reviewsDesktopSlides, reviewsMobileSlides } from "./model-reviews";

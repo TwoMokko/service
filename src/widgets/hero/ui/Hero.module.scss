@@ -48,7 +48,7 @@
 			font-weight: 500;
 			font-size: 22px;
 			line-height: 100%;
-			color: $color-light;
+			color: $color-white;
 
 			@include mobile {
 				font-size: 16px;
@@ -64,7 +64,7 @@
 			font-size: 80px;
 			line-height: 100%;
 			padding: 16px 0 18px 0;
-			color: $color-light;
+			color: $color-white;
 
 			@include mobile {
 				font-size: 30px;
@@ -101,10 +101,10 @@
 	height: 12px;
 	background: transparent;
 	opacity: 1;
-	border: 1px solid $color-light;
+	border: 1px solid $color-white;
 
 	&:global(.swiper-pagination-bullet-active) {
-		background: $color-light;
+		background: $color-white;
 	}
 }
 

@@ -2,74 +2,73 @@
 @use "../../styles/mixins" as *;
 
 .swiperControls {
-    margin-top: 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
+	margin-top: 32px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
 
-    .controls__pagination {
-      position: revert;
-      width: 100% !important;
-      display: flex;
-      transform: none !important;
+	.controls__pagination {
+		position: revert;
+		width: 100% !important;
+		display: flex;
+		transform: none !important;
 
-      :global(.swiper-pagination-bullet) {
-        width: 100%;
-        flex: 1;
-        height: 4px;
-        border-radius: 0;
-        background: $color-light-gray;
-        opacity: 1;
-        margin: 0 !important;
-        transition: all 0.3s ease;
-        position: revert;
-        transform: none;
-        border: none;
-      }
+		:global(.swiper-pagination-bullet) {
+			width: 100%;
+			flex: 1;
+			height: 4px;
+			border-radius: 0;
+			background: $color-light-gray;
+			opacity: 1;
+			margin: 0 !important;
+			transition: all 0.3s ease;
+			position: revert;
+			transform: none;
+			border: none;
+		}
 
-      :global(.swiper-pagination-bullet-active) {
-        background: $color-primary;
-      }
-    }
+		:global(.swiper-pagination-bullet-active) {
+			background: $color-primary;
+		}
+	}
 
-    .controls__buttonWrap {
-      display: flex;
-      gap: 2px;
+	.controls__buttonWrap {
+		display: flex;
+		gap: 2px;
 
-      .controls__buttonPrev {
-        width: 48px;
-        height: 48px;
-        border-radius: 10px 0 0 10px;
-        background: $color-primary;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
+		.controls__buttonPrev {
+			width: 48px;
+			height: 48px;
+			border-radius: 10px 0 0 10px;
+			background: $color-primary;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			border: none;
 
-        &:disabled {
-          opacity: 0.5;
-        }
-      }
+			&:disabled {
+				opacity: 0.5;
+			}
+		}
 
-      .controls__buttonNext {
-        width: 48px;
-        height: 48px;
-        border-radius: 0 10px 10px 0;
-        background: $color-primary;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
+		.controls__buttonNext {
+			width: 48px;
+			height: 48px;
+			border-radius: 0 10px 10px 0;
+			background: $color-primary;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			border: none;
 
-        &:disabled {
-          opacity: 0.5;
-        }
-      }
-    }
-
+			&:disabled {
+				opacity: 0.5;
+			}
+		}
+	}
 }

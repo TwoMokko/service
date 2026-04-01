@@ -27,7 +27,7 @@
 }
 
 .primary {
-	color: $color-light;
+	color: $color-white;
 	background-color: $color-primary;
 
 	&:not(.btnArrowWrap):hover {
@@ -37,10 +37,10 @@
 
 .secondary {
 	background-color: $color-dark-gray;
-	color: $color-light;
+	color: $color-white;
 
 	&:not(.btnArrowWrap):hover {
-		background-color: $color-dark;
+		background-color: $color-black;
 	}
 }
 
@@ -51,8 +51,8 @@
 	height: fit-content;
 
 	&:not(.btnArrowWrap):hover {
-		color: $color-dark;
-		border: 1px solid $color-dark;
+		color: $color-black;
+		border: 1px solid $color-black;
 	}
 }
 

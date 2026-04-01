@@ -1,38 +1,38 @@
 export interface Rating {
-    title: string;
-    subtitle: string;
-    dateBefore: string;
-    service: string;
-    img: string;
+	title: string;
+	subtitle: string;
+	dateBefore: string;
+	service: string;
+	img: string;
 }
 
 export const ratingData: Rating[] = [
-    {
-        title: "string1",
-        subtitle: "string",
-        dateBefore: "string",
-        service: "string",
-        img: "string",
-    },
-    {
-        title: "string2",
-        subtitle: "string3",
-        dateBefore: "string",
-        service: "string",
-        img: "string",
-    },
-    {
-        title: "string4",
-        subtitle: "string",
-        dateBefore: "string",
-        service: "string",
-        img: "string",
-    },
-    {
-        title: "string5",
-        subtitle: "string",
-        dateBefore: "string",
-        service: "string",
-        img: "string",
-    },
+	{
+		title: "string1",
+		subtitle: "string",
+		dateBefore: "string",
+		service: "string",
+		img: "string",
+	},
+	{
+		title: "string2",
+		subtitle: "string3",
+		dateBefore: "string",
+		service: "string",
+		img: "string",
+	},
+	{
+		title: "string4",
+		subtitle: "string",
+		dateBefore: "string",
+		service: "string",
+		img: "string",
+	},
+	{
+		title: "string5",
+		subtitle: "string",
+		dateBefore: "string",
+		service: "string",
+		img: "string",
+	},
 ];

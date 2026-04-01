@@ -41,7 +41,7 @@
 
 				&.active {
 					background-color: $color-bg;
-					color: $color-light;
+					color: $color-white;
 				}
 
 				&:not(.active):hover {
@@ -83,7 +83,7 @@
 					width: 455px;
 					flex: none;
 					padding: 24px;
-					background-color: $color-light;
+					background-color: $color-white;
 					border-radius: 14px;
 					box-shadow: 0 2px 10px 0 #00000040;
 

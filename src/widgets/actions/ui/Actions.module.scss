@@ -2,12 +2,28 @@
 @use "../../../shared/styles/mixins" as *;
 
 .actions {
+	overflow: hidden;
 
-  .actions__wrapper {
-    margin-top: 32px;
+	.actions__wrapper {
+		margin-top: 32px;
 
-    .actions__card {
-      background-color: #8bb998;
-    }
-  }
+		.swiper {
+			overflow: visible;
+		}
+	}
+}
+
+.actions__card {
+	border-radius: 14px;
+	box-shadow: 0 2px 10px 0 #00000040;
+	overflow: hidden;
+
+	.picture {
+		height: 260px;
+	}
+
+	.info {
+		padding: 20px;
+		background-color: $color-white;
+	}
 }

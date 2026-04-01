@@ -1,9 +1,31 @@
-import {
-	ReviewDesktopSlide,
-	ReviewMobileSlide,
-	ReviewPhotoCard,
-	ReviewTextCard,
-} from "@/src/shared/types/types";
+export interface ReviewAuthor {
+	name: string;
+	date: string;
+	avatarSrc?: string | null;
+}
+
+export interface ReviewPhotoCard {
+	id: number;
+	type: "photo";
+	author: ReviewAuthor;
+	photoSrc: string;
+}
+
+export interface ReviewTextCard {
+	id: number;
+	type: "text";
+	author: ReviewAuthor;
+	text: string;
+	link: string;
+}
+
+export interface ReviewDoubleSlide {
+	id: number;
+	type: "double";
+	items: [ReviewTextCard, ReviewTextCard];
+}
+
+export type ReviewSlide = ReviewPhotoCard | ReviewTextCard;
 
 const romanVPhoto: ReviewPhotoCard = {
 	id: 1,
@@ -95,27 +117,45 @@ const evgenyChText: ReviewTextCard = {
 	link: "https://yandex.ru/maps/org/178698124911/reviews?reviews%5BpublicId%5D=32dv3yv6bf5qk7gh7kcd9z22nm&si=fup0zf9vy6nx3y6bgqmg2df09c&utm_source=review",
 };
 
-export const reviewsDesktopSlides: ReviewDesktopSlide[] = [
-	romanVPhoto,
-	vyacheslavMPhoto,
-	{
-		id: 9,
-		type: "double",
-		items: [sergeyKText, evgenyChText],
+const sergeyKText2: ReviewTextCard = {
+	id: 9,
+	type: "text",
+	author: {
+		name: "Сергей К.",
+		date: "Сентябрь 2",
+		avatarSrc: "/images/reviews/avatar-text-1.webp",
 	},
-	pavelDPhoto,
-	igorNPhoto,
-	annaDPhoto,
-	mariaMPhoto,
-];
+	text: "Приобрели Амбер Авто, спасибо Вадиму Н за подробный рассказ об авто👍",
+	link: "https://yandex.ru/maps/org/178698124911/reviews?reviews%5BpublicId%5D=qprvwpnfwydrt3tqyv3d1ygg08&si=fup0zf9vy6nx3y6bgqmg2df09c&utm_source=review",
+};
 
-export const reviewsMobileSlides: ReviewMobileSlide[] = [
-	igorNPhoto,
+const evgenyChText2: ReviewTextCard = {
+	id: 10,
+	type: "text",
+	author: {
+		name: "Евгений Ч.",
+		date: "Сентябрь 3",
+		avatarSrc: "/images/reviews/avatar-text-2.webp",
+	},
+	text: "Покупал автомобиль в этом прекрасном салоне, всё очень понравилось, быстро удобно, не навязывают никаких дополнительных услуг!!! Отличный автосалон, всем рекомендую 👍🏼👍🏼👍🏼",
+	link: "https://yandex.ru/maps/org/178698124911/reviews?reviews%5BpublicId%5D=32dv3yv6bf5qk7gh7kcd9z22nm&si=fup0zf9vy6nx3y6bgqmg2df09c&utm_source=review",
+};
+const evgenyChText3: ReviewTextCard = {
+	id: 11,
+	type: "text",
+	author: {
+		name: "Евгений Ч.",
+		date: "Сентябрь 3",
+		avatarSrc: "/images/reviews/avatar-text-2.webp",
+	},
+	text: "Покупал автомобиль в этом прекрасном салоне, всё очень понравилось, быстро удобно, не навязывают никаких дополнительных услуг!!! Отличный автосалон, всем рекомендую 👍🏼👍🏼👍🏼",
+	link: "https://yandex.ru/maps/org/178698124911/reviews?reviews%5BpublicId%5D=32dv3yv6bf5qk7gh7kcd9z22nm&si=fup0zf9vy6nx3y6bgqmg2df09c&utm_source=review",
+};
+
+export const reviewsData: ReviewSlide[] = [
 	evgenyChText,
-	pavelDPhoto,
 	sergeyKText,
-	romanVPhoto,
-	vyacheslavMPhoto,
-	annaDPhoto,
-	mariaMPhoto,
+	evgenyChText2,
+	sergeyKText2,
+	evgenyChText3,
 ];

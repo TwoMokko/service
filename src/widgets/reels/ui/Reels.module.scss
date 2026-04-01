@@ -73,7 +73,7 @@
 					}
 
 					.videoText {
-						color: $color-light;
+						color: $color-white;
 						line-height: 100%;
 						font-size: 16px;
 						position: absolute;
@@ -97,7 +97,7 @@
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					color: $color-light;
+					color: $color-white;
 					transition: scale 0.3s ease-in-out;
 				}
 
@@ -111,7 +111,7 @@
 		.swiperButtonPrev,
 		.swiperButtonNext {
 			background: $color-primary;
-			color: $color-light;
+			color: $color-white;
 			border-radius: 50%;
 			padding: 4px;
 			display: flex;
@@ -130,7 +130,7 @@
 		}
 
 		:global(.swiper-button-disabled) {
-			background-color: $color-light;
+			background-color: $color-white;
 			color: $color-primary;
 		}
 	}

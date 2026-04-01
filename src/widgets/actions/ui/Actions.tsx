@@ -1,13 +1,13 @@
 "use client";
 
-import {Navigation, Pagination} from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { actionsData } from "@/src/shared/data/actions/actions";
+import { SwiperControls } from "@/src/shared/ui/swiperControls/SwiperControls";
 import { ActionCard } from "@/src/widgets/actions/ui/ActionCard";
 
 import styles from "./Actions.module.scss";
-import {SwiperControls} from "@/src/shared/ui/swiperControls/SwiperControls";
 
 interface ActionsProps {
 	idSection: string;
@@ -15,9 +15,9 @@ interface ActionsProps {
 }
 export function Actions({ idSection, titleSection }: ActionsProps) {
 	const navigation = {
-		prevEl: '[data-actions-prev]',
-		nextEl: '[data-actions-next]'
-	}
+		prevEl: "[data-actions-prev]",
+		nextEl: "[data-actions-next]",
+	};
 	return (
 		<section id={idSection} className={`${styles.actions} block-bottom`}>
 			<div className="container">
@@ -31,7 +31,7 @@ export function Actions({ idSection, titleSection }: ActionsProps) {
 						pagination={{
 							clickable: true,
 							dynamicBullets: true,
-							el: '[data-actions-pagination]',
+							el: "[data-actions-pagination]",
 						}}
 						breakpoints={{
 							320: {
@@ -48,20 +48,18 @@ export function Actions({ idSection, titleSection }: ActionsProps) {
 							},
 						}}
 						loop={false}
-						className={styles.actionsSwiper}
+						className={styles.swiper}
 					>
-						{
-							actionsData.map((action) => (
-								<SwiperSlide key={action.title} className={styles.actions__slide}>
-									<ActionCard action={action} />
-								</SwiperSlide>
-							))
-						}
+						{actionsData.map((action) => (
+							<SwiperSlide key={action.title} className={styles.actions__slide}>
+								<ActionCard action={action} />
+							</SwiperSlide>
+						))}
 
 						<SwiperControls
-							prevButtonProps={{ 'data-actions-prev': true }}
-							nextButtonProps={{ 'data-actions-next': true }}
-							paginationProps={{ 'data-actions-pagination': true }}
+							prevButtonProps={{ "data-actions-prev": true }}
+							nextButtonProps={{ "data-actions-next": true }}
+							paginationProps={{ "data-actions-pagination": true }}
 						/>
 					</Swiper>
 				</div>

@@ -22,7 +22,7 @@
 	}
 
 	.info {
-		color: $color-light;
+		color: $color-white;
 		padding: 60px 0;
 
 		@include mobile {
@@ -104,7 +104,7 @@
 			border: 0;
 			text-transform: uppercase;
 			height: 43px;
-			background-color: $color-light;
+			background-color: $color-white;
 
 			@include mobile {
 				width: 100%;

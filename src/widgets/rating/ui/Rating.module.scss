@@ -2,21 +2,27 @@
 @use "../../../shared/styles/mixins" as *;
 
 .rating {
+	overflow: hidden;
 
-  .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-  }
+	.top {
+		display: flex;
+		justify-content: space-between;
+		align-items: end;
+	}
 
-  .rating__wrapper {
-    margin-top: 32px;
+	.rating__wrapper {
+		margin-top: 32px;
 
-    .rating__card {
-      background-color: #6f6f74;
-    }
-  }
+		.swiper {
+			overflow: visible;
+		}
+	}
+}
 
-
-
+.rating__card {
+	border-radius: 14px;
+	padding: 10px;
+	background-color: $color-white;
+	box-shadow: 0 2px 10px 0 #00000040;
+	height: 214px;
 }
