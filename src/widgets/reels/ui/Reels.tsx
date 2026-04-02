@@ -1,25 +1,28 @@
 "use client";
 
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import React, { useRef } from "react";
+import React from "react";
 import { FaPlay } from "react-icons/fa";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import Image from "next/image";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
 import { modelReels } from "@/src/shared/config";
 import { ReelsItem } from "@/src/shared/types/types";
+import { SwiperControls } from "@/src/shared/ui/swiperControls/SwiperControls";
 
 import styles from "./Reels.module.scss";
 
 export function Reels(): React.ReactNode {
 	const { openModal } = useModal();
 	const videos: ReelsItem[] = modelReels;
-	const prevRef = useRef<HTMLDivElement>(null);
-	const nextRef = useRef<HTMLDivElement>(null);
+
+	const navigation = {
+		prevEl: "[data-reels-prev]",
+		nextEl: "[data-reels-next]",
+	};
 
 	const handleVideoClick = (index: number) => {
 		openModal("video", {
@@ -31,11 +34,8 @@ export function Reels(): React.ReactNode {
 	return (
 		<section className={`${styles.reels} container`}>
 			<div className={styles.reelsSwiperWrap}>
-				<div ref={prevRef} className={styles.swiperButtonPrev}>
-					<IoIosArrowBack size={24} />
-				</div>
 				<Swiper
-					modules={[Navigation]}
+					modules={[Navigation, Pagination]}
 					slidesPerView={"auto"}
 					spaceBetween={10}
 					loop={false}
@@ -50,24 +50,14 @@ export function Reels(): React.ReactNode {
 							slidesPerView: 4,
 						},
 						1280: {
-							slidesPerView: 5,
+							slidesPerView: 4,
 						},
 					}}
-					navigation={{
-						nextEl: nextRef.current,
-						prevEl: prevRef.current,
-					}}
-					onSwiper={(swiper) => {
-						setTimeout(() => {
-							if (swiper.params.navigation) {
-								// @ts-ignore
-								swiper.params.navigation.prevEl = prevRef.current;
-								// @ts-ignore
-								swiper.params.navigation.nextEl = nextRef.current;
-							}
-							swiper.navigation.init();
-							swiper.navigation.update();
-						});
+					navigation={navigation}
+					pagination={{
+						clickable: true,
+						dynamicBullets: true,
+						el: "[data-reels-pagination]",
 					}}
 					className={styles.reelsSwiper}
 				>
@@ -109,10 +99,12 @@ export function Reels(): React.ReactNode {
 							</div>
 						</SwiperSlide>
 					))}
+					<SwiperControls
+						prevButtonProps={{ "data-reels-prev": true }}
+						nextButtonProps={{ "data-reels-next": true }}
+						paginationProps={{ "data-reels-pagination": true }}
+					/>
 				</Swiper>
-				<div ref={nextRef} className={styles.swiperButtonNext}>
-					<IoIosArrowForward size={24} />
-				</div>
 			</div>
 		</section>
 	);

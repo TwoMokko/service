@@ -1,4 +1,9 @@
-export { metaDataHomePage, metaDataAboutPage, metaDataServicesPage } from "./model-seo-pages";
+export {
+	metaDataHomePage,
+	metaDataAboutPage,
+	metaDataServicesPage,
+	metaDataContactsPage,
+} from "./model-seo-pages";
 export { about, socialLinks } from "./model-base";
 export { navigationLinks } from "./model-navigation";
 export { sectionTitles } from "./model-sections";
