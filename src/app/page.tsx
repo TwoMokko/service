@@ -16,10 +16,21 @@ export default async function Home() {
 			<Hero />
 
 			<Services />
+			<section className="container block-bottom">форма</section>
+			<section className="container block-bottom">
+				<h2 className="section-title">Официальный сервис брендовых автомобилей</h2>
+			</section>
+			<section className="container block-bottom">форма</section>
+			<section className="container block-bottom">
+				<h2 className="section-title">Прайс-лист</h2>
+			</section>
 			<Actions
 				idSection={SectionId.ACTIONS}
 				titleSection={sectionTitles[SectionId.ACTIONS]}
 			/>
+			<section className="container block-bottom">
+				<h2 className="section-title">О сервисе</h2>
+			</section>
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}

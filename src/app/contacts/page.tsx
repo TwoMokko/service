@@ -11,7 +11,7 @@ export const metadata: Metadata = metaDataContactsPage;
 export default function Policy() {
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },
-		{ title: "О нас", href: "/contacts" },
+		{ title: "Контакты", href: "/contacts" },
 	];
 
 	return (
@@ -20,6 +20,7 @@ export default function Policy() {
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}
+				titlePage
 			/>
 			<Rating />
 		</div>

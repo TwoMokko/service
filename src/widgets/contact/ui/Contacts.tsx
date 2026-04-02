@@ -8,13 +8,25 @@ import ContactItem from "@/src/widgets/contact/ui/ContactItem";
 
 import styles from "./Contacts.module.scss";
 
-export function Contacts({ idSection, titleSection }: { idSection: string; titleSection: string }) {
+export function Contacts({
+	idSection,
+	titleSection,
+	titlePage = false,
+}: {
+	idSection: string;
+	titleSection: string;
+	titlePage?: boolean;
+}) {
 	const [activeAddress, setActiveAddress] = useState<"first" | "second">("first");
 
 	return (
 		<section id={idSection} className={`${styles.contacts} block-bottom`}>
 			<div className="container">
-				<h2 className={`${styles.contactsTitle} section-title`}>{titleSection}</h2>
+				<h2
+					className={`${styles.contactsTitle} ${titlePage ? "page-title" : "section-title"}`}
+				>
+					{titleSection}
+				</h2>
 				<div className={styles.contactsWrap}>
 					<nav className={styles.contactsSwitcher}>
 						<button

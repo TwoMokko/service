@@ -18,7 +18,7 @@ export default function Policy() {
 	return (
 		<div className="other-page">
 			<Breadcrumbs items={breadcrumbs} />
-			<Services />
+			<Services titlePage />
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}

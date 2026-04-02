@@ -2,22 +2,11 @@
 @use "../../../shared/styles/mixins" as *;
 
 .contacts {
-	.contactsTitle {
-		font-size: 36px;
-		line-height: 100%;
-		font-weight: 400;
-		padding-bottom: 40px;
-
-		@include mobile {
-			font-size: 24px;
-			padding-bottom: 24px;
-		}
-	}
-
 	.contactsWrap {
 		background-color: $color-light-gray;
 		padding: 32px;
 		border-radius: 20px;
+		margin-top: 32px;
 
 		@include mobile {
 			flex-direction: column-reverse;
