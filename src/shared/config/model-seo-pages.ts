@@ -10,6 +10,10 @@ export const metaDataContactsPage = {
 	title: "Контакты",
 	description: "Дескрипшн контакты",
 };
+export const metaDataBrandsPage = {
+	title: "Бренды",
+	description: "Дескрипшн бренды",
+};
 export const metaDataServicesPage = {
 	title: "Наши услуги",
 	description: "Дескрипшн наши услуги",
