@@ -1,11 +1,11 @@
 import { Action } from "@/src/shared/data/actions/actions";
 
-import styles from "./Actions.module.scss";
+import styles from "./Promo.module.scss";
 
 interface ActionCardProps {
 	action: Action;
 }
-export function ActionCard({ action }: ActionCardProps) {
+export function PromoCard({ action }: ActionCardProps) {
 	return (
 		<article className={styles.actions__card}>
 			<div className={styles.picture}></div>

@@ -3,6 +3,11 @@ export {
 	metaDataAboutPage,
 	metaDataServicesPage,
 	metaDataContactsPage,
+	metaDataBrandsPage,
+	metaDataPricePage,
+	metaDataPromoPage,
+	metaDataReviewsPage,
+	metaDataArticlePage,
 } from "./model-seo-pages";
 export { about, socialLinks } from "./model-base";
 export { navigationLinks } from "./model-navigation";

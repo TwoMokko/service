@@ -5,18 +5,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { actionsData } from "@/src/shared/data/actions/actions";
 import { SwiperControls } from "@/src/shared/ui/swiperControls/SwiperControls";
-import { ActionCard } from "@/src/widgets/actions/ui/ActionCard";
+import { PromoCard } from "@/src/widgets/promo/ui/PromoCard";
 
-import styles from "./Actions.module.scss";
+import styles from "./Promo.module.scss";
 
 interface ActionsProps {
 	idSection: string;
 	titleSection: string;
 }
-export function Actions({ idSection, titleSection }: ActionsProps) {
+export function Promo({ idSection, titleSection }: ActionsProps) {
 	const navigation = {
-		prevEl: "[data-actions-prev]",
-		nextEl: "[data-actions-next]",
+		prevEl: "[data-promo-prev]",
+		nextEl: "[data-promo-next]",
 	};
 	return (
 		<section id={idSection} className={`${styles.actions} block-bottom`}>
@@ -31,7 +31,7 @@ export function Actions({ idSection, titleSection }: ActionsProps) {
 						pagination={{
 							clickable: true,
 							dynamicBullets: true,
-							el: "[data-actions-pagination]",
+							el: "[data-promo-pagination]",
 						}}
 						breakpoints={{
 							320: {
@@ -52,7 +52,7 @@ export function Actions({ idSection, titleSection }: ActionsProps) {
 					>
 						{actionsData.map((action) => (
 							<SwiperSlide key={action.title} className={styles.actions__slide}>
-								<ActionCard action={action} />
+								<PromoCard action={action} />
 							</SwiperSlide>
 						))}
 

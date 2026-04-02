@@ -2,9 +2,9 @@ import { Metadata } from "next";
 
 import { metaDataHomePage, sectionTitles } from "@/src/shared/config";
 import { SectionId } from "@/src/shared/types/types";
-import { Actions } from "@/src/widgets/actions";
 import { Contacts } from "@/src/widgets/contact";
 import { Hero } from "@/src/widgets/hero";
+import { Promo } from "@/src/widgets/promo";
 import { Rating } from "@/src/widgets/rating";
 import { Services } from "@/src/widgets/services";
 
@@ -24,10 +24,7 @@ export default async function Home() {
 			<section className="container block-bottom">
 				<h2 className="section-title">Прайс-лист</h2>
 			</section>
-			<Actions
-				idSection={SectionId.ACTIONS}
-				titleSection={sectionTitles[SectionId.ACTIONS]}
-			/>
+			<Promo idSection={SectionId.PROMO} titleSection={sectionTitles[SectionId.PROMO]} />
 			<section className="container block-bottom">
 				<h2 className="section-title">О сервисе</h2>
 			</section>
