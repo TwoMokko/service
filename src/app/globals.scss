@@ -92,22 +92,16 @@ input:focus {
 	font-size: 40px;
 	line-height: 100%;
 	font-weight: 600;
-	position: relative;
-	padding-left: 26px;
 
 	@include mobile {
 		font-size: 24px;
 	}
 
-	&::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 10px;
-		height: 10px;
-		background-color: $color-primary;
-	}
+	@include titleDot;
+}
+
+.text-primary {
+	color: $color-primary;
 }
 
 .inst {

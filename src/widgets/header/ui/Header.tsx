@@ -22,7 +22,7 @@ export function Header() {
 	const { isOpen: burgerOpen, menuRef, buttonRef, toggle, close } = useBurgerMenu();
 
 	const handleOpenModal = () => {
-		openModal("order");
+		openModal("common");
 	};
 
 	return (

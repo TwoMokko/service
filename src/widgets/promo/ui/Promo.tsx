@@ -57,9 +57,9 @@ export function Promo({ idSection, titleSection }: ActionsProps) {
 						))}
 
 						<SwiperControls
-							prevButtonProps={{ "data-actions-prev": true }}
-							nextButtonProps={{ "data-actions-next": true }}
-							paginationProps={{ "data-actions-pagination": true }}
+							prevButtonProps={{ "data-promo-prev": true }}
+							nextButtonProps={{ "data-promo-next": true }}
+							paginationProps={{ "data-promo-pagination": true }}
 						/>
 					</Swiper>
 				</div>

@@ -8,6 +8,10 @@
 	margin-bottom: 40px;
 	border-radius: 10px;
 
+	@include mobile {
+		padding: 16px;
+	}
+
 	.iconsWrap {
 		display: flex;
 		justify-content: space-between;
@@ -42,6 +46,12 @@
 			display: flex;
 			gap: 16px;
 
+			@include mobile {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				width: 100%;
+			}
+
 			.navLink {
 				cursor: pointer;
 
@@ -56,12 +66,25 @@
 			align-items: center;
 			gap: 16px;
 
+			@include mobile {
+				flex-direction: column;
+				width: 100%;
+			}
+
 			a {
 				font-size: 16px;
 				font-weight: 600;
 
 				&:hover {
 					color: $color-primary;
+				}
+
+				@include mobile {
+					border: 1px solid $color-white;
+					width: 100%;
+					text-align: center;
+					padding: 16px;
+					border-radius: 8px;
 				}
 			}
 		}

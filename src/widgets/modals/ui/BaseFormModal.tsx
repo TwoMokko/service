@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdDone, MdOutlineClose } from "react-icons/md";
 
 import Link from "next/link";
@@ -28,7 +28,17 @@ export function BaseFormModal({ title, content }: BaseFormModalProps) {
 	const [formData, setFormData] = useState<FormData>({
 		name: "",
 		phone: "",
+		url: "",
 	});
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			setFormData((prev) => ({
+				...prev,
+				url: window.location.origin,
+			}));
+		}
+	}, []);
 
 	const submit = async (e: React.FormEvent) => {
 		e.preventDefault();

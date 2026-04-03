@@ -13,6 +13,10 @@
 	.rating__wrapper {
 		margin-top: 32px;
 
+		@include mobile {
+			margin-bottom: 24px;
+		}
+
 		.swiper {
 			overflow: visible;
 		}

@@ -48,7 +48,7 @@ export function Footer() {
 						<a href={`tel:${about.phoneLink}`}>{about.phone}</a>
 						<Button
 							minWidth={242}
-							onClick={() => openModal("order")}
+							onClick={() => openModal("common")}
 							className={styles.btn}
 						>
 							Записаться на сервис

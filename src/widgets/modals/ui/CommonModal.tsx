@@ -8,7 +8,7 @@ import { BaseFormModal } from "./BaseFormModal";
 
 import styles from "./Modals.module.scss";
 
-export function OrderModal() {
+export function CommonModal() {
 	const title: React.ReactNode = (
 		<h2 className={styles.title}>
 			Получить консультацию

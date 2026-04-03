@@ -1,15 +1,22 @@
 @use "../../../shared/styles/variables" as *;
 @use "../../../shared/styles/mixins" as *;
 
-.trade {
+.form__wrap {
 	position: relative;
-	margin-bottom: 120px;
+	border-radius: 14px;
+	overflow: hidden;
+
+	&.end {
+		.info {
+			margin-left: auto;
+		}
+	}
 
 	@include mobile {
 		margin: 0 10px 60px;
 	}
 
-	.imgWrap {
+	.img__wrap {
 		position: absolute;
 		inset: 0;
 		z-index: -1;
@@ -23,111 +30,79 @@
 
 	.info {
 		color: $color-white;
-		padding: 60px 0;
+		//padding: 32px;
+		padding: 32px 32px 32px 58px;
+		width: fit-content;
 
 		@include mobile {
 			margin-top: auto;
-			padding: 280px 0 30px;
+			padding: 150px 10px 30px;
 		}
 
 		.title {
-			font-size: 36px;
-			font-weight: 400;
+			font-size: 40px;
+			font-weight: 600;
 			line-height: 100%;
-			letter-spacing: -0.04em;
-			margin: 0;
-			padding-bottom: 40px;
+			letter-spacing: -0.02em;
+			//margin: 0;
+			margin: 0 0 0 -26px;
+			padding-bottom: 32px;
+			@include titleDot;
 
 			@include mobile {
+				margin: 0;
 				font-size: 24px;
-				padding-bottom: 20px;
-			}
-		}
-
-		.list {
-			margin-bottom: 90px;
-			font-size: 20px;
-			font-weight: 500;
-			line-height: 110%;
-			list-style: none;
-			padding-left: 24px;
-
-			@include mobile {
-				margin-bottom: 30px;
-				font-size: 14px;
-				font-weight: 400;
-			}
-
-			> li {
-				position: relative;
-				padding-left: 22px;
-
-				@include mobile {
-					padding-left: 16px;
-					max-width: 90%;
-				}
-			}
-
-			> li:not(:last-child) {
-				margin-bottom: 20px;
-			}
-
-			> li::before {
-				content: "";
-				background-color: $color-primary;
-				width: 9px;
-				height: 9px;
-				border-radius: 50%;
-				position: absolute;
-				right: calc(100% + 10px);
-				top: 50%;
-				transform: translateY(-50%);
-				line-height: 1;
+				padding-bottom: 24px;
 			}
 		}
 	}
 }
 
 .form {
-	.formInputs {
+	width: 606px;
+
+	@include mobile {
+		width: 100%;
+	}
+
+	.form__inputs {
 		display: flex;
-		gap: 6px;
-		margin-bottom: 6px;
+		gap: 16px;
 
 		@include mobile {
 			flex-direction: column;
+			gap: 8px;
 		}
 
-		input {
-			width: 310px;
-			padding: 10px;
-			border: 0;
-			text-transform: uppercase;
-			height: 43px;
-			background-color: $color-white;
-
-			@include mobile {
-				width: 100%;
-			}
+		button {
+			flex: none;
 		}
 	}
 
-	.checkboxWrap {
+	.checkbox__wrap {
 		display: flex;
 		align-items: center;
 		gap: 10px;
-		font-size: 12px;
+		font-size: 13px;
+		font-weight: 500;
 		line-height: 110%;
-		width: fit-content;
+		margin-top: 16px;
+
+		@include mobile {
+			font-size: 11px;
+			gap: 8px;
+			margin-top: 14px;
+		}
 
 		input[type="checkbox"] {
 			display: none;
 		}
 
 		.checkbox {
-			width: 20px;
-			height: 20px;
-			border: 1px solid $color-gray;
+			width: 24px;
+			height: 24px;
+			border-radius: 2px;
+			background-color: $color-more-light-gray;
 			flex: none;
 			display: flex;
 			justify-content: center;
@@ -136,7 +111,12 @@
 
 		.policyLink {
 			text-decoration: underline;
-			padding-left: 4px;
+			padding: 0 4px;
+		}
+
+		> div {
+			color: $color-more-light-gray;
+			opacity: 0.5;
 		}
 	}
 }

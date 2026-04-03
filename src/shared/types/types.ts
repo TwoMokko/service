@@ -1,3 +1,5 @@
+import { ReviewPhotoCard, ReviewTextCard } from "@/src/shared/data/reviews/reviews";
+
 export interface Model {
 	id: number;
 	brand: string;
@@ -19,11 +21,13 @@ export interface Equipment {
 	kpp: string;
 	drive: string;
 }
-export type ModalData = SubmitModel | ReelsData | null;
+export type ModalData = SubmitModel | ReelsData | ReviewModalData | null;
 export interface ReelsData {
 	videos: ReelsItem[];
 	initialIndex?: number;
 }
+
+export type ReviewModalData = ReviewPhotoCard | ReviewTextCard;
 
 export interface ReelsItem {
 	id: string | number;
@@ -43,11 +47,12 @@ export interface SubmitModel {
 	color?: string;
 }
 export interface SubmitData {
-	name: string;
+	name?: string;
 	phone: string;
+	url: string;
 	model?: SubmitModel;
 }
-export type FormData = Pick<SubmitData, "name" | "phone">;
+export type FormData = Pick<SubmitData, "name" | "phone" | "url">;
 
 export enum SectionId {
 	SERVICES = "services",

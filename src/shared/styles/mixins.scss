@@ -57,3 +57,27 @@
 		transform: translateY(0);
 	}
 }
+
+@mixin titleDot {
+	position: relative;
+	padding-left: 26px;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 10px;
+		height: 10px;
+		background-color: $color-primary;
+	}
+
+	@include mobile {
+		padding-left: 14px;
+
+		&::before {
+			width: 6px;
+			height: 6px;
+		}
+	}
+}

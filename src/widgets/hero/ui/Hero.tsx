@@ -62,7 +62,7 @@ export function Hero() {
 						<div className={styles.slideBottom}>
 							<Button
 								minWidth={242}
-								onClick={() => openModal("order")}
+								onClick={() => openModal("common")}
 								className={styles.btn}
 							>
 								Бесплатная консультация
