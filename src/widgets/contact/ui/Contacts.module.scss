@@ -11,6 +11,19 @@
 		@include mobile {
 			flex-direction: column-reverse;
 			row-gap: 15px;
+			padding: 20px;
+			border-radius: 16px;
+		}
+
+		.contactsNav {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+			margin-bottom: 20px;
+
+			@include mobile {
+				margin-bottom: 16px;
+			}
 		}
 
 		.contactsSwitcher {
@@ -19,7 +32,8 @@
 			gap: 8px;
 			background-color: $color-more-light-gray;
 			border-radius: 10px;
-			margin-bottom: 20px;
+			width: 100%;
+			flex: auto;
 
 			.contactsSwitcherBtn {
 				flex: 1;
@@ -28,9 +42,16 @@
 				font-size: 16px;
 				font-weight: 600;
 
+				@include mobile {
+					font-size: 14px;
+				}
+
 				&.active {
 					background-color: $color-bg;
 					color: $color-white;
+				}
+				&.active:hover {
+					background-color: $color-bg-hover;
 				}
 
 				&:not(.active):hover {
@@ -39,138 +60,196 @@
 			}
 		}
 
-		.contactsItemsContainer {
-			position: relative;
+		.arrowsNav {
+			display: flex;
+			justify-content: flex-end;
+			gap: 2px;
+		}
 
-			.contactsItem {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				display: flex;
-				column-gap: 20px;
-				opacity: 0;
-				visibility: hidden;
-				transition:
-					opacity 0.2s ease,
-					visibility 0.2s ease;
-				pointer-events: none;
+		.arrowButton {
+			width: 50px;
+			height: 50px;
+			background-color: #c3c8d2;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 24px;
+			transition: all 0.3s ease;
 
-				&.active {
-					opacity: 1;
-					visibility: visible;
-					position: relative;
-					pointer-events: auto;
-				}
+			&:hover:not(:disabled) {
+				background-color: $color-more-light-gray;
+			}
 
-				@media (prefers-reduced-motion: reduce) {
-					transition: none;
-				}
+			&:first-child {
+				border-radius: 10px 0 0 10px;
+			}
+			&:last-child {
+				border-radius: 0 10px 10px 0;
+			}
 
-				@include mobile {
-					flex-direction: column-reverse;
-					row-gap: 16px;
-				}
-
-				.contactsInfo {
-					//flex: 30%;
-					width: 455px;
-					flex: none;
-					padding: 24px;
-					background-color: $color-white;
-					border-radius: 14px;
-					box-shadow: 0 2px 10px 0 #00000040;
-
-					@include mobile {
-						flex: none;
-						width: 100%;
-					}
-
-					.contactsItemTitle {
-						font-size: 18px;
-						font-weight: 600;
-						line-height: 1.1;
-						text-transform: uppercase;
-						margin-bottom: 20px;
-					}
-
-					.contactsItemList {
-						> li {
-							display: flex;
-							align-items: center;
-							column-gap: 8px;
-							font-size: 16px;
-							font-weight: 600;
-
-							&:not(:last-child) {
-								margin-bottom: 12px;
-							}
-
-							svg {
-								fill: $color-primary;
-								stroke: $color-primary;
-							}
-
-							a:hover {
-								color: $color-primary;
-							}
-						}
-					}
-
-					.brandWrap {
-						display: grid;
-						height: 184px;
-						grid-template-columns: repeat(4, 1fr);
-						grid-template-rows: repeat(2, 1fr);
-						gap: 8px;
-						margin-top: 20px;
-
-						@include mobile {
-							height: fit-content;
-						}
-
-						&.brandsCount2 {
-							grid-template-columns: repeat(2, 1fr);
-							grid-template-rows: repeat(1, 1fr);
-						}
-
-						.brand {
-							position: relative;
-							padding: 8px;
-							border-radius: 10px;
-							border: 1px solid #0000001a;
-							box-shadow: 0 2px 6px 0 #00000040;
-
-							@include mobile {
-								height: 48px;
-							}
-
-							img {
-								scale: 0.8;
-							}
-						}
-					}
-				}
+			&:disabled {
+				opacity: 0.3;
 			}
 		}
 
-		:global(#map) {
-			flex: 70%;
-			height: 400px;
-			border-radius: 14px;
+		.paginationWrapper {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			margin-bottom: 16px;
+			border-radius: 30px;
 			overflow: hidden;
-			box-shadow: 0 2px 10px 0 #00000040;
 
-			@include mobile {
-				height: 220px;
-				flex: none;
+			:global(.swiper-pagination-bullet) {
+				width: 100%;
+				margin: 0;
+				height: 4px;
+				border-radius: 0;
+				border: none;
+				background-color: $color-more-light-gray;
+			}
+			:global(.swiper-pagination-bullet-active) {
+				background-color: $color-bg;
+				border-radius: 30px;
+			}
+		}
+
+		.contactsItemsContainer {
+			position: relative;
+
+			.contactsSwiper {
+				overflow: visible;
+				border-radius: 14px;
+
+				:global(.swiper-slide) {
+					height: auto;
+				}
 			}
 		}
 	}
 }
 
-:global(.ymaps-2-1-79-map-copyrights-promo),
-:global(.ymaps-2-1-79-copyright__promo),
-:global(.ymaps-2-1-79-copyrights-pane) {
-	display: none !important;
+.contactsItem {
+	display: flex;
+	column-gap: 20px;
+
+	@include mobile {
+		flex-direction: column-reverse;
+		row-gap: 16px;
+	}
+
+	.contactsInfo {
+		width: 455px;
+		flex: none;
+		padding: 24px;
+		background-color: $color-white;
+		border-radius: 14px;
+		box-shadow: 0 2px 10px 0 #00000040;
+
+		@include mobile {
+			flex: none;
+			width: 100%;
+			border-radius: 10px;
+			padding: 16px;
+		}
+
+		.contactsItemTitle {
+			font-size: 18px;
+			font-weight: 600;
+			line-height: 1.1;
+			text-transform: uppercase;
+			margin-bottom: 20px;
+
+			@include mobile {
+				font-size: 14px;
+				margin-bottom: 16px;
+			}
+		}
+
+		.contactsItemList {
+			> li {
+				display: flex;
+				align-items: center;
+				column-gap: 8px;
+				font-size: 16px;
+
+				@include mobile {
+					font-size: 14px;
+				}
+
+				&:not(:last-child) {
+					margin-bottom: 12px;
+
+					@include mobile {
+						margin-bottom: 8px;
+					}
+				}
+
+				svg {
+					fill: $color-primary;
+					stroke: $color-primary;
+				}
+
+				a:hover {
+					color: $color-primary;
+				}
+			}
+		}
+
+		.brandWrap {
+			display: grid;
+			height: 184px;
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-rows: repeat(2, 1fr);
+			gap: 8px;
+			margin-top: 20px;
+
+			@include mobile {
+				height: fit-content;
+				margin-top: 16px;
+			}
+
+			&.brandsCount2 {
+				grid-template-columns: repeat(2, 1fr);
+				grid-template-rows: repeat(1, 1fr);
+			}
+
+			.brand {
+				position: relative;
+				padding: 8px;
+				border-radius: 10px;
+				border: 1px solid #0000001a;
+				box-shadow: 0 2px 6px 0 #00000040;
+
+				@include mobile {
+					height: 48px;
+				}
+
+				img {
+					scale: 0.8;
+				}
+			}
+		}
+	}
+
+	//:global(#map) {
+	//  flex: 70%;
+	//  height: 400px;
+	//  border-radius: 14px;
+	//  overflow: hidden;
+	//  box-shadow: 0 2px 10px 0 #00000040;
+	//
+	//  @include mobile {
+	//    height: 220px;
+	//    flex: none;
+	//  }
+	//}
 }
+
+// Скрываем копирайты Яндекса
+//:global(.ymaps-2-1-79-map-copyrights-promo),
+//:global(.ymaps-2-1-79-copyright__promo),
+//:global(.ymaps-2-1-79-copyrights-pane) {
+//  display: none !important;
+//}

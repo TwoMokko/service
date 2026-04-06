@@ -47,7 +47,7 @@ export function Footer() {
 					<div className={styles.actions}>
 						<a href={`tel:${about.phoneLink}`}>{about.phone}</a>
 						<Button
-							minWidth={242}
+							minWidth={214}
 							onClick={() => openModal("common")}
 							className={styles.btn}
 						>
@@ -78,20 +78,22 @@ export function Footer() {
 							условия их обработки.
 						</p>
 					</div>
-					<button
-						className={styles.btnDisclaimer}
-						onClick={() => setShowDisclaimer((prevState) => !prevState)}
-					>
-						{showDisclaimer ? "Скрыть" : "Раскрыть полный текст"}
-					</button>
+					{/*<button*/}
+					{/*	className={styles.btnDisclaimer}*/}
+					{/*	onClick={() => setShowDisclaimer((prevState) => !prevState)}*/}
+					{/*>*/}
+					{/*	{showDisclaimer ? "Скрыть" : "Раскрыть полный текст"}*/}
+					{/*</button>*/}
 				</div>
 				<div className={styles.links}>
-					<Link href="/policy" className={styles.link} rel="noopener noreferrer">
-						Политика конфиденциальности
-					</Link>
-					<Link href="/link" className={styles.link} rel="noopener noreferrer">
-						Условия использования
-					</Link>
+					<div className={styles.links__wrap}>
+						<Link href="/policy" className={styles.link} rel="noopener noreferrer">
+							Политика конфиденциальности
+						</Link>
+						<Link href="/link" className={styles.link} rel="noopener noreferrer">
+							Условия использования
+						</Link>
+					</div>
 					<span>© 2026, все права защищены</span>
 				</div>
 			</div>

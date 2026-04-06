@@ -15,10 +15,10 @@ interface ServicesProps {
 export function ServicesClient({ services, titlePage }: ServicesProps) {
 	const { isMobile } = useDevice();
 	const [showAllCards, setShowAllCards] = useState<boolean>(false);
-	const initCardCount: number = isMobile ? 3 : 6;
+	const initCardCount: number = isMobile ? 4 : 6;
 
-	const allCards = services.map((service) => (
-		<ServicesCard key={service.id} category={service} />
+	const allCards = services.map((service, index) => (
+		<ServicesCard key={service.id} category={service} isInitiallyOpen={index === 0} />
 	));
 
 	const visibleCards = allCards.slice(0, initCardCount);

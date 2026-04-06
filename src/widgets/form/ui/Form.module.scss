@@ -49,6 +49,10 @@
 			padding-bottom: 32px;
 			@include titleDot;
 
+			@include laptop {
+				font-size: 32px;
+			}
+
 			@include mobile {
 				margin: 0;
 				font-size: 24px;
@@ -61,6 +65,10 @@
 .form {
 	width: 606px;
 
+	@include laptop {
+		width: 490px;
+	}
+
 	@include mobile {
 		width: 100%;
 	}
@@ -69,9 +77,12 @@
 		display: flex;
 		gap: 16px;
 
+		@include laptop {
+			gap: 8px;
+		}
+
 		@include mobile {
 			flex-direction: column;
-			gap: 8px;
 		}
 
 		button {

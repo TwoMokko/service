@@ -25,7 +25,7 @@ export function useSearchService() {
 			.filter((service) => service.title.toLowerCase().includes(query))
 			.map((service) => ({
 				title: service.title,
-				href: `${category.href}/${service.slug}`,
+				href: `${category.href}/${service.href}`,
 				type: "service" as const,
 			}));
 

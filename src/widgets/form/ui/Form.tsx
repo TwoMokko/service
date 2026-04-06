@@ -84,7 +84,7 @@ export function Form({ title, content, imageSrc, variant = "start" }: FormProps)
 						</span>
 						<div>
 							Отправив форму путём нажатия на кнопку, я подтверждаю, что ознакомлен
-							<br />с
+							<br className="laptop-hide" />с
 							<Link
 								href="/policy"
 								target="_blank"

@@ -21,7 +21,6 @@ export function YaMap({ address, className = "" }: YaMapProps) {
 
 	return (
 		<div
-			id="map"
 			ref={mapRef}
 			className={`${styles.mapContainer} ${isLoading ? styles.loading : ""} ${className}`}
 		>

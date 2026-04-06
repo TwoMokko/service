@@ -38,7 +38,7 @@ export interface ReelsItem {
 }
 
 export interface SubmitModel {
-	slug?: string;
+	href?: string;
 	brand?: string;
 	model?: string;
 	equipment?: string;

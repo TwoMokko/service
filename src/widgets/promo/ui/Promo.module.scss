@@ -1,29 +1,144 @@
 @use "../../../shared/styles/variables" as *;
 @use "../../../shared/styles/mixins" as *;
 
-.actions {
+.promo {
 	overflow: hidden;
 
-	.actions__wrapper {
+	.top {
+		display: flex;
+		justify-content: space-between;
+		align-items: end;
+	}
+
+	.promo__wrapper {
 		margin-top: 32px;
+
+		@include mobile {
+			margin-top: 24px;
+			display: flex;
+			flex-direction: column;
+			row-gap: 16px;
+			margin-bottom: 24px;
+		}
 
 		.swiper {
 			overflow: visible;
 		}
+
+		.promo__slide {
+			height: auto;
+		}
 	}
 }
 
-.actions__card {
+.promo__card {
 	border-radius: 14px;
 	box-shadow: 0 2px 10px 0 #00000040;
 	overflow: hidden;
+	height: 100%;
 
 	.picture {
 		height: 260px;
+		width: 100%;
+		position: relative;
+
+		@include laptop {
+			height: 206px;
+		}
+
+		@include mobile {
+			height: 175px;
+		}
+
+		img {
+			object-fit: cover;
+		}
 	}
 
 	.info {
 		padding: 20px;
 		background-color: $color-white;
+		height: 100%;
+
+		@include mobile {
+			padding: 16px;
+		}
+
+		.tags {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 16px;
+			font-size: 13px;
+			font-weight: 500;
+			text-transform: uppercase;
+
+			@include laptop {
+				font-size: 11px;
+			}
+
+			@include mobile {
+				margin-bottom: 12px;
+			}
+
+			> div {
+				width: fit-content;
+				border-radius: 100px;
+				padding: 8px 14px;
+
+				@include mobile {
+					padding: 8px 10px;
+				}
+			}
+
+			.dateEnd {
+				background-color: $color-bg;
+				color: $color-white;
+			}
+			.serviceTag {
+				color: $color-primary;
+				background-color: #f84f0c26;
+			}
+		}
+
+		.card__title {
+			font-size: 17px;
+			font-weight: 600;
+			line-height: 1.1;
+			margin-bottom: 8px;
+			text-transform: uppercase;
+
+			@include laptop {
+				font-size: 16px;
+			}
+
+			@include mobile {
+				font-size: 14px;
+			}
+		}
+
+		.card__subtitle {
+			font-size: 16px;
+			line-height: 1.1;
+			letter-spacing: -0.02em;
+
+			@include mobile {
+				font-size: 14px;
+			}
+		}
+
+		:global(.promo__prices) {
+			display: flex;
+			align-items: center;
+			font-weight: 600;
+
+			> span:nth-child(1) {
+			}
+			> span:nth-child(2) {
+				padding-left: 6px;
+				color: $color-light-gray;
+				text-decoration: line-through;
+			}
+		}
 	}
 }

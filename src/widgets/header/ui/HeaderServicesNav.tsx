@@ -28,7 +28,7 @@ export function HeaderServicesNav() {
 							<ul className={styles.servicesList}>
 								{category.items.map((service, index) => (
 									<li key={service.id || index} className={styles.listItem}>
-										<Link href={`/services/${category.href}/${service.slug}`}>
+										<Link href={`/services/${category.href}/${service.href}`}>
 											<span className={styles.listCount}>{index + 1}</span>
 											<div className={styles.listTitle}>{service.title}</div>
 											<div className={styles.listArrow}>

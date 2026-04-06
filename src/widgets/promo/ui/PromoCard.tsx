@@ -1,17 +1,25 @@
-import { Action } from "@/src/shared/data/actions/actions";
+import Image from "next/image";
+
+import { Promo } from "@/src/shared/data/promo/promo";
 
 import styles from "./Promo.module.scss";
 
 interface ActionCardProps {
-	action: Action;
+	promo: Promo;
 }
-export function PromoCard({ action }: ActionCardProps) {
+export function PromoCard({ promo }: ActionCardProps) {
 	return (
-		<article className={styles.actions__card}>
-			<div className={styles.picture}></div>
+		<article className={styles.promo__card}>
+			<div className={styles.picture}>
+				<Image src={`/images/promo/items/${promo.img}`} alt="" fill sizes="100%" />
+			</div>
 			<div className={styles.info}>
-				<h3>{action.title}</h3>
-				<p>{action.subtitle}</p>
+				<div className={styles.tags}>
+					<div className={styles.dateEnd}>до {promo.dateEnd}</div>
+					<div className={styles.serviceTag}>{promo.serviceTag}</div>
+				</div>
+				<h3 className={styles.card__title}>{promo.title}</h3>
+				<div className={styles.card__subtitle}>{promo.subtitle}</div>
 			</div>
 		</article>
 	);
