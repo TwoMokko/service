@@ -1,7 +1,8 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
-import { getAllCategorySlugs, getServiceCategory } from "@/src/shared/api/services";
 import { sectionTitles } from "@/src/shared/config";
+import { getAllCategorySlugs, getCategoryWithServices } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
 import { Contacts } from "@/src/widgets/contact";
@@ -19,19 +20,27 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 	const { category } = await params;
 
 	try {
-		const serviceCategory = getServiceCategory(category);
-		return serviceCategory.meta;
+		const categoryData = getCategoryWithServices(category);
+		if (!categoryData) throw new Error("Category not found");
+		return categoryData.meta;
 	} catch {
 		return {
-			title: "Услуга не найдена",
-			description: "Страница услуги не найдена",
+			title: "Категория не найдена",
+			description: "Страница категории не найдена",
 		};
 	}
 }
 
 export default async function CategoryPage({ params }: ServicePageProps) {
 	const { category } = await params;
-	const currentCategory = getServiceCategory(category);
+
+	let currentCategory;
+	try {
+		currentCategory = getCategoryWithServices(category);
+		if (!currentCategory) throw new Error("Category not found");
+	} catch {
+		notFound();
+	}
 
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },

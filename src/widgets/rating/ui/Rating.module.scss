@@ -20,13 +20,176 @@
 		.swiper {
 			overflow: visible;
 		}
+
+		.rating__slide {
+			@include mobile {
+				max-width: 280px;
+			}
+		}
 	}
 }
 
 .rating__card {
 	border-radius: 14px;
-	padding: 10px;
+	height: 214px;
 	background-color: $color-white;
 	box-shadow: 0 2px 10px 0 #00000040;
-	height: 214px;
+	position: relative;
+	overflow: hidden;
+
+	@include laptop {
+		height: 194px;
+	}
+
+	@include mobile {
+		height: 164px;
+	}
+
+	.content {
+		padding: 10px;
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+
+		@include mobile {
+			padding: 16px;
+			align-items: flex-end;
+			justify-content: start;
+		}
+
+		.location {
+			display: flex;
+			gap: 6px;
+			align-items: center;
+			width: fit-content;
+			padding: 8px 14px;
+			border-radius: 100px;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 13px;
+			font-weight: 500;
+			text-transform: uppercase;
+
+			@include mobile {
+				top: 8px;
+				left: 8px;
+				font-size: 11px;
+				gap: 4px;
+				padding: 8px;
+
+				img {
+					height: 14px;
+					width: 14px;
+				}
+			}
+
+			&.main {
+				background-color: #fee5db;
+				color: $color-primary;
+			}
+
+			&.yug {
+				background-color: #dbeafe;
+				color: #0c6ef8;
+			}
+		}
+
+		.brand__wrap {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			border-radius: 10px;
+			overflow: hidden;
+			border: 1px solid #0000001a;
+			box-shadow: 0 2px 6px 0 #00000040;
+
+			.brand {
+				@include mobile {
+					width: 64px;
+					height: 64px;
+					right: 8px;
+					top: 8px;
+				}
+			}
+		}
+
+		.info {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			row-gap: 10px;
+
+			@include laptop {
+				row-gap: 8px;
+			}
+
+			@include mobile {
+				row-gap: 4px;
+				align-items: flex-start;
+				text-align: start;
+			}
+
+			.logo {
+				object-fit: contain;
+				width: auto;
+
+				@include laptop {
+					height: 32px;
+				}
+			}
+
+			.rating__stars {
+				display: flex;
+				align-items: center;
+				gap: 6px;
+				font-size: 22px;
+				font-weight: 500;
+
+				@include mobile {
+					font-size: 15px;
+
+					img {
+						height: 20px;
+						width: auto;
+					}
+				}
+			}
+
+			.subtitle {
+				font-size: 16px;
+
+				@include mobile {
+					font-size: 14px;
+				}
+			}
+
+			.link {
+				font-size: 16px;
+				font-weight: 600;
+				text-decoration: underline;
+
+				@include mobile {
+					font-size: 14px;
+				}
+
+				&:hover {
+					color: $color-primary;
+				}
+			}
+		}
+	}
+
+	.bg__wrap {
+		position: absolute;
+		inset: 0;
+
+		.bg {
+			object-fit: cover;
+		}
+	}
 }

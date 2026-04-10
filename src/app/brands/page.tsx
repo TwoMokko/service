@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { metaDataBrandsPage, sectionTitles } from "@/src/shared/config";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
+import { Brands } from "@/src/widgets/brand";
 import { Contacts } from "@/src/widgets/contact";
 import { Rating } from "@/src/widgets/rating";
 
@@ -17,9 +18,7 @@ export default function Policy() {
 	return (
 		<div className="other-page">
 			<Breadcrumbs items={breadcrumbs} />
-			<div className="container block-bottom">
-				<h1 className="page-title">Бренды</h1>
-			</div>
+			<Brands titlePage title="Бренды" />
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}

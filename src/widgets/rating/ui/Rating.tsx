@@ -46,7 +46,7 @@ export function Rating() {
 						}}
 						breakpoints={{
 							320: {
-								slidesPerView: 1,
+								slidesPerView: "auto",
 								spaceBetween: 15,
 							},
 							768: {
@@ -61,8 +61,11 @@ export function Rating() {
 						loop={false}
 						className={styles.swiper}
 					>
-						{ratingData.map((itm) => (
-							<SwiperSlide key={itm.title} className={styles.rating__slide}>
+						{ratingData.map((itm, index) => (
+							<SwiperSlide
+								key={`${itm.name}-${index}`}
+								className={styles.rating__slide}
+							>
 								<RatingCard rating={itm} />
 							</SwiperSlide>
 						))}

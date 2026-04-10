@@ -1,4 +1,4 @@
-import { Service } from "@/src/shared/data/services/items";
+import { Service } from "./items";
 
 export interface Category {
 	id: number;

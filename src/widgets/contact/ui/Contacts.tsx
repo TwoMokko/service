@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import { about } from "@/src/shared/config";
-import { brandsTitlesData } from "@/src/shared/data/brands/brands";
+import { brandsTitlesData } from "@/src/shared/data/brands";
 import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import ContactItem from "@/src/widgets/contact/ui/ContactItem";
 
@@ -34,7 +34,7 @@ export function Contacts({
 			phone: about.phone,
 			email: about.email,
 			time: about.time,
-			brands: brandsTitlesData.official44,
+			brands: brandsTitlesData.official44.slice(0, 8),
 		},
 		{
 			id: "second",

@@ -4,7 +4,6 @@ import { IoMdMail } from "react-icons/io";
 
 import Image from "next/image";
 
-import { Brands, BrandsKey } from "@/src/shared/data/brands/brands";
 import { YaMap } from "@/src/widgets/contact/ui/YaMap";
 
 import styles from "./Contacts.module.scss";
@@ -22,7 +21,7 @@ export default function ContactItem({
 	email: string;
 	time: string;
 	isActive: boolean;
-	brands: Brands[BrandsKey];
+	brands: string[];
 }) {
 	return (
 		<article
@@ -53,7 +52,7 @@ export default function ContactItem({
 				<div className={`${styles.brandWrap} ${styles[`brandsCount${brands.length}`]}`}>
 					{brands.map((brand) => (
 						<div key={brand} className={styles.brand}>
-							<Image src={`/images/brands/official/${brand}.svg`} alt="" fill />
+							<Image src={`/images/brands/icons/${brand}.svg`} alt="" fill />
 						</div>
 					))}
 				</div>

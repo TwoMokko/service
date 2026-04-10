@@ -2,8 +2,8 @@ import { LuArrowUpRight } from "react-icons/lu";
 
 import Link from "next/link";
 
-import { getServices } from "@/src/shared/api/services";
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { getServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/categories";
 
 import styles from "./Header.module.scss";
 
