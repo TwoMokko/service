@@ -1,5 +1,5 @@
-export { OrderModal } from "./ui/OrderModal";
-export { CreditModal } from "./ui/CreditModal";
+export { CommonModal } from "./ui/CommonModal";
+export { ReviewModal } from "./ui/ReviewModal";
 export { TradeModal } from "./ui/TradeModal";
 export { SuccessModal } from "./ui/SuccessModal";
 export { ErrorModal } from "./ui/ErrorModal";

@@ -1,8 +1,5 @@
-import { type CategorySlug, categories } from "./categories";
+import { type CategorySlug, CategoryWithServices, categories } from "./categories";
 import { Service, type ServiceSlug, serviceItems } from "./items";
-
-export { type CategoryWithServices, type CategorySlug } from "./categories";
-export { type Service, type ServiceSlug } from "./items";
 
 // Получить все категории
 export function getAllCategories() {
@@ -15,13 +12,13 @@ export function getCategoryBySlug(slug: CategorySlug) {
 }
 
 // Получить категорию с полными услугами (это пока для старой работы с данными в карточке выводится так, можно переписать)
-export function getCategoryWithServices(slug: CategorySlug) {
-	const category = categories[slug];
+export function getCategoryWithServices(slug: string) {
+	const category = categories[slug as CategorySlug];
 	if (!category) return null;
 
 	return {
 		...category,
-		items: category.items.map((itemSlug) => serviceItems[itemSlug as ServiceSlug]),
+		items: category.items.map((itemSlug: string) => serviceItems[itemSlug as ServiceSlug]),
 	};
 }
 
@@ -35,14 +32,47 @@ export function getServiceWithCategory(slug: ServiceSlug) {
 	const service = serviceItems[slug];
 	if (!service) return null;
 
-	// категория с полными услугами (можно переписать получить только категорию по slug без инфо о всех услугах)
 	const category = getCategoryWithServices(service.categoryId as CategorySlug);
 	if (!category) return null;
 
 	return {
 		...service,
-		category, // теперь это CategoryWithServices (с items = Service[]), а можно чтобы было items = string[]
+		category,
 	};
+}
+
+// Поиск услуг по категории
+export function getServicesByCategory(categoryId: CategorySlug): Service[] {
+	return categories[categoryId].items
+		.map((slug: string) => serviceItems[slug as ServiceSlug])
+		.filter(Boolean);
+}
+
+// получение всех категорий и добавление массива услуг к каждой
+export function getServices(): CategoryWithServices[] {
+	return getAllCategories().map((category) => ({
+		...category,
+		items: getServicesByCategory(category.href as CategorySlug),
+	}));
+}
+
+// получение информации только об одной категории по href/slug, но со всей инфо о подкатегориях
+export function getServiceCategory(href: string): CategoryWithServices {
+	const category = getCategoryWithServices(href as CategorySlug);
+	if (!category) throw new Error(`Category ${href} not found`);
+	return category;
+}
+
+// получение подкатегории с доп информацие о категории
+export function getServiceItem(
+	categoryHref: string,
+	serviceSlug: string,
+): Service & { category: CategoryWithServices } {
+	const service = getServiceWithCategory(serviceSlug as ServiceSlug);
+	if (!service || service.category.href !== categoryHref) {
+		throw new Error(`Service ${serviceSlug} not found in category ${categoryHref}`);
+	}
+	return service;
 }
 
 // Для generateStaticParams
@@ -55,11 +85,4 @@ export function getAllServiceSlugs() {
 		category: serviceItems[slug].categoryId,
 		service: slug,
 	}));
-}
-
-// Поиск услуг по категории
-export function getServicesByCategory(categoryId: CategorySlug): Service[] {
-	return categories[categoryId].items
-		.map((slug) => serviceItems[slug as ServiceSlug])
-		.filter(Boolean);
 }

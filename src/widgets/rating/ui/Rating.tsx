@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
 
 import { ratingData } from "@/src/shared/data/rating/rating";
+import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import { SectionId } from "@/src/shared/types/types";
 import { Button } from "@/src/shared/ui/button/Button";
 import { SwiperControls } from "@/src/shared/ui/swiperControls/SwiperControls";
@@ -13,6 +14,7 @@ import { RatingCard } from "@/src/widgets/rating/ui/RatingCard";
 import styles from "./Rating.module.scss";
 
 export function Rating() {
+	const { isMobile } = useDevice();
 	const navigation = {
 		prevEl: "[data-rating-prev]",
 		nextEl: "[data-rating-next]",
@@ -25,9 +27,11 @@ export function Rating() {
 					<h2 className="section-title">
 						Присоединяйтесь <br />к 1000 довольных клиентов
 					</h2>
-					<Link href={`/${SectionId.REVIEWS}`}>
-						<Button variant="secondary">Смотреть все отзывы</Button>
-					</Link>
+					{!isMobile && (
+						<Link href={`/${SectionId.REVIEWS}`}>
+							<Button variant="secondary">Смотреть все отзывы</Button>
+						</Link>
+					)}
 				</div>
 				<div className={styles.rating__wrapper}>
 					<Swiper
@@ -42,7 +46,7 @@ export function Rating() {
 						}}
 						breakpoints={{
 							320: {
-								slidesPerView: 1,
+								slidesPerView: "auto",
 								spaceBetween: 15,
 							},
 							768: {
@@ -57,8 +61,11 @@ export function Rating() {
 						loop={false}
 						className={styles.swiper}
 					>
-						{ratingData.map((itm) => (
-							<SwiperSlide key={itm.title} className={styles.rating__slide}>
+						{ratingData.map((itm, index) => (
+							<SwiperSlide
+								key={`${itm.name}-${index}`}
+								className={styles.rating__slide}
+							>
 								<RatingCard rating={itm} />
 							</SwiperSlide>
 						))}
@@ -69,6 +76,11 @@ export function Rating() {
 						/>
 					</Swiper>
 				</div>
+				{isMobile && (
+					<Link href={`/${SectionId.REVIEWS}`}>
+						<Button variant="secondary">Смотреть все отзывы</Button>
+					</Link>
+				)}
 			</div>
 		</section>
 	);

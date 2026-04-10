@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { getAllServiceSlugs, getServiceItem } from "@/src/shared/api/services";
 import { sectionTitles } from "@/src/shared/config";
+import { getAllServiceSlugs, getServiceItem } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
 import { Contacts } from "@/src/widgets/contact";
@@ -32,9 +32,11 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
 export default async function ServicePage({ params }: ServicePageProps) {
 	const { category, service } = await params;
-	const serviceItem = getServiceItem(category, service);
 
-	if (!serviceItem) {
+	let serviceItem;
+	try {
+		serviceItem = getServiceItem(category, service);
+	} catch {
 		notFound();
 	}
 

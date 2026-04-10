@@ -1,6 +1,6 @@
 export interface Service {
 	id: number;
-	slug: string;
+	href: string;
 	title: string;
 	shortDescription: string;
 	description: string;
@@ -18,7 +18,7 @@ export const serviceItems = {
 	// Техническое обслуживание (8 услуг)
 	"zamena-masla-v-dvigatele": {
 		id: 1,
-		slug: "zamena-masla-v-dvigatele",
+		href: "zamena-masla-v-dvigatele",
 		title: "Замена масла в двигателе",
 		shortDescription: "Профессиональная замена масла",
 		description:
@@ -33,7 +33,7 @@ export const serviceItems = {
 	},
 	"zamena-masla-v-mkpp": {
 		id: 2,
-		slug: "zamena-masla-v-mkpp",
+		href: "zamena-masla-v-mkpp",
 		title: "Замена масла в МКПП",
 		shortDescription: "Замена трансмиссионного масла",
 		description: "Полная замена масла в механической коробке передач. Гарантия качества работ.",
@@ -47,7 +47,7 @@ export const serviceItems = {
 	},
 	"zamena-vozdushnogo-filtra": {
 		id: 3,
-		slug: "zamena-vozdushnogo-filtra",
+		href: "zamena-vozdushnogo-filtra",
 		title: "Замена воздушного фильтра",
 		shortDescription: "Замена воздушного фильтра двигателя",
 		description:
@@ -62,7 +62,7 @@ export const serviceItems = {
 	},
 	"zamena-toplivnogo-filtra": {
 		id: 4,
-		slug: "zamena-toplivnogo-filtra",
+		href: "zamena-toplivnogo-filtra",
 		title: "Замена топливного фильтра",
 		shortDescription: "Замена фильтра топливной системы",
 		description:
@@ -77,7 +77,7 @@ export const serviceItems = {
 	},
 	"zamena-maslyanogo-filtra": {
 		id: 5,
-		slug: "zamena-maslyanogo-filtra",
+		href: "zamena-maslyanogo-filtra",
 		title: "Замена масляного фильтра",
 		shortDescription: "Замена масляного фильтра",
 		description:
@@ -92,7 +92,7 @@ export const serviceItems = {
 	},
 	"zamena-salonnogo-filtra": {
 		id: 6,
-		slug: "zamena-salonnogo-filtra",
+		href: "zamena-salonnogo-filtra",
 		title: "Замена салонного фильтра",
 		shortDescription: "Замена фильтра салона",
 		description:
@@ -107,7 +107,7 @@ export const serviceItems = {
 	},
 	"zamena-ohlazhdayushchey-zhidkosti": {
 		id: 7,
-		slug: "zamena-ohlazhdayushchey-zhidkosti",
+		href: "zamena-ohlazhdayushchey-zhidkosti",
 		title: "Замена охлаждающей жидкости",
 		shortDescription: "Замена антифриза",
 		description:
@@ -122,7 +122,7 @@ export const serviceItems = {
 	},
 	"zamena-tormoznoy-zhidkosti": {
 		id: 8,
-		slug: "zamena-tormoznoy-zhidkosti",
+		href: "zamena-tormoznoy-zhidkosti",
 		title: "Замена тормозной жидкости",
 		shortDescription: "Замена тормозной жидкости",
 		description:
@@ -139,7 +139,7 @@ export const serviceItems = {
 	// Слесарный ремонт (5 услуг)
 	"zamena-scepleniya": {
 		id: 9,
-		slug: "zamena-scepleniya",
+		href: "zamena-scepleniya",
 		title: "Замена сцепления",
 		shortDescription: "Замена комплекта сцепления",
 		description:
@@ -154,7 +154,7 @@ export const serviceItems = {
 	},
 	"remont-tormoznoj-sistemy": {
 		id: 10,
-		slug: "remont-tormoznoj-sistemy",
+		href: "remont-tormoznoj-sistemy",
 		title: "Ремонт тормозной системы",
 		shortDescription: "Диагностика и ремонт тормозов",
 		description:
@@ -169,7 +169,7 @@ export const serviceItems = {
 	},
 	"zamena-podshipnika-stupitsy": {
 		id: 11,
-		slug: "zamena-podshipnika-stupitsy",
+		href: "zamena-podshipnika-stupitsy",
 		title: "Замена подшипника ступицы",
 		shortDescription: "Замена ступичного подшипника",
 		description:
@@ -184,7 +184,7 @@ export const serviceItems = {
 	},
 	"zamena-sajlentblokov": {
 		id: 12,
-		slug: "zamena-sajlentblokov",
+		href: "zamena-sajlentblokov",
 		title: "Замена сайлентблоков",
 		shortDescription: "Замена резинометаллических шарниров",
 		description: "Замена сайлентблоков рычагов подвески. Использование гидравлического пресса.",
@@ -198,7 +198,7 @@ export const serviceItems = {
 	},
 	"remont-rulevogo-upravleniya": {
 		id: 13,
-		slug: "remont-rulevogo-upravleniya",
+		href: "remont-rulevogo-upravleniya",
 		title: "Ремонт рулевого управления",
 		shortDescription: "Диагностика и ремонт рулевой системы",
 		description: "Ремонт рулевой рейки, замена наконечников, тяг. Диагностика люфтов.",
@@ -214,7 +214,7 @@ export const serviceItems = {
 	// Кузовной ремонт (4 услуги)
 	"pokraska-avtomobilya": {
 		id: 14,
-		slug: "pokraska-avtomobilya",
+		href: "pokraska-avtomobilya",
 		title: "Покраска автомобиля",
 		shortDescription: "Полная или локальная покраска",
 		description:
@@ -229,7 +229,7 @@ export const serviceItems = {
 	},
 	"udalenie-vmyatin": {
 		id: 15,
-		slug: "udalenie-vmyatin",
+		href: "udalenie-vmyatin",
 		title: "Удаление вмятин без покраски",
 		shortDescription: "PDR-ремонт вмятин",
 		description: "Удаление вмятин без покраски методом PDR. Сохраняем заводское покрытие.",
@@ -243,7 +243,7 @@ export const serviceItems = {
 	},
 	"remont-bampera": {
 		id: 16,
-		slug: "remont-bampera",
+		href: "remont-bampera",
 		title: "Ремонт бампера",
 		shortDescription: "Восстановление пластикового бампера",
 		description: "Ремонт трещин, сколов, деформаций бампера. Пайка, шпаклевка, покраска.",
@@ -257,7 +257,7 @@ export const serviceItems = {
 	},
 	"polirovka-kuzova": {
 		id: 17,
-		slug: "polirovka-kuzova",
+		href: "polirovka-kuzova",
 		title: "Полировка кузова",
 		shortDescription: "Восстановительная или защитная полировка",
 		description:
@@ -274,7 +274,7 @@ export const serviceItems = {
 	// Шиномонтаж (5 услуг)
 	"sezonnaya-zamena-shin": {
 		id: 18,
-		slug: "sezonnaya-zamena-shin",
+		href: "sezonnaya-zamena-shin",
 		title: "Сезонная замена шин",
 		shortDescription: "Переобувка колес",
 		description: "Сезонная замена шин с балансировкой. Хранение шин в подарок.",
@@ -288,7 +288,7 @@ export const serviceItems = {
 	},
 	"remont-prokola-shiny": {
 		id: 19,
-		slug: "remont-prokola-shiny",
+		href: "remont-prokola-shiny",
 		title: "Ремонт прокола шины",
 		shortDescription: "Герметизация прокола",
 		description: "Быстрый ремонт прокола шины. Грибок или заплатка по ситуации.",
@@ -302,7 +302,7 @@ export const serviceItems = {
 	},
 	"balansirovka-koles": {
 		id: 20,
-		slug: "balansirovka-koles",
+		href: "balansirovka-koles",
 		title: "Балансировка колес",
 		shortDescription: "Компьютерная балансировка",
 		description: "Динамическая балансировка колес на современном оборудовании.",
@@ -316,7 +316,7 @@ export const serviceItems = {
 	},
 	"pravka-diskov": {
 		id: 21,
-		slug: "pravka-diskov",
+		href: "pravka-diskov",
 		title: "Правка дисков",
 		shortDescription: "Восстановление геометрии дисков",
 		description: "Правка литых и стальных дисков. Восстановление геометрии после ударов.",
@@ -330,7 +330,7 @@ export const serviceItems = {
 	},
 	"remont-bokovogo-poreza": {
 		id: 22,
-		slug: "remont-bokovogo-poreza",
+		href: "remont-bokovogo-poreza",
 		title: "Ремонт бокового пореза",
 		shortDescription: "Восстановление боковины шины",
 		description:
@@ -347,7 +347,7 @@ export const serviceItems = {
 	// Компьютерная диагностика (3 услуги)
 	"diagnostika-dvigatelya": {
 		id: 23,
-		slug: "diagnostika-dvigatelya",
+		href: "diagnostika-dvigatelya",
 		title: "Диагностика двигателя",
 		shortDescription: "Проверка всех систем двигателя",
 		description: "Полная компьютерная диагностика двигателя. Поиск ошибок, анализ параметров.",
@@ -361,7 +361,7 @@ export const serviceItems = {
 	},
 	"diagnostika-elektroniki": {
 		id: 24,
-		slug: "diagnostika-elektroniki",
+		href: "diagnostika-elektroniki",
 		title: "Диагностика электроники",
 		shortDescription: "Проверка электронных систем",
 		description: "Диагностика всех электронных блоков автомобиля. Поиск неисправностей.",
@@ -375,7 +375,7 @@ export const serviceItems = {
 	},
 	"diagnostika-podveski": {
 		id: 25,
-		slug: "diagnostika-podveski",
+		href: "diagnostika-podveski",
 		title: "Диагностика подвески",
 		shortDescription: "Проверка ходовой части",
 		description: "Полная диагностика подвески с выявлением люфтов и износа элементов.",
@@ -391,7 +391,7 @@ export const serviceItems = {
 	// Ремонт кондиционера (4 услуги)
 	"zapravka-konditsionera": {
 		id: 26,
-		slug: "zapravka-konditsionera",
+		href: "zapravka-konditsionera",
 		title: "Заправка кондиционера",
 		shortDescription: "Заправка автокондиционера",
 		description:
@@ -406,7 +406,7 @@ export const serviceItems = {
 	},
 	"diagnostika-konditsionera": {
 		id: 27,
-		slug: "diagnostika-konditsionera",
+		href: "diagnostika-konditsionera",
 		title: "Диагностика кондиционера",
 		shortDescription: "Поиск неисправностей системы",
 		description:
@@ -421,7 +421,7 @@ export const serviceItems = {
 	},
 	"chistka-sistemy-konditsionirovaniya": {
 		id: 28,
-		slug: "chistka-sistemy-konditsionirovaniya",
+		href: "chistka-sistemy-konditsionirovaniya",
 		title: "Чистка системы кондиционирования",
 		shortDescription: "Антибактериальная обработка",
 		description: "Чистка испарителя и всей системы от бактерий и неприятных запахов.",
@@ -435,7 +435,7 @@ export const serviceItems = {
 	},
 	"remont-kompressora-konditsionera": {
 		id: 29,
-		slug: "remont-kompressora-konditsionera",
+		href: "remont-kompressora-konditsionera",
 		title: "Ремонт компрессора кондиционера",
 		shortDescription: "Восстановление компрессора",
 		description: "Диагностика и ремонт компрессора кондиционера. Замена муфты, подшипников.",
@@ -451,7 +451,7 @@ export const serviceItems = {
 	// Ремонт двигателя (2 услуги)
 	"kapitalnyj-remont-dvigatelya": {
 		id: 30,
-		slug: "kapitalnyj-remont-dvigatelya",
+		href: "kapitalnyj-remont-dvigatelya",
 		title: "Капитальный ремонт двигателя",
 		shortDescription: "Полное восстановление двигателя",
 		description:
@@ -466,7 +466,7 @@ export const serviceItems = {
 	},
 	"zamena-remnya-grm": {
 		id: 31,
-		slug: "zamena-remnya-grm",
+		href: "zamena-remnya-grm",
 		title: "Замена ремня ГРМ",
 		shortDescription: "Замена ремня газораспределительного механизма",
 		description: "Замена ремня ГРМ с проверкой натяжителей и роликов. Профилактика обрыва.",
@@ -482,7 +482,7 @@ export const serviceItems = {
 	// Ремонт электрооборудования (4 услуги)
 	"zamena-generatora": {
 		id: 32,
-		slug: "zamena-generatora",
+		href: "zamena-generatora",
 		title: "Замена генератора",
 		shortDescription: "Диагностика и замена генератора",
 		description:
@@ -497,7 +497,7 @@ export const serviceItems = {
 	},
 	"zamena-startera": {
 		id: 33,
-		slug: "zamena-startera",
+		href: "zamena-startera",
 		title: "Замена стартера",
 		shortDescription: "Диагностика и замена стартера",
 		description: "Диагностика стартера, замена при неисправности. Проверка цепи питания.",
@@ -511,7 +511,7 @@ export const serviceItems = {
 	},
 	"zamena-akkumulyatora": {
 		id: 34,
-		slug: "zamena-akkumulyatora",
+		href: "zamena-akkumulyatora",
 		title: "Замена аккумулятора",
 		shortDescription: "Подбор и замена АКБ",
 		description: "Диагностика аккумулятора, подбор нового, замена с сохранением настроек.",
@@ -525,7 +525,7 @@ export const serviceItems = {
 	},
 	"remont-far": {
 		id: 35,
-		slug: "remont-far",
+		href: "remont-far",
 		title: "Ремонт фар",
 		shortDescription: "Восстановление оптики",
 		description: "Ремонт фар, полировка стекол, замена отражателей, установка линз.",

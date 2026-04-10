@@ -49,24 +49,26 @@ export function Hero() {
 						loading="eager"
 					/>
 					<div className="container">
-						<div className={styles.slideTop}>
-							<h1 className={styles.heroTitle}>
-								Мультибрендовый <br />
-								сервис
-							</h1>
-							<div className={styles.subTitle}>
-								Узнайте больше о работе Peleton
-								<span className={styles.heroAccent}> за 1 мин</span>
+						<div className={styles.content}>
+							<div className={styles.slideTop}>
+								<h1 className={styles.heroTitle}>
+									Мультибрендовый <br />
+									сервис
+								</h1>
+								<div className={styles.subTitle}>
+									Узнайте больше о работе Peleton
+									<span className={styles.heroAccent}> за 1 мин</span>
+								</div>
 							</div>
-						</div>
-						<div className={styles.slideBottom}>
-							<Button
-								minWidth={242}
-								onClick={() => openModal("order")}
-								className={styles.btn}
-							>
-								Бесплатная консультация
-							</Button>
+							<div className={styles.slideBottom}>
+								<Button
+									minWidth={242}
+									onClick={() => openModal("common")}
+									className={styles.btn}
+								>
+									Бесплатная консультация
+								</Button>
+							</div>
 						</div>
 					</div>
 				</SwiperSlide>

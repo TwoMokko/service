@@ -2,8 +2,8 @@ import { LuArrowUpRight } from "react-icons/lu";
 
 import Link from "next/link";
 
-import { getServices } from "@/src/shared/api/services";
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { getServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/categories";
 
 import styles from "./Header.module.scss";
 
@@ -28,7 +28,7 @@ export function HeaderServicesNav() {
 							<ul className={styles.servicesList}>
 								{category.items.map((service, index) => (
 									<li key={service.id || index} className={styles.listItem}>
-										<Link href={`/services/${category.href}/${service.slug}`}>
+										<Link href={`/services/${category.href}/${service.href}`}>
 											<span className={styles.listCount}>{index + 1}</span>
 											<div className={styles.listTitle}>{service.title}</div>
 											<div className={styles.listArrow}>

@@ -25,7 +25,7 @@ export function useSubmit() {
 				},
 				body: JSON.stringify({
 					...formData,
-					slug: modalFormData?.slug,
+					href: modalFormData?.href,
 					brand: modalFormData?.brand,
 					model: modalFormData?.model,
 					equipment: modalFormData?.equipment,

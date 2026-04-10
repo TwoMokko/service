@@ -34,10 +34,7 @@ export const BurgerMenu = forwardRef<HTMLDivElement, BurgerMenuProps>(
 					</ul>
 
 					<div className={styles.headerBurgerMenuBtns}>
-						<Button onClick={onOpenCreditModal}>Обратный звонок</Button>
-						<Button variant="secondary" withArrow onClick={onOpenCreditModal}>
-							Рассчитать кредит
-						</Button>
+						<Button onClick={onOpenCreditModal}>Записаться на сервис</Button>
 					</div>
 				</div>
 			</div>

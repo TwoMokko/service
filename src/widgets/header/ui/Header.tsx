@@ -22,7 +22,7 @@ export function Header() {
 	const { isOpen: burgerOpen, menuRef, buttonRef, toggle, close } = useBurgerMenu();
 
 	const handleOpenModal = () => {
-		openModal("order");
+		openModal("common");
 	};
 
 	return (
@@ -33,6 +33,17 @@ export function Header() {
 				<div className={styles.header}>
 					<div className={styles.container}>
 						<div className={styles.headerInner}>
+							<div
+								ref={buttonRef}
+								className={`${styles.headerBurger} ${burgerOpen ? styles.active : ""}`}
+								onClick={toggle}
+								aria-label="Меню"
+								role="button"
+								tabIndex={0}
+								aria-expanded={burgerOpen}
+							>
+								<span></span>
+							</div>
 							<Link
 								href="/"
 								className={styles.headerLogo}
@@ -45,20 +56,10 @@ export function Header() {
 								{about.phone}
 							</a>
 							{!isMobile && (
-								<Button onClick={handleOpenModal}>Записаться на сервис</Button>
+								<Button onClick={handleOpenModal} className={styles.headerBtnCall}>
+									Записаться на сервис
+								</Button>
 							)}
-
-							<div
-								ref={buttonRef}
-								className={`${styles.headerBurger} ${burgerOpen ? styles.active : ""}`}
-								onClick={toggle}
-								aria-label="Меню"
-								role="button"
-								tabIndex={0}
-								aria-expanded={burgerOpen}
-							>
-								<span></span>
-							</div>
 						</div>
 
 						<BurgerMenu

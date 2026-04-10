@@ -2,22 +2,20 @@
 
 import React, { createContext, useContext, useState } from "react";
 
-import { ModalData, ReelsData, SubmitModel } from "@/src/shared/types/types";
+import { ModalData, ReelsData, ReviewModalData, SubmitModel } from "@/src/shared/types/types";
 import {
-	CreditModal,
+	CommonModal,
 	ErrorModal,
-	OrderModal,
 	ReelsModal,
+	ReviewModal,
 	SuccessModal,
-	TradeModal,
 } from "@/src/widgets/modals";
 
-export type ModalType = "order" | "credit" | "trade" | "success" | "error" | "video";
+export type ModalType = "common" | "review" | "success" | "error" | "video";
 
 interface ModalProps {
-	order: SubmitModel;
-	credit: SubmitModel;
-	trade: SubmitModel;
+	common: SubmitModel;
+	review: ReviewModalData;
 	success: SubmitModel;
 	error: SubmitModel;
 	video: ReelsData;
@@ -52,9 +50,8 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 		<ModalContext.Provider value={{ openModal, closeModal, currentModal, modalData }}>
 			{children}
 
-			{currentModal === "order" && <OrderModal />}
-			{currentModal === "credit" && <CreditModal />}
-			{currentModal === "trade" && <TradeModal />}
+			{currentModal === "common" && <CommonModal />}
+			{currentModal === "review" && <ReviewModal />}
 			{currentModal === "success" && <SuccessModal />}
 			{currentModal === "error" && <ErrorModal />}
 			{currentModal === "video" && <ReelsModal />}

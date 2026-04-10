@@ -9,6 +9,14 @@
 	top: 0;
 	margin-top: 16px;
 
+	@include mobile {
+		margin-top: 0;
+
+		:global(.container) {
+			padding: 0;
+		}
+	}
+
 	.headerContacts {
 		height: 44px;
 		padding: 4px;
@@ -32,6 +40,11 @@
 				align-items: center;
 				gap: 8px;
 				padding: 0 16px;
+				height: 100%;
+
+				&:not(:last-child) {
+					border-right: 1px solid $color-gray;
+				}
 			}
 		}
 	}
@@ -53,6 +66,10 @@
 	transition: $transition-0-3s;
 	position: relative;
 
+	@include mobile {
+		border-radius: 0 0 10px 10px;
+	}
+
 	.headerLogo {
 		background-image: url("/images/icons/logo.svg");
 		background-size: contain;
@@ -63,13 +80,17 @@
 		margin-right: 70px;
 		display: block;
 
-		@include tablet {
+		@include laptop {
 			margin-right: auto;
+			max-width: 232px;
+			height: 28px;
 		}
 
 		@include mobile {
 			max-width: 150px;
-			height: 20px;
+			height: 24px;
+			margin-right: 0;
+			background-image: url("/images/icons/logo-mob.svg");
 		}
 	}
 
@@ -80,6 +101,11 @@
 
 		@include tablet {
 			justify-content: flex-start;
+		}
+
+		@include mobile {
+			justify-content: space-between;
+			column-gap: 10px;
 		}
 
 		nav {
@@ -93,12 +119,21 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				column-gap: 24px;
+				column-gap: 16px;
+
+				@include laptop {
+					column-gap: 12px;
+				}
 
 				li {
 					//position: relative;
-					font-size: 14px;
+					font-size: 13px;
 					font-weight: 500;
+					text-transform: uppercase;
+
+					@include laptop {
+						font-size: 12px;
+					}
 
 					a.link {
 						transition: $transition-0-3s;
@@ -115,9 +150,10 @@
 	}
 
 	.headerBtnCall {
-		margin-left: 70px;
-		font-size: 14px;
-		background-color: $color-white;
+		@include laptop {
+			font-size: 14px;
+			padding: 14px;
+		}
 	}
 
 	.headerPhone {
@@ -125,52 +161,62 @@
 		font-size: 16px;
 		padding-right: 16px;
 		font-weight: 600;
+		line-height: 1;
+
+		@include laptop {
+			font-size: 14px;
+			padding-right: 12px;
+		}
 
 		@include mobile {
-			font-size: 14px;
-			padding-right: 0;
+			padding: 14px;
+			border: 1px solid $color-bg;
+			border-radius: 8px;
+			flex: none;
 		}
 	}
 
 	.headerBurger {
 		display: none;
 		position: relative;
-		width: 25px;
-		height: 14px;
+		width: 42px;
+		height: 42px;
+		background-color: $color-bg;
+		border-radius: 8px;
+		flex: none;
 
 		@include tablet {
 			display: block;
 			z-index: 101;
-			margin-left: 22px;
 		}
 
 		span {
 			position: absolute;
-			top: 6px;
-			left: 0;
-			width: 100%;
+			top: 20px;
+			left: 12px;
+			width: 18px;
 			height: 2px;
-			background-color: $color-black;
+			background-color: $color-white;
 			transition: all 0.2s ease-in-out;
 		}
 
 		&::before,
 		&::after {
 			position: absolute;
-			left: 0;
-			width: 100%;
+			left: 12px;
+			width: 18px;
 			height: 2px;
 			content: "";
-			background-color: $color-black;
+			background-color: $color-white;
 			transition: all 0.2s ease-in-out;
 		}
 
 		&::before {
-			top: 0;
+			top: 12px;
 		}
 
 		&::after {
-			bottom: 0;
+			bottom: 12px;
 		}
 
 		&.active {
@@ -183,12 +229,16 @@
 			}
 
 			&::before {
-				top: 6px;
+				width: 24px;
+				top: 20px;
+				left: 9px;
 				transform: rotate(45deg);
 			}
 
 			&::after {
-				bottom: 6px;
+				width: 24px;
+				bottom: 20px;
+				left: 9px;
 				transform: rotate(-45deg);
 			}
 		}
@@ -199,19 +249,19 @@
 		right: -100%;
 		opacity: 0;
 		transition: $transition-0-3s;
+		z-index: -1;
 
 		@include tablet {
 			top: 50px;
 			width: 100%;
 			border-radius: 0;
-			height: calc(100svh - 50px);
 		}
 
 		.headerBurgerMenuWrapper {
 			position: relative;
 			padding: 35px 20px 30px;
 			border-radius: 30px;
-			background-color: $color-white;
+			background-color: $color-more-light-gray;
 
 			@include tablet {
 				display: flex;
@@ -280,10 +330,9 @@
 				gap: 10px;
 
 				button {
-					width: 100%;
-					height: 43px;
-					text-transform: uppercase;
-					font-size: 14px;
+					@include mobile {
+						font-size: 14px;
+					}
 				}
 			}
 		}

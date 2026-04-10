@@ -6,22 +6,28 @@ import { MdDone } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
 
-import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import { usePhoneMask } from "@/src/shared/lib/hooks/usePhoneMask";
 import { useSubmit } from "@/src/shared/lib/hooks/useSubmit";
 import { FormData } from "@/src/shared/types/types";
 import { Button } from "@/src/shared/ui/button/Button";
+import { Input } from "@/src/shared/ui/input/Input";
 
 import styles from "./Form.module.scss";
 
-export function Form({ idSection }: { idSection: string }) {
-	const { isMobile, isReady } = useDevice();
+interface FormProps {
+	title: string | React.ReactNode;
+	imageSrc: string;
+	content?: string | React.ReactNode;
+	variant?: "start" | "end" | undefined;
+}
+
+export function Form({ title, content, imageSrc, variant = "start" }: FormProps) {
 	const { handleSubmit, isLoading } = useSubmit();
 	const { phoneValue, onPhoneChange } = usePhoneMask();
 	const [isAgreed, setIsAgreed] = useState(true);
 	const [formData, setFormData] = useState<FormData>({
-		name: "переписать, чтобы было необязательным",
 		phone: "",
+		url: "",
 	});
 
 	const submit = async (e: React.FormEvent) => {
@@ -43,65 +49,54 @@ export function Form({ idSection }: { idSection: string }) {
 		}));
 	};
 
-	const imageSrc = !isReady
-		? "/images/form/form-desk.png"
-		: isMobile
-			? "/images/form/form-mob.png"
-			: "/images/form/form-desk.png";
-
 	return (
-		<section id={idSection} className={styles.trade}>
-			<div className={styles.imgWrap}>
+		<section className={`${styles.form__wrap} ${variant === "end" ? styles.end : ""}`}>
+			<div className={styles.img__wrap}>
 				<Image src={imageSrc} alt="" fill sizes="100vw" className={styles.image} />
 			</div>
-			<div className="container">
-				<div className={styles.info}>
-					<h2 className={styles.title}>
-						Trade-in с выгодой <br />
-						от Официального дилера
-					</h2>
-					<ul className={styles.list}>
-						<li>Прозрачная оценка автомобиля</li>
-						<li>Скидка до 300 000₽ на новый авто </li>
-						<li>Сдать авто можно в качестве первого взноса</li>
-					</ul>
-					<form onSubmit={submit} className={styles.form}>
-						<div className={styles.formInputs}>
-							<input
-								type="tel"
-								name="phone"
-								placeholder="Телефон"
-								value={phoneValue}
-								onChange={handlePhoneChange}
-								required
-							/>
-							<Button type="submit" disabled={!isAgreed || isLoading}>
-								{isLoading ? "Отправка..." : "Зафиксировать выгоду"}
-							</Button>
-						</div>
+			<div className={styles.info}>
+				{title}
+				{content}
+				<form onSubmit={submit} className={styles.form}>
+					<div className={styles.form__inputs}>
+						<Input
+							type="tel"
+							inputName="phone"
+							placeholder="Ваш телефон"
+							value={phoneValue}
+							handleChange={handlePhoneChange}
+							required
+						/>
+						<Button type="submit" disabled={!isAgreed || isLoading}>
+							{isLoading ? "Отправка..." : "Записаться на сервис"}
+						</Button>
+					</div>
 
-						<label className={styles.checkboxWrap}>
-							<input
-								type="checkbox"
-								checked={isAgreed}
-								onChange={(e) => setIsAgreed(e.target.checked)}
-								required
-							/>
-							<span className={styles.checkbox}>{isAgreed && <MdDone />}</span>
-							<div>
-								Согласен на обработку
-								<Link
-									href="/policy"
-									target="_blank"
-									rel="noopener noreferrer"
-									className={styles.policyLink}
-								>
-									персональных данных*
-								</Link>
-							</div>
-						</label>
-					</form>
-				</div>
+					<label className={styles.checkbox__wrap}>
+						<input
+							type="checkbox"
+							checked={isAgreed}
+							onChange={(e) => setIsAgreed(e.target.checked)}
+							required
+						/>
+						<span className={styles.checkbox}>
+							{isAgreed && <MdDone color="black" />}
+						</span>
+						<div>
+							Отправив форму путём нажатия на кнопку, я подтверждаю, что ознакомлен
+							<br className="laptop-hide" />с
+							<Link
+								href="/policy"
+								target="_blank"
+								rel="noopener noreferrer"
+								className={styles.policyLink}
+							>
+								политикой конфиденциальности
+							</Link>
+							сайта и даю согласие на обработку моих персональных данных.
+						</div>
+					</label>
+				</form>
 			</div>
 		</section>
 	);

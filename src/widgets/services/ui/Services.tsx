@@ -1,4 +1,4 @@
-import { getServices } from "@/src/shared/api/services";
+import { getServices } from "@/src/shared/data/services";
 import { CategoryWithServices } from "@/src/shared/data/services/categories";
 import { ServicesClient } from "@/src/widgets/services/ui/ServicesClient";
 

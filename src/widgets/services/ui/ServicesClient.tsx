@@ -15,10 +15,10 @@ interface ServicesProps {
 export function ServicesClient({ services, titlePage }: ServicesProps) {
 	const { isMobile } = useDevice();
 	const [showAllCards, setShowAllCards] = useState<boolean>(false);
-	const initCardCount: number = isMobile ? 3 : 6;
+	const initCardCount: number = isMobile ? 4 : 6;
 
-	const allCards = services.map((service) => (
-		<ServicesCard key={service.id} category={service} />
+	const allCards = services.map((service, index) => (
+		<ServicesCard key={service.id} category={service} isInitiallyOpen={index === 0} />
 	));
 
 	const visibleCards = allCards.slice(0, initCardCount);
@@ -26,7 +26,11 @@ export function ServicesClient({ services, titlePage }: ServicesProps) {
 
 	return (
 		<section className={`${styles.services} container block-bottom`}>
-			<h2 className={titlePage ? "page-title" : "section-title"}>Наши услуги</h2>
+			{titlePage ? (
+				<h1 className="page-title">Наши услуги</h1>
+			) : (
+				<h2 className="section-title">Наши услуги</h2>
+			)}
 			<div className={styles.servicesCards}>{visibleCards}</div>
 			<div className={`${styles.servicesCards} ${!showAllCards ? styles.hidden : ""}`}>
 				{hiddenCards}
@@ -38,7 +42,7 @@ export function ServicesClient({ services, titlePage }: ServicesProps) {
 					onClick={() => setShowAllCards((prev) => !prev)}
 					className={styles.showMore}
 				>
-					{showAllCards ? "Свернуть список" : "Показать еще"}
+					{showAllCards ? "Свернуть список" : "Показать все услуги"}
 				</Button>
 			)}
 		</section>
