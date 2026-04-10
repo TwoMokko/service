@@ -47,56 +47,140 @@
 		padding-bottom: 30px;
 
 		@include mobile {
-			padding-bottom: 5px;
+			padding-bottom: 24px;
 			padding-top: 10px;
 		}
 
-		.subTitle {
-			font-weight: 500;
-			font-size: 22px;
-			line-height: 100%;
+		.benefits {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 14px;
 			color: $color-white;
+
+			@include mobile {
+				gap: 8px;
+			}
+
+			&__item {
+				padding: 8px 14px;
+				border-radius: 100px;
+				background-color: #d9dee726;
+				@include textCaption;
+
+				@include mobile {
+					padding: 8px 12px;
+				}
+			}
+		}
+
+		.subTitle {
+			@include text1;
+			color: $color-white;
+			position: relative;
+			width: fit-content;
 
 			@include mobile {
 				font-size: 16px;
 			}
 
-			.heroAccent {
-				color: $color-primary;
+			.arrow {
+				position: absolute;
+				top: -2px;
+				right: -85px;
+
+				@include mobile {
+					display: none;
+				}
 			}
 		}
 
 		.heroTitle {
-			font-weight: 600;
-			font-size: 80px;
-			line-height: 100%;
+			@include header1;
 			padding: 16px 0 18px 0;
 			color: $color-white;
 
 			@include mobile {
-				font-size: 30px;
-				padding-bottom: 18px;
-			}
-
-			.titleBanner {
-				font-size: 55px;
-				color: #e73843;
-				font-weight: 700;
-
-				@include mobile {
-					font-size: 30px;
-					padding-bottom: 90px;
-				}
+				padding: 12px 0;
 			}
 		}
 	}
 
 	.slideBottom {
-		.btn {
-			width: 242px;
+		display: flex;
+		align-items: center;
+		column-gap: 20px;
+
+		@include mobile {
+			flex-direction: column-reverse;
+			row-gap: 14px;
+
+			a {
+				width: 100%;
+			}
+		}
+	}
+
+	.brands {
+		&__wrap {
+			margin-top: 72px;
 
 			@include mobile {
-				width: 212px;
+				margin-top: 32px;
+			}
+		}
+
+		&__title {
+			color: $color-white;
+			margin-bottom: 16px;
+			@include textCaption;
+
+			@include mobile {
+				margin-bottom: 8px;
+			}
+		}
+
+		&__list {
+			display: flex;
+			width: fit-content;
+			gap: 8px;
+			padding: 16px;
+			background-color: #ffffff33;
+			border-radius: 14px;
+
+			@include mobile {
+				padding: 8px;
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				width: 100%;
+			}
+		}
+
+		&__item:nth-child(n + 9) {
+			display: none;
+		}
+
+		&__item {
+			width: 90px;
+			height: 90px;
+			position: relative;
+			padding: 8px;
+			border-radius: 10px;
+			background-color: $color-white;
+
+			@include laptop {
+				width: 72px;
+				height: 72px;
+			}
+
+			@include mobile {
+				width: 100%;
+				height: 48px;
+				border-radius: 8px;
+			}
+
+			img {
+				scale: 0.8;
 			}
 		}
 	}

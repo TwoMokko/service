@@ -9,7 +9,7 @@ import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
-import { modelReels } from "@/src/shared/config";
+import { reels } from "@/src/shared/data/reels/reels";
 import { ReelsItem } from "@/src/shared/types/types";
 import { SwiperControls } from "@/src/shared/ui/swiperControls/SwiperControls";
 
@@ -17,7 +17,7 @@ import styles from "./Reels.module.scss";
 
 export function Reels(): React.ReactNode {
 	const { openModal } = useModal();
-	const videos: ReelsItem[] = modelReels;
+	const videos: ReelsItem[] = reels;
 
 	const navigation = {
 		prevEl: "[data-reels-prev]",
@@ -25,7 +25,7 @@ export function Reels(): React.ReactNode {
 	};
 
 	const handleVideoClick = (index: number) => {
-		openModal("video", {
+		openModal("reels", {
 			videos: videos,
 			initialIndex: index,
 		});

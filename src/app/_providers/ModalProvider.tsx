@@ -11,14 +11,14 @@ import {
 	SuccessModal,
 } from "@/src/widgets/modals";
 
-export type ModalType = "common" | "review" | "success" | "error" | "video";
+export type ModalType = "common" | "review" | "success" | "error" | "reels";
 
 interface ModalProps {
 	common: SubmitModel;
 	review: ReviewModalData;
 	success: SubmitModel;
 	error: SubmitModel;
-	video: ReelsData;
+	reels: ReelsData;
 }
 
 interface ModalContextType {
@@ -54,7 +54,7 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 			{currentModal === "review" && <ReviewModal />}
 			{currentModal === "success" && <SuccessModal />}
 			{currentModal === "error" && <ErrorModal />}
-			{currentModal === "video" && <ReelsModal />}
+			{currentModal === "reels" && <ReelsModal />}
 		</ModalContext.Provider>
 	);
 }

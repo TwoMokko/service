@@ -8,6 +8,7 @@ import React from "react";
 import Image from "next/image";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
+import { brandsTitlesData } from "@/src/shared/data/brands";
 import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import { Button } from "@/src/shared/ui/button/Button";
 
@@ -51,14 +52,26 @@ export function Hero() {
 					<div className="container">
 						<div className={styles.content}>
 							<div className={styles.slideTop}>
+								<ul className={styles.benefits}>
+									<li className={styles.benefits__item}>Опытные мастера</li>
+									<li className={styles.benefits__item}>Проверенные запчасти</li>
+									<li className={styles.benefits__item}>Гарантия на услуги</li>
+								</ul>
 								<h1 className={styles.heroTitle}>
 									Мультибрендовый <br />
 									сервис
 								</h1>
-								<div className={styles.subTitle}>
+								<p className={styles.subTitle}>
 									Узнайте больше о работе Peleton
-									<span className={styles.heroAccent}> за 1 мин</span>
-								</div>
+									<span className="text-primary"> за 1 мин</span>
+									<Image
+										className={styles.arrow}
+										src="/images/hero/arrow.svg"
+										alt=""
+										width={74}
+										height={45}
+									/>
+								</p>
 							</div>
 							<div className={styles.slideBottom}>
 								<Button
@@ -68,6 +81,26 @@ export function Hero() {
 								>
 									Бесплатная консультация
 								</Button>
+								<a href="/video/video4.mp4" data-fancybox datatype="html5video">
+									<Button variant="outline" minWidth={306} className={styles.btn}>
+										Смотреть видео о сервисе
+									</Button>
+								</a>
+							</div>
+
+							<div className={styles.brands__wrap}>
+								<h2 className={styles.brands__title}>Официальный сервис:</h2>
+								<div className={styles.brands__list}>
+									{brandsTitlesData.official44.map((brand) => (
+										<div key={brand} className={styles.brands__item}>
+											<Image
+												src={`/images/brands/icons/${brand}.svg`}
+												alt=""
+												fill
+											/>
+										</div>
+									))}
+								</div>
 							</div>
 						</div>
 					</div>

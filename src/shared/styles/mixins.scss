@@ -81,3 +81,102 @@
 		}
 	}
 }
+
+@mixin header1 {
+	font-size: 80px;
+	font-weight: 600;
+	letter-spacing: -0.03em;
+
+	@include laptop {
+		font-size: 64px;
+	}
+
+	@include mobile {
+		font-size: 33px;
+	}
+}
+@mixin header2 {
+	font-size: 40px;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+
+	@include mobile {
+		font-size: 24px;
+	}
+}
+@mixin header3 {
+	font-size: 32px;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+
+	@include mobile {
+		font-size: 22px;
+	}
+}
+@mixin header4 {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.1;
+	text-transform: uppercase;
+
+	@include mobile {
+		font-size: 14px;
+	}
+}
+@mixin header5 {
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+
+	@include mobile {
+		font-size: 14px;
+	}
+}
+
+@mixin text1 {
+	font-size: 22px;
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
+
+	@include mobile {
+		font-size: 15px;
+	}
+}
+@mixin textCaption {
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1.1;
+	text-transform: uppercase;
+
+	@include mobile {
+		font-size: 11px;
+	}
+}
+@mixin bodyText {
+	font-size: 16px;
+	letter-spacing: -0.02em;
+	line-height: 1.1;
+
+	@include mobile {
+		font-size: 14px;
+	}
+}
+
+@mixin textBold {
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+
+	@include mobile {
+		font-size: 14px;
+	}
+}
+@mixin textSmall {
+	font-size: 13px;
+	font-weight: 500;
+
+	@include mobile {
+		font-size: 11px;
+	}
+}

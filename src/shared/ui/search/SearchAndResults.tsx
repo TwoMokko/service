@@ -51,9 +51,11 @@ export default function SearchAndResults() {
 					</div>
 				)}
 			</div>
-			{isOpen && searchQuery && (
+			{isOpen && (
 				<SearchResults
 					results={results}
+					searchQuery={searchQuery}
+					onSearch={handleSearch}
 					onClose={() => setIsOpen(false)}
 					onSelect={() => {
 						setIsOpen(false);
