@@ -17,6 +17,7 @@ export function useSearchService() {
 				title: category.title,
 				href: category.href,
 				type: "category" as const,
+				description: category.description,
 			});
 		}
 
@@ -27,6 +28,7 @@ export function useSearchService() {
 				title: service.title,
 				href: `${category.href}/${service.href}`,
 				type: "service" as const,
+				description: service.description,
 			}));
 
 		return [...categoryResults, ...servicesResults];

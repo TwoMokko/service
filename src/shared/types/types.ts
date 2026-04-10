@@ -104,4 +104,5 @@ export interface SearchResult {
 	title: string;
 	href: string;
 	type: "category" | "service";
+	description: string;
 }
