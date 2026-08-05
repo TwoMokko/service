@@ -57,8 +57,7 @@ export default function ContactItem({
 					))}
 				</div>
 			</div>
-			{/*<YaMapIframe address={address} />*/}
-			<YaMap address={address} />
+			{/*<YaMap address={address} />*/}
 		</article>
 	);
 }

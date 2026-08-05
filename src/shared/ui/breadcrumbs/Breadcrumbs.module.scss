@@ -4,6 +4,10 @@
 .breadcrumbs {
 	margin-bottom: 40px;
 
+	@include mobile {
+		margin-bottom: 20px;
+	}
+
 	.list {
 		display: flex;
 		align-items: center;

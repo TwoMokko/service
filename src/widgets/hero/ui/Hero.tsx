@@ -25,7 +25,7 @@ export function Hero() {
 			: "/images/hero/hero_desk.png";
 
 	return (
-		<div className={styles.hero}>
+		<section className={styles.hero}>
 			<Swiper
 				modules={[Navigation, Pagination, Autoplay]}
 				slidesPerView={1}
@@ -106,6 +106,6 @@ export function Hero() {
 					</div>
 				</SwiperSlide>
 			</Swiper>
-		</div>
+		</section>
 	);
 }

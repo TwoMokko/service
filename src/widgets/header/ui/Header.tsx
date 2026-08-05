@@ -28,7 +28,7 @@ export function Header() {
 	return (
 		<header className={`${styles.headerWrapper} ${burgerOpen ? styles.active : ""}`}>
 			<div className="container">
-				{!isMobile && <HeaderTop />}
+				<HeaderTop />
 
 				<div className={styles.header}>
 					<div className={styles.container}>
@@ -55,11 +55,12 @@ export function Header() {
 							<a className={styles.headerPhone} href={`tel:${about.phoneLink}`}>
 								{about.phone}
 							</a>
-							{!isMobile && (
-								<Button onClick={handleOpenModal} className={styles.headerBtnCall}>
-									Записаться на сервис
-								</Button>
-							)}
+							<Button
+								onClick={handleOpenModal}
+								className={`${styles.headerBtnCall} mob-hide`}
+							>
+								Записаться на сервис
+							</Button>
 						</div>
 
 						<BurgerMenu

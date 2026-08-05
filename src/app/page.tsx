@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 
 import { metaDataHomePage, sectionTitles } from "@/src/shared/config";
+import { getServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/categories";
 import { SectionId } from "@/src/shared/types/types";
 import { About } from "@/src/widgets/about";
 import { Brands } from "@/src/widgets/brand";
@@ -9,22 +11,24 @@ import { FormSale, FormService } from "@/src/widgets/form";
 import { Hero } from "@/src/widgets/hero";
 import { Promo } from "@/src/widgets/promo";
 import { Rating } from "@/src/widgets/rating";
-import { Services } from "@/src/widgets/services";
+import { Services } from "@/src/widgets/services/ui/Services";
+import { ServicesPriceList } from "@/src/widgets/servicesPriceList";
 
 export const metadata: Metadata = metaDataHomePage;
 
 export default async function Home() {
+	const services: CategoryWithServices[] = getServices();
+
 	return (
 		<>
 			<Hero />
 
-			<Services />
+			<Services services={services} />
 			<FormService />
 			<Brands title="Официальный сервис брендовых автомобилей" />
 			<FormSale />
-			<section className="container block-bottom">
-				<h2 className="section-title">Прайс-лист</h2>
-			</section>
+
+			<ServicesPriceList services={services} title="Прайс-лист" />
 			<Promo idSection={SectionId.PROMO} titleSection={sectionTitles[SectionId.PROMO]} />
 			<About />
 			<Contacts
