@@ -5,7 +5,7 @@ import styles from "./Header.module.scss";
 
 export function HeaderTop() {
 	return (
-		<div className={styles.headerContacts}>
+		<div className={`${styles.headerContacts} mob-hide`}>
 			<div className={styles.container}>
 				<div>{about.address}</div>
 				<div>{about.addressSecond}</div>

@@ -1,9 +1,50 @@
-import { getServices } from "@/src/shared/data/services";
-import { CategoryWithServices } from "@/src/shared/data/services/categories";
-import { ServicesClient } from "@/src/widgets/services/ui/ServicesClient";
+"use client";
+import { useState } from "react";
 
-export async function Services({ titlePage = false }: { titlePage?: boolean }) {
-	const services: CategoryWithServices[] = getServices();
+import type { CategoryWithServices } from "@/src/shared/data/services/categories";
+import { useDevice } from "@/src/shared/lib/hooks/useDevice";
+import { Button } from "@/src/shared/ui/button/Button";
+import { ServicesCard } from "@/src/widgets/services/ui/ServicesCard";
 
-	return <ServicesClient services={services} titlePage={titlePage} />;
+import styles from "./Services.module.scss";
+
+interface ServicesProps {
+	services: CategoryWithServices[];
+	titlePage?: boolean;
+}
+export function Services({ services, titlePage = false }: ServicesProps) {
+	const { isMobile } = useDevice();
+	const [showAllCards, setShowAllCards] = useState<boolean>(false);
+	const initCardCount: number = isMobile ? 4 : 6;
+
+	const allCards = services.map((service, index) => (
+		<ServicesCard key={service.id} category={service} isInitiallyOpen={index === 0} />
+	));
+
+	const visibleCards = allCards.slice(0, initCardCount);
+	const hiddenCards = allCards.slice(initCardCount);
+
+	return (
+		<section className={`${styles.services} container block-bottom`}>
+			{titlePage ? (
+				<h1 className="page-title">Наши услуги</h1>
+			) : (
+				<h2 className="section-title">Наши услуги</h2>
+			)}
+			<div className={styles.servicesCards}>{visibleCards}</div>
+			<div className={`${styles.servicesCards} ${!showAllCards ? styles.hidden : ""}`}>
+				{hiddenCards}
+			</div>
+
+			{allCards.length > initCardCount && (
+				<Button
+					variant="secondary"
+					onClick={() => setShowAllCards((prev) => !prev)}
+					className={styles.showMore}
+				>
+					{showAllCards ? "Свернуть список" : "Показать все услуги"}
+				</Button>
+			)}
+		</section>
+	);
 }

@@ -86,29 +86,28 @@ export function Contacts({
 							))}
 						</nav>
 
-						{!isMobile && (
-							<div className={styles.arrowsNav}>
-								<button
-									className={styles.arrowButton}
-									data-contacts-prev
-									aria-label="Предыдущий адрес"
-								>
-									<IoIosArrowBack size={20} />
-								</button>
-								<button
-									className={styles.arrowButton}
-									data-contacts-next
-									aria-label="Следующий адрес"
-								>
-									<IoIosArrowForward size={20} />
-								</button>
-							</div>
-						)}
+						<div className={`${styles.arrowsNav} mob-hide`}>
+							<button
+								className={styles.arrowButton}
+								data-contacts-prev
+								aria-label="Предыдущий адрес"
+							>
+								<IoIosArrowBack size={20} />
+							</button>
+							<button
+								className={styles.arrowButton}
+								data-contacts-next
+								aria-label="Следующий адрес"
+							>
+								<IoIosArrowForward size={20} />
+							</button>
+						</div>
 					</div>
 
-					{isMobile && (
-						<div className={styles.paginationWrapper} data-contacts-pagination />
-					)}
+					<div
+						className={`${styles.paginationWrapper} desk-hide`}
+						data-contacts-pagination
+					/>
 
 					<div className={styles.contactsItemsContainer}>
 						<Swiper
@@ -116,7 +115,7 @@ export function Contacts({
 							spaceBetween={0}
 							slidesPerView={1}
 							navigation={navigation}
-							pagination={isMobile ? pagination : false}
+							pagination={pagination}
 							effect="fade"
 							fadeEffect={{ crossFade: true }}
 							speed={500}
