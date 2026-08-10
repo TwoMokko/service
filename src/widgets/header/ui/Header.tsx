@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useModal } from "@/src/app/_providers/ModalProvider";
 import { about } from "@/src/shared/config";
 import { useBurgerMenu } from "@/src/shared/lib/hooks/useBurgerMenu";
-import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import { Button } from "@/src/shared/ui/button/Button";
 
 import { BurgerMenu } from "./BurgerMenu";
@@ -18,7 +17,6 @@ import styles from "./Header.module.scss";
 
 export function Header() {
 	const { openModal } = useModal();
-	const { isMobile } = useDevice();
 	const { isOpen: burgerOpen, menuRef, buttonRef, toggle, close } = useBurgerMenu();
 
 	const handleOpenModal = () => {
@@ -45,6 +43,7 @@ export function Header() {
 								<span></span>
 							</div>
 							<Link
+								prefetch={false}
 								href="/"
 								className={styles.headerLogo}
 								aria-label="Главная страница"

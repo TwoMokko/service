@@ -22,7 +22,7 @@ export function Footer() {
 			<div className={styles.footer}>
 				<div className={styles.main}>
 					<div className={styles.iconsWrap}>
-						<Link href="/" target="_blank" rel="noopener noreferrer">
+						<Link prefetch={false} href="/" target="_blank" rel="noopener noreferrer">
 							<Image
 								src="/images/icons/logo-footer.svg"
 								alt="логотип"
@@ -35,6 +35,7 @@ export function Footer() {
 					<nav className={styles.navSections}>
 						{navigationLinks.map((link: NavigationLink) => (
 							<Link
+								prefetch={false}
 								key={link.title}
 								href={link.href}
 								className={styles.navLink}
@@ -87,10 +88,20 @@ export function Footer() {
 				</div>
 				<div className={styles.links}>
 					<div className={styles.links__wrap}>
-						<Link href="/policy" className={styles.link} rel="noopener noreferrer">
+						<Link
+							prefetch={false}
+							href="/policy"
+							className={styles.link}
+							rel="noopener noreferrer"
+						>
 							Политика конфиденциальности
 						</Link>
-						<Link href="/link" className={styles.link} rel="noopener noreferrer">
+						<Link
+							prefetch={false}
+							href="/link"
+							className={styles.link}
+							rel="noopener noreferrer"
+						>
 							Условия использования
 						</Link>
 					</div>

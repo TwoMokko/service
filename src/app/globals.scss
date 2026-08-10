@@ -66,7 +66,6 @@ input:focus {
 	width: 100%;
 	max-width: 1500px;
 	margin: 0 auto;
-	padding: 0 16px;
 	position: relative;
 
 	@include laptop {
@@ -74,6 +73,7 @@ input:focus {
 	}
 
 	@include tablet {
+		padding: 0 16px;
 	}
 
 	@include mobile {

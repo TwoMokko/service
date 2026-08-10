@@ -6,7 +6,9 @@ export default function NotFound() {
 			<div className="container">
 				<h2>Not Found</h2>
 				<p>Не удалось найти запрошенный ресурс</p>
-				<Link href="/">Вернуться на начальную страницу</Link>
+				<Link prefetch={false} href="/">
+					Вернуться на начальную страницу
+				</Link>
 			</div>
 		</div>
 	);

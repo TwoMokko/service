@@ -1,0 +1,144 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.servicesMini {
+	@include mobile {
+		overflow: hidden;
+	}
+
+	&__list {
+		margin-top: 32px;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+
+		@include laptop {
+			margin-top: 24px;
+		}
+
+		@include mobile {
+			display: revert;
+		}
+	}
+
+	&__swiper {
+		overflow: visible;
+	}
+
+	@include mobile {
+		&__slide {
+			height: 124px;
+			width: 310px;
+		}
+	}
+
+	&__card {
+		background-color: $color-more-light-gray;
+		border-radius: 10px;
+		overflow: hidden;
+		position: relative;
+		height: 144px;
+		padding: 20px;
+		box-shadow: 0 4px 30px 0 #00000040;
+		transition: $transition-0-3s;
+
+		@include mobile {
+			height: 124px;
+			width: 310px;
+			padding: 10px;
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				background-color: $color-bg;
+
+				.title__wrap {
+					color: $color-white;
+				}
+
+				.link_arrow {
+					opacity: 1;
+				}
+
+				.btn {
+					background-color: $color-primary;
+					color: $color-white;
+				}
+			}
+		}
+
+		.content {
+			z-index: 2;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			height: 100%;
+
+			.title__wrap {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				gap: 40px;
+				text-transform: uppercase;
+				font-size: 18px;
+				font-weight: 600;
+				transition: $transition-0-3s;
+
+				@include mobile {
+					font-size: 14px;
+				}
+
+				.title {
+					line-height: 1.1;
+				}
+				.topCount {
+					flex: none;
+					opacity: 0.4;
+				}
+			}
+
+			.btn {
+				@include mobile {
+					min-width: auto;
+					width: 112px;
+				}
+			}
+		}
+
+		.imgWrap {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			justify-content: flex-end;
+			align-items: flex-end;
+		}
+	}
+
+	.link_showMore {
+		margin-top: 24px;
+		width: 100%;
+		display: inline-block;
+	}
+}
+
+.link {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	width: fit-content;
+}
+
+.link_arrow {
+	opacity: 0;
+	width: 48px;
+	height: 48px;
+	border-radius: 10px;
+	background-color: $color-primary;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $color-white;
+	flex: none;
+	transition: opacity 0.3s ease;
+}

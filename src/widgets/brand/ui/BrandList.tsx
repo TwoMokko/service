@@ -31,7 +31,12 @@ export function BrandList({
 				<h3 className={styles.list__title}>{title}</h3>
 				<div className={styles.list}>
 					{brands.map((brand) => (
-						<Link key={brand} className={styles.brand} href={`/brands/${brand}`}>
+						<Link
+							prefetch={false}
+							key={brand}
+							className={styles.brand}
+							href={`/brands/${brand}`}
+						>
 							<Image src={`/images/brands/icons/${brand}.svg`} alt="" fill />
 							<div className={styles.arrow}>
 								<LuArrowUpRight size={22} />

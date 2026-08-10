@@ -5,7 +5,7 @@ export const metadata: Metadata = {
 	description: "Дескрипшн политики",
 };
 
-export default function Policy() {
+export default function PolicyPage() {
 	return (
 		<div className="other-page">
 			<div className="container">

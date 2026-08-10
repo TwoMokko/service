@@ -28,7 +28,7 @@ export function Rating() {
 						Присоединяйтесь <br />к 1000 довольных клиентов
 					</h2>
 					{!isMobile && (
-						<Link href={`/${SectionId.REVIEWS}`}>
+						<Link prefetch={false} href={`/${SectionId.REVIEWS}`}>
 							<Button variant="secondary">Смотреть все отзывы</Button>
 						</Link>
 					)}
@@ -77,7 +77,7 @@ export function Rating() {
 					</Swiper>
 				</div>
 				{isMobile && (
-					<Link href={`/${SectionId.REVIEWS}`}>
+					<Link prefetch={false} href={`/${SectionId.REVIEWS}`}>
 						<Button variant="secondary">Смотреть все отзывы</Button>
 					</Link>
 				)}

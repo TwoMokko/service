@@ -8,7 +8,7 @@ import { Rating } from "@/src/widgets/rating";
 
 export const metadata: Metadata = metaDataPromoPage;
 
-export default function Policy() {
+export default function PromoPage() {
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },
 		{ title: "Акции", href: "/promo" },

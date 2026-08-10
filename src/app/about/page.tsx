@@ -1,16 +1,21 @@
 import { Metadata } from "next";
 
 import { metaDataAboutPage, sectionTitles } from "@/src/shared/config";
+import { getServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/categories";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
+import { About } from "@/src/widgets/about";
 import { Contacts } from "@/src/widgets/contact";
 import { Rating } from "@/src/widgets/rating";
 import { Reels } from "@/src/widgets/reels";
 import { Reviews } from "@/src/widgets/reviews";
+import { ServicesMini } from "@/src/widgets/services/ui/ServicesMini";
 
 export const metadata: Metadata = metaDataAboutPage;
 
-export default function Policy() {
+export default function AboutPage() {
+	const services: CategoryWithServices[] = getServices();
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },
 		{ title: "О нас", href: "/about" },
@@ -28,10 +33,8 @@ export default function Policy() {
 				idSection={SectionId.REVIEWS}
 				titleSection={sectionTitles[SectionId.REVIEWS]}
 			/>
-			<section className="container block-bottom">блок: О сервисе</section>
-			<section className="container block-bottom">
-				блок: Узнать подробнее о наших услугах
-			</section>
+			<About />
+			<ServicesMini services={services} />
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}

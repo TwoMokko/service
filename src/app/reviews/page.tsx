@@ -8,7 +8,7 @@ import { Rating } from "@/src/widgets/rating";
 
 export const metadata: Metadata = metaDataReviewsPage;
 
-export default function Policy() {
+export default function ReviewsPage() {
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },
 		{ title: "Отзывы", href: "/reviews" },

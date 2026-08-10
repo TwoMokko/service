@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 	}
 }
 
-export default async function CategoryPage({ params }: ServicePageProps) {
+export default async function BrandPage({ params }: ServicePageProps) {
 	const { brand } = await params;
 
 	let currentBrand;

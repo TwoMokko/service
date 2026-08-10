@@ -41,13 +41,10 @@ export function Reels(): React.ReactNode {
 					loop={false}
 					breakpoints={{
 						640: {
-							slidesPerView: 2,
-						},
-						768: {
-							slidesPerView: 3,
+							slidesPerView: 1,
 						},
 						1024: {
-							slidesPerView: 4,
+							slidesPerView: 3,
 						},
 						1280: {
 							slidesPerView: 4,
