@@ -34,7 +34,8 @@
 				margin-right: 10px;
 
 				@include mobile {
-					width: 60%;
+					//width: 60%;
+					max-width: 100%;
 				}
 
 				.video {

@@ -27,7 +27,11 @@ export function ServicesCard({ category, isInitiallyOpen = false }: ServicesCard
 					<h3 className={styles.title}>{category.title}</h3>
 					<span className={styles.topCount}>({category.items.length})</span>
 				</div>
-				<Link href={`/services/${category.href}`} className={styles.topLink}>
+				<Link
+					prefetch={false}
+					href={`/services/${category.href}`}
+					className={styles.topLink}
+				>
 					<Button variant="outline">Подробнее</Button>
 				</Link>
 				<Image
@@ -55,6 +59,7 @@ export function ServicesCard({ category, isInitiallyOpen = false }: ServicesCard
 					<div className={styles.list}>
 						{category.items.map((service, index) => (
 							<Link
+								prefetch={false}
 								key={service.id || index}
 								href={`/services/${category.href}/${service.href}`}
 								className={styles.listItem}

@@ -9,7 +9,7 @@ import { Rating } from "@/src/widgets/rating";
 
 export const metadata: Metadata = metaDataBrandsPage;
 
-export default function Policy() {
+export default function BrandsPage() {
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },
 		{ title: "Бренды", href: "/brands" },

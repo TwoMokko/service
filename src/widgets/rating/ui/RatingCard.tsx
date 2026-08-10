@@ -38,7 +38,7 @@ export function RatingCard({ rating }: RatingCardProps) {
 						/>
 					</div>
 					<p className={styles.subtitle}>{rating.subtitle}</p>
-					<Link className={styles.link} href={rating.link}>
+					<Link prefetch={false} className={styles.link} href={rating.link}>
 						{rating.linkTitle}
 					</Link>
 				</div>

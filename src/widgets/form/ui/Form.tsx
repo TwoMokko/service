@@ -86,6 +86,7 @@ export function Form({ title, content, imageSrc, variant = "start" }: FormProps)
 							Отправив форму путём нажатия на кнопку, я подтверждаю, что ознакомлен
 							<br className="laptop-hide" />с
 							<Link
+								prefetch={false}
 								href="/policy"
 								target="_blank"
 								rel="noopener noreferrer"

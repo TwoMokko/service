@@ -8,7 +8,7 @@ import { Rating } from "@/src/widgets/rating";
 
 export const metadata: Metadata = metaDataContactsPage;
 
-export default function Policy() {
+export default function ContactsPage() {
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },
 		{ title: "Контакты", href: "/contacts" },

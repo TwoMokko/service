@@ -43,6 +43,7 @@ export default function SearchResults({
 					<div className={styles.resultsList}>
 						{results.map((res) => (
 							<Link
+								prefetch={false}
 								key={`${res.type}-${res.href}`}
 								href={`/services/${res.href}`}
 								onClick={() => {

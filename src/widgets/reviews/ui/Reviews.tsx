@@ -29,7 +29,7 @@ export function Reviews({ idSection, titleSection }: ReviewsProps) {
 			<div className="container">
 				<div className={styles.top}>
 					<h2 className="section-title">{titleSection}</h2>
-					<Link href={`/${SectionId.REVIEWS}`}>
+					<Link prefetch={false} href={`/${SectionId.REVIEWS}`}>
 						<Button variant="secondary">Смотреть все отзывы</Button>
 					</Link>
 				</div>

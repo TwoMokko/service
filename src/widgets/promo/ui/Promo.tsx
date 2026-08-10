@@ -30,7 +30,7 @@ export function Promo({ idSection, titleSection }: ActionsProps) {
 				<div className={styles.top}>
 					<h2 className="section-title">{titleSection}</h2>
 					{!isMobile && (
-						<Link href={`/${SectionId.PROMO}`}>
+						<Link prefetch={false} href={`/${SectionId.PROMO}`}>
 							<Button variant="secondary">Смотреть все акции</Button>
 						</Link>
 					)}
@@ -86,7 +86,7 @@ export function Promo({ idSection, titleSection }: ActionsProps) {
 				)}
 
 				{isMobile && (
-					<Link href={`/${SectionId.PROMO}`}>
+					<Link prefetch={false} href={`/${SectionId.PROMO}`}>
 						<Button variant="secondary">Смотреть все акции</Button>
 					</Link>
 				)}

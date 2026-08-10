@@ -15,7 +15,7 @@ export function HeaderServicesNav() {
 			<ul className={styles.categories}>
 				{categories.map((category) => (
 					<li key={category.id} className={styles.category}>
-						<Link href={`/services/${category.href}`}>
+						<Link prefetch={false} href={`/services/${category.href}`}>
 							<div className={styles.categoryTitle}>{category.title}</div>
 						</Link>
 						<div className={styles.services}>
@@ -28,7 +28,10 @@ export function HeaderServicesNav() {
 							<ul className={styles.servicesList}>
 								{category.items.map((service, index) => (
 									<li key={service.id || index} className={styles.listItem}>
-										<Link href={`/services/${category.href}/${service.href}`}>
+										<Link
+											prefetch={false}
+											href={`/services/${category.href}/${service.href}`}
+										>
 											<span className={styles.listCount}>{index + 1}</span>
 											<div className={styles.listTitle}>{service.title}</div>
 											<div className={styles.listArrow}>

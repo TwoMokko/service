@@ -109,6 +109,7 @@ export function BaseFormModal({ title, content }: BaseFormModalProps) {
 						<div>
 							Согласен на обработку
 							<Link
+								prefetch={false}
 								href="/policy"
 								target="_blank"
 								rel="noopener noreferrer"

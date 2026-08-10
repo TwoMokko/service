@@ -27,6 +27,7 @@ export function NavLinks({ onClick, isMobile }: NavLinksProps) {
 						return (
 							<li key={link.href}>
 								<Link
+									prefetch={false}
 									className={styles.link}
 									href={link.href}
 									onClick={onClick}
@@ -44,6 +45,7 @@ export function NavLinks({ onClick, isMobile }: NavLinksProps) {
 							<React.Fragment key={link.href}>
 								<li ref={servicesMenu.triggerRef} {...servicesMenu.triggerHandlers}>
 									<Link
+										prefetch={false}
 										className={styles.link}
 										href={link.href}
 										rel="noopener noreferrer"
@@ -67,6 +69,7 @@ export function NavLinks({ onClick, isMobile }: NavLinksProps) {
 					return (
 						<li key={link.href}>
 							<Link
+								prefetch={false}
 								className={styles.link}
 								href={link.href}
 								onClick={onClick}
