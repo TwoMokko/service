@@ -1,11 +1,14 @@
 import { Metadata } from "next";
 
 import { metaDataPricePage, sectionTitles } from "@/src/shared/config";
+import { getAllBrandsArray } from "@/src/shared/data/brands";
+import { Brand } from "@/src/shared/data/brands/brands";
 import { getServices } from "@/src/shared/data/services";
 import { CategoryWithServices } from "@/src/shared/data/services/categories";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
 import { Brands } from "@/src/widgets/brand";
+import { BrandsPriceListNav } from "@/src/widgets/brandsPriceList";
 import { Contacts } from "@/src/widgets/contact";
 import { FormSale, FormService } from "@/src/widgets/form";
 import { Rating } from "@/src/widgets/rating";
@@ -16,6 +19,7 @@ export const metadata: Metadata = metaDataPricePage;
 
 export default function PricePage() {
 	const services: CategoryWithServices[] = getServices();
+	const brands: Brand[] = getAllBrandsArray();
 
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },
@@ -31,9 +35,7 @@ export default function PricePage() {
 			<ServicesPriceList services={services} title="Цены по названию услуг" />
 			<ServicesMini services={services} />
 			<FormService />
-			<div className="container block-bottom">
-				<h2 className="section-title">Бренды</h2>
-			</div>
+			<BrandsPriceListNav brands={brands} />
 			<Brands title="Официальный сервис брендовых автомобилей" />
 			<FormSale />
 			<Contacts

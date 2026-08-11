@@ -16,6 +16,8 @@ interface ServicesPriceListProps {
 	services: CategoryWithServices[];
 	title?: string;
 }
+
+// TODO: дублирование!
 export function ServicesPriceList({ services, title }: ServicesPriceListProps) {
 	const { openModal } = useModal();
 	const { isMobile } = useDevice();
@@ -137,7 +139,7 @@ export function ServicesPriceList({ services, title }: ServicesPriceListProps) {
 							))}
 						</ul>
 					</nav>
-					<div className={styles.services}>
+					<div className={`${styles.services} mob-hide`}>
 						<h3 className={styles.services__title}>{activeCategory?.title}</h3>
 						<div className={styles.services__list_wrap}>
 							{services.map((category) => (

@@ -85,12 +85,17 @@
 				font-weight: 600;
 				transition: $transition-0-3s;
 
+				@include laptop {
+					font-size: 16px;
+				}
+
 				@include mobile {
 					font-size: 14px;
 				}
 
 				.title {
 					line-height: 1.1;
+					max-width: 70%;
 				}
 				.topCount {
 					flex: none;

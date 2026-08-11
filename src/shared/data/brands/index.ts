@@ -10,7 +10,7 @@ export const brandsTitlesData = {
 };
 
 // Получить все бренды
-export function getAllBrands(): Brand[] {
+export function getAllBrandsArray(): Brand[] {
 	return Object.values(brands);
 }
 
