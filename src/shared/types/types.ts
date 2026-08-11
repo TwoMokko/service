@@ -61,7 +61,7 @@ export enum SectionId {
 	PROMO = "promo",
 	ABOUT = "about",
 	REVIEWS = "reviews",
-	ARTICLE = "article",
+	ARTICLE = "articles",
 	CONTACTS = "contacts",
 }
 

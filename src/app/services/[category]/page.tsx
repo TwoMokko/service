@@ -5,7 +5,10 @@ import { sectionTitles } from "@/src/shared/config";
 import { getAllCategorySlugs, getCategoryWithServices } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
+import { About } from "@/src/widgets/about";
+import { Brands } from "@/src/widgets/brand";
 import { Contacts } from "@/src/widgets/contact";
+import { FormService } from "@/src/widgets/form";
 import { Rating } from "@/src/widgets/rating";
 
 interface ServicePageProps {
@@ -55,6 +58,9 @@ export default async function CategoryPage({ params }: ServicePageProps) {
 				<h1>{currentCategory.title}</h1>
 				<div>{currentCategory.description}</div>
 			</section>
+			<About />
+			<FormService />
+			<Brands title="Официальный сервис брендовых автомобилей" />
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}

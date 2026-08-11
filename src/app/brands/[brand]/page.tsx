@@ -3,16 +3,23 @@ import { notFound } from "next/navigation";
 
 import { sectionTitles } from "@/src/shared/config";
 import { getBrandBySlug } from "@/src/shared/data/brands";
+import { getServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/categories";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
+import { About } from "@/src/widgets/about";
+import { Brands } from "@/src/widgets/brand";
+import { BrandsPriceListOnce } from "@/src/widgets/brandsPriceList";
 import { Contacts } from "@/src/widgets/contact";
+import { FormService } from "@/src/widgets/form";
 import { Rating } from "@/src/widgets/rating";
+import { Services } from "@/src/widgets/services";
 
-interface ServicePageProps {
+interface BrandPageProps {
 	params: Promise<{ brand: string }>;
 }
 
-export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: BrandPageProps): Promise<Metadata> {
 	const { brand } = await params;
 
 	try {
@@ -26,7 +33,8 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 	}
 }
 
-export default async function BrandPage({ params }: ServicePageProps) {
+export default async function BrandPage({ params }: BrandPageProps) {
+	const services: CategoryWithServices[] = getServices();
 	const { brand } = await params;
 
 	let currentBrand;
@@ -47,8 +55,14 @@ export default async function BrandPage({ params }: ServicePageProps) {
 			<Breadcrumbs items={breadcrumbs} />
 			<section className="container block-bottom">
 				<h1>{currentBrand.title}</h1>
-				<div>{currentBrand.description}</div>
+				<p>{currentBrand.description}</p>
 			</section>
+			<BrandsPriceListOnce brand={currentBrand} />
+			<Services services={services} />
+			<section className="brand-info container block-bottom ">{currentBrand.text}</section>
+			<About />
+			<FormService />
+			<Brands title="Официальный сервис брендовых автомобилей" />
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}
