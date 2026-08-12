@@ -1,0 +1,59 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.modalOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10000;
+	backdrop-filter: blur(5px);
+}
+
+.modalContent {
+	background-color: $color-white;
+	max-width: 620px;
+	border-radius: 14px;
+	width: 90%;
+	max-height: 90vh;
+	//overflow-y: auto;
+	position: relative;
+	animation: modalAppear 0.3s ease-out;
+
+	@include mobile {
+		max-width: 360px;
+	}
+}
+
+@keyframes modalAppear {
+	from {
+		opacity: 0;
+		transform: scale(0.9) translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+
+.closeButton {
+	position: absolute;
+	top: calc(100% + 32px);
+	right: 50%;
+	transform: translateX(50%);
+	border: none;
+	font-size: 24px;
+	cursor: pointer;
+	background-color: $color-transparent-light;
+	border-radius: 50%;
+	padding: 8px;
+
+	&:hover {
+		color: $color-black;
+	}
+}

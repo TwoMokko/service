@@ -53,12 +53,7 @@ export function RatingCard({ rating }: RatingCardProps) {
 				</div>
 			</div>
 			<div className={styles.bg__wrap}>
-				<Image
-					className={styles.bg}
-					src={`/images/rating/bg/${rating.bg}.png`}
-					alt=""
-					fill
-				/>
+				<img className={styles.bg} src={`/images/rating/bg/${rating.bg}.png`} alt="" />
 			</div>
 		</article>
 	);

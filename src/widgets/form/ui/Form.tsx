@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { MdDone } from "react-icons/md";
 
-import Image from "next/image";
 import Link from "next/link";
 
 import { usePhoneMask } from "@/src/shared/lib/hooks/usePhoneMask";
@@ -50,9 +49,9 @@ export function Form({ title, content, imageSrc, variant = "start" }: FormProps)
 	};
 
 	return (
-		<section className={`${styles.form__wrap} ${variant === "end" ? styles.end : ""}`}>
+		<div className={`${styles.form__wrap} ${variant === "end" ? styles.end : ""}`}>
 			<div className={styles.img__wrap}>
-				<Image src={imageSrc} alt="" fill sizes="100vw" className={styles.image} />
+				<img src={imageSrc} alt="" className={styles.image} />
 			</div>
 			<div className={styles.info}>
 				{title}
@@ -99,6 +98,6 @@ export function Form({ title, content, imageSrc, variant = "start" }: FormProps)
 					</label>
 				</form>
 			</div>
-		</section>
+		</div>
 	);
 }

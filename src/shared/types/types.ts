@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 import { ReviewPhotoCard, ReviewTextCard } from "@/src/shared/data/reviews/reviews";
 
 export interface Model {
@@ -21,7 +23,7 @@ export interface Equipment {
 	kpp: string;
 	drive: string;
 }
-export type ModalData = SubmitModel | ReelsData | ReviewModalData | null;
+export type ModalData = SubmitModel | ReelsData | ReviewModalData | ActionModalData | null;
 export interface ReelsData {
 	videos: ReelsItem[];
 	initialIndex?: number;
@@ -35,6 +37,10 @@ export interface ReelsItem {
 	title: string;
 	subtitle: string;
 	icon: string;
+}
+
+export interface ActionModalData {
+	content: ReactNode;
 }
 
 export interface SubmitModel {

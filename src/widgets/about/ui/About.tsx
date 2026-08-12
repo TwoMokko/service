@@ -60,6 +60,7 @@ export function About() {
 								modules={[Thumbs, Navigation]}
 								slidesPerView={"auto"}
 								spaceBetween={8}
+								loop={false}
 								watchSlidesProgress={true}
 								className={styles.thumbsSwiper}
 								navigation={true}
