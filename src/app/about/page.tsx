@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 
 import { metaDataAboutPage, sectionTitles } from "@/src/shared/config";
-import { getServices } from "@/src/shared/data/services";
-import { CategoryWithServices } from "@/src/shared/data/services/categories";
+import {CategoryWithServices, getServices} from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
 import { About } from "@/src/widgets/about";

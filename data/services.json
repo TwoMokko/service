@@ -1,0 +1,92 @@
+{
+  "services": {
+    "zamena-masla-v-dvigatele": {
+      "id": 1,
+      "href": "zamena-masla-v-dvigatele",
+      "title": "Замена масла в двигателе",
+      "shortDescription": "Профессиональная замена масла",
+      "description": "Полная замена моторного масла с промывкой системы.",
+      "price": 2500,
+      "time": "30 мин",
+      "categoryId": "tekhnicheskoe-obsluzhivanie",
+      "meta": {
+        "title": "Замена масла в двигателе | Автосервис",
+        "description": "Замена масла в двигателе по доступным ценам"
+      },
+      "items": [
+        {
+          "title": "Частичная замена масла в АКПП",
+          "price": 5442
+        },
+        {
+          "title": "Замена воздушного фильтра",
+          "price": 4326
+        }
+      ]
+    },
+    "new-2": {
+      "id": 2,
+      "href": "new-2",
+      "title": "Новая услуга",
+      "shortDescription": "Краткое описание",
+      "description": "Полное описание",
+      "price": 5555,
+      "time": "30 мин",
+      "categoryId": "new-cat-2",
+      "meta": {
+        "title": "Новая услуга",
+        "description": "SEO описание"
+      },
+      "items": [
+        {
+          "title": "Замена масла в редукторе",
+          "price": 6666
+        }
+      ]
+    },
+    "new-3": {
+      "id": 3,
+      "href": "new-3",
+      "title": "Замена воздушного фильтра",
+      "shortDescription": "Краткое описание",
+      "description": "Полное описание",
+      "price": 5654,
+      "time": "30 мин",
+      "categoryId": "tekhnicheskoe-obsluzhivanie",
+      "meta": {
+        "title": "Новая услуга",
+        "description": "SEO описание"
+      },
+      "items": []
+    }
+  },
+  "categories": {
+    "tekhnicheskoe-obsluzhivanie": {
+      "id": 1,
+      "title": "Техническое обслуживание",
+      "href": "tekhnicheskoe-obsluzhivanie",
+      "description": "Полный спектр работ по ТО автомобиля",
+      "items": [
+        "zamena-masla-v-dvigatele",
+        "new-3"
+      ],
+      "meta": {
+        "title": "Техническое обслуживание | Автосервис",
+        "description": "Техническое обслуживание всех марок авто"
+      }
+    },
+    "new-cat-2": {
+      "id": 2,
+      "title": "Слесарный ремонт",
+      "href": "new-cat-2",
+      "description": "Описание категории",
+      "items": [
+        "new-2"
+      ],
+      "meta": {
+        "title": "Новая категория",
+        "description": "SEO описание"
+      }
+    }
+  }
+}

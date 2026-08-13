@@ -1,19 +1,23 @@
-import { LuArrowUpRight } from "react-icons/lu";
+'use client';
 
 import Link from "next/link";
-
-import { getServices } from "@/src/shared/data/services";
-import { CategoryWithServices } from "@/src/shared/data/services/categories";
-
+import { LuArrowUpRight } from "react-icons/lu";
+import { CategoryWithServices } from "@/src/shared/data/services";
 import styles from "./Header.module.scss";
 
-export function HeaderServicesNav() {
-	const categories: CategoryWithServices[] = getServices();
+interface HeaderServicesNavProps {
+	services: CategoryWithServices[];
+}
+
+export function HeaderServicesNav({ services }: HeaderServicesNavProps) {
+	if (!services || services.length === 0) {
+		return <nav className={styles.headerServicesNav}>Нет услуг</nav>;
+	}
 
 	return (
 		<nav className={styles.headerServicesNav}>
 			<ul className={styles.categories}>
-				{categories.map((category) => (
+				{services.map((category) => (
 					<li key={category.id} className={styles.category}>
 						<Link prefetch={false} href={`/services/${category.href}`}>
 							<div className={styles.categoryTitle}>{category.title}</div>
@@ -22,8 +26,8 @@ export function HeaderServicesNav() {
 							<div className={styles.servicesTop}>
 								<h3 className={styles.servicesTitle}>{category.title}</h3>
 								<span className={styles.servicesTopCount}>
-									({category.items.length})
-								</span>
+                                    ({category.items.length})
+                                </span>
 							</div>
 							<ul className={styles.servicesList}>
 								{category.items.map((service, index) => (
