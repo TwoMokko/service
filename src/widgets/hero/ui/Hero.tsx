@@ -36,7 +36,7 @@ export function Hero() {
 					delay: 5000,
 					disableOnInteraction: false,
 				}}
-				loop={true}
+				loop={false}
 				className={styles.heroSwiper}
 			>
 				<SwiperSlide className={styles.heroItem}>

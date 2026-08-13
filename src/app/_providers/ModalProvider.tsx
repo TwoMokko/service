@@ -2,8 +2,15 @@
 
 import React, { createContext, useContext, useState } from "react";
 
-import { ModalData, ReelsData, ReviewModalData, SubmitModel } from "@/src/shared/types/types";
 import {
+	ActionModalData,
+	ModalData,
+	ReelsData,
+	ReviewModalData,
+	SubmitModel,
+} from "@/src/shared/types/types";
+import {
+	ActionModal,
 	CommonModal,
 	ErrorModal,
 	ReelsModal,
@@ -11,7 +18,7 @@ import {
 	SuccessModal,
 } from "@/src/widgets/modals";
 
-export type ModalType = "common" | "review" | "success" | "error" | "reels";
+export type ModalType = "common" | "review" | "success" | "error" | "reels" | "action";
 
 interface ModalProps {
 	common: SubmitModel;
@@ -19,6 +26,7 @@ interface ModalProps {
 	success: SubmitModel;
 	error: SubmitModel;
 	reels: ReelsData;
+	action: ActionModalData;
 }
 
 interface ModalContextType {
@@ -55,6 +63,7 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 			{currentModal === "success" && <SuccessModal />}
 			{currentModal === "error" && <ErrorModal />}
 			{currentModal === "reels" && <ReelsModal />}
+			{currentModal === "action" && <ActionModal />}
 		</ModalContext.Provider>
 	);
 }

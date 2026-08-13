@@ -19,12 +19,12 @@
 	.img__wrap {
 		position: absolute;
 		inset: 0;
-		z-index: -1;
+		//z-index: -1;
 
 		> img {
 			object-fit: cover;
 			width: 100%;
-			height: auto;
+			height: 100%;
 		}
 	}
 
@@ -33,6 +33,7 @@
 		//padding: 32px;
 		padding: 32px 32px 32px 58px;
 		width: fit-content;
+		position: relative;
 
 		@include mobile {
 			margin-top: auto;

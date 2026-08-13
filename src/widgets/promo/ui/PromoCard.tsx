@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { Promo } from "@/src/shared/data/promo/promo";
 
-import styles from "./Promo.module.scss";
+import styles from "./PromoSwiper.module.scss";
 
 interface ActionCardProps {
 	promo: Promo;

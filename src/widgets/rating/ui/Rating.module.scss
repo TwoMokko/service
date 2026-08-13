@@ -22,6 +22,8 @@
 		}
 
 		.rating__slide {
+			max-width: calc(1200px / 3 - 40px);
+
 			@include mobile {
 				max-width: 280px;
 			}
@@ -190,6 +192,8 @@
 
 		.bg {
 			object-fit: cover;
+			width: 100%;
+			height: 100%;
 		}
 	}
 }

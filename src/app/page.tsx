@@ -9,7 +9,7 @@ import { Brands } from "@/src/widgets/brand";
 import { Contacts } from "@/src/widgets/contact";
 import { FormSale, FormService } from "@/src/widgets/form";
 import { Hero } from "@/src/widgets/hero";
-import { Promo } from "@/src/widgets/promo";
+import { PromoSwiper } from "@/src/widgets/promo";
 import { Rating } from "@/src/widgets/rating";
 import { Services } from "@/src/widgets/services/ui/Services";
 import { ServicesPriceList } from "@/src/widgets/servicesPriceList";
@@ -29,7 +29,10 @@ export default async function Home() {
 			<FormSale />
 
 			<ServicesPriceList services={services} title="Прайс-лист" />
-			<Promo idSection={SectionId.PROMO} titleSection={sectionTitles[SectionId.PROMO]} />
+			<PromoSwiper
+				idSection={SectionId.PROMO}
+				titleSection={sectionTitles[SectionId.PROMO]}
+			/>
 			<About />
 			<Contacts
 				idSection={SectionId.CONTACTS}
