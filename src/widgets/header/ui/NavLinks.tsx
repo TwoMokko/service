@@ -1,45 +1,26 @@
+'use client';
+
 import React from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
-
 import Link from "next/link";
-
 import { navigationLinks, sectionTitles } from "@/src/shared/config";
 import { useServicesMenu } from "@/src/shared/lib/hooks/useServicesMenu";
 import { NavigationLink, SectionId } from "@/src/shared/types/types";
-import { HeaderServicesNav } from "@/src/widgets/header/ui/HeaderServicesNav";
-
+import { CategoryWithServices } from "@/src/shared/data/services";
+import { HeaderServicesNav } from "./HeaderServicesNav";
 import styles from "./Header.module.scss";
 
 interface NavLinksProps {
-	onClick?: () => void;
-	isMobile?: boolean;
+	services: CategoryWithServices[];
 }
 
-export function NavLinks({ onClick, isMobile }: NavLinksProps) {
+export function NavLinks({ services }: NavLinksProps) {
 	const servicesMenu = useServicesMenu(200);
 
 	return (
-		<nav>
+		<nav className="mob-hide">
 			<ul className={styles.headerNav}>
 				{navigationLinks.map((link: NavigationLink) => {
-					// Для мобильной версии - просто ссылка без выпадающего меню
-					if (isMobile) {
-						return (
-							<li key={link.href}>
-								<Link
-									prefetch={false}
-									className={styles.link}
-									href={link.href}
-									onClick={onClick}
-									rel="noopener noreferrer"
-								>
-									{link.title}
-								</Link>
-							</li>
-						);
-					}
-
-					// Для десктопа - услуги с выпадающим меню
 					if (link.title === sectionTitles[SectionId.SERVICES]) {
 						return (
 							<React.Fragment key={link.href}>
@@ -58,21 +39,19 @@ export function NavLinks({ onClick, isMobile }: NavLinksProps) {
 										{...servicesMenu.menuHandlers}
 										className={`${styles.servicesMenuWrapper} ${servicesMenu.isOpen ? styles.active : ""}`}
 									>
-										<HeaderServicesNav />
+										<HeaderServicesNav services={services} />
 									</div>
 								</li>
 							</React.Fragment>
 						);
 					}
 
-					// Обычные ссылки
 					return (
 						<li key={link.href}>
 							<Link
 								prefetch={false}
 								className={styles.link}
 								href={link.href}
-								onClick={onClick}
 								rel="noopener noreferrer"
 							>
 								{link.title}

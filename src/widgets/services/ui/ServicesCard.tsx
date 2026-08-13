@@ -6,7 +6,7 @@ import { LuArrowUpRight } from "react-icons/lu";
 import Image from "next/image";
 import Link from "next/link";
 
-import { CategoryWithServices } from "@/src/shared/data/services/categories";
+import { CategoryWithServices } from "@/src/shared/data/services";
 import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import { Button } from "@/src/shared/ui/button/Button";
 

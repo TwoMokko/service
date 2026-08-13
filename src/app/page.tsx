@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { metaDataHomePage, sectionTitles } from "@/src/shared/config";
 import { getServices } from "@/src/shared/data/services";
-import { CategoryWithServices } from "@/src/shared/data/services/categories";
+import { CategoryWithServices } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { About } from "@/src/widgets/about";
 import { Brands } from "@/src/widgets/brand";

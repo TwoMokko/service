@@ -8,7 +8,7 @@ import { LuArrowUpRight } from "react-icons/lu";
 import Image from "next/image";
 import Link from "next/link";
 
-import type { CategoryWithServices } from "@/src/shared/data/services/categories";
+import type { CategoryWithServices } from "@/src/shared/data/services";
 import { Button } from "@/src/shared/ui/button/Button";
 
 import styles from "./ServicesMini.module.scss";

@@ -1,6 +1,7 @@
+'use client';
+
 import { about } from "@/src/shared/config";
 import SearchAndResults from "@/src/shared/ui/search/SearchAndResults";
-
 import styles from "./Header.module.scss";
 
 export function HeaderTop() {

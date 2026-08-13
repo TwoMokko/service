@@ -1,0 +1,522 @@
+// ============================================
+// ОБЩИЕ СТИЛИ
+// ============================================
+
+.adminPage {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 180px;
+  padding-bottom: 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+// ============================================
+// ШАПКА
+// ============================================
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e5e7eb;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+  }
+}
+
+.headerButtons {
+  display: flex;
+  gap: 8px;
+}
+
+// ============================================
+// КНОПКИ
+// ============================================
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  color: white;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btnSave {
+  background-color: #3b82f6;
+
+  &:hover:not(:disabled) {
+    background-color: #2563eb;
+  }
+}
+
+.btnLogout {
+  background-color: #6b7280;
+
+  &:hover:not(:disabled) {
+    background-color: #4b5563;
+  }
+}
+
+.btnAdd {
+  background-color: #22c55e;
+  font-size: 13px;
+  padding: 4px 12px;
+
+  &:hover {
+    background-color: #16a34a;
+  }
+}
+
+.btnDelete {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 8px;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #dc2626;
+  }
+}
+
+.btnRemoveItem {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 6px;
+
+  &:hover {
+    color: #dc2626;
+  }
+}
+
+.btnAddItem {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 4px;
+
+  &:hover {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+}
+
+.btnCollapse {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #6b7280;
+  padding: 4px 8px;
+
+  &:hover {
+    color: #374151;
+  }
+}
+
+// ============================================
+// СООБЩЕНИЯ
+// ============================================
+
+.message {
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.messageSuccess {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.messageError {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+// ============================================
+// КАТЕГОРИИ
+// ============================================
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+  }
+}
+
+.categoryCard {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.categoryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f9fafb;
+  cursor: pointer;
+  border-bottom: 1px solid #e5e7eb;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+}
+
+.categoryInfo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .categoryTitle {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .categoryBadge {
+    font-size: 12px;
+    background-color: #e5e7eb;
+    color: #6b7280;
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+}
+
+.categoryActions {
+  display: flex;
+  gap: 4px;
+}
+
+// ============================================
+// КОНТЕНТ КАТЕГОРИИ (услуги)
+// ============================================
+
+.categoryContent {
+  padding: 16px;
+}
+
+.categoryFields {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.categoryDescription {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  outline: none;
+  resize: vertical;
+  font-family: inherit;
+
+  &:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+}
+
+.categoryMeta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+// ============================================
+// УСЛУГИ ВНУТРИ КАТЕГОРИИ
+// ============================================
+
+.servicesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0 8px 0;
+
+  h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    color: #4b5563;
+  }
+}
+
+.serviceCard {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  background-color: #fafafa;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+}
+
+.serviceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.serviceTitle {
+  font-weight: 500;
+  font-size: 15px;
+  flex: 1;
+}
+
+.serviceFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.serviceFull {
+  grid-column: 1 / -1;
+}
+
+// ============================================
+// ПОЛЯ ВВОДА
+// ============================================
+
+.input {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+}
+
+.textarea {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  outline: none;
+  resize: vertical;
+  font-family: inherit;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+}
+
+.inputNumber {
+  width: 100px;
+}
+
+.inputMedium {
+  width: 140px;
+}
+
+// ============================================
+// ВНУТРЕННИЕ УСЛУГИ
+// ============================================
+
+.innerServices {
+  margin-top: 8px;
+  padding-left: 12px;
+  border-left: 2px solid #e5e7eb;
+
+  .label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #6b7280;
+  }
+}
+
+.innerItem {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  align-items: center;
+}
+
+// ============================================
+// СТРОКИ
+// ============================================
+
+.rowFlex {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.rowGap {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+// ============================================
+// ПОДВАЛ
+// ============================================
+
+.footer {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+// ============================================
+// СТРАНИЦА ВХОДА
+// ============================================
+
+.loginPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9fafb;
+}
+
+.loginBox {
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  width: 384px;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 4px 0;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+
+  .error {
+    color: #ef4444;
+    font-size: 14px;
+    margin: 8px 0 16px 0;
+  }
+
+  .hint {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 12px;
+    margin-top: 16px;
+  }
+}
+
+.loginInput {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+}
+
+.loginBtn {
+  width: 100%;
+  padding: 10px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #2563eb;
+  }
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+// ============================================
+// ЗАГРУЗКА
+// ============================================
+
+.loading {
+  padding: 32px;
+  text-align: center;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.errorText {
+  padding: 32px;
+  text-align: center;
+  color: #ef4444;
+}

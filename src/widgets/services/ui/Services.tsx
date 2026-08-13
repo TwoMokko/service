@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import type { CategoryWithServices } from "@/src/shared/data/services/categories";
+import type { CategoryWithServices } from "@/src/shared/data/services";
 import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import { Button } from "@/src/shared/ui/button/Button";
 import { ServicesCard } from "@/src/widgets/services/ui/ServicesCard";
