@@ -1,13 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { MdDone } from "react-icons/md";
+import React from "react";
+import { MdOutlineClose } from "react-icons/md";
 
-import Link from "next/link";
-
-import { usePhoneMask } from "@/src/shared/lib/hooks/usePhoneMask";
-import { useSubmit } from "@/src/shared/lib/hooks/useSubmit";
-import { FormData } from "@/src/shared/types/types";
+import { useFormLogic } from "@/src/shared/lib/hooks/useFormLogic";
+import { AgreementCheckboxes } from "@/src/shared/ui/agreementCheckboxes/AgreementCheckboxes";
 import { Button } from "@/src/shared/ui/button/Button";
 import { Input } from "@/src/shared/ui/input/Input";
 
@@ -21,32 +18,7 @@ interface FormProps {
 }
 
 export function Form({ title, content, imageSrc, variant = "start" }: FormProps) {
-	const { handleSubmit, isLoading } = useSubmit();
-	const { phoneValue, onPhoneChange } = usePhoneMask();
-	const [isAgreed, setIsAgreed] = useState(true);
-	const [formData, setFormData] = useState<FormData>({
-		phone: "",
-		url: "",
-	});
-
-	const submit = async (e: React.FormEvent) => {
-		e.preventDefault();
-
-		if (!isAgreed) {
-			alert("Пожалуйста, согласитесь с обработкой персональных данных");
-			return;
-		}
-
-		await handleSubmit(formData);
-	};
-
-	const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		onPhoneChange(e);
-		setFormData((prev) => ({
-			...prev,
-			phone: e.target.value,
-		}));
-	};
+	const form = useFormLogic({ showNameField: false });
 
 	return (
 		<div className={`${styles.form__wrap} ${variant === "end" ? styles.end : ""}`}>
@@ -56,46 +28,46 @@ export function Form({ title, content, imageSrc, variant = "start" }: FormProps)
 			<div className={styles.info}>
 				{title}
 				{content}
-				<form onSubmit={submit} className={styles.form}>
+				<form
+					noValidate
+					onSubmit={form.submit}
+					className={`${styles.form} ${form.submitError ? styles.formError : ""}`}
+				>
+					{form.submitError && (
+						<div className={styles.errorToast}>
+							{form.submitError}
+							<button
+								type="button"
+								onClick={form.resetError}
+								className={styles.toastClose}
+							>
+								<MdOutlineClose />
+							</button>
+						</div>
+					)}
 					<div className={styles.form__inputs}>
 						<Input
 							type="tel"
 							inputName="phone"
-							placeholder="Ваш телефон"
-							value={phoneValue}
-							handleChange={handlePhoneChange}
+							placeholder="+7 (___) ___-__-__"
+							value={form.phoneValue}
+							handleChange={form.handlePhoneChange}
+							className={form.errors.phone ? styles.errorInput : ""}
 							required
 						/>
-						<Button type="submit" disabled={!isAgreed || isLoading}>
-							{isLoading ? "Отправка..." : "Записаться на сервис"}
+						<Button type="submit" disabled={form.isLoading}>
+							{form.isLoading ? "Отправка..." : "Записаться на сервис"}
 						</Button>
 					</div>
 
-					<label className={styles.checkbox__wrap}>
-						<input
-							type="checkbox"
-							checked={isAgreed}
-							onChange={(e) => setIsAgreed(e.target.checked)}
-							required
-						/>
-						<span className={styles.checkbox}>
-							{isAgreed && <MdDone color="black" />}
-						</span>
-						<div>
-							Отправив форму путём нажатия на кнопку, я подтверждаю, что ознакомлен
-							<br className="laptop-hide" />с
-							<Link
-								prefetch={false}
-								href="/policy"
-								target="_blank"
-								rel="noopener noreferrer"
-								className={styles.policyLink}
-							>
-								политикой конфиденциальности
-							</Link>
-							сайта и даю согласие на обработку моих персональных данных.
-						</div>
-					</label>
+					<AgreementCheckboxes
+						agreementPersonalData={form.formData.agreementPersonalData ?? false}
+						agreementMarketing={form.formData.agreementMarketing ?? false}
+						errors={form.errors}
+						isSubmitted={form.isSubmitted}
+						onAgreementChange={form.setFieldValue}
+						className={styles.modalAgreements}
+					/>
 				</form>
 			</div>
 		</div>

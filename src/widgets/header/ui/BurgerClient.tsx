@@ -1,12 +1,15 @@
-'use client';
+"use client";
 
 import { useEffect } from "react";
-import { about } from "@/src/shared/config";
-import { useBurgerMenu } from "@/src/shared/lib/hooks/useBurgerMenu";
+
 import { useModal } from "@/src/app/_providers/ModalProvider";
-import { Button } from "@/src/shared/ui/button/Button";
+import { about } from "@/src/shared/config";
 import { CategoryWithServices } from "@/src/shared/data/services";
+import { useBurgerMenu } from "@/src/shared/lib/hooks/useBurgerMenu";
+import { Button } from "@/src/shared/ui/button/Button";
+
 import { NavLinksMobile } from "./NavLinksMobile";
+
 import styles from "./Header.module.scss";
 
 interface BurgerClientProps {
@@ -55,9 +58,7 @@ export function BurgerClient({ services }: BurgerClientProps) {
 						</ul>
 
 						<ul className={styles.headerBurgerMenuContacts}>
-							<li className={styles.headerBurgerMenuContactsItem}>
-								{about.address}
-							</li>
+							<li className={styles.headerBurgerMenuContactsItem}>{about.address}</li>
 							<li className={styles.headerBurgerMenuContactsItem}>
 								<a href={`tel:${about.phoneLink}`}>
 									<strong>{about.phone}</strong>
@@ -66,9 +67,7 @@ export function BurgerClient({ services }: BurgerClientProps) {
 						</ul>
 
 						<div className={styles.headerBurgerMenuBtns}>
-							<Button onClick={handleOpenModal}>
-								Записаться на сервис
-							</Button>
+							<Button onClick={handleOpenModal}>Записаться на сервис</Button>
 						</div>
 					</div>
 				</div>

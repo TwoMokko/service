@@ -81,7 +81,11 @@ export function Hero() {
 								>
 									Бесплатная консультация
 								</Button>
-								<a href="/video/video4.mp4" data-fancybox datatype="html5video">
+								<a
+									href="/video/video4.mp4"
+									data-fancybox="video-hero"
+									datatype="html5video"
+								>
 									<Button variant="outline" minWidth={306} className={styles.btn}>
 										Смотреть видео о сервисе
 									</Button>

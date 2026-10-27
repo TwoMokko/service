@@ -73,62 +73,6 @@
 	@include mobile {
 		width: 100%;
 	}
-
-	.form__inputs {
-		display: flex;
-		gap: 16px;
-
-		@include laptop {
-			gap: 8px;
-		}
-
-		@include mobile {
-			flex-direction: column;
-		}
-
-		button {
-			flex: none;
-		}
-	}
-
-	.checkbox__wrap {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		font-size: 13px;
-		font-weight: 500;
-		line-height: 110%;
-		margin-top: 16px;
-
-		@include mobile {
-			font-size: 11px;
-			gap: 8px;
-			margin-top: 14px;
-		}
-
-		input[type="checkbox"] {
-			display: none;
-		}
-
-		.checkbox {
-			width: 24px;
-			height: 24px;
-			border-radius: 2px;
-			background-color: $color-more-light-gray;
-			flex: none;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.policyLink {
-			text-decoration: underline;
-			padding: 0 4px;
-		}
-
-		> div {
-			color: $color-more-light-gray;
-			opacity: 0.5;
-		}
-	}
 }
+
+@include formStyle;

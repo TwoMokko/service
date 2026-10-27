@@ -1,13 +1,17 @@
-'use client';
+"use client";
 
 import React from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
+
 import Link from "next/link";
+
 import { navigationLinks, sectionTitles } from "@/src/shared/config";
+import { CategoryWithServices } from "@/src/shared/data/services";
 import { useServicesMenu } from "@/src/shared/lib/hooks/useServicesMenu";
 import { NavigationLink, SectionId } from "@/src/shared/types/types";
-import { CategoryWithServices } from "@/src/shared/data/services";
+
 import { HeaderServicesNav } from "./HeaderServicesNav";
+
 import styles from "./Header.module.scss";
 
 interface NavLinksProps {

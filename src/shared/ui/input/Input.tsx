@@ -25,18 +25,20 @@ export function Input({
 	handleChange,
 	className,
 }: InputProps) {
-	const inputClass = `${styles.input} ${className ? className : ""}`;
+	const inputClasses = `${styles.field} ${className ? className : ""}`;
 
 	return (
-		<input
-			type={type}
-			name={inputName}
-			placeholder={placeholder}
-			value={value}
-			onChange={handleChange}
-			required={required}
-			className={inputClass}
-			data-min-width={minWidth}
-		/>
+		<div className={inputClasses}>
+			<input
+				type={type}
+				name={inputName}
+				placeholder={placeholder}
+				value={value}
+				onChange={handleChange}
+				required={required}
+				className={styles.input}
+				data-min-width={minWidth}
+			/>
+		</div>
 	);
 }

@@ -2,6 +2,7 @@ import { ChangeEvent, useCallback, useState } from "react";
 
 export function usePhoneMask(initValue: string = "") {
 	const [phoneValue, setPhoneValue] = useState<string>(initValue);
+	const resetPhone = useCallback(() => setPhoneValue(""), []);
 
 	const handlePhoneChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value;
@@ -49,5 +50,6 @@ export function usePhoneMask(initValue: string = "") {
 	return {
 		phoneValue,
 		onPhoneChange: handlePhoneChange,
+		resetPhone,
 	};
 }

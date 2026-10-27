@@ -46,6 +46,10 @@
 				font-size: 14px;
 				color: $color-gray;
 			}
+
+			> button {
+				flex: none;
+			}
 		}
 
 		.categories {

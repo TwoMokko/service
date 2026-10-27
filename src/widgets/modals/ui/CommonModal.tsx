@@ -10,7 +10,7 @@ import styles from "./Modals.module.scss";
 
 export function CommonModal() {
 	const title: React.ReactNode = (
-		<h2 className={styles.title}>
+		<h2 className={`${styles.title} section-title`}>
 			Получить консультацию
 			{/*<br />*/}
 		</h2>
@@ -24,5 +24,11 @@ export function CommonModal() {
 		</p>
 	);
 
-	return <BaseFormModal title={title} content={content} />;
+	return (
+		<BaseFormModal
+			title={title}
+			content={content}
+			imageSrc="/images/modals/modal-bg-common.png"
+		/>
+	);
 }

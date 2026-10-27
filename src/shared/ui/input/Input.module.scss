@@ -5,20 +5,22 @@
 	font-size: 16px;
 	line-height: 100%;
 	font-weight: 600;
-	padding: 16px;
-	border: none;
 	border-radius: 8px;
 	cursor: pointer;
 	transition: all 0.3s ease;
 	width: 100%;
-
-	background-color: $color-more-light-gray;
+	border: 1px solid transparent;
 	color: $color-gray;
 
+	background-color: $color-white;
+	height: 48px;
+	padding-left: 24px;
+	padding-right: 40px;
+
 	@include mobile {
-		width: 100%;
-		padding: 15px;
-		text-align: center;
+		padding-left: 14px;
+		padding-right: 30px;
+		height: 44px;
 	}
 
 	&[data-min-width] {
@@ -27,5 +29,23 @@
 
 	&::placeholder {
 		color: $color-gray;
+	}
+}
+
+.field {
+	position: relative;
+}
+.field:has(input:required)::after {
+	content: "*";
+	position: absolute;
+	right: 24px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: red;
+	font-size: 16px;
+	pointer-events: none;
+
+	@include mobile {
+		right: 14px;
 	}
 }

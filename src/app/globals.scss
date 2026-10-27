@@ -100,6 +100,7 @@ input:focus {
 	font-size: 40px;
 	line-height: 100%;
 	font-weight: 600;
+	letter-spacing: -0.04em;
 
 	@include mobile {
 		font-size: 24px;
