@@ -34,10 +34,12 @@ export function ServicesPriceList({ services, title }: ServicesPriceListProps) {
 	};
 
 	const handleService = (service: Service) => {
+		if (!service.items.length) return;
 		if (service.id === activeService?.id) {
 			setActiveService(null);
 			return;
 		}
+		console.log("here");
 
 		setActiveService(service);
 	};
@@ -102,14 +104,14 @@ export function ServicesPriceList({ services, title }: ServicesPriceListProps) {
 															<div className={styles.service__title}>
 																{service.title}
 															</div>
-															{service.items?.length && (
+															{service.items && (
 																<IoIosArrowDown
 																	size={20}
 																	aria-hidden="true"
 																/>
 															)}
 														</article>
-														{service.items?.length && (
+														{service.items && (
 															<ul className={styles.service__list}>
 																{service.items?.map((itm) => (
 																	<li
@@ -163,11 +165,11 @@ export function ServicesPriceList({ services, title }: ServicesPriceListProps) {
 												<div className={styles.service__title}>
 													{service.title}
 												</div>
-												{service.items?.length && (
+												{service.items?.length > 0 && (
 													<IoIosArrowDown size={20} aria-hidden="true" />
 												)}
 											</article>
-											{service.items?.length && (
+											{service.items?.length > 0 && (
 												<ul className={styles.service__list}>
 													{service.items?.map((itm) => (
 														<li

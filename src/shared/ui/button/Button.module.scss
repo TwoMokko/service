@@ -19,12 +19,17 @@
 
 	@include mobile {
 		width: 100%;
-		padding: 12px;
+		padding: 14px;
 		font-size: 14px;
 	}
 
 	&[data-min-width] {
 		min-width: attr(data-min-width px);
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
 	}
 }
 

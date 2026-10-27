@@ -45,7 +45,7 @@ export function About() {
 							<div className={styles.actions__separator}></div>
 							<a
 								href="/video/video4.mp4"
-								data-fancybox
+								data-fancybox="video-about"
 								datatype="html5video"
 								className={styles.link}
 							>

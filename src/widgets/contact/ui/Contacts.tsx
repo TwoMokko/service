@@ -4,12 +4,11 @@ import { EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import { about } from "@/src/shared/config";
 import { brandsTitlesData } from "@/src/shared/data/brands";
-import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import ContactItem from "@/src/widgets/contact/ui/ContactItem";
 
 import styles from "./Contacts.module.scss";
@@ -23,9 +22,10 @@ export function Contacts({
 	titleSection: string;
 	titlePage?: boolean;
 }) {
-	const { isMobile } = useDevice();
 	const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 	const [activeIndex, setActiveIndex] = useState(0);
+	const wrapRef = useRef<HTMLDivElement>(null);
+	const [shouldLoadMap, setShouldLoadMap] = useState(false);
 
 	const contactsData = [
 		{
@@ -44,7 +44,17 @@ export function Contacts({
 			time: about.time,
 			brands: brandsTitlesData.official33,
 		},
+		{
+			id: "third",
+			address: about.addressSecond,
+			phone: about.phoneSecond,
+			email: about.email,
+			time: about.time,
+			brands: brandsTitlesData.official33,
+		},
 	];
+
+	const activeContact = contactsData[activeIndex];
 
 	const handleAddressClick = (index: number) => {
 		if (swiperInstance) {
@@ -52,6 +62,24 @@ export function Contacts({
 			setActiveIndex(index);
 		}
 	};
+
+	useEffect(() => {
+		const el = wrapRef.current;
+		if (!el) return;
+
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					setShouldLoadMap(true);
+					observer.disconnect();
+				}
+			},
+			{ threshold: 0.01, rootMargin: "100px" },
+		);
+
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, []);
 
 	const navigation = {
 		prevEl: "[data-contacts-prev]",
@@ -71,7 +99,7 @@ export function Contacts({
 				>
 					{titleSection}
 				</h2>
-				<div className={styles.contactsWrap}>
+				<div ref={wrapRef} className={styles.contactsWrap}>
 					<div className={styles.contactsNav}>
 						<nav className={styles.contactsSwitcher}>
 							{contactsData.map((contact, idx) => (
@@ -110,34 +138,42 @@ export function Contacts({
 					/>
 
 					<div className={styles.contactsItemsContainer}>
-						<Swiper
-							modules={[Navigation, Pagination, EffectFade]}
-							spaceBetween={0}
-							slidesPerView={1}
-							navigation={navigation}
-							pagination={pagination}
-							effect="fade"
-							fadeEffect={{ crossFade: true }}
-							speed={500}
-							allowTouchMove={false}
-							simulateTouch={false}
-							onSwiper={setSwiperInstance}
-							onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-							className={styles.contactsSwiper}
-						>
-							{contactsData.map((contact) => (
-								<SwiperSlide key={contact.id}>
-									<ContactItem
-										address={contact.address}
-										phone={contact.phone}
-										email={contact.email}
-										time={contact.time}
-										isActive={true}
-										brands={contact.brands}
-									/>
-								</SwiperSlide>
-							))}
-						</Swiper>
+						<div className={styles.contactsItem}>
+							<Swiper
+								modules={[Navigation, Pagination, EffectFade]}
+								spaceBetween={0}
+								slidesPerView={1}
+								navigation={navigation}
+								pagination={pagination}
+								effect="fade"
+								fadeEffect={{ crossFade: true }}
+								speed={500}
+								allowTouchMove={false}
+								simulateTouch={false}
+								onSwiper={setSwiperInstance}
+								onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+								className={styles.contactsSwiper}
+							>
+								{contactsData.map((contact) => (
+									<SwiperSlide
+										key={contact.id}
+										className={`${styles.slide} ${contact.id === activeContact.id ? styles.active : ""}`}
+										aria-hidden={contact.id !== activeContact.id}
+										inert={contact.id === activeContact.id ? undefined : true}
+									>
+										<ContactItem
+											address={contact.address}
+											phone={contact.phone}
+											email={contact.email}
+											time={contact.time}
+											brands={contact.brands}
+										/>
+									</SwiperSlide>
+								))}
+							</Swiper>
+
+							{/*<YaMap address={activeContact.address} />*/}
+						</div>
 					</div>
 				</div>
 			</div>

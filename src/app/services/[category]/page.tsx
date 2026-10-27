@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { sectionTitles } from "@/src/shared/config";
-import { getAllCategorySlugs, getCategoryWithServices } from "@/src/shared/data/services";
+import { getAllCategorySlugs, getCategoryByHref } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
 import { About } from "@/src/widgets/about";
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 	const { category } = await params;
 
 	try {
-		const categoryData = getCategoryWithServices(category);
+		const categoryData = getCategoryByHref(category);
 		if (!categoryData) throw new Error("Category not found");
 		return categoryData.meta;
 	} catch {
@@ -39,7 +39,7 @@ export default async function CategoryPage({ params }: ServicePageProps) {
 
 	let currentCategory;
 	try {
-		currentCategory = getCategoryWithServices(category);
+		currentCategory = getCategoryByHref(category);
 		if (!currentCategory) throw new Error("Category not found");
 	} catch {
 		notFound();

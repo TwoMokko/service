@@ -7,7 +7,7 @@ import styles from "@/src/widgets/modals/ui/Modals.module.scss";
 import { BaseFormModal } from "./BaseFormModal";
 
 export function TradeModal() {
-	const title: React.ReactNode = <h2 className={styles.title}>Трейд-ин</h2>;
+	const title: React.ReactNode = <h2 className={`${styles.title} section-title`}>Трейд-ин</h2>;
 
 	const content: React.ReactNode = (
 		<>
@@ -21,5 +21,11 @@ export function TradeModal() {
 		</>
 	);
 
-	return <BaseFormModal title={title} content={content} />;
+	return (
+		<BaseFormModal
+			title={title}
+			content={content}
+			imageSrc="/images/modals/modal-bg-common.png"
+		/>
+	);
 }

@@ -1,92 +1,322 @@
 {
-  "services": {
-    "zamena-masla-v-dvigatele": {
-      "id": 1,
-      "href": "zamena-masla-v-dvigatele",
-      "title": "Замена масла в двигателе",
-      "shortDescription": "Профессиональная замена масла",
-      "description": "Полная замена моторного масла с промывкой системы.",
-      "price": 2500,
-      "time": "30 мин",
-      "categoryId": "tekhnicheskoe-obsluzhivanie",
-      "meta": {
-        "title": "Замена масла в двигателе | Автосервис",
-        "description": "Замена масла в двигателе по доступным ценам"
-      },
-      "items": [
-        {
-          "title": "Частичная замена масла в АКПП",
-          "price": 5442
-        },
-        {
-          "title": "Замена воздушного фильтра",
-          "price": 4326
-        }
-      ]
-    },
-    "new-2": {
-      "id": 2,
-      "href": "new-2",
-      "title": "Новая услуга",
-      "shortDescription": "Краткое описание",
-      "description": "Полное описание",
-      "price": 5555,
-      "time": "30 мин",
-      "categoryId": "new-cat-2",
-      "meta": {
-        "title": "Новая услуга",
-        "description": "SEO описание"
-      },
-      "items": [
-        {
-          "title": "Замена масла в редукторе",
-          "price": 6666
-        }
-      ]
-    },
-    "new-3": {
-      "id": 3,
-      "href": "new-3",
-      "title": "Замена воздушного фильтра",
-      "shortDescription": "Краткое описание",
-      "description": "Полное описание",
-      "price": 5654,
-      "time": "30 мин",
-      "categoryId": "tekhnicheskoe-obsluzhivanie",
-      "meta": {
-        "title": "Новая услуга",
-        "description": "SEO описание"
-      },
-      "items": []
-    }
-  },
-  "categories": {
-    "tekhnicheskoe-obsluzhivanie": {
-      "id": 1,
-      "title": "Техническое обслуживание",
-      "href": "tekhnicheskoe-obsluzhivanie",
-      "description": "Полный спектр работ по ТО автомобиля",
-      "items": [
-        "zamena-masla-v-dvigatele",
-        "new-3"
-      ],
-      "meta": {
-        "title": "Техническое обслуживание | Автосервис",
-        "description": "Техническое обслуживание всех марок авто"
-      }
-    },
-    "new-cat-2": {
-      "id": 2,
-      "title": "Слесарный ремонт",
-      "href": "new-cat-2",
-      "description": "Описание категории",
-      "items": [
-        "new-2"
-      ],
-      "meta": {
-        "title": "Новая категория",
-        "description": "SEO описание"
-      }
-    }
-  }
+	"services": {
+		"zamena-masla-v-dvigatele": {
+			"id": 1,
+			"href": "filtry-zhidkosti",
+			"title": "Фильтры и жидкости",
+			"shortDescription": "Профессиональная замена масла",
+			"description": "Полная замена моторного масла с промывкой системы.",
+			"price": 1800,
+			"time": "30 мин",
+			"categoryId": "tekhnicheskoe-obsluzhivanie",
+			"meta": {
+				"title": "Замена масла в двигателе | Автосервис",
+				"description": "Замена масла в двигателе по доступным ценам"
+			},
+			"items": [
+				{
+					"title": "Замена жидкости ГУР",
+					"price": 4500
+				},
+				{
+					"title": "Замена воздушного фильтра",
+					"price": 1800
+				},
+				{
+					"title": "Замена тормозной жидкости",
+					"price": 4500
+				},
+				{
+					"title": "Замена топливного фильтра",
+					"price": 3500
+				},
+				{
+					"title": "Замена сажевого фильтра",
+					"price": 6500
+				},
+				{
+					"title": "Замена салонного фильтра",
+					"price": 1800
+				},
+				{
+					"title": "Замена масляного насоса",
+					"price": 27000
+				},
+				{
+					"title": "Замена масляного фильтра",
+					"price": 1800
+				}
+			]
+		},
+		"new-3": {
+			"id": 3,
+			"href": "transmissia",
+			"title": "Трансмиссия",
+			"shortDescription": "Краткое описание",
+			"description": "Полное описание",
+			"price": 4200,
+			"time": "30 мин",
+			"categoryId": "tekhnicheskoe-obsluzhivanie",
+			"meta": {
+				"title": "Новая услуга",
+				"description": "SEO описание"
+			},
+			"items": [
+				{
+					"title": "Частичная замена масла в АКПП",
+					"price": 5600
+				},
+				{
+					"title": "Замена масла в раздаточной коробке",
+					"price": 4500
+				},
+				{
+					"title": "Замена масла в мостах",
+					"price": 4500
+				},
+				{
+					"title": "Замена масла в МКПП",
+					"price": 4500
+				},
+				{
+					"title": "Замена масла в двигателе",
+					"price": 4200
+				},
+				{
+					"title": "Замена масла в АКПП",
+					"price": 5500
+				}
+			]
+		},
+		"new-4": {
+			"id": 4,
+			"href": "new-4",
+			"title": "Ремонт трансмиссии",
+			"shortDescription": "Краткое описание Ремонт трансмиссии",
+			"description": "Полное описание Ремонт трансмиссии",
+			"price": 5500,
+			"time": "30 мин",
+			"categoryId": "new-cat-3",
+			"meta": {
+				"title": "Новая услуга",
+				"description": "SEO описание"
+			},
+			"items": [
+				{
+					"title": "Ремонт КПП",
+					"price": 25000
+				},
+				{
+					"title": "Замена крестовины карданного вала",
+					"price": 9500
+				},
+				{
+					"title": "Замена сцепления DSG",
+					"price": 25000
+				},
+				{
+					"title": "Замена диска сцепления МКПП",
+					"price": 26000
+				},
+				{
+					"title": "Замена главного цилиндра сцепления",
+					"price": 18000
+				},
+				{
+					"title": "Дефектовка МКПП",
+					"price": 25000
+				},
+				{
+					"title": "Адаптация КПП",
+					"price": 5500
+				}
+			]
+		},
+		"new-5": {
+			"id": 5,
+			"href": "dvigatel",
+			"title": "Двигатель",
+			"shortDescription": "Краткое описание",
+			"description": "Полное описание",
+			"price": 4500,
+			"time": "30 мин",
+			"categoryId": "tekhnicheskoe-obsluzhivanie",
+			"meta": {
+				"title": "Новая услуга",
+				"description": "SEO описание"
+			},
+			"items": [
+				{
+					"title": "Замена свечей зажигания",
+					"price": 4500
+				},
+				{
+					"title": "Замена прокладки поддона",
+					"price": 5000
+				},
+				{
+					"title": "Замена приводных ремней",
+					"price": 4800
+				},
+				{
+					"title": "Замена цепи ГРМ",
+					"price": 30000
+				},
+				{
+					"title": "Техническое обслуживание двигателя",
+					"price": 6000
+				}
+			]
+		},
+		"new-6": {
+			"id": 6,
+			"href": "new-6",
+			"title": "Электрика",
+			"shortDescription": "Краткое описание Электрика",
+			"description": "Полное описание Электрика",
+			"price": 3500,
+			"time": "30 мин",
+			"categoryId": "new-cat-4",
+			"meta": {
+				"title": "Новая услуга",
+				"description": "SEO описание"
+			},
+			"items": [
+				{
+					"title": "Компьютерная диагностика двигателя",
+					"price": 3500
+				},
+				{
+					"title": "Диагностика стартера",
+					"price": 6000
+				},
+				{
+					"title": "Диагностика ошибок автомобиля",
+					"price": 3500
+				},
+				{
+					"title": "Диагностика генератора",
+					"price": 3500
+				},
+				{
+					"title": "Диагностика электрики",
+					"price": 3500
+				},
+				{
+					"title": "Диагностика ЭБУ автомобиля",
+					"price": 3500
+				}
+			]
+		},
+		"new-7": {
+			"id": 7,
+			"href": "new-7",
+			"title": "Трансмиссия",
+			"shortDescription": "Краткое описание Трансмиссия",
+			"description": "Полное описание Трансмиссия",
+			"price": 3500,
+			"time": "30 мин",
+			"categoryId": "new-cat-4",
+			"meta": {
+				"title": "Новая услуга",
+				"description": "SEO описание"
+			},
+			"items": [
+				{
+					"title": "Диагностика АКПП",
+					"price": 3500
+				}
+			]
+		},
+		"service-8": {
+			"id": 8,
+			"href": "shinomontazh-diametr",
+			"title": "Шиномонтаж (по диаметру)",
+			"shortDescription": "Краткое описание Шиномонтаж (по диаметру)",
+			"description": "Полное описание Шиномонтаж (по диаметру)",
+			"price": 3000,
+			"time": "30 мин",
+			"categoryId": "cat-5",
+			"meta": {
+				"title": "Новая услуга",
+				"description": "SEO описание"
+			},
+			"items": [
+				{
+					"title": "Шиномонтаж R-15 радиус",
+					"price": 3200
+				},
+				{
+					"title": "Шиномонтаж R-22 радиус",
+					"price": 7000
+				}
+			]
+		},
+		"service-9": {
+			"id": 9,
+			"href": "shinomontazh-run-flat",
+			"title": "Шиномонтаж Run Flat",
+			"shortDescription": "Краткое описание Шиномонтаж Run Flat",
+			"description": "Полное описание Шиномонтаж Run Flat",
+			"price": 7000,
+			"time": "30 мин",
+			"categoryId": "cat-5",
+			"meta": {
+				"title": "Новая услуга",
+				"description": "SEO описание"
+			},
+			"items": [
+				{
+					"title": "Шиномонтаж Run Flat",
+					"price": 7000
+				}
+			]
+		}
+	},
+	"categories": {
+		"tekhnicheskoe-obsluzhivanie": {
+			"id": 1,
+			"title": "Техническое обслуживание",
+			"href": "tekhnicheskoe-obsluzhivanie",
+			"description": "Полный спектр работ по ТО автомобиля",
+			"items": ["zamena-masla-v-dvigatele", "new-3", "new-5"],
+			"meta": {
+				"title": "Техническое обслуживание | Автосервис",
+				"description": "Техническое обслуживание всех марок авто"
+			}
+		},
+		"new-cat-3": {
+			"id": 3,
+			"title": "Слесарный ремонт",
+			"href": "slesarny-remont",
+			"description": "Описание Слесарный Ремонт",
+			"items": ["new-4"],
+			"meta": {
+				"title": "Слесарный Ремонт seo",
+				"description": "SEO описание"
+			}
+		},
+		"new-cat-4": {
+			"id": 4,
+			"title": "Диагностика",
+			"href": "diagnostika",
+			"description": "Описание категории Диагностика",
+			"items": ["new-6", "new-7"],
+			"meta": {
+				"title": "Новая категория Диагностика",
+				"description": "SEO описание Диагностика"
+			}
+		},
+		"cat-5": {
+			"id": 5,
+			"title": "Шиномонтаж",
+			"href": "shinomontazh",
+			"description": "Описание категории Шиномонтаж",
+			"items": ["service-8", "service-9"],
+			"meta": {
+				"title": "Новая категория Шиномонтаж",
+				"description": "SEO описание Шиномонтаж"
+			}
+		}
+	}
 }

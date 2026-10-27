@@ -15,21 +15,22 @@ export interface Service {
 	description: string;
 	price: number;
 	time: string;
-	categoryId: string;
+	categoryId: string; // Это ключ категории в объекте categories
 	meta: {
 		title: string;
 		description: string;
 		keywords?: string[];
 	};
-	items?: ServiceItem[];
+	items: ServiceItem[];
 }
 
 export interface Category {
 	id: number;
 	title: string;
 	href: string;
+	// slug: string; // УДАЛЕНО - используем ключ объекта
 	description: string;
-	items: string[];
+	items: string[]; // Массив ключей услуг
 	meta: {
 		title: string;
 		description: string;
@@ -55,16 +56,16 @@ export type CategorySlug = keyof typeof categories;
 // ============================================
 
 export function loadData() {
-	if (typeof window !== 'undefined') {
+	if (typeof window !== "undefined") {
 		// На клиенте ничего не загружаем
 		return;
 	}
 
 	try {
-		const fs = require('fs');
-		const path = require('path');
-		const DATA_PATH = path.join(process.cwd(), 'data/services.json');
-		const raw = fs.readFileSync(DATA_PATH, 'utf-8');
+		const fs = require("fs");
+		const path = require("path");
+		const DATA_PATH = path.join(process.cwd(), "data/services.json");
+		const raw = fs.readFileSync(DATA_PATH, "utf-8");
 		const data = JSON.parse(raw);
 
 		// Обновляем экспортируемые данные
@@ -73,7 +74,7 @@ export function loadData() {
 
 		return data;
 	} catch (error) {
-		console.error('❌ Ошибка загрузки данных:', error);
+		console.error("❌ Ошибка загрузки данных:", error);
 		serviceItems = {};
 		categories = {};
 		return { services: {}, categories: {} };
@@ -81,7 +82,7 @@ export function loadData() {
 }
 
 // Загружаем данные при старте (только на сервере)
-if (typeof window === 'undefined') {
+if (typeof window === "undefined") {
 	loadData();
 }
 
@@ -91,7 +92,7 @@ if (typeof window === 'undefined') {
 
 async function fetchData() {
 	try {
-		const res = await fetch('/api/admin/data');
+		const res = await fetch("/api/admin/data");
 		return await res.json();
 	} catch {
 		return { services: {}, categories: {} };
@@ -100,24 +101,28 @@ async function fetchData() {
 
 export async function getServicesAsync(): Promise<CategoryWithServices[]> {
 	const data = await fetchData();
-	return Object.values(data.categories).map((category: any) => ({
+	// Получаем все категории с их ключами
+	return Object.entries(data.categories).map(([key, category]: [string, any]) => ({
 		...category,
-		items: category.items.map((slug: string) => data.services[slug]).filter(Boolean)
+		// Добавляем ключ как slug для обратной совместимости
+		slug: key,
+		items: category.items.map((slug: string) => data.services[slug]).filter(Boolean),
 	}));
 }
 
 export async function getAllCategoriesAsync() {
 	const data = await fetchData();
-	return Object.values(data.categories);
+	return Object.entries(data.categories).map(([key, category]: [string, any]) => ({
+		...category,
+		slug: key, // Добавляем ключ как slug
+	}));
 }
 
 export async function getServicesByCategoryAsync(categoryId: string) {
 	const data = await fetchData();
 	const category = data.categories[categoryId];
 	if (!category) return [];
-	return category.items
-		.map((slug: string) => data.services[slug])
-		.filter(Boolean);
+	return category.items.map((slug: string) => data.services[slug]).filter(Boolean);
 }
 
 export async function getCategoryWithServicesAsync(slug: string) {
@@ -126,7 +131,8 @@ export async function getCategoryWithServicesAsync(slug: string) {
 	if (!category) return null;
 	return {
 		...category,
-		items: category.items.map((slug: string) => data.services[slug]).filter(Boolean)
+		slug: slug, // Добавляем ключ как slug
+		items: category.items.map((slug: string) => data.services[slug]).filter(Boolean),
 	};
 }
 
@@ -140,11 +146,19 @@ export async function getServiceBySlugAsync(slug: string) {
 // ============================================
 
 export function getAllCategories() {
-	return Object.values(categories);
+	return Object.entries(categories).map(([key, category]) => ({
+		...category,
+		slug: key,
+	}));
 }
 
 export function getCategoryBySlug(slug: CategorySlug) {
-	return categories[slug];
+	const category = categories[slug];
+	if (!category) return null;
+	return {
+		...category,
+		slug: slug,
+	};
 }
 
 export function getCategoryWithServices(slug: string) {
@@ -152,6 +166,7 @@ export function getCategoryWithServices(slug: string) {
 	if (!category) return null;
 	return {
 		...category,
+		slug: slug, // Добавляем ключ как slug
 		items: category.items.map((itemSlug: string) => serviceItems[itemSlug as ServiceSlug]),
 	};
 }
@@ -171,35 +186,89 @@ export function getServiceWithCategory(slug: ServiceSlug) {
 export function getServicesByCategory(categoryId: CategorySlug): Service[] {
 	const category = categories[categoryId];
 	if (!category) return [];
-	return category.items
-		.map((slug: string) => serviceItems[slug as ServiceSlug])
-		.filter(Boolean);
+	return category.items.map((slug: string) => serviceItems[slug as ServiceSlug]).filter(Boolean);
 }
 
 export function getServices(): CategoryWithServices[] {
-	return getAllCategories().map((category) => ({
+	// Используем ключи категорий, а не поле slug
+	return Object.entries(categories).map(([key, category]) => ({
 		...category,
-		items: getServicesByCategory(category.href as CategorySlug),
+		slug: key, // Добавляем ключ как slug для совместимости
+		items: category.items
+			.map((slug: string) => serviceItems[slug as ServiceSlug])
+			.filter(Boolean),
 	}));
 }
 
 export function getServiceCategory(href: string): CategoryWithServices {
-	const category = getCategoryWithServices(href as CategorySlug);
-	if (!category) throw new Error(`Category ${href} not found`);
-	return category;
+	// Ищем категорию по href
+	const entry = Object.entries(categories).find(([key, category]) => category.href === href);
+	if (!entry) throw new Error(`Category with href ${href} not found`);
+	const [key, category] = entry;
+	return {
+		...category,
+		// slug: key, // Убираем эту строку
+		items: category.items
+			.map((slug: string) => serviceItems[slug as ServiceSlug])
+			.filter(Boolean),
+	};
 }
+
+// export function getServiceItem(
+// 	categoryHref: string,
+// 	serviceSlug: string,
+// ): Service & { category: CategoryWithServices } {
+// 	const service = getServiceBySlug(serviceSlug as ServiceSlug);
+// 	if (!service) throw new Error(`Service ${serviceSlug} not found`);
+//
+// 	const category = getServiceCategory(categoryHref);
+// 	if (!category) throw new Error(`Category ${categoryHref} not found`);
+//
+// 	// Проверяем, что услуга принадлежит категории
+// 	if (!category.items.some(s => s.href === serviceSlug)) {
+// 		throw new Error(`Service ${serviceSlug} not found in category ${categoryHref}`);
+// 	}
+//
+// 	return { ...service, category };
+// }
 
 export function getServiceItem(
 	categoryHref: string,
 	serviceSlug: string,
 ): Service & { category: CategoryWithServices } {
-	const service = getServiceWithCategory(serviceSlug as ServiceSlug);
-	if (!service || service.category.href !== categoryHref) {
+	// Ищем услугу по slug (ключу объекта)
+	const service = getServiceBySlug(serviceSlug as ServiceSlug);
+	if (!service) {
+		// Если не нашли по slug, пробуем найти по href
+		const entry = Object.entries(serviceItems).find(
+			([key, s]) => s.href === serviceSlug || s.href.endsWith(`/${serviceSlug}`),
+		);
+		if (!entry) throw new Error(`Service ${serviceSlug} not found`);
+		const [key, foundService] = entry;
+
+		// Проверяем, что услуга принадлежит правильной категории
+		const category = getServiceCategory(categoryHref);
+		if (!category) throw new Error(`Category ${categoryHref} not found`);
+
+		// Проверяем, что услуга есть в категории
+		if (!category.items.some((s) => s.id === foundService.id)) {
+			throw new Error(`Service ${serviceSlug} not found in category ${categoryHref}`);
+		}
+
+		return { ...foundService, category };
+	}
+
+	// Проверяем, что услуга принадлежит правильной категории
+	const category = getServiceCategory(categoryHref);
+	if (!category) throw new Error(`Category ${categoryHref} not found`);
+
+	// Проверяем, что услуга есть в категории
+	if (!category.items.some((s) => s.id === service.id)) {
 		throw new Error(`Service ${serviceSlug} not found in category ${categoryHref}`);
 	}
-	return service;
-}
 
+	return { ...service, category };
+}
 export function getAllCategorySlugs() {
 	return Object.keys(categories).map((slug) => ({ category: slug }));
 }
@@ -209,4 +278,15 @@ export function getAllServiceSlugs() {
 		category: serviceItems[slug].categoryId,
 		service: slug,
 	}));
+}
+
+export function getCategoryByHref(href: string) {
+	const entry = Object.entries(categories).find(([key, category]) => category.href === href);
+	if (!entry) return null;
+	const [key, category] = entry;
+	return {
+		...category,
+		slug: key,
+		items: category.items.map((itemSlug: string) => serviceItems[itemSlug as ServiceSlug]),
+	};
 }

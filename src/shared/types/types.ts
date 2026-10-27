@@ -56,9 +56,15 @@ export interface SubmitData {
 	name?: string;
 	phone: string;
 	url: string;
-	model?: SubmitModel;
+	agreementPersonalData?: boolean;
+	agreementMarketing?: boolean;
+	idtype?: number;
+	form_name?: string;
 }
-export type FormData = Pick<SubmitData, "name" | "phone" | "url">;
+export type FormData = Pick<
+	SubmitData,
+	"name" | "phone" | "url" | "agreementPersonalData" | "agreementMarketing"
+>;
 
 export enum SectionId {
 	SERVICES = "services",

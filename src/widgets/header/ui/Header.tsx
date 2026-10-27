@@ -1,11 +1,15 @@
 import React from "react";
+
 import Link from "next/link";
+
 import { about } from "@/src/shared/config";
 import { getServices } from "@/src/shared/data/services";
-import { HeaderTop } from "./HeaderTop";
-import { NavLinks } from "./NavLinks";
+
 import { BurgerClient } from "./BurgerClient";
 import { ButtonCall } from "./ButtonCall";
+import { HeaderTop } from "./HeaderTop";
+import { NavLinks } from "./NavLinks";
+
 import styles from "./Header.module.scss";
 
 export async function Header() {

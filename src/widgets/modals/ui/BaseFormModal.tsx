@@ -1,125 +1,121 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { MdDone, MdOutlineClose } from "react-icons/md";
+import { ReactNode } from "react";
+import { MdOutlineClose } from "react-icons/md";
 
-import Link from "next/link";
+import Image from "next/image";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
-import { usePhoneMask } from "@/src/shared/lib/hooks/usePhoneMask";
-import { useSubmit } from "@/src/shared/lib/hooks/useSubmit";
-import { FormData } from "@/src/shared/types/types";
+import { useFormLogic } from "@/src/shared/lib/hooks/useFormLogic";
+import { AgreementCheckboxes } from "@/src/shared/ui/agreementCheckboxes/AgreementCheckboxes";
 import { Button } from "@/src/shared/ui/button/Button";
+import { Input } from "@/src/shared/ui/input/Input";
 
 import styles from "./Modals.module.scss";
 
+type FormLogic = ReturnType<typeof useFormLogic>;
+
 interface BaseFormModalProps {
-	title: string | React.ReactNode;
-	content?: string | React.ReactNode;
-	onClose?: () => void;
-	onSubmit?: (formData: FormData) => Promise<void>;
+	title: ReactNode;
+	content?: ReactNode;
+	imageSrc: string;
+	children?: ReactNode;
 }
 
-export function BaseFormModal({ title, content }: BaseFormModalProps) {
+function ModalForm({ form }: { form: FormLogic }) {
+	const nameClass = form.errors.name
+		? `${styles.nameInput} ${styles.errorInput}`
+		: styles.nameInput;
+
+	return (
+		<form
+			noValidate
+			onSubmit={form.submit}
+			className={`${styles.form} ${form.submitError ? styles.formError : ""}`}
+		>
+			{form.submitError && (
+				<div className={styles.errorToast}>
+					{form.submitError}
+					<button type="button" onClick={form.resetError} className={styles.toastClose}>
+						<MdOutlineClose />
+					</button>
+				</div>
+			)}
+
+			<Input
+				type="text"
+				inputName="name"
+				placeholder="Имя"
+				value={form.formData.name ?? ""}
+				handleChange={form.handleChange}
+				className={nameClass}
+				required
+			/>
+
+			<Input
+				type="tel"
+				inputName="phone"
+				placeholder="+7 (___) ___-__-__"
+				value={form.phoneValue}
+				handleChange={form.handlePhoneChange}
+				className={form.errors.phone ? styles.errorInput : ""}
+				required
+			/>
+
+			<AgreementCheckboxes
+				agreementPersonalData={form.formData.agreementPersonalData ?? false}
+				agreementMarketing={form.formData.agreementMarketing ?? false}
+				errors={form.errors}
+				isSubmitted={form.isSubmitted}
+				onAgreementChange={form.setFieldValue}
+				className={styles.modalAgreements}
+			/>
+
+			<Button type="submit" disabled={form.isLoading} className={styles.submitButton}>
+				{form.isLoading ? "Отправка..." : "Записаться на сервис"}
+			</Button>
+		</form>
+	);
+}
+
+export function BaseFormModal({ title, content, imageSrc, children }: BaseFormModalProps) {
 	const { closeModal } = useModal();
-	const { handleSubmit, isLoading } = useSubmit();
-	const { phoneValue, onPhoneChange } = usePhoneMask();
-	const [isAgreed, setIsAgreed] = useState(true);
-	const [formData, setFormData] = useState<FormData>({
-		name: "",
-		phone: "",
-		url: "",
-	});
+	const form = useFormLogic({ showNameField: true });
 
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			setFormData((prev) => ({
-				...prev,
-				url: window.location.origin,
-			}));
-		}
-	}, []);
-
-	const submit = async (e: React.FormEvent) => {
-		e.preventDefault();
-
-		if (!isAgreed) {
-			alert("Пожалуйста, согласитесь с обработкой персональных данных");
-			return;
-		}
-
-		await handleSubmit(formData);
-	};
-
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-		const { name, value } = e.target;
-		setFormData((prev) => ({
-			...prev,
-			[name]: value,
-		}));
-	};
-
-	const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		onPhoneChange(e);
-		setFormData((prev) => ({
-			...prev,
-			phone: e.target.value,
-		}));
+	const handleClose = () => {
+		form.resetForm();
+		closeModal();
 	};
 
 	return (
-		<div className={styles.modalOverlay} onClick={closeModal}>
+		<div className={styles.modalOverlay} onClick={handleClose}>
 			<div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-				<button className={styles.closeButton} onClick={closeModal}>
-					<MdOutlineClose />
-				</button>
-
-				{title}
-				{content}
-
-				<form onSubmit={submit} className={styles.form}>
-					<input
-						type="text"
-						name="name"
-						placeholder="Имя"
-						value={formData.name}
-						onChange={handleInputChange}
-						required
+				<div className={styles.media}>
+					<Image
+						src={imageSrc}
+						alt=""
+						fill
+						unoptimized
+						className={styles.mediaImage}
+						priority
 					/>
-					<input
-						type="tel"
-						name="phone"
-						placeholder="Телефон"
-						value={phoneValue}
-						onChange={handlePhoneChange}
-						required
-					/>
-					<Button type="submit" disabled={!isAgreed || isLoading}>
-						{isLoading ? "Отправка..." : "Записаться на сервис"}
-					</Button>
+					{children}
+				</div>
 
-					<label className={styles.checkboxWrap}>
-						<input
-							type="checkbox"
-							checked={isAgreed}
-							onChange={(e) => setIsAgreed(e.target.checked)}
-							required
-						/>
-						<span className={styles.checkbox}>{isAgreed && <MdDone />}</span>
-						<div>
-							Согласен на обработку
-							<Link
-								prefetch={false}
-								href="/policy"
-								target="_blank"
-								rel="noopener noreferrer"
-								className={styles.policyLink}
-							>
-								персональных данных*
-							</Link>
-						</div>
-					</label>
-				</form>
+				<div className={styles.body}>
+					<button
+						type="button"
+						className={styles.closeButton}
+						onClick={handleClose}
+						aria-label="Закрыть"
+					>
+						<MdOutlineClose />
+					</button>
+
+					{title}
+					{content}
+					<ModalForm form={form} />
+				</div>
 			</div>
 		</div>
 	);
