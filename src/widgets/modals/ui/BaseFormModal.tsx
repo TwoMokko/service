@@ -103,19 +103,18 @@ export function BaseFormModal({ title, content, imageSrc, children }: BaseFormMo
 				</div>
 
 				<div className={styles.body}>
-					<button
-						type="button"
-						className={styles.closeButton}
-						onClick={handleClose}
-						aria-label="Закрыть"
-					>
-						<MdOutlineClose />
-					</button>
-
 					{title}
 					{content}
 					<ModalForm form={form} />
 				</div>
+				<button
+					type="button"
+					className={styles.closeButton}
+					onClick={handleClose}
+					aria-label="Закрыть"
+				>
+					<MdOutlineClose />
+				</button>
 			</div>
 		</div>
 	);

@@ -14,7 +14,7 @@ export const about = {
 		{
 			address: "Москва, МКАД, 38-й км, аа",
 			phone: "+7 499 688 84 65",
-			phoneLink: "84996888767",
+			phoneLink: "84996888465",
 		},
 	],
 	address: "Москва, МКАД, 44-й км, 1Вс2",
@@ -23,6 +23,9 @@ export const about = {
 	addressSecond: "Москва, МКАД, 33-й км, 6с6",
 	phoneSecond: "+7 499 688 84 31",
 	phoneLinkSecond: "84996888431",
+	addressThird: "Москва, МКАД, 38-й км, аа",
+	phoneThird: "+7 499 688 84 65",
+	phoneLinkThird: "84996888465",
 	emailSecond: "info@peleton.ru",
 	time: "с 08:00 до 22:00",
 };

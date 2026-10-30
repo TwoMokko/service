@@ -23,7 +23,6 @@ export function NavLinksMobile({ onClick }: NavLinksMobileProps) {
 						className={styles.link}
 						href={link.href}
 						onClick={onClick}
-						rel="noopener noreferrer"
 					>
 						{link.title}
 					</Link>

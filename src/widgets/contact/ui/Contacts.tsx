@@ -46,8 +46,8 @@ export function Contacts({
 		},
 		{
 			id: "third",
-			address: about.addressSecond,
-			phone: about.phoneSecond,
+			address: about.addressThird,
+			phone: about.phoneThird,
 			email: about.email,
 			time: about.time,
 			brands: brandsTitlesData.official33,
@@ -101,15 +101,16 @@ export function Contacts({
 				</h2>
 				<div ref={wrapRef} className={styles.contactsWrap}>
 					<div className={styles.contactsNav}>
-						<nav className={styles.contactsSwitcher}>
+						<nav className={styles.contactsSwitcher} role="navigation">
 							{contactsData.map((contact, idx) => (
 								<button
 									key={contact.id}
 									onClick={() => handleAddressClick(idx)}
 									className={`${styles.contactsSwitcherBtn} ${activeIndex === idx ? styles.active : ""}`}
 									aria-pressed={activeIndex === idx}
+									role="button"
 								>
-									{idx === 0 ? about.address : about.addressSecond}
+									{contact.address}
 								</button>
 							))}
 						</nav>

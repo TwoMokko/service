@@ -1,0 +1,41 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.banner {
+	position: relative;
+	border-radius: 14px;
+	overflow: hidden;
+
+	.img__wrap {
+		position: absolute;
+		inset: 0;
+
+		> img {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.info {
+		color: $color-white;
+		padding: 40px;
+		position: relative;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		@include mobile {
+			padding: 16px;
+		}
+
+		.title {
+		}
+
+		.btns {
+			display: flex;
+			gap: 16px;
+		}
+	}
+}

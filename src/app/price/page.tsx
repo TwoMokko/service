@@ -11,6 +11,7 @@ import { Brands } from "@/src/widgets/brand";
 import { BrandsPriceListNav } from "@/src/widgets/brandsPriceList";
 import { Contacts } from "@/src/widgets/contact";
 import { FormSale, FormService } from "@/src/widgets/form";
+import { PricePageBanner } from "@/src/widgets/price";
 import { Rating } from "@/src/widgets/rating";
 import { ServicesMini } from "@/src/widgets/services";
 import { ServicesPriceList } from "@/src/widgets/servicesPriceList";
@@ -29,14 +30,12 @@ export default function PricePage() {
 	return (
 		<div className="other-page">
 			<Breadcrumbs items={breadcrumbs} />
-			<div className="container block-bottom">
-				<h1 className="page-title">Прайс-лист</h1>
-			</div>
+			<PricePageBanner title="Прайс-лист" titlePage />
 			<ServicesPriceList services={services} title="Цены по названию услуг" />
 			<ServicesMini services={services} />
 			<FormService />
 			<BrandsPriceListNav brands={brands} />
-			<Brands title="Официальный сервис брендовых автомобилей" />
+			<Brands title="Ремонт и обслуживание популярных брендов" />
 			<FormSale />
 			<Contacts
 				idSection={SectionId.CONTACTS}
