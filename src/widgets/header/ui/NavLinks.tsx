@@ -29,12 +29,7 @@ export function NavLinks({ services }: NavLinksProps) {
 						return (
 							<React.Fragment key={link.href}>
 								<li ref={servicesMenu.triggerRef} {...servicesMenu.triggerHandlers}>
-									<Link
-										prefetch={false}
-										className={styles.link}
-										href={link.href}
-										rel="noopener noreferrer"
-									>
+									<Link prefetch={false} className={styles.link} href={link.href}>
 										{link.title}
 										<IoMdArrowDropdown />
 									</Link>

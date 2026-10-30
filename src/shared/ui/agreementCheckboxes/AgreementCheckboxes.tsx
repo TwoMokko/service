@@ -54,7 +54,6 @@ export function AgreementCheckboxes({
 					<Link
 						href="/user-agreement-credit"
 						target="_blank"
-						rel="noopener noreferrer"
 						className={styles.policyLink}
 						prefetch={false}
 					>
@@ -73,7 +72,6 @@ export function AgreementCheckboxes({
 					<Link
 						href="/user-agreement-ads"
 						target="_blank"
-						rel="noopener noreferrer"
 						className={styles.policyLink}
 						prefetch={false}
 					>
@@ -90,13 +88,7 @@ export function AgreementCheckboxes({
 		>
 			<p>
 				Настоящим я подтверждаю ознакомление с{" "}
-				<Link
-					href="/policy"
-					target="_blank"
-					rel="noopener noreferrer"
-					className={styles.policyLink}
-					prefetch={false}
-				>
+				<Link href="/policy" target="_blank" className={styles.policyLink} prefetch={false}>
 					Политикой обработки персональных данных
 				</Link>
 				, выражаю свое согласие на:

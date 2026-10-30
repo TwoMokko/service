@@ -60,7 +60,7 @@ export default async function CategoryPage({ params }: ServicePageProps) {
 			</section>
 			<About />
 			<FormService />
-			<Brands title="Официальный сервис брендовых автомобилей" />
+			<Brands title="Ремонт и обслуживание популярных брендов" />
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}

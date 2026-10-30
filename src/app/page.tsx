@@ -25,7 +25,7 @@ export default async function Home() {
 
 			<Services services={services} />
 			<FormService />
-			<Brands title="Официальный сервис брендовых автомобилей" />
+			<Brands title="Ремонт и обслуживание популярных брендов" />
 			<FormSale />
 
 			<ServicesPriceList services={services} title="Прайс-лист" />

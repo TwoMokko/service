@@ -58,8 +58,9 @@ export function Hero() {
 									<li className={styles.benefits__item}>Гарантия на услуги</li>
 								</ul>
 								<h1 className={styles.heroTitle}>
-									Мультибрендовый <br />
-									сервис
+									Сеть официальных <br />
+									автосервисов <br />
+									PELETON в Москве
 								</h1>
 								<p className={styles.subTitle}>
 									Узнайте больше о работе Peleton

@@ -35,6 +35,10 @@
 			width: 100%;
 			flex: auto;
 
+			@include mobile {
+				flex-direction: column;
+			}
+
 			.contactsSwitcherBtn {
 				flex: 1;
 				padding: 12px;

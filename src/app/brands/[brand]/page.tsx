@@ -6,6 +6,7 @@ import { getBrandBySlug } from "@/src/shared/data/brands";
 import { getServices } from "@/src/shared/data/services";
 import { CategoryWithServices } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
+import { Banner } from "@/src/shared/ui/banner/Banner";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
 import { About } from "@/src/widgets/about";
 import { Brands } from "@/src/widgets/brand";
@@ -50,19 +51,28 @@ export default async function BrandPage({ params }: BrandPageProps) {
 		{ title: currentBrand.title, href: `/brands/${brand}` },
 	];
 
+	const bannerTitle = (
+		<>
+			Официальный сервис <br />и ремонт {currentBrand.href.toUpperCase()}
+		</>
+	);
+
 	return (
 		<div className="other-page">
 			<Breadcrumbs items={breadcrumbs} />
-			<section className="container block-bottom">
-				<h1>{currentBrand.title}</h1>
-				<p>{currentBrand.description}</p>
-			</section>
+			<Banner
+				titlePage
+				title={bannerTitle}
+				description={currentBrand.description}
+				imageSrc="/images/brands/banners/default-desk.png"
+				brand={currentBrand}
+			/>
 			<BrandsPriceListOnce brand={currentBrand} />
 			<Services services={services} />
 			<section className="brand-info container block-bottom ">{currentBrand.text}</section>
 			<About />
 			<FormService />
-			<Brands title="Официальный сервис брендовых автомобилей" />
+			<Brands title="Ремонт и обслуживание популярных брендов" />
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}
