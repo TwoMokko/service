@@ -38,7 +38,7 @@ body {
 header {
 	flex: none;
 }
-main {
+body > main {
 	flex: auto;
 }
 footer {
