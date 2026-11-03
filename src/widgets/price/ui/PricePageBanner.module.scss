@@ -6,6 +6,10 @@
 	border-radius: 14px;
 	overflow: hidden;
 
+	@include mobile {
+		padding-bottom: 120px;
+	}
+
 	.img__wrap {
 		position: absolute;
 		inset: 0;
@@ -28,14 +32,27 @@
 
 		@include mobile {
 			padding: 16px;
+			flex-direction: column;
+			align-items: start;
+			width: 100%;
 		}
 
 		.title {
+			@include mobile {
+				margin-bottom: 24px;
+			}
 		}
 
 		.btns {
 			display: flex;
 			gap: 16px;
+
+			@include mobile {
+				flex-direction: column;
+				gap: 8px;
+
+				width: 100%;
+			}
 		}
 	}
 }

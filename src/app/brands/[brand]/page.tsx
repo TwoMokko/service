@@ -8,6 +8,7 @@ import { CategoryWithServices } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { Banner } from "@/src/shared/ui/banner/Banner";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
+import { InfoBlock } from "@/src/shared/ui/infoBlock/InfoBlock";
 import { About } from "@/src/widgets/about";
 import { Brands } from "@/src/widgets/brand";
 import { BrandsPriceListOnce } from "@/src/widgets/brandsPriceList";
@@ -69,7 +70,9 @@ export default async function BrandPage({ params }: BrandPageProps) {
 			/>
 			<BrandsPriceListOnce brand={currentBrand} />
 			<Services services={services} />
-			<section className="brand-info container block-bottom ">{currentBrand.text}</section>
+			<section className="container">
+				<InfoBlock content={currentBrand.info.content} title={currentBrand.info.title} />
+			</section>
 			<About />
 			<FormService />
 			<Brands title="Ремонт и обслуживание популярных брендов" />

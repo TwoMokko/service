@@ -42,7 +42,7 @@ export function Banner({ title, description, imageSrc, titlePage = false, brand 
 					</div>
 				</div>
 				{brand && (
-					<div className={styles.brand}>
+					<div className={`${styles.brand} mob-hide`}>
 						<Image
 							src={`/images/brands/icons/${brand.href}.svg`}
 							alt={brand.title}

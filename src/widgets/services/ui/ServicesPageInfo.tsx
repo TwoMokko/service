@@ -10,7 +10,7 @@ import { InfoBlock, InfoBlockProps } from "@/src/shared/ui/infoBlock/InfoBlock";
 import styles from "./ServicesPageInfo.module.scss";
 
 const mockData: InfoBlockProps = {
-	title: "Рыба текст на 5000 символов",
+	title: "Рыба текст на 5000 символов",
 	content: [
 		{
 			title: "Заголовок абзаца",
