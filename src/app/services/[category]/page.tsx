@@ -10,6 +10,7 @@ import { Brands } from "@/src/widgets/brand";
 import { Contacts } from "@/src/widgets/contact";
 import { FormService } from "@/src/widgets/form";
 import { Rating } from "@/src/widgets/rating";
+import { ServicesPageInfo } from "@/src/widgets/services";
 
 interface ServicePageProps {
 	params: Promise<{ category: string }>;
@@ -54,10 +55,7 @@ export default async function CategoryPage({ params }: ServicePageProps) {
 	return (
 		<div className="other-page">
 			<Breadcrumbs items={breadcrumbs} />
-			<section className="container block-bottom">
-				<h1>{currentCategory.title}</h1>
-				<div>{currentCategory.description}</div>
-			</section>
+			<ServicesPageInfo category={currentCategory} />
 			<About />
 			<FormService />
 			<Brands title="Ремонт и обслуживание популярных брендов" />

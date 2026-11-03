@@ -6,6 +6,10 @@
 	border-radius: 14px;
 	overflow: hidden;
 
+	@include mobile {
+		height: 440px;
+	}
+
 	.img__wrap {
 		position: absolute;
 		inset: 0;
@@ -53,6 +57,11 @@
 		.btns {
 			display: flex;
 			gap: 16px;
+
+			@include mobile {
+				flex-direction: column;
+				gap: 8px;
+			}
 		}
 	}
 

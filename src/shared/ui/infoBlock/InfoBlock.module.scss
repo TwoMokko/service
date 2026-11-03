@@ -1,0 +1,79 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.wrapper {
+	&:not(.show) {
+		.top {
+			margin-bottom: 0;
+		}
+
+		.paragraph {
+			opacity: 0;
+			visibility: hidden;
+			max-height: 0;
+			overflow: hidden;
+			padding: 0;
+			display: none;
+		}
+	}
+
+	&.show {
+		.top__arrow {
+			transform: rotate(180deg);
+		}
+		.paragraph {
+			opacity: 1;
+			visibility: visible;
+			height: fit-content;
+			overflow: visible;
+		}
+	}
+
+	.top {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 8px;
+		margin-bottom: 32px;
+
+		@include mobile {
+			margin-bottom: 16px;
+			text-align: start;
+		}
+
+		&__title {
+			font-size: 32px;
+			font-weight: 600;
+			letter-spacing: -0.02em;
+
+			@include laptop {
+			}
+
+			@include mobile {
+				font-size: 24px;
+			}
+		}
+		&__arrow {
+			transition: $transition-0-3s;
+		}
+	}
+	.paragraph {
+		&:not(:last-child) {
+			margin-bottom: 32px;
+		}
+
+		&__title {
+			font-weight: 600;
+			font-size: 18px;
+			margin-bottom: 16px;
+		}
+		&__text {
+			font-size: 16px;
+			line-height: 1.4;
+
+			&:not(:last-child) {
+				margin-bottom: 16px;
+			}
+		}
+	}
+}

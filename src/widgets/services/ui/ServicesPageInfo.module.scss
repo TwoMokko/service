@@ -1,0 +1,109 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.section {
+	display: flex;
+	gap: 50px;
+
+	@include mobile {
+		flex-direction: column;
+	}
+
+	.aside {
+		width: 324px;
+		flex: none;
+
+		@include laptop {
+			width: 265px;
+		}
+
+		@include mobile {
+			width: 100%;
+			display: none;
+		}
+	}
+
+	.main {
+		flex: auto;
+	}
+}
+
+.banner {
+	position: relative;
+	border-radius: 14px;
+	overflow: hidden;
+	background-color: $color-black;
+
+	@include mobile {
+		height: 440px;
+	}
+
+	.img__wrap {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(90deg, #000000 0%, #000000 50%, rgba(0, 0, 0, 0) 100%);
+
+			@include mobile {
+				content: none;
+			}
+		}
+
+		> img {
+			object-fit: contain;
+		}
+	}
+
+	.info {
+		color: $color-white;
+		padding: 48px;
+		width: fit-content;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		z-index: 1;
+
+		@include mobile {
+			padding: 16px;
+		}
+
+		.title {
+			max-width: 750px;
+			letter-spacing: -0.02em;
+
+			@include mobile {
+				max-width: 100%;
+			}
+		}
+
+		.description {
+			font-size: 16px;
+			line-height: 1.1;
+			letter-spacing: -0.02em;
+			margin: 16px 0 24px;
+			max-width: 533px;
+
+			@include mobile {
+				max-width: 100%;
+				margin-top: 8px;
+			}
+		}
+
+		.btns {
+			display: flex;
+			gap: 16px;
+
+			@include mobile {
+				flex-direction: column;
+				gap: 8px;
+			}
+		}
+	}
+}

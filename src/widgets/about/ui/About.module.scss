@@ -16,11 +16,17 @@
 
 		@include mobile {
 			flex-direction: column;
-			row-gap: 20px;
+			row-gap: 0;
 		}
 
 		> div {
 			flex: 1;
+		}
+
+		.info__wrap {
+			@include mobile {
+				display: contents;
+			}
 		}
 
 		.title {
@@ -61,6 +67,54 @@
 
 			@include mobile {
 				font-size: 15px;
+			}
+		}
+
+		.utp {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 32px;
+
+			@include laptop {
+				margin-bottom: 24px;
+			}
+
+			@include mobile {
+				flex-direction: column;
+				gap: 8px;
+			}
+
+			&__card {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				background-color: $color-white;
+				border-radius: 10px;
+				overflow: hidden;
+				height: 72px;
+				padding-left: 18px;
+
+				font-size: 16px;
+				font-weight: 700;
+				line-height: 1.1;
+				letter-spacing: -0.03em;
+
+				@include laptop {
+					height: 64px;
+					padding-left: 14px;
+					font-size: 15px;
+				}
+			}
+
+			&__title {
+			}
+
+			&__img {
+				width: auto;
+				height: 100%;
+				object-fit: contain;
 			}
 		}
 
@@ -114,10 +168,17 @@
 				}
 			}
 		}
+
+		:global(.swiper-pagination-bullet:not(.swiper-pagination-bullet-active)) {
+			background: $color-white;
+		}
 	}
 }
 
 .thumbsSwiper__wrap {
+	@include mobile {
+		order: 1;
+	}
 	.thumbsSwiper {
 		.thumbsSlide {
 			max-width: 140px;
