@@ -23,7 +23,7 @@ export function Rating() {
 	return (
 		<section className={`${styles.rating} block-bottom`}>
 			<div className="container">
-				<div className={styles.top}>
+				<div className={`${styles.top} margin-bot`}>
 					<h2 className="section-title">
 						Присоединяйтесь <br />к 1000 довольных клиентов
 					</h2>

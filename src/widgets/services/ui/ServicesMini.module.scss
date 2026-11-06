@@ -7,14 +7,9 @@
 	}
 
 	&__list {
-		margin-top: 32px;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 20px;
-
-		@include laptop {
-			margin-top: 24px;
-		}
 
 		@include mobile {
 			display: revert;

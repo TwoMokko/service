@@ -5,7 +5,9 @@ import { useEffect } from "react";
 import { useModal } from "@/src/app/_providers/ModalProvider";
 import { about } from "@/src/shared/config";
 import { CategoryWithServices } from "@/src/shared/data/services";
+import { primaryContact } from "@/src/shared/lib/helpers/getContacts";
 import { useBurgerMenu } from "@/src/shared/lib/hooks/useBurgerMenu";
+import { formatPhoneToLink } from "@/src/shared/lib/utils/format-phone";
 import { Button } from "@/src/shared/ui/button/Button";
 
 import { NavLinksMobile } from "./NavLinksMobile";
@@ -58,10 +60,12 @@ export function BurgerClient({ services }: BurgerClientProps) {
 						</ul>
 
 						<ul className={styles.headerBurgerMenuContacts}>
-							<li className={styles.headerBurgerMenuContactsItem}>{about.address}</li>
 							<li className={styles.headerBurgerMenuContactsItem}>
-								<a href={`tel:${about.phoneLink}`}>
-									<strong>{about.phone}</strong>
+								{primaryContact.address}
+							</li>
+							<li className={styles.headerBurgerMenuContactsItem}>
+								<a href={`tel:${formatPhoneToLink(primaryContact.phone)}`}>
+									<strong>{primaryContact.phone}</strong>
 								</a>
 							</li>
 						</ul>

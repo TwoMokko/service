@@ -13,9 +13,10 @@ export interface InfoBlockProps {
 		paragraphs: string[]; // если будут другие типы данных, переписать (и разметку тоже)
 	}[];
 	title?: string;
+	titlePage?: boolean;
 }
 
-export function InfoBlock({ content, title }: InfoBlockProps) {
+export function InfoBlock({ content, title, titlePage = false }: InfoBlockProps) {
 	const [isShow, setIsShow] = useState<boolean>(true);
 	const { isMobile } = useDevice();
 
@@ -31,7 +32,11 @@ export function InfoBlock({ content, title }: InfoBlockProps) {
 		<section className={`block-bottom ${styles.wrapper} ${isShow ? styles.show : ""}`}>
 			{title && (
 				<button className={styles.top} onClick={handleShow}>
-					<h2 className={`${styles.top__title}`}>{title}</h2>
+					{titlePage ? (
+						<h1 className={`${styles.top__title} page-title`}>{title}</h1>
+					) : (
+						<h2 className={`${styles.top__title} section-title`}>{title}</h2>
+					)}
 					<IoIosArrowDown
 						size={20}
 						aria-hidden="true"

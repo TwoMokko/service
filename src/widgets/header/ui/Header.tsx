@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import { about } from "@/src/shared/config";
 import { getServices } from "@/src/shared/data/services";
+import { primaryContact } from "@/src/shared/lib/helpers/getContacts";
+import { formatPhoneToLink } from "@/src/shared/lib/utils/format-phone";
 
 import { BurgerClient } from "./BurgerClient";
 import { ButtonCall } from "./ButtonCall";
@@ -34,8 +36,11 @@ export async function Header() {
 
 							<NavLinks services={services} />
 
-							<a className={styles.headerPhone} href={`tel:${about.phoneLink}`}>
-								{about.phone}
+							<a
+								className={styles.headerPhone}
+								href={`tel:${formatPhoneToLink(primaryContact.phone)}`}
+							>
+								{primaryContact.phone}
 							</a>
 							<ButtonCall />
 						</div>

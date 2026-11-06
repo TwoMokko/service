@@ -15,7 +15,7 @@ export function BrandsPriceListOnce({ brand }: BrandsPriceListOnceProps) {
 			className={`${styles.servicesPriceList} container block-bottom`}
 			aria-label="Прайс-лист на услуги автосервиса"
 		>
-			<h2 className={`${styles.title} section-title`}>Прайс-лист</h2>
+			<h2 className={`${styles.title} section-title margin-bot`}>Прайс-лист</h2>
 
 			<BrandsPriceList
 				key={brand.id}

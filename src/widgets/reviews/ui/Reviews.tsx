@@ -27,7 +27,7 @@ export function Reviews({ idSection, titleSection }: ReviewsProps) {
 	return (
 		<section className={`${styles.reviews} block-bottom`} id={idSection}>
 			<div className="container">
-				<div className={styles.top}>
+				<div className={`${styles.top} margin-bot`}>
 					<h2 className="section-title">{titleSection}</h2>
 					<Link prefetch={false} href={`/${SectionId.REVIEWS}`}>
 						<Button variant="secondary">Смотреть все отзывы</Button>

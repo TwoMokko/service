@@ -26,7 +26,7 @@ export function BrandsPriceListNav({ brands }: BrandsPriceListNavProps) {
 
 	return (
 		<section className={`container block-bottom`} aria-label="Прайс-лист на услуги автосервиса">
-			<h2 className={`${styles.title} section-title`}>Бренды</h2>
+			<h2 className="section-title margin-bot">Бренды</h2>
 			<div className={styles.brandsNav__wrap}>
 				<div className={styles.brandsNav__nav}>
 					<div className={`${styles.brandsNav__nav_mob} desk-hide`}>

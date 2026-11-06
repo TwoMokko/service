@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useModal } from "@/src/app/_providers/ModalProvider";
 import { navigationLinks } from "@/src/shared/config";
 import { about } from "@/src/shared/config/model-base";
+import { primaryContact } from "@/src/shared/lib/helpers/getContacts";
+import { formatPhoneToLink } from "@/src/shared/lib/utils/format-phone";
 import { NavigationLink } from "@/src/shared/types/types";
 import { Button } from "@/src/shared/ui/button/Button";
 
@@ -45,7 +47,9 @@ export function Footer() {
 						))}
 					</nav>
 					<div className={styles.actions}>
-						<a href={`tel:${about.phoneLink}`}>{about.phone}</a>
+						<a href={`tel:${formatPhoneToLink(primaryContact.phone)}`}>
+							{primaryContact.phone}
+						</a>
 						<Button
 							minWidth={214}
 							onClick={() => openModal("common")}

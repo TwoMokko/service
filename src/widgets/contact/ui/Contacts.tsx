@@ -7,8 +7,7 @@ import { Swiper as SwiperType } from "swiper/types";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-import { about } from "@/src/shared/config";
-import { brandsTitlesData } from "@/src/shared/data/brands";
+import { about } from "@/src/shared/config/model-base";
 import ContactItem from "@/src/widgets/contact/ui/ContactItem";
 
 import styles from "./Contacts.module.scss";
@@ -27,33 +26,7 @@ export function Contacts({
 	const wrapRef = useRef<HTMLDivElement>(null);
 	const [shouldLoadMap, setShouldLoadMap] = useState(false);
 
-	const contactsData = [
-		{
-			id: "first",
-			address: about.address,
-			phone: about.phone,
-			email: about.email,
-			time: about.time,
-			brands: brandsTitlesData.official44.slice(0, 8),
-		},
-		{
-			id: "second",
-			address: about.addressSecond,
-			phone: about.phoneSecond,
-			email: about.email,
-			time: about.time,
-			brands: brandsTitlesData.official33,
-		},
-		{
-			id: "third",
-			address: about.addressThird,
-			phone: about.phoneThird,
-			email: about.email,
-			time: about.time,
-			brands: brandsTitlesData.official33,
-		},
-	];
-
+	const contactsData = about.addresses;
 	const activeContact = contactsData[activeIndex];
 
 	const handleAddressClick = (index: number) => {
@@ -94,9 +67,7 @@ export function Contacts({
 	return (
 		<section id={idSection} className={`${styles.contacts} block-bottom`}>
 			<div className="container">
-				<h2
-					className={`${styles.contactsTitle} ${titlePage ? "page-title" : "section-title"}`}
-				>
+				<h2 className={`margin-bot ${titlePage ? "page-title" : "section-title"}`}>
 					{titleSection}
 				</h2>
 				<div ref={wrapRef} className={styles.contactsWrap}>

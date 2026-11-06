@@ -1,0 +1,92 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.description {
+	line-height: 1.4;
+	font-size: 16px;
+	margin-bottom: 32px;
+
+	@include mobile {
+		margin-bottom: 24px;
+	}
+}
+
+.banner {
+	position: relative;
+	height: 420px;
+	border-radius: 14px;
+	overflow: hidden;
+	padding: 32px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
+
+	@include laptop {
+		padding: 24px;
+	}
+
+	@include mobile {
+		padding: 16px;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			.play {
+				scale: 1.2;
+			}
+		}
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		position: relative;
+		z-index: 1;
+		color: $color-white;
+		width: fit-content;
+		height: fit-content;
+	}
+
+	&__top {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		font-size: 13px;
+
+		@include mobile {
+			font-size: 11px;
+		}
+
+		&_tag {
+			text-transform: uppercase;
+			padding: 8px 14px;
+			background-color: #ffffff26;
+			border-radius: 100px;
+
+			@include mobile {
+				padding: 8px 10px;
+			}
+		}
+
+		&_views {
+		}
+	}
+
+	&__text {
+		font-size: 40px;
+		font-weight: 600;
+
+		@include mobile {
+			font-size: 24px;
+		}
+	}
+}

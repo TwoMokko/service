@@ -35,26 +35,19 @@
 		align-items: flex-start;
 		gap: 8px;
 		margin-bottom: 32px;
+		cursor: text;
 
 		@include mobile {
 			margin-bottom: 16px;
 			text-align: start;
+			cursor: pointer;
 		}
 
 		&__title {
-			font-size: 32px;
-			font-weight: 600;
-			letter-spacing: -0.02em;
-
-			@include laptop {
-			}
-
-			@include mobile {
-				font-size: 24px;
-			}
 		}
 		&__arrow {
 			transition: $transition-0-3s;
+			flex: none;
 		}
 	}
 	.paragraph {

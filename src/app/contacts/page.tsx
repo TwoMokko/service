@@ -1,10 +1,9 @@
 import { Metadata } from "next";
 
-import { metaDataContactsPage, sectionTitles } from "@/src/shared/config";
-import { SectionId } from "@/src/shared/types/types";
+import { metaDataContactsPage } from "@/src/shared/config";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
-import { Contacts } from "@/src/widgets/contact";
-import { Rating } from "@/src/widgets/rating";
+import { Brands } from "@/src/widgets/brand";
+import { ContactsFull } from "@/src/widgets/contact";
 
 export const metadata: Metadata = metaDataContactsPage;
 
@@ -17,12 +16,8 @@ export default function ContactsPage() {
 	return (
 		<div className="other-page">
 			<Breadcrumbs items={breadcrumbs} />
-			<Contacts
-				idSection={SectionId.CONTACTS}
-				titleSection={sectionTitles[SectionId.CONTACTS]}
-				titlePage
-			/>
-			<Rating />
+			<ContactsFull />
+			<Brands title="Ремонт и обслуживание популярных брендов" />
 		</div>
 	);
 }
