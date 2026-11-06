@@ -4,6 +4,8 @@ import { IoMdMail } from "react-icons/io";
 
 import Image from "next/image";
 
+import { formatPhoneToLink } from "@/src/shared/lib/utils/format-phone";
+
 import styles from "./Contacts.module.scss";
 
 export default function ContactItem({
@@ -29,7 +31,7 @@ export default function ContactItem({
 				</li>
 				<li>
 					<FaPhone />
-					<a href={`tel:${phone}`}>{phone}</a>
+					<a href={`tel:${formatPhoneToLink(phone)}`}>{phone}</a>
 				</li>
 				<li>
 					<IoMdMail />

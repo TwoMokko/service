@@ -96,19 +96,11 @@
 					}
 				}
 
-				.play {
-					position: absolute;
-					inset: 0;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					color: $color-white;
-					transition: scale 0.3s ease-in-out;
-				}
-
-				&:hover {
-					.play {
-						scale: 1.2;
+				@media (hover: hover) and (pointer: fine) {
+					&:hover {
+						.play {
+							scale: 1.2;
+						}
 					}
 				}
 			}

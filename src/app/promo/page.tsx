@@ -20,7 +20,7 @@ export default function PromoPage() {
 		<div className="other-page">
 			<Breadcrumbs items={breadcrumbs} />
 			<div className="container">
-				<h1 className="page-title">Акции</h1>
+				<h1 className="page-title margin-bot">Акции</h1>
 			</div>
 			<FormSale />
 			<PromoGrid />

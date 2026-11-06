@@ -118,3 +118,21 @@ export interface SearchResult {
 	type: "category" | "service";
 	description: string;
 }
+
+export type AddressId = "first" | "second" | "third";
+
+export type Address = {
+	id: AddressId;
+	name: string;
+	address: string;
+	phone: string;
+	email: string;
+	time: string;
+	brands: string[];
+};
+
+export type About = {
+	email: string;
+	time: string;
+	addresses: Address[];
+};

@@ -3,6 +3,8 @@
 import React from "react";
 
 import { about } from "@/src/shared/config";
+import { getContactItem, primaryContact } from "@/src/shared/lib/helpers/getContacts";
+import { formatPhoneToLink } from "@/src/shared/lib/utils/format-phone";
 
 import { BaseFormModal } from "./BaseFormModal";
 
@@ -20,7 +22,8 @@ export function CommonModal() {
 		<p className={styles.subtitle}>
 			Отправьте заявку на обратный звонок или позвоните
 			<br />
-			по номеру телефона: <a href={`tel:${about.phoneLink}`}>{about.phone}</a>
+			по номеру телефона:{" "}
+			<a href={`tel:${formatPhoneToLink(primaryContact.phone)}`}>{primaryContact.phone}</a>
 		</p>
 	);
 

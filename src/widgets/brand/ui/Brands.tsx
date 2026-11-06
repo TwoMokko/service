@@ -30,9 +30,9 @@ export function Brands({ title, titlePage = false }: BrandsProps): ReactNode {
 	return (
 		<section className="container block-bottom">
 			{titlePage ? (
-				<h1 className="page-title">{title}</h1>
+				<h1 className="page-title margin-bot">{title}</h1>
 			) : (
-				<h2 className="section-title">{title}</h2>
+				<h2 className="section-title margin-bot">{title}</h2>
 			)}
 			<BrandList {...brandsData.official} />
 			<BrandList {...brandsData.other} />

@@ -11,6 +11,7 @@ import Image from "next/image";
 import { useModal } from "@/src/app/_providers/ModalProvider";
 import { reels } from "@/src/shared/data/reels/reels";
 import { ReelsItem } from "@/src/shared/types/types";
+import { PlayIcon } from "@/src/shared/ui/playIcon/PlayIcon";
 import { SwiperControls } from "@/src/shared/ui/swiperControls/SwiperControls";
 
 import styles from "./Reels.module.scss";
@@ -33,6 +34,7 @@ export function Reels(): React.ReactNode {
 
 	return (
 		<section className={`${styles.reels} container`}>
+			<h2 className="section-title margin-bot">Видео-рилс из соцсетей</h2>
 			<div className={styles.reelsSwiperWrap}>
 				<Swiper
 					modules={[Navigation, Pagination]}
@@ -91,9 +93,7 @@ export function Reels(): React.ReactNode {
 									)}
 								</div>
 							</div>
-							<div className={styles.play}>
-								<FaPlay size={24} />
-							</div>
+							<PlayIcon className={styles.play} />
 						</SwiperSlide>
 					))}
 					<SwiperControls

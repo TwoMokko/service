@@ -21,7 +21,7 @@ export function ServicesMini({ services }: ServicesMiniProps) {
 
 	return (
 		<section className={`${styles.servicesMini} container block-bottom`}>
-			<h2 className="section-title">
+			<h2 className="section-title margin-bot">
 				Узнать подробнее <br className="desk-hide" />о наших услугах
 			</h2>
 			<div className={`${styles.servicesMini__list} mob-hide`}>

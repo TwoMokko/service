@@ -2,7 +2,6 @@
 @use "../../../shared/styles/mixins" as *;
 
 .listWrap {
-	margin-top: 32px;
 	border-radius: 10px;
 	position: relative;
 	overflow: visible;
@@ -27,6 +26,14 @@
 	//                  0% 0%         // возврат в левый верх
 	//  );
 	//}
+
+	&:not(:last-child) {
+		margin-bottom: 32px;
+
+		@include mobile {
+			margin-bottom: 24px;
+		}
+	}
 
 	&.list__bg {
 		.list__title {

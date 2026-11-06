@@ -51,7 +51,7 @@ export function ServicesPriceList({ services, title }: ServicesPriceListProps) {
 			className={`${styles.servicesPriceList} container block-bottom`}
 			aria-label="Прайс-лист на услуги автосервиса"
 		>
-			<h2 className="section-title">{title ?? "Прайс-лист"}</h2>
+			<h2 className="section-title margin-bot">{title ?? "Прайс-лист"}</h2>
 			<div className={styles.wrapper}>
 				<div className={styles.main}>
 					<nav className={styles.categories} aria-label="Категории услуг">

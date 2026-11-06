@@ -3,7 +3,7 @@
 
 html {
 	scroll-behavior: smooth;
-	scroll-padding-top: 84px;
+	scroll-padding-top: 140px;
 
 	@include mobile {
 		scroll-padding-top: 70px;
@@ -87,10 +87,22 @@ input:focus {
 	}
 }
 
+.margin-bot {
+	margin-bottom: 32px;
+
+	@include mobile {
+		margin-bottom: 24px;
+	}
+}
+
 .page-title {
 	font-size: 64px;
 	line-height: 100%;
 	font-weight: 600;
+
+	@include laptop {
+		font-size: 48px;
+	}
 
 	@include mobile {
 		font-size: 32px;
@@ -171,6 +183,9 @@ input:focus {
 		margin-bottom: 60px;
 	}
 }
+//p {
+//	line-height: 1.4;
+//}
 
 *::-webkit-scrollbar {
 	width: 4px;
