@@ -6,7 +6,7 @@ import { navigationLinks } from "@/src/shared/config";
 import { CategoryWithServices } from "@/src/shared/data/services";
 import { NavigationLink } from "@/src/shared/types/types";
 
-import styles from "./Header.module.scss";
+import styles from "../Header.module.scss";
 
 interface NavLinksMobileProps {
 	services: CategoryWithServices[];

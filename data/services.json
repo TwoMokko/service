@@ -8,7 +8,7 @@
 			"description": "Полная замена моторного масла с промывкой системы.",
 			"price": 1800,
 			"time": "30 мин",
-			"categoryId": "tekhnicheskoe-obsluzhivanie",
+			"categorySlug": "tekhnicheskoe-obsluzhivanie",
 			"meta": {
 				"title": "Замена масла в двигателе | Автосервис",
 				"description": "Замена масла в двигателе по доступным ценам"
@@ -56,7 +56,7 @@
 			"description": "Полное описание",
 			"price": 4200,
 			"time": "30 мин",
-			"categoryId": "tekhnicheskoe-obsluzhivanie",
+			"categorySlug": "tekhnicheskoe-obsluzhivanie",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -96,7 +96,7 @@
 			"description": "Полное описание Ремонт трансмиссии",
 			"price": 5500,
 			"time": "30 мин",
-			"categoryId": "new-cat-3",
+			"categorySlug": "new-cat-3",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -140,7 +140,7 @@
 			"description": "Полное описание",
 			"price": 4500,
 			"time": "30 мин",
-			"categoryId": "tekhnicheskoe-obsluzhivanie",
+			"categorySlug": "tekhnicheskoe-obsluzhivanie",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -176,7 +176,7 @@
 			"description": "Полное описание Электрика",
 			"price": 3500,
 			"time": "30 мин",
-			"categoryId": "new-cat-4",
+			"categorySlug": "new-cat-4",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -216,7 +216,7 @@
 			"description": "Полное описание Трансмиссия",
 			"price": 3500,
 			"time": "30 мин",
-			"categoryId": "new-cat-4",
+			"categorySlug": "new-cat-4",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -236,7 +236,7 @@
 			"description": "Полное описание Шиномонтаж (по диаметру)",
 			"price": 3000,
 			"time": "30 мин",
-			"categoryId": "cat-5",
+			"categorySlug": "cat-5",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -260,7 +260,7 @@
 			"description": "Полное описание Шиномонтаж Run Flat",
 			"price": 7000,
 			"time": "30 мин",
-			"categoryId": "cat-5",
+			"categorySlug": "cat-5",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -279,7 +279,7 @@
 			"title": "Техническое обслуживание",
 			"href": "tekhnicheskoe-obsluzhivanie",
 			"description": "Полный спектр работ по ТО автомобиля",
-			"items": ["zamena-masla-v-dvigatele", "new-3", "new-5"],
+			"serviceSlugs": ["zamena-masla-v-dvigatele", "new-3", "new-5"],
 			"meta": {
 				"title": "Техническое обслуживание | Автосервис",
 				"description": "Техническое обслуживание всех марок авто"
@@ -290,7 +290,7 @@
 			"title": "Слесарный ремонт",
 			"href": "slesarny-remont",
 			"description": "Описание Слесарный Ремонт",
-			"items": ["new-4"],
+			"serviceSlugs": ["new-4"],
 			"meta": {
 				"title": "Слесарный Ремонт seo",
 				"description": "SEO описание"
@@ -301,7 +301,7 @@
 			"title": "Диагностика",
 			"href": "diagnostika",
 			"description": "Описание категории Диагностика",
-			"items": ["new-6", "new-7"],
+			"serviceSlugs": ["new-6", "new-7"],
 			"meta": {
 				"title": "Новая категория Диагностика",
 				"description": "SEO описание Диагностика"
@@ -312,7 +312,7 @@
 			"title": "Шиномонтаж",
 			"href": "shinomontazh",
 			"description": "Описание категории Шиномонтаж",
-			"items": ["service-8", "service-9"],
+			"serviceSlugs": ["service-8", "service-9"],
 			"meta": {
 				"title": "Новая категория Шиномонтаж",
 				"description": "SEO описание Шиномонтаж"

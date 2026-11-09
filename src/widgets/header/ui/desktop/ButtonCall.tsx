@@ -3,7 +3,7 @@
 import { useModal } from "@/src/app/_providers/ModalProvider";
 import { Button } from "@/src/shared/ui/button/Button";
 
-import styles from "./Header.module.scss";
+import styles from "../Header.module.scss";
 
 export function ButtonCall() {
 	const { openModal } = useModal();

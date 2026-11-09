@@ -13,6 +13,8 @@
 		width: 100% !important;
 		display: flex;
 		transform: none !important;
+		border-radius: 30px;
+		overflow: hidden;
 
 		:global(.swiper-pagination-bullet) {
 			width: 100%;
@@ -30,6 +32,7 @@
 
 		:global(.swiper-pagination-bullet-active) {
 			background: $color-primary;
+			border-radius: 30px;
 		}
 	}
 

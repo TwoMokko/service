@@ -1,5 +1,3 @@
-"use client";
-
 import { about } from "@/src/shared/config";
 import SearchAndResults from "@/src/shared/ui/search/SearchAndResults";
 
@@ -12,8 +10,10 @@ export function HeaderTop() {
 				{about.addresses.map((contact) => (
 					<div key={contact.address}>{contact.address}</div>
 				))}
+
 				<div>с 8:00 до 22:00</div>
 			</div>
+
 			<SearchAndResults />
 		</div>
 	);

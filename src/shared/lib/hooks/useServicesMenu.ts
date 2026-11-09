@@ -1,11 +1,10 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export function useServicesMenu(delay = 200) {
 	const [isOpen, setIsOpen] = useState(false);
 	const triggerRef = useRef<HTMLLIElement>(null);
 	const menuRef = useRef<HTMLDivElement>(null);
-	// @ts-ignore
-	const timeoutRef = useRef<NodeJS.Timeout>();
+	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const handleMouseEnter = useCallback(() => {
 		if (timeoutRef.current) {
@@ -21,6 +20,14 @@ export function useServicesMenu(delay = 200) {
 			}
 		}, delay);
 	}, [delay]);
+
+	useEffect(() => {
+		return () => {
+			if (timeoutRef.current) {
+				clearTimeout(timeoutRef.current);
+			}
+		};
+	}, []);
 
 	return {
 		isOpen,

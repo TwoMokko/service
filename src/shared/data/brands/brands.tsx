@@ -1,4 +1,4 @@
-import React from "react";
+
 
 export interface Brand {
 	id: string;
@@ -18,8 +18,9 @@ export interface Brand {
 		title: string;
 		description: string;
 	};
-	isOfficial44: boolean;
-	isOfficial33: boolean;
+	salon1?: true;
+	salon2?: true;
+	salon3?: true;
 }
 export interface BrandPrices {
 	id: number;
@@ -120,8 +121,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд тенет | Цены и услуги",
 			description: "Бренд тенет. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: true,
+		salon2: true,
 	},
 	chery: {
 		id: "chery",
@@ -211,8 +211,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд чери | Цены и услуги",
 			description: "Бренд чери. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: true,
+		salon2: true,
 	},
 	rox: {
 		id: "rox",
@@ -302,8 +301,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд rox | Цены и услуги",
 			description: "Бренд rox. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: false,
+		salon1: true,
 	},
 	swm: {
 		id: "swm",
@@ -393,8 +391,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд swm | Цены и услуги",
 			description: "Бренд swm. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: false,
+		salon1: true,
 	},
 	solaris: {
 		id: "solaris",
@@ -484,8 +481,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд solaris | Цены и услуги",
 			description: "Бренд solaris. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: false,
+		salon1: true,
 	},
 	amberauto: {
 		id: "amberauto",
@@ -575,8 +571,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд amberauto | Цены и услуги",
 			description: "Бренд amberauto. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: false,
+		salon1: true,
 	},
 	kaiyi: {
 		id: "kaiyi",
@@ -666,8 +661,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд kaiyi | Цены и услуги",
 			description: "Бренд kaiyi. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: false,
+		salon1: true,
 	},
 	haima: {
 		id: "haima",
@@ -757,8 +751,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд haima | Цены и услуги",
 			description: "Бренд haima. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: false,
+		salon1: true,
 	},
 	nissan: {
 		id: "nissan",
@@ -848,8 +841,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд nissan | Цены и услуги",
 			description: "Бренд nissan. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: false,
+		salon1: true,
 	},
 	omoda: {
 		id: "omoda",
@@ -939,8 +931,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд omoda | Цены и услуги",
 			description: "Бренд omoda. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: false,
+		salon3: true,
 	},
 	subaru: {
 		id: "subaru",
@@ -1030,8 +1021,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд subaru | Цены и услуги",
 			description: "Бренд subaru. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: false,
+		salon1: true,
 	},
 	"faw-group": {
 		id: "faw-group",
@@ -1121,8 +1111,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд faw-group | Цены и услуги",
 			description: "Бренд faw-group. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: true,
-		isOfficial33: false,
 	},
 	// ========== ОСТАЛЬНЫЕ БРЕНДЫ (other) ==========
 	suzuki: {
@@ -1213,8 +1201,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд suzuki | Цены и услуги",
 			description: "Бренд suzuki. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	livan: {
 		id: "livan",
@@ -1304,8 +1290,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд livan | Цены и услуги",
 			description: "Бренд livan. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	brilliance: {
 		id: "brilliance",
@@ -1395,8 +1379,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд brilliance | Цены и услуги",
 			description: "Бренд brilliance. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 
 	hongqi: {
@@ -1487,8 +1469,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд hongqi | Цены и услуги",
 			description: "Бренд hongqi. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	"rolls-royce": {
 		id: "rolls-royce",
@@ -1578,8 +1558,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд rolls-royce | Цены и услуги",
 			description: "Бренд rolls-royce. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	bmw: {
 		id: "bmw",
@@ -1669,8 +1647,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд bmw | Цены и услуги",
 			description: "Бренд bmw. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	gac: {
 		id: "gac",
@@ -1760,8 +1736,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд gac | Цены и услуги",
 			description: "Бренд gac. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	infiniti: {
 		id: "infiniti",
@@ -1851,8 +1825,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд infiniti | Цены и услуги",
 			description: "Бренд infiniti. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	jetour: {
 		id: "jetour",
@@ -1942,8 +1914,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд jetour | Цены и услуги",
 			description: "Бренд jetour. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
+		salon3: true,
 	},
 	byd: {
 		id: "byd",
@@ -2033,8 +2004,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд byd | Цены и услуги",
 			description: "Бренд byd. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	volkswagen: {
 		id: "volkswagen",
@@ -2124,8 +2093,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд volkswagen | Цены и услуги",
 			description: "Бренд volkswagen. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	haval: {
 		id: "haval",
@@ -2215,8 +2182,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд haval | Цены и услуги",
 			description: "Бренд haval. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	chevrolet: {
 		id: "chevrolet",
@@ -2306,8 +2271,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд chevrolet | Цены и услуги",
 			description: "Бренд chevrolet. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	hyundai: {
 		id: "hyundai",
@@ -2397,8 +2360,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд hyundai | Цены и услуги",
 			description: "Бренд hyundai. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	renault: {
 		id: "renault",
@@ -2488,8 +2449,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд renault | Цены и услуги",
 			description: "Бренд renault. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	honda: {
 		id: "honda",
@@ -2579,8 +2538,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд honda | Цены и услуги",
 			description: "Бренд honda. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	toyota: {
 		id: "toyota",
@@ -2670,8 +2627,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд toyota | Цены и услуги",
 			description: "Бренд toyota. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	tank: {
 		id: "tank",
@@ -2761,8 +2716,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд tank | Цены и услуги",
 			description: "Бренд tank. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	dodge: {
 		id: "dodge",
@@ -2852,8 +2805,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд dodge | Цены и услуги",
 			description: "Бренд dodge. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	"land-rover": {
 		id: "land-rover",
@@ -2943,8 +2894,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд land-rover | Цены и услуги",
 			description: "Бренд land-rover. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	jetta: {
 		id: "jetta",
@@ -3034,8 +2983,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд jetta | Цены и услуги",
 			description: "Бренд jetta. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	geely: {
 		id: "geely",
@@ -3125,8 +3072,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд geely | Цены и услуги",
 			description: "Бренд geely. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	volvo: {
 		id: "volvo",
@@ -3216,8 +3161,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд volvo | Цены и услуги",
 			description: "Бренд volvo. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	changan: {
 		id: "changan",
@@ -3307,8 +3250,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд changan | Цены и услуги",
 			description: "Бренд changan. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	forthing: {
 		id: "forthing",
@@ -3398,8 +3339,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд forthing | Цены и услуги",
 			description: "Бренд forthing. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	baic: {
 		id: "baic",
@@ -3489,8 +3428,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд baic | Цены и услуги",
 			description: "Бренд baic. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	ford: {
 		id: "ford",
@@ -3580,8 +3517,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд ford | Цены и услуги",
 			description: "Бренд ford. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	mitsubishi: {
 		id: "mitsubishi",
@@ -3671,8 +3606,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд mitsubishi | Цены и услуги",
 			description: "Бренд mitsubishi. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	jeep: {
 		id: "jeep",
@@ -3762,8 +3695,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд jeep | Цены и услуги",
 			description: "Бренд jeep. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	kia: {
 		id: "kia",
@@ -3853,8 +3784,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд kia | Цены и услуги",
 			description: "Бренд kia. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	porsche: {
 		id: "porsche",
@@ -3944,8 +3873,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд porsche | Цены и услуги",
 			description: "Бренд porsche. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	jaecoo: {
 		id: "jaecoo",
@@ -4035,8 +3962,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд jaecoo | Цены и услуги",
 			description: "Бренд jaecoo. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
+		salon3: true,
 	},
 	mazda: {
 		id: "mazda",
@@ -4126,8 +4052,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд mazda | Цены и услуги",
 			description: "Бренд mazda. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	lixiang: {
 		id: "lixiang",
@@ -4217,8 +4141,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд lixiang | Цены и услуги",
 			description: "Бренд lixiang. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	skoda: {
 		id: "skoda",
@@ -4308,8 +4230,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд skoda | Цены и услуги",
 			description: "Бренд skoda. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	opel: {
 		id: "opel",
@@ -4399,8 +4319,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд opel | Цены и услуги",
 			description: "Бренд opel. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	soueast: {
 		id: "soueast",
@@ -4490,8 +4408,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд soueast | Цены и услуги",
 			description: "Бренд soueast. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	zeekr: {
 		id: "zeekr",
@@ -4581,8 +4497,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд zeekr | Цены и услуги",
 			description: "Бренд zeekr. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	voyah: {
 		id: "voyah",
@@ -4672,8 +4586,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд voyah | Цены и услуги",
 			description: "Бренд voyah. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	"mercedes-benz": {
 		id: "mercedes-benz",
@@ -4763,8 +4675,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд mercedes-benz | Цены и услуги",
 			description: "Бренд mercedes-benz. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	jac: {
 		id: "jac",
@@ -4854,8 +4764,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд jac | Цены и услуги",
 			description: "Бренд jac. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	exeed: {
 		id: "exeed",
@@ -4945,8 +4853,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд exeed | Цены и услуги",
 			description: "Бренд exeed. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	lexus: {
 		id: "lexus",
@@ -5036,8 +4942,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд lexus | Цены и услуги",
 			description: "Бренд lexus. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	audi: {
 		id: "audi",
@@ -5127,8 +5031,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд audi | Цены и услуги",
 			description: "Бренд audi. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 	avatr: {
 		id: "avatr",
@@ -5218,8 +5120,6 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд avatr | Цены и услуги",
 			description: "Бренд avatr. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		isOfficial44: false,
-		isOfficial33: false,
 	},
 };
 

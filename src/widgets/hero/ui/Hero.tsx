@@ -1,5 +1,8 @@
 "use client";
 
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -96,7 +99,7 @@ export function Hero() {
 							<div className={styles.brands__wrap}>
 								<h2 className={styles.brands__title}>Официальный сервис:</h2>
 								<div className={styles.brands__list}>
-									{brandsTitlesData.official44.map((brand) => (
+									{brandsTitlesData.salon1.map((brand) => (
 										<div key={brand} className={styles.brands__item}>
 											<Image
 												src={`/images/brands/icons/${brand}.svg`}
