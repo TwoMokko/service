@@ -48,15 +48,6 @@
 			}
 		}
 	}
-
-	&.active {
-		@include laptop {
-			.headerBurgerMenu {
-				right: 0;
-				opacity: 1;
-			}
-		}
-	}
 }
 
 .header {
@@ -250,6 +241,11 @@
 		opacity: 0;
 		transition: $transition-0-3s;
 		z-index: -1;
+
+		&.active {
+			right: 0;
+			opacity: 1;
+		}
 
 		@include tablet {
 			top: 50px;
@@ -538,5 +534,23 @@
 				}
 			}
 		}
+	}
+}
+
+.desktopHeader {
+	display: block;
+}
+
+.mobileHeader {
+	display: none;
+}
+
+@media (max-width: 767px) {
+	.desktopHeader {
+		display: none;
+	}
+
+	.mobileHeader {
+		display: block;
 	}
 }

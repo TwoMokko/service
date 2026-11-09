@@ -8,7 +8,7 @@ import Link from "next/link";
 
 import { CategoryWithServices } from "@/src/shared/data/services";
 
-import styles from "./Header.module.scss";
+import styles from "../Header.module.scss";
 
 interface HeaderServicesNavProps {
 	services: CategoryWithServices[];

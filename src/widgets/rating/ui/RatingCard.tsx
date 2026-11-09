@@ -1,3 +1,4 @@
+import { IoMdStar } from "react-icons/io";
 import { TiLocation } from "react-icons/ti";
 
 import Image from "next/image";
@@ -30,12 +31,15 @@ export function RatingCard({ rating }: RatingCardProps) {
 					/>
 					<div className={styles.rating__stars}>
 						{rating.rating}
-						<Image
-							src="/images/rating/icons/stars.svg"
-							alt=""
-							width={144}
-							height={28}
-						/>
+						{/*<Image*/}
+						{/*	src="/images/rating/icons/stars.svg"*/}
+						{/*	alt=""*/}
+						{/*	width={144}*/}
+						{/*	height={28}*/}
+						{/*/>*/}
+						{[...Array(5)].map((_, i) => (
+							<IoMdStar key={i} color="#F8CD46" size={24} />
+						))}
 					</div>
 					<p className={styles.subtitle}>{rating.subtitle}</p>
 					<Link prefetch={false} className={styles.link} href={rating.link}>

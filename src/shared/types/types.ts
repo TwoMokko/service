@@ -129,10 +129,19 @@ export type Address = {
 	email: string;
 	time: string;
 	brands: string[];
+	gallery: number[];
 };
 
 export type About = {
 	email: string;
 	time: string;
 	addresses: Address[];
+};
+
+export type ContactsSocialRatingItem = {
+	brand_logo: string;
+	social: "2gis" | "yandex" | "avito";
+	rating: string;
+	stars_count: number;
+	reviews_count: number;
 };

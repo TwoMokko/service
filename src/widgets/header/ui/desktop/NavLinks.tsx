@@ -12,7 +12,7 @@ import { NavigationLink, SectionId } from "@/src/shared/types/types";
 
 import { HeaderServicesNav } from "./HeaderServicesNav";
 
-import styles from "./Header.module.scss";
+import styles from "../Header.module.scss";
 
 interface NavLinksProps {
 	services: CategoryWithServices[];

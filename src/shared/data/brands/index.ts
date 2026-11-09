@@ -2,10 +2,16 @@ import { Brand, BrandSlug, brands } from "./brands";
 
 export const brandsTitlesData = {
 	allBrands: Object.keys(brands) as BrandSlug[],
-	official44: (Object.keys(brands) as BrandSlug[]).filter((key) => brands[key].isOfficial44),
-	official33: (Object.keys(brands) as BrandSlug[]).filter((key) => brands[key].isOfficial33),
+	salon1: (Object.keys(brands) as BrandSlug[]).filter((k) => brands[k].salon1),
+	salon2: (Object.keys(brands) as BrandSlug[]).filter((k) => brands[k].salon2),
+	salon3: (Object.keys(brands) as BrandSlug[]).filter((k) => brands[k].salon3),
+
+	official: (Object.keys(brands) as BrandSlug[]).filter(
+		(k) => brands[k].salon1 || brands[k].salon2 || brands[k].salon3,
+	),
+
 	other: (Object.keys(brands) as BrandSlug[]).filter(
-		(key) => !brands[key].isOfficial44 && !brands[key].isOfficial33,
+		(k) => !brands[k].salon1 && !brands[k].salon2 && !brands[k].salon3,
 	),
 };
 

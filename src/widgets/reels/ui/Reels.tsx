@@ -1,10 +1,12 @@
 "use client";
 
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import React from "react";
-import { FaPlay } from "react-icons/fa";
 
 import Image from "next/image";
 
@@ -39,17 +41,20 @@ export function Reels(): React.ReactNode {
 				<Swiper
 					modules={[Navigation, Pagination]}
 					slidesPerView={"auto"}
-					spaceBetween={10}
+					spaceBetween={0}
 					loop={false}
 					breakpoints={{
 						640: {
 							slidesPerView: 1,
+							spaceBetween: 0,
 						},
 						1024: {
 							slidesPerView: 3,
+							spaceBetween: 10,
 						},
 						1280: {
 							slidesPerView: 4,
+							spaceBetween: 10,
 						},
 					}}
 					navigation={navigation}
