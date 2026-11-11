@@ -69,7 +69,7 @@ export default async function BrandPage({ params }: BrandPageProps) {
 				brand={currentBrand}
 			/>
 			<BrandsPriceListOnce brand={currentBrand} />
-			<Services services={services} />
+			<Services services={services} isTitle />
 			<section className="container">
 				<InfoBlock content={currentBrand.info.content} title={currentBrand.info.title} />
 			</section>

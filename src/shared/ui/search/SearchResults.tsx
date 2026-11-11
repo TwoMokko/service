@@ -9,6 +9,7 @@ import { SearchResult } from "@/src/shared/types/types";
 import styles from "./SearchResults.module.scss";
 
 interface SearchResultsProps {
+	variant: "desktop" | "mobile";
 	results: SearchResult[];
 	searchQuery: string;
 	onSearch: (query: string) => void;
@@ -17,6 +18,7 @@ interface SearchResultsProps {
 }
 
 export default function SearchResults({
+	variant,
 	results,
 	searchQuery,
 	onSearch,
@@ -27,16 +29,18 @@ export default function SearchResults({
 
 	return (
 		<div className={styles.searchResults}>
-			<div className={styles.searchResults__inputWrap}>
-				<FiSearch size={24} />
-				<input
-					type="text"
-					value={searchQuery}
-					onChange={(e) => onSearch(e.target.value)}
-					placeholder="Поиск внутри результатов..."
-					autoFocus
-				/>
-			</div>
+			{variant === "desktop" && (
+				<div className={styles.searchResults__inputWrap}>
+					<FiSearch size={24} />
+					<input
+						type="text"
+						value={searchQuery}
+						onChange={(e) => onSearch(e.target.value)}
+						placeholder="Поиск внутри результатов..."
+						autoFocus
+					/>
+				</div>
+			)}
 			{searchQuery && (
 				<div className={styles.resultsContent}>
 					<div className={styles.resultsTop}>{results.length} результатов поиска</div>

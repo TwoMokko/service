@@ -1,44 +1,88 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import { FaClock } from "react-icons/fa";
+import { HiMapPin } from "react-icons/hi2";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import Link from "next/link";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
-import { navigationLinks, sectionTitles } from "@/src/shared/config";
+import { about, navigationLinks, sectionTitles } from "@/src/shared/config";
+import { primaryContact } from "@/src/shared/lib/helpers/getContacts";
 import { SectionId } from "@/src/shared/types/types";
 import { Button } from "@/src/shared/ui/button/Button";
+import SearchAndResults from "@/src/shared/ui/search/SearchAndResults";
 
-import styles from "../HeaderMenuMobile.module.scss";
+import styles from "./HeaderMenuLevels.module.scss";
 
 interface MainMenuProps {
 	onClose: () => void;
 	openCategories: () => void;
 }
 export function MainMenu({ onClose, openCategories }: MainMenuProps) {
+	const [isSearch, setIsSearch] = useState(false);
 	const { openModal } = useModal();
 	const handleOpenModal = () => {
 		onClose();
 		openModal("common");
 	};
 	return (
-		<div className={styles.levels__main}>
-			<ul>
-				<li>
-					<button type="button" onClick={openCategories}>
-						{sectionTitles[SectionId.SERVICES]}
+		<div className={styles.main}>
+			{isSearch && (
+				<>
+					<button
+						type="button"
+						onClick={() => setIsSearch(false)}
+						className={styles.back}
+					>
+						<IoIosArrowBack size={12} />
+						назад
 					</button>
-				</li>
-				{navigationLinks
-					.filter((link) => link.title !== sectionTitles[SectionId.SERVICES])
-					.map((link) => (
-						<li key={link.href}>
-							<Link prefetch={false} href={link.href} onClick={onClose}>
-								{link.title}
-							</Link>
+					<h3 className={styles.list__head}>Поиск по сайту</h3>
+				</>
+			)}
+			<SearchAndResults
+				variant="mobile"
+				onNavigate={onClose}
+				onFocus={() => setIsSearch(true)}
+			/>
+			{!isSearch && (
+				<>
+					<ul className={styles.list}>
+						<li className={styles.list__item}>
+							<button type="button" onClick={openCategories}>
+								{sectionTitles[SectionId.SERVICES]}
+								<IoIosArrowForward size={12} />
+							</button>
 						</li>
-					))}
-			</ul>
-			<Button onClick={handleOpenModal}>Записаться на сервис</Button>
+						{navigationLinks
+							.filter((link) => link.title !== sectionTitles[SectionId.SERVICES])
+							.map((link) => (
+								<li key={link.href} className={styles.list__item}>
+									<Link prefetch={false} href={link.href} onClick={onClose}>
+										{link.title}
+									</Link>
+								</li>
+							))}
+					</ul>
+					<Button onClick={handleOpenModal}>Записаться на сервис</Button>
+
+					<ul className={styles.contacts}>
+						{about.addresses.map((contact) => (
+							<li key={contact.id} className={styles.contacts__item}>
+								<HiMapPin />
+								{contact.address}
+							</li>
+						))}
+						<li className={styles.contacts__item}>
+							<FaClock />
+							{primaryContact.time}
+						</li>
+					</ul>
+
+					<p className={styles.copyright}>© 2026 Peleton, все права защищены</p>
+				</>
+			)}
 		</div>
 	);
 }

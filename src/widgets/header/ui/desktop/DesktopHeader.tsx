@@ -19,7 +19,7 @@ export function DesktopHeader({ services }: DesktopHeaderProps) {
 			<div className={styles.headerInner}>
 				<Link
 					prefetch={false}
-					href="/public"
+					href="/"
 					className={styles.headerLogo}
 					aria-label="Главная страница"
 				/>

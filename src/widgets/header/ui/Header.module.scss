@@ -59,6 +59,7 @@
 
 	@include mobile {
 		border-radius: 0 0 10px 10px;
+		box-shadow: 0 4px 8px 0 #00000040;
 	}
 
 	.headerLogo {
@@ -255,82 +256,12 @@
 
 		.headerBurgerMenuWrapper {
 			position: relative;
-			padding: 35px 20px 30px;
-			border-radius: 30px;
+			padding: 32px 16px;
+			border-radius: 10px;
 			background-color: $color-more-light-gray;
+			//max-height: 80%;
 
-			@include tablet {
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
-				height: fit-content;
-				border-radius: 8px;
-			}
-
-			.headerBurgerMenuList {
-				display: flex;
-				flex-direction: column;
-				margin-bottom: 42px;
-				row-gap: 14px;
-
-				@include tablet {
-					flex: auto;
-					row-gap: 36px;
-					align-items: center;
-					justify-content: center;
-				}
-
-				li {
-					a {
-						color: $color-black;
-						font-weight: 500;
-						transition: $transition-0-3s;
-
-						&:hover {
-							color: $color-primary;
-						}
-					}
-				}
-			}
-
-			.headerBurgerMenuContacts {
-				display: flex;
-				flex-direction: column;
-				margin-bottom: 21px;
-				row-gap: 7px;
-
-				@include tablet {
-					flex: none;
-					align-items: center;
-				}
-
-				.headerBurgerMenuContactsItem {
-					display: flex;
-					font-size: 14px;
-					column-gap: 7px;
-
-					a {
-						color: $color-black;
-						transition: $transition-0-3s;
-
-						&:hover {
-							color: $color-primary;
-						}
-					}
-				}
-			}
-
-			.headerBurgerMenuBtns {
-				display: flex;
-				flex-direction: column;
-				gap: 10px;
-
-				button {
-					@include mobile {
-						font-size: 14px;
-					}
-				}
-			}
+			box-shadow: 0 4px 8px 0 #00000040;
 		}
 	}
 }
