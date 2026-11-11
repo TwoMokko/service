@@ -4,10 +4,10 @@ import { Promo } from "@/src/shared/data/promo/promo";
 
 import styles from "./PromoSwiper.module.scss";
 
-interface ActionCardProps {
+interface PromoCardProps {
 	promo: Promo;
 }
-export function PromoCard({ promo }: ActionCardProps) {
+export function PromoCard({ promo }: PromoCardProps) {
 	return (
 		<article className={styles.promo__card}>
 			<div className={styles.picture}>

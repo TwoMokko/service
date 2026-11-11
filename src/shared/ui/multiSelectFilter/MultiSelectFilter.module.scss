@@ -1,0 +1,59 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.mobileTagSelector {
+	.tagTitle {
+		font-size: 22px;
+		font-weight: 600;
+		padding: 10px 16px;
+		border-bottom: 1px solid $color-light-gray;
+	}
+
+	.tagContent {
+		padding: 16px;
+	}
+	.tagList {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
+
+		.tagItem {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 14px;
+			width: 100%;
+
+			&.checked {
+				font-weight: 700;
+				color: $color-primary;
+
+				.checkbox {
+					background-color: $color-primary-hover-opacity;
+				}
+			}
+
+			.checkbox {
+				width: 24px;
+				height: 24px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 5px;
+				background-color: $color-light-gray;
+			}
+		}
+	}
+
+	.closeBtn {
+		width: 100%;
+		background-color: $color-bg;
+		color: $color-white;
+		padding: 14px;
+		font-size: 14px;
+		font-weight: 600;
+		margin-top: 16px;
+		border-radius: 8px;
+	}
+}

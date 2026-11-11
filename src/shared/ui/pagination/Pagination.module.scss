@@ -1,0 +1,53 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+	margin-top: 32px;
+
+	@include mobile {
+		margin-top: 24px;
+	}
+
+	&__btn {
+		&:disabled {
+			opacity: 0.5;
+		}
+	}
+
+	.pageWrap {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.pageNumber {
+		width: 48px;
+		height: 48px;
+		background: $color-primary;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		border: none;
+		color: $color-white;
+
+		&:not(.active) {
+			opacity: 0.5;
+		}
+
+		&:first-child {
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+		}
+
+		&:last-child {
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+	}
+}
