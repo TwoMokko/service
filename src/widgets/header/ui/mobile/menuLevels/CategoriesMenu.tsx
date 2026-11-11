@@ -1,12 +1,14 @@
 "use client";
 
+import React from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+import Image from "next/image";
+import Link from "next/link";
+
 import { CategoryWithServices } from "@/src/shared/data/services";
 
 import styles from "./HeaderMenuLevels.module.scss";
-import Link from "next/link";
-import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
-import React from "react";
-import Image from "next/image";
 
 interface CategoriesMenuProps {
 	services: CategoryWithServices[];
@@ -24,11 +26,7 @@ export function CategoriesMenu({ services, openServices, onClose, goBack }: Cate
 			<h3 className={styles.list__head}>Услуги</h3>
 			<ul className={styles.list}>
 				<li className={styles.list__item}>
-					<Link
-						href={`/services`}
-						prefetch={false}
-						onClick={onClose}
-					>
+					<Link href={`/services`} prefetch={false} onClick={onClose}>
 						<span className={styles.list__item_title}>Показать все</span>
 						<IoIosArrowForward size={12} />
 					</Link>
@@ -37,7 +35,13 @@ export function CategoriesMenu({ services, openServices, onClose, goBack }: Cate
 					<li key={itm.href} className={styles.list__item}>
 						<button type="button" onClick={() => openServices(itm)}>
 							<span className={styles.list__item_title}>{itm.title}</span>
-							<Image className={styles.list__item_img} src={`/images/services/cards/${itm.href}.png`} alt="" width={96} height={47} />
+							<Image
+								className={styles.list__item_img}
+								src={`/images/services/cards/${itm.href}.png`}
+								alt=""
+								width={96}
+								height={47}
+							/>
 							<IoIosArrowForward size={12} />
 						</button>
 					</li>

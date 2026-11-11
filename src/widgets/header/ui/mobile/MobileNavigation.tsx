@@ -61,7 +61,12 @@ export function MobileNavigation({ services, onClose }: MobileNavigationProps) {
 				<MainMenu onClose={onClose} openCategories={openCategories} />
 			)}
 			{menuState.level === "categories" && (
-				<CategoriesMenu services={services} openServices={openServices} onClose={onClose} goBack={goBack} />
+				<CategoriesMenu
+					services={services}
+					openServices={openServices}
+					onClose={onClose}
+					goBack={goBack}
+				/>
 			)}
 			{menuState.level === "services" && menuState.activeCategory && (
 				<ServicesMenu

@@ -1,19 +1,19 @@
 "use client";
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { FaClock } from "react-icons/fa";
+import { HiMapPin } from "react-icons/hi2";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import Link from "next/link";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
-import {about, navigationLinks, sectionTitles} from "@/src/shared/config";
+import { about, navigationLinks, sectionTitles } from "@/src/shared/config";
+import { primaryContact } from "@/src/shared/lib/helpers/getContacts";
 import { SectionId } from "@/src/shared/types/types";
 import { Button } from "@/src/shared/ui/button/Button";
+import SearchAndResults from "@/src/shared/ui/search/SearchAndResults";
 
 import styles from "./HeaderMenuLevels.module.scss";
-import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
-import {HiMapPin} from "react-icons/hi2";
-import {FaClock} from "react-icons/fa";
-import {primaryContact} from "@/src/shared/lib/helpers/getContacts";
-import SearchAndResults from "@/src/shared/ui/search/SearchAndResults";
 
 interface MainMenuProps {
 	onClose: () => void;
@@ -28,16 +28,24 @@ export function MainMenu({ onClose, openCategories }: MainMenuProps) {
 	};
 	return (
 		<div className={styles.main}>
-			{isSearch &&
+			{isSearch && (
 				<>
-					<button type="button" onClick={() => setIsSearch(false)} className={styles.back}>
+					<button
+						type="button"
+						onClick={() => setIsSearch(false)}
+						className={styles.back}
+					>
 						<IoIosArrowBack size={12} />
 						назад
 					</button>
 					<h3 className={styles.list__head}>Поиск по сайту</h3>
 				</>
-			}
-			<SearchAndResults variant="mobile" onNavigate={onClose} onFocus={() => setIsSearch(true)} />
+			)}
+			<SearchAndResults
+				variant="mobile"
+				onNavigate={onClose}
+				onFocus={() => setIsSearch(true)}
+			/>
 			{!isSearch && (
 				<>
 					<ul className={styles.list}>
@@ -60,7 +68,7 @@ export function MainMenu({ onClose, openCategories }: MainMenuProps) {
 					<Button onClick={handleOpenModal}>Записаться на сервис</Button>
 
 					<ul className={styles.contacts}>
-						{about.addresses.map(contact => (
+						{about.addresses.map((contact) => (
 							<li key={contact.id} className={styles.contacts__item}>
 								<HiMapPin />
 								{contact.address}

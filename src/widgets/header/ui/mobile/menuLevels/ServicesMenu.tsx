@@ -1,12 +1,13 @@
 "use client";
 
+import React from "react";
+import { IoIosArrowBack } from "react-icons/io";
+
 import Link from "next/link";
 
 import { Service } from "@/src/shared/data/services";
 
 import styles from "./HeaderMenuLevels.module.scss";
-import {IoIosArrowBack} from "react-icons/io";
-import React from "react";
 
 interface ServicesMenuProps {
 	services: Service[];

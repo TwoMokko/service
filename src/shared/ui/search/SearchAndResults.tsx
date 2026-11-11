@@ -15,7 +15,11 @@ interface SearchAndResultsProps {
 	onFocus?: () => void;
 }
 
-export default function SearchAndResults({variant = "desktop", onNavigate, onFocus}: SearchAndResultsProps) {
+export default function SearchAndResults({
+	variant = "desktop",
+	onNavigate,
+	onFocus,
+}: SearchAndResultsProps) {
 	const { searchQuery, results, handleSearch, clearSearch } = useSearchService();
 
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -35,7 +39,9 @@ export default function SearchAndResults({variant = "desktop", onNavigate, onFoc
 	return (
 		<div className={`${styles.searchWrap} ${styles[variant]}`} ref={searchWrapRef}>
 			<div className={styles.inputWrap}>
-				<span className={styles.icon} onClick={onFocus}><FiSearch /></span>
+				<span className={styles.icon} onClick={onFocus}>
+					<FiSearch />
+				</span>
 				<input
 					onFocus={onFocus}
 					type="text"
@@ -71,7 +77,7 @@ export default function SearchAndResults({variant = "desktop", onNavigate, onFoc
 					onSelect={() => {
 						setIsOpen(false);
 						clearSearch();
-						onNavigate?.()
+						onNavigate?.();
 					}}
 				/>
 			)}

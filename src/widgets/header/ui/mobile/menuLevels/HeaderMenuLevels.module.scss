@@ -2,185 +2,185 @@
 @use "../../../../../shared/styles/mixins" as *;
 
 .main {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	position: relative;
 
-  .list {
+	.list {
+		&__item {
+			> button,
+			> a {
+				justify-content: space-between;
+				gap: 16px;
+				padding: 12px 0;
+				font-size: 11px;
+				text-transform: uppercase;
+				font-weight: 500;
+				border-bottom: 0.5px solid #0000001a;
+			}
+		}
+	}
 
+	.contacts {
+		&__item {
+			display: flex;
+			align-items: center;
+			column-gap: 8px;
+			font-size: 11px;
+			font-weight: 500;
 
+			&:not(:last-child) {
+				margin-bottom: 8px;
+			}
 
-    &__item {
-      > button, > a {
-        justify-content: space-between;
-        gap: 16px;
-        padding: 12px 0;
-        font-size: 11px;
-        text-transform: uppercase;
-        font-weight: 500;
-        border-bottom: 0.5px solid #0000001A;
-      }
-    }
-  }
-
-  .contacts {
-    &__item {
-      display: flex;
-      align-items: center;
-      column-gap: 8px;
-      font-size: 11px;
-      font-weight: 500;
-
-
-      &:not(:last-child) {
-        margin-bottom: 8px;
-      }
-
-      svg {
-        fill: $color-primary;
-        stroke: $color-primary;
-      }
-    }
-  }
-  .copyright {
-    font-weight: 500;
-    font-size: 11px;
-    padding-top: 8px;
-  }
+			svg {
+				fill: $color-primary;
+				stroke: $color-primary;
+			}
+		}
+	}
+	.copyright {
+		font-weight: 500;
+		font-size: 11px;
+		padding-top: 8px;
+	}
 }
 
 .categories {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 
-  .list {
-    overflow-y: auto;
-    max-height: 440px;
-    //max-height: 140px;
-    padding-right: 14px;
-    gap: 8px;
+	.list {
+		overflow-y: auto;
+		max-height: 440px;
+		//max-height: 140px;
+		padding-right: 14px;
+		gap: 8px;
 
-    &::-webkit-scrollbar-track {
-      background: $color-light-gray;
-    }
+		&::-webkit-scrollbar-track {
+			background: $color-light-gray;
+		}
 
-    &__item {
-      > button, > a {
-        justify-content: space-between;
-        gap: 16px;
-        padding: 0 14px;
-        font-size: 11px;
-        text-transform: uppercase;
-        font-weight: 500;
-        border-radius: 8px;
-        height: 47px;
-        background-color: $color-more-light-gray;
-        box-shadow: 0 4px 10px 0 #00000040;
+		&__item {
+			> button,
+			> a {
+				justify-content: space-between;
+				gap: 16px;
+				padding: 0 14px;
+				font-size: 11px;
+				text-transform: uppercase;
+				font-weight: 500;
+				border-radius: 8px;
+				height: 47px;
+				background-color: $color-more-light-gray;
+				box-shadow: 0 4px 10px 0 #00000040;
 
-        overflow: hidden;
-      }
+				overflow: hidden;
+			}
 
-      &_title {
-        flex: auto;
-        text-align: start;
-      }
+			&_title {
+				flex: auto;
+				text-align: start;
+			}
 
-      &_img {
-        flex: none;
-        width: 96px;
-        height: 47px;
-        margin-left: auto;
-        object-fit: contain;
-        object-position: bottom;
-      }
+			&_img {
+				flex: none;
+				width: 96px;
+				height: 47px;
+				margin-left: auto;
+				object-fit: contain;
+				object-position: bottom;
+			}
 
-      svg {
-        flex: none;
-      }
-    }
-  }
+			svg {
+				flex: none;
+			}
+		}
+	}
 }
 
 .services {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 
-  .list {
-    background-color: $color-white;
-    border-radius: 8px;
-    padding: 10px 20px 10px 10px;
-    overflow-y: auto;
-    max-height: 440px;
+	.list {
+		background-color: $color-white;
+		border-radius: 8px;
+		padding: 10px 20px 10px 10px;
+		overflow-y: auto;
+		max-height: 440px;
 
-    &__item {
-      > button, > a {
-        display: flex;
-        gap: 8px;
-        padding: 17px 0;
-        font-weight: 600;
-      }
+		&__item {
+			> button,
+			> a {
+				display: flex;
+				gap: 8px;
+				padding: 17px 0;
+				font-weight: 600;
+			}
 
-      &:not(:last-child) {
-        border-bottom: 1px solid $color-more-light-gray;
-      }
+			&:not(:last-child) {
+				border-bottom: 1px solid $color-more-light-gray;
+			}
 
-      &_title {
-        font-size: 14px;
-        color: $color-gray;
-      }
+			&_title {
+				font-size: 14px;
+				color: $color-gray;
+			}
 
-      &_count {
-        width: 20px;
-        height: 20px;
-        font-size: 10px;
-        background-color: $color-more-light-gray;
-        border-radius: 50%;
-        color: $color-gray;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: none;
-      }
-    }
-  }
+			&_count {
+				width: 20px;
+				height: 20px;
+				font-size: 10px;
+				background-color: $color-more-light-gray;
+				border-radius: 50%;
+				color: $color-gray;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex: none;
+			}
+		}
+	}
 }
 
 .back {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px 0;
-  font-size: 11px;
-  text-transform: uppercase;
-  font-weight: 500;
-  border-bottom: 0.5px solid #0000001A;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 12px 0;
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight: 500;
+	border-bottom: 0.5px solid #0000001a;
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  &__head {
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	&__head {
+		font-size: 14px;
+		font-weight: 600;
+		text-transform: uppercase;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 
-    &_count {
-      opacity: 0.4;
-    }
-  }
+		&_count {
+			opacity: 0.4;
+		}
+	}
 
-  &__item {
-    > button, > a {
-      display: flex;
-      align-items: center;
-      width: 100%;
-    }
-  }
+	&__item {
+		> button,
+		> a {
+			display: flex;
+			align-items: center;
+			width: 100%;
+		}
+	}
 }
