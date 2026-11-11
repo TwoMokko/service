@@ -2,24 +2,43 @@
 
 import { CategoryWithServices } from "@/src/shared/data/services";
 
-import styles from "../HeaderMenuMobile.module.scss";
+import styles from "./HeaderMenuLevels.module.scss";
+import Link from "next/link";
+import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
+import React from "react";
+import Image from "next/image";
 
 interface CategoriesMenuProps {
 	services: CategoryWithServices[];
 	openServices: (category: CategoryWithServices) => void;
+	onClose: () => void;
 	goBack: () => void;
 }
-export function CategoriesMenu({ services, openServices, goBack }: CategoriesMenuProps) {
+export function CategoriesMenu({ services, openServices, onClose, goBack }: CategoriesMenuProps) {
 	return (
-		<div className={styles.levels__categories}>
-			<button type="button" onClick={goBack}>
+		<div className={styles.categories}>
+			<button type="button" onClick={goBack} className={styles.back}>
+				<IoIosArrowBack size={12} />
 				назад
 			</button>
-			<ul>
+			<h3 className={styles.list__head}>Услуги</h3>
+			<ul className={styles.list}>
+				<li className={styles.list__item}>
+					<Link
+						href={`/services`}
+						prefetch={false}
+						onClick={onClose}
+					>
+						<span className={styles.list__item_title}>Показать все</span>
+						<IoIosArrowForward size={12} />
+					</Link>
+				</li>
 				{services.map((itm) => (
-					<li key={itm.href}>
+					<li key={itm.href} className={styles.list__item}>
 						<button type="button" onClick={() => openServices(itm)}>
-							{itm.title}
+							<span className={styles.list__item_title}>{itm.title}</span>
+							<Image className={styles.list__item_img} src={`/images/services/cards/${itm.href}.png`} alt="" width={96} height={47} />
+							<IoIosArrowForward size={12} />
 						</button>
 					</li>
 				))}

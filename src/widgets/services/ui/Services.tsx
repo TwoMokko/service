@@ -10,8 +10,9 @@ import styles from "./Services.module.scss";
 
 interface ServicesProps {
 	services: CategoryWithServices[];
+	isTitle?: boolean;
 }
-export function Services({ services }: ServicesProps) {
+export function Services({ services, isTitle = false }: ServicesProps) {
 	const { isMobile } = useDevice();
 	const [showAllCards, setShowAllCards] = useState<boolean>(false);
 	const initCardCount: number = isMobile ? 4 : 6;
@@ -25,6 +26,7 @@ export function Services({ services }: ServicesProps) {
 
 	return (
 		<section className={`${styles.services} container block-bottom`}>
+			{isTitle && <h2 className="section-title">Наши услуги</h2>}
 			<div className={styles.servicesCards}>{visibleCards}</div>
 			<div className={`${styles.servicesCards} ${!showAllCards ? styles.hidden : ""}`}>
 				{hiddenCards}

@@ -9,7 +9,13 @@ import SearchResults from "./SearchResults";
 
 import styles from "./SearchResults.module.scss";
 
-export default function SearchAndResults() {
+interface SearchAndResultsProps {
+	variant?: "desktop" | "mobile";
+	onNavigate?: () => void;
+	onFocus?: () => void;
+}
+
+export default function SearchAndResults({variant = "desktop", onNavigate, onFocus}: SearchAndResultsProps) {
 	const { searchQuery, results, handleSearch, clearSearch } = useSearchService();
 
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -27,10 +33,11 @@ export default function SearchAndResults() {
 	}, []);
 
 	return (
-		<div className={styles.searchWrap} ref={searchWrapRef}>
+		<div className={`${styles.searchWrap} ${styles[variant]}`} ref={searchWrapRef}>
 			<div className={styles.inputWrap}>
-				<FiSearch />
+				<span className={styles.icon} onClick={onFocus}><FiSearch /></span>
 				<input
+					onFocus={onFocus}
 					type="text"
 					value={searchQuery}
 					onClick={() => setIsOpen(true)}
@@ -41,19 +48,22 @@ export default function SearchAndResults() {
 					placeholder="Поиск по названию услуги..."
 				/>
 				{searchQuery && (
-					<div
+					<button
+						type="button"
 						className={styles.inputClear}
+						aria-label="Очистить поиск"
 						onClick={() => {
 							setIsOpen(false);
 							clearSearch();
 						}}
 					>
 						<IoClose size={16} />
-					</div>
+					</button>
 				)}
 			</div>
 			{isOpen && (
 				<SearchResults
+					variant={variant}
 					results={results}
 					searchQuery={searchQuery}
 					onSearch={handleSearch}
@@ -61,6 +71,7 @@ export default function SearchAndResults() {
 					onSelect={() => {
 						setIsOpen(false);
 						clearSearch();
+						onNavigate?.()
 					}}
 				/>
 			)}

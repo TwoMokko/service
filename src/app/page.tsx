@@ -23,7 +23,7 @@ export default async function Home() {
 		<>
 			<Hero />
 
-			<Services services={services} />
+			<Services services={services} isTitle />
 			<FormService />
 			<Brands title="Ремонт и обслуживание популярных брендов" />
 			<FormSale />

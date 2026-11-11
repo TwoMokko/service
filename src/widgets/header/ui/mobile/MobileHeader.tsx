@@ -19,7 +19,7 @@ export function MobileHeader({ services }: MobileHeaderProps) {
 				<BurgerClient services={services} />
 				<Link
 					prefetch={false}
-					href="/public"
+					href="/"
 					className={styles.headerLogo}
 					aria-label="Главная страница"
 				/>
