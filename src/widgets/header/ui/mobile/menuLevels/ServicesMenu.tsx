@@ -5,7 +5,7 @@ import { IoIosArrowBack } from "react-icons/io";
 
 import Link from "next/link";
 
-import { Service } from "@/src/shared/data/services";
+import { Service } from "@/src/shared/data/services/types";
 
 import styles from "./HeaderMenuLevels.module.scss";
 
@@ -28,9 +28,9 @@ export function ServicesMenu({ services, title, goBack, onClose }: ServicesMenuP
 			</h3>
 			<ul className={styles.list}>
 				{services.map((itm, index) => (
-					<li key={itm.href} className={styles.list__item}>
+					<li key={itm.slug} className={styles.list__item}>
 						<Link
-							href={`/services/${itm.categorySlug}/${itm.href}`}
+							href={`/services/${itm.categorySlug}/${itm.slug}`}
 							prefetch={false}
 							onClick={onClose}
 						>

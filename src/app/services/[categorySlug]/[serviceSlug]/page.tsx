@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { sectionTitles } from "@/src/shared/config";
-import { getAllCategorySlugs, getCategoryByHref } from "@/src/shared/data/services";
+import { getAllCategoriesWithServices, getServiceWithCategory } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
 import { About } from "@/src/widgets/about";
@@ -12,50 +12,54 @@ import { FormService } from "@/src/widgets/form";
 import { Rating } from "@/src/widgets/rating";
 import { ServicesPageInfo } from "@/src/widgets/services";
 
+export const dynamicParams = false;
 interface ServicePageProps {
-	params: Promise<{ category: string }>;
+	params: Promise<{ categorySlug: string; serviceSlug: string }>;
 }
 
 export async function generateStaticParams() {
-	return getAllCategorySlugs();
+	return getAllCategoriesWithServices().flatMap((category) =>
+		category.items.map((service) => ({
+			categorySlug: category.slug,
+			serviceSlug: service.slug,
+		})),
+	);
 }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
-	const { category } = await params;
+	const { categorySlug, serviceSlug } = await params;
 
-	try {
-		const categoryData = getCategoryByHref(category);
-		if (!categoryData) throw new Error("Category not found");
-		return categoryData.meta;
-	} catch {
+	const service = getServiceWithCategory(serviceSlug);
+
+	if (!service)
 		return {
-			title: "Категория не найдена",
-			description: "Страница категории не найдена",
+			title: "Услуга не найдена",
+			description: "Страница услуги не найдена",
 		};
-	}
+
+	return service.meta;
 }
 
-export default async function CategoryPage({ params }: ServicePageProps) {
-	const { category } = await params;
+export default async function ServicePage({ params }: ServicePageProps) {
+	const { categorySlug, serviceSlug } = await params;
 
-	let currentCategory;
-	try {
-		currentCategory = getCategoryByHref(category);
-		if (!currentCategory) throw new Error("Category not found");
-	} catch {
+	const service = getServiceWithCategory(serviceSlug);
+
+	if (!service || service.category.slug !== categorySlug) {
 		notFound();
 	}
 
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },
 		{ title: "Услуги", href: "/services" },
-		{ title: currentCategory.title, href: `/services/${category}` },
+		{ title: service.category.title, href: `/services/${categorySlug}` },
+		{ title: service.title, href: `/services/${categorySlug}/${serviceSlug}` },
 	];
 
 	return (
 		<div className="other-page">
 			<Breadcrumbs items={breadcrumbs} />
-			<ServicesPageInfo category={currentCategory} />
+			<ServicesPageInfo service={service} />
 			<About />
 			<FormService />
 			<Brands title="Ремонт и обслуживание популярных брендов" />

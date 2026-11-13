@@ -3,8 +3,7 @@ import { notFound } from "next/navigation";
 
 import { sectionTitles } from "@/src/shared/config";
 import { getBrandBySlug } from "@/src/shared/data/brands";
-import { getServices } from "@/src/shared/data/services";
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { getAllCategoriesWithServices } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { Banner } from "@/src/shared/ui/banner/Banner";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
@@ -36,7 +35,7 @@ export async function generateMetadata({ params }: BrandPageProps): Promise<Meta
 }
 
 export default async function BrandPage({ params }: BrandPageProps) {
-	const services: CategoryWithServices[] = getServices();
+	const categories = getAllCategoriesWithServices();
 	const { brand } = await params;
 
 	let currentBrand;
@@ -69,7 +68,7 @@ export default async function BrandPage({ params }: BrandPageProps) {
 				brand={currentBrand}
 			/>
 			<BrandsPriceListOnce brand={currentBrand} />
-			<Services services={services} isTitle />
+			<Services services={categories} isTitle />
 			<section className="container">
 				<InfoBlock content={currentBrand.info.content} title={currentBrand.info.title} />
 			</section>

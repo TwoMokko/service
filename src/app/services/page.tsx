@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 
 import { metaDataServicesPage, sectionTitles } from "@/src/shared/config";
-import { getServices } from "@/src/shared/data/services";
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { getAllCategoriesWithServices } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { Banner } from "@/src/shared/ui/banner/Banner";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
@@ -13,7 +12,7 @@ import { Services } from "@/src/widgets/services/ui/Services";
 export const metadata: Metadata = metaDataServicesPage;
 
 export default function ServicesPage() {
-	const services: CategoryWithServices[] = getServices();
+	const categories = getAllCategoriesWithServices();
 
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },
@@ -37,7 +36,7 @@ export default function ServicesPage() {
 				description={description}
 				imageSrc="/images/services/services-banner-desk.png"
 			/>
-			<Services services={services} />
+			<Services services={categories} />
 			<Contacts
 				idSection={SectionId.CONTACTS}
 				titleSection={sectionTitles[SectionId.CONTACTS]}

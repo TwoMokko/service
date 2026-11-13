@@ -6,7 +6,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";
 
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/types";
 
 import styles from "./HeaderMenuLevels.module.scss";
 
@@ -32,12 +32,12 @@ export function CategoriesMenu({ services, openServices, onClose, goBack }: Cate
 					</Link>
 				</li>
 				{services.map((itm) => (
-					<li key={itm.href} className={styles.list__item}>
+					<li key={itm.slug} className={styles.list__item}>
 						<button type="button" onClick={() => openServices(itm)}>
 							<span className={styles.list__item_title}>{itm.title}</span>
 							<Image
 								className={styles.list__item_img}
-								src={`/images/services/cards/${itm.href}.png`}
+								src={`/images/services/cards/${itm.slug}.png`}
 								alt=""
 								width={96}
 								height={47}

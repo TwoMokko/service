@@ -2,287 +2,165 @@
 
 import { useEffect, useState } from "react";
 
+import type { Category, Service } from "@/src/shared/data/services/types";
+
+import {
+	AdminData,
+	addCategory,
+	addService,
+	deleteCategory,
+	deleteService,
+	renameCategory,
+	renameService,
+	updateCategory,
+	updateService,
+} from "./utils";
+
 import styles from "./admin.module.scss";
 
-// ============================================
-// ТИПЫ (без slug)
-// ============================================
-
-interface ServiceItem {
-	title: string;
-	price: number;
-}
-
-interface Service {
-	id: number;
-	href: string;
-	title: string;
-	shortDescription: string;
-	description: string;
-	price: number;
-	time: string;
-	categoryId: string;
-	meta: {
-		title: string;
-		description: string;
-		keywords?: string[];
-	};
-	items?: ServiceItem[];
-}
-
-interface Category {
-	id: number;
-	title: string;
-	href: string;
-	description: string;
-	items: string[];
-	meta: {
-		title: string;
-		description: string;
-	};
-}
-
-interface Data {
-	services: Record<string, Service>;
-	categories: Record<string, Category>;
-}
-
-// ============================================
-// КОМПОНЕНТ ВХОДА
-// ============================================
-
-function Login({ onLogin }: { onLogin: () => void }) {
-	const [password, setPassword] = useState("");
-	const [error, setError] = useState("");
-
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-		if (password === "admin123") {
-			localStorage.setItem("adminAuth", "true");
-			onLogin();
-		} else {
-			setError("Неверный пароль");
-			setPassword("");
-		}
-	};
-
-	return (
-		<div className={styles.loginPage}>
-			<div className={styles.loginBox}>
-				<h1>🛠 Админка</h1>
-				<p className={styles.subtitle}>Введите пароль для входа</p>
-				<form onSubmit={handleSubmit} className={styles.loginForm}>
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						placeholder="Введите пароль"
-						className={styles.loginInput}
-						autoFocus
-					/>
-					{error && <div className={styles.error}>{error}</div>}
-					<button type="submit" className={styles.loginBtn}>
-						Войти
-					</button>
-				</form>
-				<p className={styles.hint}>Пароль: admin123</p>
-			</div>
-		</div>
-	);
-}
-
-// ============================================
-// ОСНОВНАЯ СТРАНИЦА АДМИНКИ
-// ============================================
-
 export default function AdminPage() {
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
-	const [data, setData] = useState<Data | null>(null);
+	const [data, setData] = useState<AdminData | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [saving, setSaving] = useState(false);
 	const [message, setMessage] = useState("");
+	const [slugDrafts, setSlugDrafts] = useState<Record<string, string>>({});
 	const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
 
 	useEffect(() => {
-		const auth = localStorage.getItem("adminAuth");
-		if (auth === "true") {
-			setIsAuthenticated(true);
+		async function loadData() {
+			try {
+				const response = await fetch("/api/admin/data");
+
+				if (!response.ok) {
+					throw new Error("Не удалось загрузить данные");
+				}
+
+				const result: AdminData = await response.json();
+
+				setData(result);
+
+				setExpandedCategories(
+					Object.fromEntries(Object.keys(result.categories).map((slug) => [slug, true])),
+				);
+			} catch {
+				setMessage("Ошибка загрузки данных");
+			} finally {
+				setLoading(false);
+			}
 		}
+
+		loadData();
 	}, []);
 
-	useEffect(() => {
-		if (!isAuthenticated) return;
-
-		fetch("/api/admin/data")
-			.then((res) => res.json())
-			.then((data) => {
-				setData(data);
-				const expanded: Record<string, boolean> = {};
-				Object.keys(data.categories).forEach((key) => {
-					expanded[key] = true;
-				});
-				setExpandedCategories(expanded);
-				setLoading(false);
-			})
-			.catch(() => {
-				setMessage("❌ Ошибка загрузки");
-				setLoading(false);
-			});
-	}, [isAuthenticated]);
-
-	const saveData = async () => {
+	const handleSave = async () => {
 		if (!data) return;
+
 		setSaving(true);
 		setMessage("");
 
 		try {
-			const res = await fetch("/api/admin/data", {
+			const response = await fetch("/api/admin/data", {
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
+				headers: {
+					"Content-Type": "application/json",
+				},
 				body: JSON.stringify(data),
 			});
 
-			const result = await res.json();
-			setMessage(result.success ? "✅ Сохранено!" : "❌ Ошибка");
+			if (!response.ok) {
+				throw new Error("Ошибка сохранения");
+			}
+
+			const result = await response.json();
+
+			if (!result.success) {
+				throw new Error("Не удалось сохранить данные");
+			}
+
+			setMessage("Сохранено!");
 		} catch {
-			setMessage("❌ Ошибка соединения");
+			setMessage("Ошибка сохранения данных");
 		} finally {
 			setSaving(false);
 		}
 	};
 
-	const updateCategory = (slug: string, field: string, value: any) => {
+	const handleUpdateCategory = (slug: string, changes: Partial<Category>) => {
+		setData((prev) => (prev ? updateCategory(prev, slug, changes) : prev));
+	};
+
+	const handleUpdateService = (slug: string, changes: Partial<Service>) => {
+		setData((prev) => (prev ? updateService(prev, slug, changes) : prev));
+	};
+
+	const handleAddCategory = () => {
+		setData((prev) => {
+			if (!prev) return prev;
+
+			const next = addCategory(prev);
+			const newSlug = Object.keys(next.categories).find((slug) => !prev.categories[slug]);
+
+			if (newSlug) {
+				setExpandedCategories((current) => ({
+					...current,
+					[newSlug]: true,
+				}));
+			}
+
+			return next;
+		});
+	};
+
+	const handleAddService = (categorySlug: string) => {
+		setData((prev) => (prev ? addService(prev, categorySlug) : prev));
+	};
+
+	const handleDeleteService = (slug: string) => {
+		if (!confirm("Удалить услугу?")) return;
+
+		setData((prev) => (prev ? deleteService(prev, slug) : prev));
+	};
+
+	const handleDeleteCategory = (slug: string) => {
+		if (!confirm("Удалить категорию и все её услуги?")) return;
+
+		setData((prev) => (prev ? deleteCategory(prev, slug) : prev));
+	};
+
+	const handleRenameCategory = (oldSlug: string) => {
 		if (!data) return;
-		setData({
-			...data,
-			categories: {
-				...data.categories,
-				[slug]: { ...data.categories[slug], [field]: value },
-			},
-		});
+
+		const newSlug = slugDrafts[`category:${oldSlug}`] ?? oldSlug;
+
+		try {
+			setData(renameCategory(data, oldSlug, newSlug));
+
+			setSlugDrafts((prev) => {
+				const next = { ...prev };
+				delete next[`category:${oldSlug}`];
+				return next;
+			});
+		} catch (error) {
+			setMessage(error instanceof Error ? error.message : "Ошибка изменения slug");
+		}
 	};
 
-	const updateService = (slug: string, field: string, value: any) => {
-		if (!data) return;
-		setData({
-			...data,
-			services: {
-				...data.services,
-				[slug]: { ...data.services[slug], [field]: value },
-			},
-		});
-	};
-
-	const addServiceToCategory = (categorySlug: string) => {
+	const handleRenameService = (oldSlug: string) => {
 		if (!data) return;
 
-		const services = Object.values(data.services);
-		const maxId = services.length > 0 ? Math.max(...services.map((s) => s.id)) : 0;
-		const newId = maxId + 1;
-		const serviceSlug = `service-${newId}`;
+		const newSlug = slugDrafts[`service:${oldSlug}`] ?? oldSlug;
 
-		const category = data.categories[categorySlug];
-		const serviceHref = `${serviceSlug}`;
+		try {
+			setData(renameService(data, oldSlug, newSlug));
 
-		const newServices = {
-			...data.services,
-			[serviceSlug]: {
-				id: newId,
-				href: serviceHref,
-				title: "Новая услуга",
-				shortDescription: "Краткое описание",
-				description: "Полное описание",
-				price: 0,
-				time: "30 мин",
-				categoryId: categorySlug,
-				meta: {
-					title: "Новая услуга",
-					description: "SEO описание",
-				},
-				items: [],
-			},
-		};
-
-		const newCategories = {
-			...data.categories,
-			[categorySlug]: {
-				...category,
-				items: [...category.items, serviceSlug],
-			},
-		};
-
-		setData({
-			services: newServices,
-			categories: newCategories,
-		});
-	};
-
-	const deleteService = (serviceSlug: string, categorySlug: string) => {
-		if (!data || !confirm("Удалить услугу?")) return;
-
-		const newServices = { ...data.services };
-		delete newServices[serviceSlug];
-
-		const category = data.categories[categorySlug];
-		const newCategories = {
-			...data.categories,
-			[categorySlug]: {
-				...category,
-				items: category.items.filter((item) => item !== serviceSlug),
-			},
-		};
-
-		setData({
-			services: newServices,
-			categories: newCategories,
-		});
-	};
-
-	const addCategory = () => {
-		if (!data) return;
-		const categories = Object.values(data.categories);
-		const maxId = categories.length > 0 ? Math.max(...categories.map((c) => c.id)) : 0;
-		const newId = maxId + 1;
-		const slug = `cat-${newId}`;
-		const href = `new-category-${newId}`;
-
-		setData({
-			...data,
-			categories: {
-				...data.categories,
-				[slug]: {
-					id: newId,
-					title: "Новая категория",
-					href: href,
-					description: "Описание категории",
-					items: [],
-					meta: {
-						title: "Новая категория",
-						description: "SEO описание",
-					},
-				},
-			},
-		});
-
-		setExpandedCategories((prev) => ({ ...prev, [slug]: true }));
-	};
-
-	const deleteCategory = (slug: string) => {
-		if (!data || !confirm("Удалить категорию и все услуги в ней?")) return;
-
-		const category = data.categories[slug];
-		const newServices = { ...data.services };
-		category.items.forEach((serviceSlug) => {
-			delete newServices[serviceSlug];
-		});
-
-		const newCategories = { ...data.categories };
-		delete newCategories[slug];
-
-		setData({
-			services: newServices,
-			categories: newCategories,
-		});
+			setSlugDrafts((prev) => {
+				const next = { ...prev };
+				delete next[`service:${oldSlug}`];
+				return next;
+			});
+		} catch (error) {
+			setMessage(error instanceof Error ? error.message : "Ошибка изменения slug");
+		}
 	};
 
 	const toggleCategory = (slug: string) => {
@@ -292,98 +170,98 @@ export default function AdminPage() {
 		}));
 	};
 
-	const logout = () => {
-		localStorage.removeItem("adminAuth");
-		setIsAuthenticated(false);
-	};
-
-	if (!isAuthenticated) {
-		return <Login onLogin={() => setIsAuthenticated(true)} />;
+	if (loading) {
+		return <div className={styles.loading}>Загрузка...</div>;
 	}
 
-	if (loading) return <div className={styles.loading}>Загрузка...</div>;
-	if (!data) return <div className={styles.errorText}>Ошибка загрузки</div>;
+	if (!data) {
+		return <div className={styles.errorText}>{message || "Ошибка загрузки"}</div>;
+	}
+
+	const categoryEntries = Object.entries(data.categories);
 
 	return (
 		<div className={styles.adminPage}>
 			<div className={styles.header}>
-				<h1>🛠 Админка</h1>
+				<h1>Админка</h1>
+
 				<div className={styles.headerButtons}>
-					<button onClick={logout} className={`${styles.btn} ${styles.btnLogout}`}>
-						🚪 Выйти
-					</button>
 					<button
-						onClick={saveData}
+						onClick={handleSave}
 						disabled={saving}
 						className={`${styles.btn} ${styles.btnSave}`}
 					>
-						{saving ? "Сохранение..." : "💾 Сохранить все"}
+						{saving ? "Сохранение..." : "Сохранить все"}
 					</button>
 				</div>
 			</div>
 
 			{message && (
 				<div
-					className={`${styles.message} ${message.includes("✅") ? styles.messageSuccess : styles.messageError}`}
+					className={`${styles.message} ${
+						message === "Сохранено!" ? styles.messageSuccess : styles.messageError
+					}`}
 				>
 					{message}
 				</div>
 			)}
 
-			<div className={styles.section}>
+			<section className={styles.section}>
 				<div className={styles.sectionHeader}>
-					<h2>📂 Категории и услуги ({Object.keys(data.categories).length})</h2>
-					<button onClick={addCategory} className={`${styles.btn} ${styles.btnAdd}`}>
+					<h2>Категории и услуги ({categoryEntries.length})</h2>
+
+					<button
+						onClick={handleAddCategory}
+						className={`${styles.btn} ${styles.btnAdd}`}
+					>
 						+ Добавить категорию
 					</button>
 				</div>
 
-				{Object.entries(data.categories).map(([catSlug, category]) => {
-					const categoryServices = category.items
+				{categoryEntries.map(([categorySlug, category]) => {
+					const categoryServices = category.serviceSlugs
 						.map((slug) => data.services[slug])
-						.filter(Boolean);
+						.filter((service): service is Service => Boolean(service));
 
-					const isExpanded = expandedCategories[catSlug];
+					const isExpanded = expandedCategories[categorySlug];
 
 					return (
-						<div key={catSlug} className={styles.categoryCard}>
+						<div key={categorySlug} className={styles.categoryCard}>
 							<div
 								className={styles.categoryHeader}
-								onClick={() => toggleCategory(catSlug)}
+								onClick={() => toggleCategory(categorySlug)}
 							>
 								<div className={styles.categoryInfo}>
 									<span className={styles.categoryTitle}>
 										{category.title || "Без названия"}
 									</span>
+
 									<span className={styles.categoryBadge}>
 										{categoryServices.length} услуг
 									</span>
-									<span className={styles.categoryBadge}>ID: {category.id}</span>
-									<span
-										className={styles.categoryBadge}
-										style={{ background: "#e2e8f0", color: "#475569" }}
-									>
-										key: {catSlug}
-									</span>
+
+									<span className={styles.categoryBadge}>{categorySlug}</span>
 								</div>
+
 								<div className={styles.categoryActions}>
 									<button
 										className={styles.btnCollapse}
-										onClick={(e) => {
-											e.stopPropagation();
-											toggleCategory(catSlug);
+										onClick={(event) => {
+											event.stopPropagation();
+											toggleCategory(categorySlug);
 										}}
 									>
 										{isExpanded ? "▲" : "▼"}
 									</button>
+
 									<button
 										className={styles.btnDelete}
-										onClick={(e) => {
-											e.stopPropagation();
-											deleteCategory(catSlug);
+										onClick={(event) => {
+											event.stopPropagation();
+											handleDeleteCategory(categorySlug);
 										}}
 									>
-										🗑
+										✕
 									</button>
 								</div>
 							</div>
@@ -393,140 +271,168 @@ export default function AdminPage() {
 									<div className={styles.categoryFields}>
 										<input
 											value={category.title}
-											onChange={(e) =>
-												updateCategory(catSlug, "title", e.target.value)
+											onChange={(event) =>
+												handleUpdateCategory(categorySlug, {
+													title: event.target.value,
+												})
 											}
 											className={styles.input}
 											placeholder="Название категории"
-											onClick={(e) => e.stopPropagation()}
 										/>
-										<input
-											value={category.href}
-											onChange={(e) =>
-												updateCategory(catSlug, "href", e.target.value)
-											}
-											className={styles.input}
-											placeholder="Ссылка на страницу"
-											onClick={(e) => e.stopPropagation()}
-										/>
+
+										<div className={styles.slugWrap}>
+											<label className={styles.label}>Slug категории</label>
+
+											<input
+												className={styles.input}
+												value={
+													slugDrafts[`category:${category.slug}`] ??
+													category.slug
+												}
+												onChange={(e) =>
+													setSlugDrafts((prev) => ({
+														...prev,
+														[`category:${category.slug}`]:
+															e.target.value,
+													}))
+												}
+											/>
+
+											<button
+												type="button"
+												className={styles.btn}
+												onClick={() => handleRenameCategory(category.slug)}
+											>
+												Изменить slug
+											</button>
+										</div>
+
 										<textarea
 											value={category.description}
-											onChange={(e) =>
-												updateCategory(
-													catSlug,
-													"description",
-													e.target.value,
-												)
+											onChange={(event) =>
+												handleUpdateCategory(categorySlug, {
+													description: event.target.value,
+												})
 											}
-											rows={2}
 											className={styles.categoryDescription}
 											placeholder="Описание категории"
-											onClick={(e) => e.stopPropagation()}
+											rows={2}
 										/>
+
 										<div className={styles.categoryMeta}>
 											<input
-												value={category.meta?.title || ""}
-												onChange={(e) =>
-													updateCategory(catSlug, "meta", {
-														...category.meta,
-														title: e.target.value,
+												value={category.meta.title}
+												onChange={(event) =>
+													handleUpdateCategory(categorySlug, {
+														meta: {
+															...category.meta,
+															title: event.target.value,
+														},
 													})
 												}
 												className={styles.input}
 												placeholder="SEO заголовок"
-												onClick={(e) => e.stopPropagation()}
 											/>
+
 											<input
-												value={category.meta?.description || ""}
-												onChange={(e) =>
-													updateCategory(catSlug, "meta", {
-														...category.meta,
-														description: e.target.value,
+												value={category.meta.description}
+												onChange={(event) =>
+													handleUpdateCategory(categorySlug, {
+														meta: {
+															...category.meta,
+															description: event.target.value,
+														},
 													})
 												}
 												className={styles.input}
 												placeholder="SEO описание"
-												onClick={(e) => e.stopPropagation()}
 											/>
 										</div>
 									</div>
 
 									<div>
 										<div className={styles.servicesHeader}>
-											<h4>🔧 Услуги ({categoryServices.length})</h4>
+											<h4>Услуги ({categoryServices.length})</h4>
+
 											<button
 												className={`${styles.btn} ${styles.btnAdd}`}
-												onClick={(e) => {
-													e.stopPropagation();
-													addServiceToCategory(catSlug);
-												}}
+												onClick={() => handleAddService(categorySlug)}
 											>
 												+ Добавить услугу
 											</button>
 										</div>
 
 										{categoryServices.map((service) => {
-											// Находим ключ услуги по id
-											const serviceKey = Object.keys(data.services).find(
-												(key) => data.services[key].id === service.id,
-											);
-
-											if (!serviceKey) {
-												console.warn(
-													"Service key not found for:",
-													service.title,
-												);
-												return null;
-											}
+											const serviceSlug = service.slug;
 
 											return (
 												<div
-													key={service.id}
+													key={serviceSlug}
 													className={styles.serviceCard}
 												>
 													<div className={styles.serviceHeader}>
 														<input
 															value={service.title}
-															onChange={(e) =>
-																updateService(
-																	serviceKey,
-																	"title",
-																	e.target.value,
-																)
+															onChange={(event) =>
+																handleUpdateService(serviceSlug, {
+																	title: event.target.value,
+																})
 															}
 															className={`${styles.input} ${styles.serviceTitle}`}
 															placeholder="Название услуги"
 														/>
-														<input
-															value={service.href}
-															onChange={(e) =>
-																updateService(
-																	serviceKey,
-																	"href",
-																	e.target.value,
-																)
-															}
-															className={styles.input}
-															placeholder="URL услуги"
-														/>
+
+														<span>{serviceSlug}</span>
+
 														<button
 															className={styles.btnDelete}
 															onClick={() =>
-																deleteService(serviceKey, catSlug)
+																handleDeleteService(serviceSlug)
 															}
 														>
 															✕
 														</button>
 													</div>
 
+													<div className={styles.slugWrap}>
+														<label className={styles.label}>
+															Slug услуги
+														</label>
+
+														<input
+															className={styles.input}
+															value={
+																slugDrafts[
+																	`service:${service.slug}`
+																] ?? service.slug
+															}
+															onChange={(e) =>
+																setSlugDrafts((prev) => ({
+																	...prev,
+																	[`service:${service.slug}`]:
+																		e.target.value,
+																}))
+															}
+														/>
+
+														<button
+															type="button"
+															className={styles.btn}
+															onClick={() =>
+																handleRenameService(service.slug)
+															}
+														>
+															Изменить slug
+														</button>
+													</div>
+
 													<input
 														value={service.shortDescription}
-														onChange={(e) =>
-															updateService(
-																serviceKey,
-																"shortDescription",
-																e.target.value,
-															)
+														onChange={(event) =>
+															handleUpdateService(serviceSlug, {
+																shortDescription:
+																	event.target.value,
+															})
 														}
 														className={styles.input}
 														placeholder="Краткое описание"
@@ -534,12 +440,10 @@ export default function AdminPage() {
 
 													<textarea
 														value={service.description}
-														onChange={(e) =>
-															updateService(
-																serviceKey,
-																"description",
-																e.target.value,
-															)
+														onChange={(event) =>
+															handleUpdateService(serviceSlug, {
+																description: event.target.value,
+															})
 														}
 														rows={2}
 														className={styles.textarea}
@@ -550,123 +454,160 @@ export default function AdminPage() {
 														<input
 															type="number"
 															value={service.price}
-															onChange={(e) =>
-																updateService(
-																	serviceKey,
-																	"price",
-																	Number(e.target.value),
-																)
+															onChange={(event) =>
+																handleUpdateService(serviceSlug, {
+																	price: Number(
+																		event.target.value,
+																	),
+																})
 															}
 															className={`${styles.input} ${styles.inputNumber}`}
 															placeholder="Цена"
 														/>
+
 														<input
 															value={service.time}
-															onChange={(e) =>
-																updateService(
-																	serviceKey,
-																	"time",
-																	e.target.value,
-																)
+															onChange={(event) =>
+																handleUpdateService(serviceSlug, {
+																	time: event.target.value,
+																})
 															}
 															className={`${styles.input} ${styles.inputMedium}`}
 															placeholder="Время"
 														/>
 													</div>
 
-													{service.items && (
-														<div className={styles.innerServices}>
-															<div className={styles.label}>
-																Внутренние услуги:
-															</div>
-															{service.items.map((item, idx) => (
-																<div
-																	key={idx}
-																	className={styles.innerItem}
-																>
-																	<input
-																		value={item.title}
-																		onChange={(e) => {
-																			const items = [
-																				...(service.items ||
-																					[]),
-																			];
-																			items[idx] = {
-																				...item,
-																				title: e.target
-																					.value,
-																			};
-																			updateService(
-																				serviceKey,
-																				"items",
-																				items,
-																			);
-																		}}
-																		className={styles.input}
-																		placeholder="Название"
-																	/>
-																	<input
-																		type="number"
-																		value={item.price}
-																		onChange={(e) => {
-																			const items = [
-																				...(service.items ||
-																					[]),
-																			];
-																			items[idx] = {
-																				...item,
-																				price: Number(
-																					e.target.value,
-																				),
-																			};
-																			updateService(
-																				serviceKey,
-																				"items",
-																				items,
-																			);
-																		}}
-																		className={`${styles.input} ${styles.inputNumber}`}
-																		placeholder="Цена"
-																	/>
-																	<button
-																		className={
-																			styles.btnRemoveItem
-																		}
-																		onClick={() => {
-																			const items = (
-																				service.items || []
-																			).filter(
-																				(_, i) => i !== idx,
-																			);
-																			updateService(
-																				serviceKey,
-																				"items",
-																				items,
-																			);
-																		}}
-																	>
-																		✕
-																	</button>
-																</div>
-															))}
-															<button
-																className={styles.btnAddItem}
-																onClick={() => {
-																	const items = [
-																		...(service.items || []),
-																		{ title: "", price: 0 },
-																	];
-																	updateService(
-																		serviceKey,
-																		"items",
-																		items,
-																	);
-																}}
-															>
-																+ Добавить внутреннюю услугу
-															</button>
+													<div className={styles.categoryMeta}>
+														<input
+															value={service.meta.title}
+															onChange={(event) =>
+																handleUpdateService(serviceSlug, {
+																	meta: {
+																		...service.meta,
+																		title: event.target.value,
+																	},
+																})
+															}
+															className={styles.input}
+															placeholder="SEO заголовок"
+														/>
+
+														<input
+															value={service.meta.description}
+															onChange={(event) =>
+																handleUpdateService(serviceSlug, {
+																	meta: {
+																		...service.meta,
+																		description:
+																			event.target.value,
+																	},
+																})
+															}
+															className={styles.input}
+															placeholder="SEO описание"
+														/>
+													</div>
+
+													<div className={styles.innerServices}>
+														<div className={styles.label}>
+															Внутренние услуги:
 														</div>
-													)}
+
+														{service.items.map((item, index) => (
+															<div
+																key={index}
+																className={styles.innerItem}
+															>
+																<input
+																	value={item.title}
+																	onChange={(event) => {
+																		const items =
+																			service.items.map(
+																				(current, i) =>
+																					i === index
+																						? {
+																								...current,
+																								title: event
+																									.target
+																									.value,
+																							}
+																						: current,
+																			);
+
+																		handleUpdateService(
+																			serviceSlug,
+																			{
+																				items,
+																			},
+																		);
+																	}}
+																	className={styles.input}
+																	placeholder="Название"
+																/>
+
+																<input
+																	type="number"
+																	value={item.price}
+																	onChange={(event) => {
+																		const items =
+																			service.items.map(
+																				(current, i) =>
+																					i === index
+																						? {
+																								...current,
+																								price: Number(
+																									event
+																										.target
+																										.value,
+																								),
+																							}
+																						: current,
+																			);
+
+																		handleUpdateService(
+																			serviceSlug,
+																			{
+																				items,
+																			},
+																		);
+																	}}
+																	className={`${styles.input} ${styles.inputNumber}`}
+																	placeholder="Цена"
+																/>
+
+																<button
+																	className={styles.btnRemoveItem}
+																	onClick={() => {
+																		handleUpdateService(
+																			serviceSlug,
+																			{
+																				items: service.items.filter(
+																					(_, i) =>
+																						i !== index,
+																				),
+																			},
+																		);
+																	}}
+																>
+																	✕
+																</button>
+															</div>
+														))}
+
+														<button
+															className={styles.btnAddItem}
+															onClick={() =>
+																handleUpdateService(serviceSlug, {
+																	items: [
+																		...service.items,
+																		{ title: "", price: 0 },
+																	],
+																})
+															}
+														>
+															+ Добавить внутреннюю услугу
+														</button>
+													</div>
 												</div>
 											);
 										})}
@@ -676,7 +617,7 @@ export default function AdminPage() {
 						</div>
 					);
 				})}
-			</div>
+			</section>
 
 			<div className={styles.footer}>
 				Всего: {Object.keys(data.services).length} услуг,{" "}

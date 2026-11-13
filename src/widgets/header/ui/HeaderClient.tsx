@@ -1,6 +1,6 @@
 "use client";
 
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/types";
 
 import { DesktopHeader } from "./desktop/DesktopHeader";
 import { MobileHeader } from "./mobile/MobileHeader";

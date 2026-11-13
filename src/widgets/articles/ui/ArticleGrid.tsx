@@ -5,7 +5,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { TbArrowsDownUp } from "react-icons/tb";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
-import { Article } from "@/src/shared/data/articles/articles";
+import { ArticleWithService } from "@/src/shared/data/articles";
 import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import { MultiSelectFilter } from "@/src/shared/ui/multiSelectFilter/MultiSelectFilter";
 import { Pagination } from "@/src/shared/ui/pagination/Pagination";
@@ -17,7 +17,7 @@ import styles from "./ArticleGrid.module.scss";
 const ALL_TAG = "Все";
 
 interface ArticleGridProps {
-	articles: Article[];
+	articles: ArticleWithService[];
 }
 
 export function ArticleGrid({ articles }: ArticleGridProps) {
@@ -30,18 +30,18 @@ export function ArticleGrid({ articles }: ArticleGridProps) {
 	const itemsPerPage = isMobile ? 3 : 9;
 
 	const tags = useMemo(() => {
-		const uniqueTags = Array.from(new Set(articles.map((article) => article.serviceTag)));
+		const uniqueTags = Array.from(new Set(articles.map((article) => article.category.title)));
 
 		return [ALL_TAG, ...uniqueTags];
 	}, []);
 
 	// Получение акций по выбранным категориям
-	const getFilteredArticles = (selected: string[]): Article[] => {
+	const getFilteredArticles = (selected: string[]): ArticleWithService[] => {
 		if (selected.includes(ALL_TAG) || selected.length === 0) {
 			return articles;
 		}
 
-		return articles.filter((article) => selected.includes(article.serviceTag));
+		return articles.filter((article) => selected.includes(article.category.title));
 	};
 
 	const filteredArticles = useMemo(() => getFilteredArticles(selectedTags), [selectedTags]);
@@ -73,7 +73,7 @@ export function ArticleGrid({ articles }: ArticleGridProps) {
 
 	const getArticleCount = (selected: string[]) => {
 		return articles.filter((article) => {
-			return selected.includes(ALL_TAG) || selected.includes(article.serviceTag);
+			return selected.includes(ALL_TAG) || selected.includes(article.category.title);
 		}).length;
 	};
 
@@ -153,7 +153,7 @@ export function ArticleGrid({ articles }: ArticleGridProps) {
 				<div className={styles.articleGrid__grid}>
 					{paginatedArticles.length > 0 ? (
 						paginatedArticles.map((article) => (
-							<ArticleCard key={article.id} article={article} />
+							<ArticleCard key={article.slug} article={article} />
 						))
 					) : (
 						<p>Статей по выбранным темам пока нет.</p>

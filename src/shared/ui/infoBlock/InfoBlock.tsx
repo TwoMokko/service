@@ -20,8 +20,6 @@ export function InfoBlock({ content, title, titlePage = false }: InfoBlockProps)
 	const [isShow, setIsShow] = useState<boolean>(true);
 	const { isMobile } = useDevice();
 
-	console.log({ content });
-
 	const handleShow = () => {
 		if (!isMobile) return;
 

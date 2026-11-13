@@ -1,0 +1,15 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.articles {
+	overflow: hidden;
+}
+.wrapper {
+	.swiper {
+		overflow: visible;
+	}
+
+	.slide {
+		height: auto;
+	}
+}

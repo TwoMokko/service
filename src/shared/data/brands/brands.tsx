@@ -1,3 +1,4 @@
+export type SalonId = "salon1" | "salon2" | "salon3";
 export interface Brand {
 	id: string;
 	title: string;
@@ -16,9 +17,7 @@ export interface Brand {
 		title: string;
 		description: string;
 	};
-	salon1?: true;
-	salon2?: true;
-	salon3?: true;
+	salons: SalonId[];
 }
 export interface BrandPrices {
 	id: number;
@@ -119,7 +118,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд тенет | Цены и услуги",
 			description: "Бренд тенет. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon2: true,
+		salons: ["salon2"],
 	},
 	chery: {
 		id: "chery",
@@ -209,7 +208,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд чери | Цены и услуги",
 			description: "Бренд чери. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon2: true,
+		salons: ["salon2"],
 	},
 	rox: {
 		id: "rox",
@@ -299,7 +298,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд rox | Цены и услуги",
 			description: "Бренд rox. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon1: true,
+		salons: ["salon1"],
 	},
 	swm: {
 		id: "swm",
@@ -389,7 +388,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд swm | Цены и услуги",
 			description: "Бренд swm. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon1: true,
+		salons: ["salon1"],
 	},
 	solaris: {
 		id: "solaris",
@@ -479,7 +478,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд solaris | Цены и услуги",
 			description: "Бренд solaris. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon1: true,
+		salons: ["salon1"],
 	},
 	amberauto: {
 		id: "amberauto",
@@ -569,7 +568,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд amberauto | Цены и услуги",
 			description: "Бренд amberauto. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon1: true,
+		salons: ["salon1"],
 	},
 	kaiyi: {
 		id: "kaiyi",
@@ -659,7 +658,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд kaiyi | Цены и услуги",
 			description: "Бренд kaiyi. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon1: true,
+		salons: ["salon1"],
 	},
 	haima: {
 		id: "haima",
@@ -749,7 +748,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд haima | Цены и услуги",
 			description: "Бренд haima. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon1: true,
+		salons: ["salon1"],
 	},
 	nissan: {
 		id: "nissan",
@@ -839,7 +838,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд nissan | Цены и услуги",
 			description: "Бренд nissan. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon1: true,
+		salons: ["salon1"],
 	},
 	omoda: {
 		id: "omoda",
@@ -929,7 +928,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд omoda | Цены и услуги",
 			description: "Бренд omoda. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon3: true,
+		salons: ["salon3"],
 	},
 	subaru: {
 		id: "subaru",
@@ -1019,7 +1018,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд subaru | Цены и услуги",
 			description: "Бренд subaru. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon1: true,
+		salons: ["salon1"],
 	},
 	"faw-group": {
 		id: "faw-group",
@@ -1109,6 +1108,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд faw-group | Цены и услуги",
 			description: "Бренд faw-group. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
+		salons: [],
 	},
 	// ========== ОСТАЛЬНЫЕ БРЕНДЫ (other) ==========
 	suzuki: {
@@ -1199,6 +1199,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд suzuki | Цены и услуги",
 			description: "Бренд suzuki. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
+		salons: [],
 	},
 	livan: {
 		id: "livan",
@@ -1288,6 +1289,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд livan | Цены и услуги",
 			description: "Бренд livan. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
+		salons: [],
 	},
 	brilliance: {
 		id: "brilliance",
@@ -1377,6 +1379,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд brilliance | Цены и услуги",
 			description: "Бренд brilliance. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
+		salons: [],
 	},
 
 	hongqi: {
@@ -1467,6 +1470,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд hongqi | Цены и услуги",
 			description: "Бренд hongqi. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
+		salons: [],
 	},
 	"rolls-royce": {
 		id: "rolls-royce",
@@ -1556,6 +1560,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд rolls-royce | Цены и услуги",
 			description: "Бренд rolls-royce. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
+		salons: [],
 	},
 	bmw: {
 		id: "bmw",
@@ -1645,6 +1650,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд bmw | Цены и услуги",
 			description: "Бренд bmw. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
+		salons: [],
 	},
 	gac: {
 		id: "gac",
@@ -1734,6 +1740,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд gac | Цены и услуги",
 			description: "Бренд gac. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
+		salons: [],
 	},
 	infiniti: {
 		id: "infiniti",
@@ -1823,6 +1830,7 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд infiniti | Цены и услуги",
 			description: "Бренд infiniti. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
+		salons: [],
 	},
 	jetour: {
 		id: "jetour",
@@ -1912,9 +1920,10 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд jetour | Цены и услуги",
 			description: "Бренд jetour. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon3: true,
+		salons: ["salon3"],
 	},
 	byd: {
+		salons: [],
 		id: "byd",
 		title: "Бренд byd",
 		href: "byd",
@@ -2004,6 +2013,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	volkswagen: {
+		salons: [],
 		id: "volkswagen",
 		title: "Бренд volkswagen",
 		href: "volkswagen",
@@ -2093,6 +2103,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	haval: {
+		salons: [],
 		id: "haval",
 		title: "Бренд haval",
 		href: "haval",
@@ -2182,6 +2193,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	chevrolet: {
+		salons: [],
 		id: "chevrolet",
 		title: "Бренд chevrolet",
 		href: "chevrolet",
@@ -2271,6 +2283,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	hyundai: {
+		salons: [],
 		id: "hyundai",
 		title: "Бренд hyundai",
 		href: "hyundai",
@@ -2360,6 +2373,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	renault: {
+		salons: [],
 		id: "renault",
 		title: "Бренд renault",
 		href: "renault",
@@ -2449,6 +2463,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	honda: {
+		salons: [],
 		id: "honda",
 		title: "Бренд honda",
 		href: "honda",
@@ -2538,6 +2553,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	toyota: {
+		salons: [],
 		id: "toyota",
 		title: "Бренд toyota",
 		href: "toyota",
@@ -2627,6 +2643,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	tank: {
+		salons: [],
 		id: "tank",
 		title: "Бренд tank",
 		href: "tank",
@@ -2716,6 +2733,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	dodge: {
+		salons: [],
 		id: "dodge",
 		title: "Бренд dodge",
 		href: "dodge",
@@ -2805,6 +2823,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	"land-rover": {
+		salons: [],
 		id: "land-rover",
 		title: "Бренд land-rover",
 		href: "land-rover",
@@ -2894,6 +2913,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	jetta: {
+		salons: [],
 		id: "jetta",
 		title: "Бренд jetta",
 		href: "jetta",
@@ -2983,6 +3003,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	geely: {
+		salons: [],
 		id: "geely",
 		title: "Бренд geely",
 		href: "geely",
@@ -3072,6 +3093,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	volvo: {
+		salons: [],
 		id: "volvo",
 		title: "Бренд volvo",
 		href: "volvo",
@@ -3161,6 +3183,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	changan: {
+		salons: [],
 		id: "changan",
 		title: "Бренд changan",
 		href: "changan",
@@ -3250,6 +3273,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	forthing: {
+		salons: [],
 		id: "forthing",
 		title: "Бренд forthing",
 		href: "forthing",
@@ -3339,6 +3363,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	baic: {
+		salons: [],
 		id: "baic",
 		title: "Бренд baic",
 		href: "baic",
@@ -3428,6 +3453,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	ford: {
+		salons: [],
 		id: "ford",
 		title: "Бренд ford",
 		href: "ford",
@@ -3517,6 +3543,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	mitsubishi: {
+		salons: [],
 		id: "mitsubishi",
 		title: "Бренд mitsubishi",
 		href: "mitsubishi",
@@ -3606,6 +3633,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	jeep: {
+		salons: [],
 		id: "jeep",
 		title: "Бренд jeep",
 		href: "jeep",
@@ -3695,6 +3723,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	kia: {
+		salons: [],
 		id: "kia",
 		title: "Бренд kia",
 		href: "kia",
@@ -3784,6 +3813,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	porsche: {
+		salons: [],
 		id: "porsche",
 		title: "Бренд porsche",
 		href: "porsche",
@@ -3960,9 +3990,10 @@ export const brands: Record<string, Brand> = {
 			title: "Бренд jaecoo | Цены и услуги",
 			description: "Бренд jaecoo. Замена масла, фильтров, жидкостей. Доступные цены.",
 		},
-		salon3: true,
+		salons: ["salon3"],
 	},
 	mazda: {
+		salons: [],
 		id: "mazda",
 		title: "Бренд mazda",
 		href: "mazda",
@@ -4052,6 +4083,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	lixiang: {
+		salons: [],
 		id: "lixiang",
 		title: "Бренд lixiang",
 		href: "lixiang",
@@ -4141,6 +4173,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	skoda: {
+		salons: [],
 		id: "skoda",
 		title: "Бренд skoda",
 		href: "skoda",
@@ -4230,6 +4263,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	opel: {
+		salons: [],
 		id: "opel",
 		title: "Бренд opel",
 		href: "opel",
@@ -4319,6 +4353,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	soueast: {
+		salons: [],
 		id: "soueast",
 		title: "Бренд soueast",
 		href: "soueast",
@@ -4408,6 +4443,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	zeekr: {
+		salons: [],
 		id: "zeekr",
 		title: "Бренд zeekr",
 		href: "zeekr",
@@ -4497,6 +4533,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	voyah: {
+		salons: [],
 		id: "voyah",
 		title: "Бренд voyah",
 		href: "voyah",
@@ -4586,6 +4623,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	"mercedes-benz": {
+		salons: [],
 		id: "mercedes-benz",
 		title: "Бренд mercedes-benz",
 		href: "mercedes-benz",
@@ -4675,6 +4713,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	jac: {
+		salons: [],
 		id: "jac",
 		title: "Бренд jac",
 		href: "jac",
@@ -4764,6 +4803,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	exeed: {
+		salons: [],
 		id: "exeed",
 		title: "Бренд exeed",
 		href: "exeed",
@@ -4853,6 +4893,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	lexus: {
+		salons: [],
 		id: "lexus",
 		title: "Бренд lexus",
 		href: "lexus",
@@ -4942,6 +4983,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	audi: {
+		salons: [],
 		id: "audi",
 		title: "Бренд audi",
 		href: "audi",
@@ -5031,6 +5073,7 @@ export const brands: Record<string, Brand> = {
 		},
 	},
 	avatr: {
+		salons: [],
 		id: "avatr",
 		title: "Бренд avatr",
 		href: "avatr",

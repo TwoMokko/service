@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/types";
 import { primaryContact } from "@/src/shared/lib/helpers/getContacts";
 import { formatPhoneToLink } from "@/src/shared/lib/utils/format-phone";
 

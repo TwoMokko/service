@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { navigationLinks } from "@/src/shared/config";
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/types";
 import { NavigationLink } from "@/src/shared/types/types";
 
 import styles from "../Header.module.scss";

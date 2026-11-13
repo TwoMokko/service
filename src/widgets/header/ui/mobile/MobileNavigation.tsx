@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/types";
 
 import { CategoriesMenu, MainMenu, ServicesMenu } from "./menuLevels";
 

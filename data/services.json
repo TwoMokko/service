@@ -1,8 +1,65 @@
 {
-	"services": {
-		"zamena-masla-v-dvigatele": {
+	"categories": {
+		"tekhnicheskoe-obsluzhivanie": {
 			"id": 1,
-			"href": "filtry-zhidkosti",
+			"title": "Техническое обслуживание",
+			"slug": "tekhnicheskoe-obsluzhivanie",
+			"description": "Полный спектр работ по ТО автомобиля",
+			"serviceSlugs": ["filtry-zhidkosti", "transmissia", "dvigatel"],
+			"meta": {
+				"title": "Техническое обслуживание | Автосервис",
+				"description": "Техническое обслуживание всех марок авто"
+			}
+		},
+		"slesarny-remont": {
+			"id": 3,
+			"title": "Слесарный ремонт",
+			"slug": "slesarny-remont",
+			"description": "Описание Слесарный Ремонт",
+			"serviceSlugs": ["new-4"],
+			"meta": {
+				"title": "Слесарный Ремонт seo",
+				"description": "SEO описание"
+			}
+		},
+		"diagnostika": {
+			"id": 4,
+			"title": "Диагностика",
+			"slug": "diagnostika",
+			"description": "Описание категории Диагностика",
+			"serviceSlugs": ["new-6", "new-7"],
+			"meta": {
+				"title": "Новая категория Диагностика",
+				"description": "SEO описание Диагностика"
+			}
+		},
+		"shinomontazh": {
+			"id": 5,
+			"title": "Шиномонтаж",
+			"slug": "shinomontazh",
+			"description": "Описание категории Шиномонтаж",
+			"serviceSlugs": ["shinomontazh-diametr", "shinomontazh-run-flat"],
+			"meta": {
+				"title": "Новая категория Шиномонтаж",
+				"description": "SEO описание Шиномонтаж"
+			}
+		},
+		"test-cat": {
+			"id": 6,
+			"slug": "test-cat",
+			"title": "Новая категория",
+			"description": "описание тест",
+			"serviceSlugs": ["test-serv", "new-service-11"],
+			"meta": {
+				"title": "Новая категория",
+				"description": "сео категория"
+			}
+		}
+	},
+	"services": {
+		"filtry-zhidkosti": {
+			"id": 1,
+			"slug": "filtry-zhidkosti",
 			"title": "Фильтры и жидкости",
 			"shortDescription": "Профессиональная замена масла",
 			"description": "Полная замена моторного масла с промывкой системы.",
@@ -48,9 +105,9 @@
 				}
 			]
 		},
-		"new-3": {
+		"transmissia": {
 			"id": 3,
-			"href": "transmissia",
+			"slug": "transmissia",
 			"title": "Трансмиссия",
 			"shortDescription": "Краткое описание",
 			"description": "Полное описание",
@@ -90,13 +147,13 @@
 		},
 		"new-4": {
 			"id": 4,
-			"href": "new-4",
+			"slug": "new-4",
 			"title": "Ремонт трансмиссии",
 			"shortDescription": "Краткое описание Ремонт трансмиссии",
 			"description": "Полное описание Ремонт трансмиссии",
 			"price": 5500,
 			"time": "30 мин",
-			"categorySlug": "new-cat-3",
+			"categorySlug": "slesarny-remont",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -132,9 +189,9 @@
 				}
 			]
 		},
-		"new-5": {
+		"dvigatel": {
 			"id": 5,
-			"href": "dvigatel",
+			"slug": "dvigatel",
 			"title": "Двигатель",
 			"shortDescription": "Краткое описание",
 			"description": "Полное описание",
@@ -170,13 +227,13 @@
 		},
 		"new-6": {
 			"id": 6,
-			"href": "new-6",
+			"slug": "new-6",
 			"title": "Электрика",
 			"shortDescription": "Краткое описание Электрика",
 			"description": "Полное описание Электрика",
 			"price": 3500,
 			"time": "30 мин",
-			"categorySlug": "new-cat-4",
+			"categorySlug": "diagnostika",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -210,13 +267,13 @@
 		},
 		"new-7": {
 			"id": 7,
-			"href": "new-7",
+			"slug": "new-7",
 			"title": "Трансмиссия",
 			"shortDescription": "Краткое описание Трансмиссия",
 			"description": "Полное описание Трансмиссия",
 			"price": 3500,
 			"time": "30 мин",
-			"categorySlug": "new-cat-4",
+			"categorySlug": "diagnostika",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -228,15 +285,15 @@
 				}
 			]
 		},
-		"service-8": {
+		"shinomontazh-diametr": {
 			"id": 8,
-			"href": "shinomontazh-diametr",
+			"slug": "shinomontazh-diametr",
 			"title": "Шиномонтаж (по диаметру)",
 			"shortDescription": "Краткое описание Шиномонтаж (по диаметру)",
 			"description": "Полное описание Шиномонтаж (по диаметру)",
 			"price": 3000,
 			"time": "30 мин",
-			"categorySlug": "cat-5",
+			"categorySlug": "shinomontazh",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -252,15 +309,15 @@
 				}
 			]
 		},
-		"service-9": {
+		"shinomontazh-run-flat": {
 			"id": 9,
-			"href": "shinomontazh-run-flat",
+			"slug": "shinomontazh-run-flat",
 			"title": "Шиномонтаж Run Flat",
 			"shortDescription": "Краткое описание Шиномонтаж Run Flat",
 			"description": "Полное описание Шиномонтаж Run Flat",
 			"price": 7000,
 			"time": "30 мин",
-			"categorySlug": "cat-5",
+			"categorySlug": "shinomontazh",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "SEO описание"
@@ -271,52 +328,50 @@
 					"price": 7000
 				}
 			]
-		}
-	},
-	"categories": {
-		"tekhnicheskoe-obsluzhivanie": {
-			"id": 1,
-			"title": "Техническое обслуживание",
-			"href": "tekhnicheskoe-obsluzhivanie",
-			"description": "Полный спектр работ по ТО автомобиля",
-			"serviceSlugs": ["zamena-masla-v-dvigatele", "new-3", "new-5"],
-			"meta": {
-				"title": "Техническое обслуживание | Автосервис",
-				"description": "Техническое обслуживание всех марок авто"
-			}
 		},
-		"new-cat-3": {
-			"id": 3,
-			"title": "Слесарный ремонт",
-			"href": "slesarny-remont",
-			"description": "Описание Слесарный Ремонт",
-			"serviceSlugs": ["new-4"],
+		"new-service-11": {
+			"id": 11,
+			"slug": "new-service-11",
+			"title": "Новая услуга тест 2",
+			"shortDescription": "опис Новая услуга тест 2",
+			"description": "полное опис Новая услуга тест 2",
+			"price": 0,
+			"time": "30 мин",
+			"categorySlug": "test-cat",
 			"meta": {
-				"title": "Слесарный Ремонт seo",
-				"description": "SEO описание"
-			}
+				"title": "Новая услуга",
+				"description": "сео "
+			},
+			"items": [
+				{
+					"title": "аааа",
+					"price": 767458
+				}
+			]
 		},
-		"new-cat-4": {
-			"id": 4,
-			"title": "Диагностика",
-			"href": "diagnostika",
-			"description": "Описание категории Диагностика",
-			"serviceSlugs": ["new-6", "new-7"],
+		"test-serv": {
+			"id": 10,
+			"slug": "test-serv",
+			"title": "Новая услуга тест",
+			"shortDescription": "тест",
+			"description": "тест",
+			"price": 0,
+			"time": "30 мин",
+			"categorySlug": "test-cat",
 			"meta": {
-				"title": "Новая категория Диагностика",
-				"description": "SEO описание Диагностика"
-			}
-		},
-		"cat-5": {
-			"id": 5,
-			"title": "Шиномонтаж",
-			"href": "shinomontazh",
-			"description": "Описание категории Шиномонтаж",
-			"serviceSlugs": ["service-8", "service-9"],
-			"meta": {
-				"title": "Новая категория Шиномонтаж",
-				"description": "SEO описание Шиномонтаж"
-			}
+				"title": "Новая услуга",
+				"description": "сео услуга"
+			},
+			"items": [
+				{
+					"title": "мини услуга внутренняя",
+					"price": 43400
+				},
+				{
+					"title": "внутри 1",
+					"price": 656
+				}
+			]
 		}
 	}
 }

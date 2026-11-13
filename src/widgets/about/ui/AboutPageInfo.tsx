@@ -23,7 +23,7 @@ export function AboutPageInfo() {
 			<InfoBlock content={mockData.content} title={mockData.title} titlePage />
 			<h1 className="page-title margin-bot"></h1>
 			<div className={styles.banner}>
-				<PlayIcon className={styles.play} />
+				<PlayIcon className={styles.play} isBadge />
 				<div className={styles.banner__info}>
 					<div className={styles.banner__top}>
 						<span className={styles.banner__top_tag}>Видео</span>

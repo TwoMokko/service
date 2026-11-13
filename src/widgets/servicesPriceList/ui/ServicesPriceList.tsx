@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
-import type { CategoryWithServices } from "@/src/shared/data/services";
-import { Service } from "@/src/shared/data/services";
+import { CategoryWithServices, Service } from "@/src/shared/data/services/types";
 import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import { formatPrice } from "@/src/shared/lib/utils/format-price";
 import { Button } from "@/src/shared/ui/button/Button";
@@ -39,7 +38,6 @@ export function ServicesPriceList({ services, title }: ServicesPriceListProps) {
 			setActiveService(null);
 			return;
 		}
-		console.log("here");
 
 		setActiveService(service);
 	};
