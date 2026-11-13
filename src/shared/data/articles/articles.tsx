@@ -44,7 +44,7 @@ export const articlesData: Record<string, Article> = {
 		),
 		dateEnd: "05.02.26",
 		serviceTag: "Детейлинг",
-		serviceHref: "detailing",
+		serviceHref: "tekhnicheskoe-obsluzhivanie",
 		img: "1.png",
 		meta: {
 			title: "Статья | Цены и услуги",
@@ -54,7 +54,7 @@ export const articlesData: Record<string, Article> = {
 	article2: {
 		id: "2",
 		href: "article2",
-		title: "Статья 2",
+		title: "Почему течет масло из АКПП? Причины и решение проблемы",
 		subtitle: (
 			<p className="promo__prices">
 				<span className="text-primary">3000₽</span>
@@ -83,7 +83,7 @@ export const articlesData: Record<string, Article> = {
 		),
 		dateEnd: "string",
 		serviceTag: "Техническое обслуживание",
-		serviceHref: "detailing",
+		serviceHref: "tekhnicheskoe-obsluzhivanie",
 		img: "2.png",
 		meta: {
 			title: "Статья | Цены и услуги",
@@ -117,7 +117,7 @@ export const articlesData: Record<string, Article> = {
 		),
 		dateEnd: "string",
 		serviceTag: "Сход развал",
-		serviceHref: "detailing",
+		serviceHref: "tekhnicheskoe-obsluzhivanie",
 		img: "3.png",
 		meta: {
 			title: "Статья | Цены и услуги",
@@ -151,8 +151,42 @@ export const articlesData: Record<string, Article> = {
 		),
 		dateEnd: "string",
 		serviceTag: "string",
-		serviceHref: "detailing",
+		serviceHref: "tekhnicheskoe-obsluzhivanie",
 		img: "2.png",
+		meta: {
+			title: "Статья | Цены и услуги",
+			description: "Статья. Какая-то информация. Доступные цены.",
+		},
+	},
+	article5: {
+		id: "5",
+		href: "article5",
+		title: "Статья 5",
+		subtitle: "string",
+		description: (
+			<>
+				<p>
+					Автоматическая коробка передач любого автомобиля не может работать без масла.
+					Оно служит смазкой для подшипников, отводит тепло от деталей, которые
+					нагреваются в процессе работы, служит теплом для гидротрансформатора и
+					гидроврической системы управления.
+				</p>
+				<p>
+					Автоматическая коробка передач любого автомобиля не может работать без масла.
+					Оно служит смазкой для подшипников, отводит тепло от деталей, которые
+					нагреваются в процессе работы, служит теплом для гидротрансформатора и
+					гидроврической системы управления. Для хорошей и долговечной работы АКПП масло
+					должно подаваться небольшими порциями постоянно. При нарушении ритма подачи
+					пропадает слаженность работы деталей коробки передач. И это немедленно
+					сказывается на поведении автомобиля, который начинает двигаться рывками,
+					теряется тяга и в конечном варианте он останавливается.
+				</p>
+			</>
+		),
+		dateEnd: "string",
+		serviceTag: "string",
+		serviceHref: "tekhnicheskoe-obsluzhivanie",
+		img: "4.png",
 		meta: {
 			title: "Статья | Цены и услуги",
 			description: "Статья. Какая-то информация. Доступные цены.",
