@@ -5,18 +5,21 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Article } from "@/src/shared/data/articles/articles";
+import { ArticleWithService } from "@/src/shared/data/articles";
 import { SwiperControls } from "@/src/shared/ui/swiperControls/SwiperControls";
 
 import { ArticleCard } from "./ArticleCard";
 
 import styles from "./ArticleSwiper.module.scss";
 
-export function ArticleSwiper({ articles }: { articles: Article[] }) {
+export function ArticleSwiper({ articles }: { articles: ArticleWithService[] }) {
 	const navigation = {
 		prevEl: "[data-article-prev]",
 		nextEl: "[data-article-next]",
 	};
+
+	if (!articles.length) return <section className="block-bottom container">нет похожих</section>;
+
 	return (
 		<section className={` block-bottom ${styles.articles}`}>
 			<div className="container">
@@ -50,7 +53,7 @@ export function ArticleSwiper({ articles }: { articles: Article[] }) {
 						className={styles.swiper}
 					>
 						{articles.map((article) => (
-							<SwiperSlide key={article.href} className={styles.slide}>
+							<SwiperSlide key={article.slug} className={styles.slide}>
 								<ArticleCard article={article} />
 							</SwiperSlide>
 						))}

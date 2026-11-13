@@ -6,7 +6,7 @@ import { LuArrowUpRight } from "react-icons/lu";
 import Image from "next/image";
 import Link from "next/link";
 
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/types";
 import { useDevice } from "@/src/shared/lib/hooks/useDevice";
 import { Button } from "@/src/shared/ui/button/Button";
 
@@ -29,14 +29,14 @@ export function ServicesCard({ category, isInitiallyOpen = false }: ServicesCard
 				</div>
 				<Link
 					prefetch={false}
-					href={`/services/${category.href}`}
+					href={`/services/${category.slug}`}
 					className={styles.topLink}
 				>
 					<Button variant="outline">Подробнее</Button>
 				</Link>
 				<Image
 					className={styles.imgBackground}
-					src={`/images/services/cards/${category.href}.png`}
+					src={`/images/services/cards/${category.slug}.png`}
 					alt=""
 					width={196}
 					height={114}
@@ -61,7 +61,7 @@ export function ServicesCard({ category, isInitiallyOpen = false }: ServicesCard
 							<Link
 								prefetch={false}
 								key={service.id || index}
-								href={`/services/${category.href}/${service.href}`}
+								href={`/services/${category.slug}/${service.slug}`}
 								className={styles.listItem}
 							>
 								<span className={styles.listCount}>{index + 1}</span>

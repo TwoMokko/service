@@ -1,6 +1,6 @@
 "use client";
 
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/types";
 import { useBurgerMenu } from "@/src/shared/lib/hooks/useBurgerMenu";
 
 import { MobileNavigation } from "./MobileNavigation";

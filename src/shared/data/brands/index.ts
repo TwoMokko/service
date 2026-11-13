@@ -1,19 +1,29 @@
-import { Brand, BrandSlug, brands } from "./brands";
+import { Brand, BrandSlug, SalonId, brands } from "./brands";
+
+export const allSalons: SalonId[] = ["salon1", "salon2", "salon3"];
+const allBrandSlugs = Object.keys(brands) as BrandSlug[];
+
+// бренд есть в конкретном салоне?
+const isInSalon = (slug: BrandSlug, salon: SalonId) => brands[slug].salons.includes(salon);
 
 export const brandsTitlesData = {
-	allBrands: Object.keys(brands) as BrandSlug[],
-	salon1: (Object.keys(brands) as BrandSlug[]).filter((k) => brands[k].salon1),
-	salon2: (Object.keys(brands) as BrandSlug[]).filter((k) => brands[k].salon2),
-	salon3: (Object.keys(brands) as BrandSlug[]).filter((k) => brands[k].salon3),
+	allBrands: allBrandSlugs,
 
-	official: (Object.keys(brands) as BrandSlug[]).filter(
-		(k) => brands[k].salon1 || brands[k].salon2 || brands[k].salon3,
-	),
+	// есть хотя бы в одном салоне
+	official: allBrandSlugs.filter((slug) => brands[slug].salons.length > 0),
 
-	other: (Object.keys(brands) as BrandSlug[]).filter(
-		(k) => !brands[k].salon1 && !brands[k].salon2 && !brands[k].salon3,
+	// нет ни в одном салоне
+	other: allBrandSlugs.filter((slug) => brands[slug].salons.length === 0),
+
+	// динамически: salon1 / salon2 / salon3
+	...Object.fromEntries(
+		allSalons.map((salon) => [salon, allBrandSlugs.filter((slug) => isInSalon(slug, salon))]),
 	),
-};
+} as {
+	allBrands: BrandSlug[];
+	official: BrandSlug[];
+	other: BrandSlug[];
+} & Record<SalonId, BrandSlug[]>;
 
 // Получить все бренды
 export function getAllBrandsArray(): Brand[] {

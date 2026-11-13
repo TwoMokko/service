@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 
 import { metaDataArticlePage, sectionTitles } from "@/src/shared/config";
-import { getAllArticlesArray } from "@/src/shared/data/articles";
-import { Article } from "@/src/shared/data/articles/articles";
+import { ArticleWithService, getAllArticlesWithService } from "@/src/shared/data/articles";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
 import { ArticleGrid } from "@/src/widgets/articles";
@@ -12,7 +11,8 @@ import { Rating } from "@/src/widgets/rating";
 export const metadata: Metadata = metaDataArticlePage;
 
 export default function ArticlePage() {
-	const allArticles: Article[] = getAllArticlesArray();
+	const allArticles: ArticleWithService[] = getAllArticlesWithService();
+
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },
 		{ title: "Статьи", href: "/articles" },

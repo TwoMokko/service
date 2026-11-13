@@ -5,12 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
-import { Article } from "@/src/shared/data/articles/articles";
+import { ArticleWithService } from "@/src/shared/data/articles";
 import { Button } from "@/src/shared/ui/button/Button";
+import { ContentRenderer } from "@/src/shared/ui/contentRenderer/ContentRenderer";
 
 import styles from "./Article.module.scss";
 
-export function ArticleContent({ article }: { article: Article }) {
+export function ArticleContent({ article }: { article: ArticleWithService }) {
 	const { openModal } = useModal();
 	return (
 		<section className={`${styles.wrapper}`}>
@@ -26,7 +27,7 @@ export function ArticleContent({ article }: { article: Article }) {
 					</div>
 					<div className={styles.top__info}>
 						<div className={styles.badges}>
-							<span className={styles.tag}>{article.serviceTag}</span>
+							<span className={styles.tag}>{article.category.title}</span>
 							<span>{article.dateEnd}</span>
 						</div>
 						<h1 className={styles.title}>{article.title}</h1>
@@ -34,9 +35,7 @@ export function ArticleContent({ article }: { article: Article }) {
 				</div>
 
 				<div className={styles.content}>
-					{/*TODO: разные типы данных (таблицы, параграфы, списки нумерованные и не нумерованные, картинки)*/}
-					{/*или же хранить контент сразу в нужном виде с классами ReactNode*/}
-					<p>{article.description}</p>
+					<ContentRenderer blocks={article.content} />
 				</div>
 
 				<div className={styles.bottom}>
@@ -57,16 +56,17 @@ export function ArticleContent({ article }: { article: Article }) {
 								</p>
 							</div>
 							<div className={styles.service__card}>
-								{/*TODO: получать еще и услугу, к которой прикреплено (в page.tsx или тут)*/}
 								<div className={styles.service__card_top}>
 									<span className={styles.service__card_title}>
-										{article.serviceTag}
+										{article.category.title}
 									</span>
-									<span className={styles.service__card_count}>(count)</span>
+									<span className={styles.service__card_count}>
+										({article.category.items.length})
+									</span>
 								</div>
 								<Link
 									prefetch={false}
-									href={`/services/${article.serviceHref}`}
+									href={`/services/${article.category.slug}`}
 									className={styles.service__card_link}
 								>
 									<Button variant="outline" minWidth={128}>
@@ -80,7 +80,7 @@ export function ArticleContent({ article }: { article: Article }) {
 								<div className={styles.service__card_img}>
 									<Image
 										className={styles.imgBackground}
-										src={`/images/services/cards/${article.serviceHref}.png`}
+										src={`/images/services/cards/${article.category.slug}.png`}
 										alt=""
 										fill
 									/>

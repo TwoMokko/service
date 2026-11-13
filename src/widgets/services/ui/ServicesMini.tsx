@@ -9,7 +9,7 @@ import { LuArrowUpRight } from "react-icons/lu";
 import Image from "next/image";
 import Link from "next/link";
 
-import type { CategoryWithServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/types";
 import { Button } from "@/src/shared/ui/button/Button";
 
 import styles from "./ServicesMini.module.scss";
@@ -31,7 +31,7 @@ export function ServicesMini({ services }: ServicesMiniProps) {
 						<div className={styles.imgWrap}>
 							<Image
 								className={styles.imgBackground}
-								src={`/images/services/cards/${category.href}.png`}
+								src={`/images/services/cards/${category.slug}.png`}
 								alt=""
 								width={220}
 								height={144}
@@ -44,7 +44,7 @@ export function ServicesMini({ services }: ServicesMiniProps) {
 							</div>
 							<Link
 								prefetch={false}
-								href={`/services/${category.href}`}
+								href={`/services/${category.slug}`}
 								className={styles.link}
 							>
 								<Button variant="outline" minWidth={128} className={styles.btn}>
@@ -71,7 +71,7 @@ export function ServicesMini({ services }: ServicesMiniProps) {
 								<div className={styles.imgWrap}>
 									<Image
 										className={styles.imgBackground}
-										src={`/images/services/cards/${category.href}.png`}
+										src={`/images/services/cards/${category.slug}.png`}
 										alt=""
 										width={180}
 										height={100}
@@ -86,7 +86,7 @@ export function ServicesMini({ services }: ServicesMiniProps) {
 									</div>
 									<Link
 										prefetch={false}
-										href={`/services/${category.href}`}
+										href={`/services/${category.slug}`}
 										className={styles.link}
 									>
 										<Button

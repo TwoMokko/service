@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
-import { Service } from "@/src/shared/data/services";
+import { CategoryWithServices, ServiceWithCategory } from "@/src/shared/data/services/types";
 import { Button } from "@/src/shared/ui/button/Button";
 import { InfoBlock, InfoBlockProps } from "@/src/shared/ui/infoBlock/InfoBlock";
 
@@ -38,33 +38,30 @@ const mockData: InfoBlockProps = {
 	],
 };
 interface ServicesPageInfoProps {
-	category: {
-		slug: string;
-		items: Service[];
-		id: number;
-		title: string;
-		href: string;
-		description: string;
-		meta: {
-			title: string;
-			description: string;
-		};
-	};
+	category?: CategoryWithServices;
+	service?: ServiceWithCategory;
 }
-export function ServicesPageInfo({ category }: ServicesPageInfoProps) {
+export function ServicesPageInfo({ category, service }: ServicesPageInfoProps) {
+	const data: CategoryWithServices | ServiceWithCategory | undefined = category ?? service;
+	if (!data) return false;
+
+	const bannerSrc = category
+		? `/images/services/cards/${category.slug}.png`
+		: `/images/services/cards/${service?.category.slug}.png`;
+
 	return (
 		<div className={`container ${styles.section}`}>
 			<aside className={styles.aside}>
 				<div>
 					<h2>Наши услуги</h2>
-					<span>{category.items.length}</span>
+					<span>{data.items.length}</span>
 				</div>
 			</aside>
 			<main className={styles.main}>
 				<BannerCategory
-					title={category.title}
-					description={category.description}
-					imageSrc={`/images/services/cards/${category.href}.png`}
+					title={data.title}
+					description={data.description}
+					imageSrc={bannerSrc}
 				/>
 				<section className="block-bottom">PRICE</section>
 				<InfoBlock content={mockData.content} title={mockData.title} />

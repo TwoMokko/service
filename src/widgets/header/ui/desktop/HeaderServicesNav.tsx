@@ -6,7 +6,7 @@ import { LuArrowUpRight } from "react-icons/lu";
 import Image from "next/image";
 import Link from "next/link";
 
-import { CategoryWithServices } from "@/src/shared/data/services";
+import { CategoryWithServices } from "@/src/shared/data/services/types";
 
 import styles from "../Header.module.scss";
 
@@ -26,13 +26,13 @@ export function HeaderServicesNav({ services }: HeaderServicesNavProps) {
 					<li key={category.id} className={styles.category}>
 						<Link
 							prefetch={false}
-							href={`/services/${category.href}`}
+							href={`/services/${category.slug}`}
 							className={styles.categoryLink}
 						>
 							<div className={styles.categoryTitle}>{category.title}</div>
 							<Image
 								className={styles.categoryImg}
-								src={`/images/services/cards/${category.href}.png`}
+								src={`/images/services/cards/${category.slug}.png`}
 								alt=""
 								width={160}
 								height={80}
@@ -50,7 +50,7 @@ export function HeaderServicesNav({ services }: HeaderServicesNavProps) {
 									<li key={service.id || index} className={styles.listItem}>
 										<Link
 											prefetch={false}
-											href={`/services/${category.href}/${service.href}`}
+											href={`/services/${category.slug}/${service.slug}`}
 										>
 											<span className={styles.listCount}>{index + 1}</span>
 											<div className={styles.listTitle}>{service.title}</div>
