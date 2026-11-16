@@ -1,6 +1,4 @@
-import {
-	getCategoryWithServices,
-} from "@/src/shared/data/services";
+import { getCategoryWithServices } from "@/src/shared/data/services";
 import { CategoryWithServices } from "@/src/shared/data/services/types";
 
 import { Article, ArticleSlug } from "./types";

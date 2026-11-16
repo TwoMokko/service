@@ -9,7 +9,7 @@ import styles from "./InfoBlock.module.scss";
 
 export interface InfoBlockProps {
 	content: {
-		title: string;
+		title?: string;
 		paragraphs: string[]; // если будут другие типы данных, переписать (и разметку тоже)
 	}[];
 	title?: string;
@@ -44,12 +44,23 @@ export function InfoBlock({ content, title, titlePage = false }: InfoBlockProps)
 			)}
 			{content.map((item) => (
 				<article className={styles.paragraph}>
-					<h3 className={styles.paragraph__title}>{item.title}</h3>
+					{item.title && <h3 className={styles.paragraph__title}>{item.title}</h3>}
 					{item.paragraphs.map((p) => (
 						<p className={styles.paragraph__text}>{p}</p>
 					))}
 				</article>
 			))}
+
+			{isShow && (
+				<button className={`${styles.btnShowMob} desk-hide`} onClick={handleShow}>
+					Свернуть
+					<IoIosArrowDown
+						size={20}
+						aria-hidden="true"
+						className={`desk-hide ${styles.top__arrow}`}
+					/>
+				</button>
+			)}
 		</section>
 	);
 }

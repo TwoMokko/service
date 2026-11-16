@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import Link from "next/link";
 
-import { reviewsData } from "@/src/shared/data/reviews/reviews";
+import { Review } from "@/src/shared/data/reviews/types";
 import { SectionId } from "@/src/shared/types/types";
 import { Button } from "@/src/shared/ui/button/Button";
 import { SwiperControls } from "@/src/shared/ui/swiperControls/SwiperControls";
@@ -19,9 +19,10 @@ import styles from "./Reviews.module.scss";
 interface ReviewsProps {
 	idSection: string;
 	titleSection: string;
+	reviews: Review[];
 }
 
-export function Reviews({ idSection, titleSection }: ReviewsProps) {
+export function Reviews({ idSection, titleSection, reviews }: ReviewsProps) {
 	const navigation = {
 		prevEl: "[data-reviews-prev]",
 		nextEl: "[data-reviews-next]",
@@ -64,7 +65,7 @@ export function Reviews({ idSection, titleSection }: ReviewsProps) {
 						loop={false}
 						className={styles.swiper}
 					>
-						{reviewsData.map((review) => (
+						{reviews.map((review) => (
 							<SwiperSlide key={review.id} className={styles.reviews__slide}>
 								<ReviewCard review={review} />
 							</SwiperSlide>
