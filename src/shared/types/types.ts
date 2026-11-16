@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { ReviewPhotoCard, ReviewTextCard } from "@/src/shared/data/reviews/reviews";
+import { Review } from "@/src/shared/data/reviews/types";
 
 export interface Model {
 	id: number;
@@ -29,7 +29,7 @@ export interface ReelsData {
 	initialIndex?: number;
 }
 
-export type ReviewModalData = ReviewPhotoCard | ReviewTextCard;
+export type ReviewModalData = Review;
 
 export interface ReelsItem {
 	id: string | number;

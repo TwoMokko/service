@@ -42,8 +42,6 @@
 
 				.tag {
 					padding: 8px 12px;
-					color: #196abb;
-					background-color: #0c7ef826;
 					border-radius: 100px;
 				}
 			}
@@ -87,10 +85,6 @@
 		}
 		@include mobile {
 			padding: 24px 0;
-		}
-
-		p {
-			line-height: 1.4;
 		}
 	}
 }

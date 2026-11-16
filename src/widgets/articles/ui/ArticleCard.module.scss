@@ -73,14 +73,14 @@
 				text-transform: uppercase;
 			}
 			.serviceTag {
-				color: $color-primary;
-				background-color: #f84f0c26;
 				width: fit-content;
 				border-radius: 100px;
 				padding: 8px 14px;
 
 				@include mobile {
 					padding: 8px 10px;
+					white-space: nowrap;
+					font-size: 10px;
 				}
 			}
 		}

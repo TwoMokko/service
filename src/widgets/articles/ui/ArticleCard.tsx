@@ -17,11 +17,17 @@ export function ArticleCard({ article }: ArticleCardProps) {
 			</div>
 			<div className={styles.info}>
 				<div className={styles.tags}>
-					<div className={styles.serviceTag}>{article.category.title}</div>
-					<div className={styles.dateEnd}>{article.dateEnd}</div>
+					<div className={`${styles.serviceTag} tag-${article.serviceSlug}`}>
+						{article.category.title}
+					</div>
+					<div className={styles.dateEnd}>{article.date}</div>
 				</div>
 				<h3 className={styles.card__title}>{article.title}</h3>
-				<Link href={article.slug} prefetch={false} className={styles.card__link}>
+				<Link
+					href={`/articles/${article.slug}`}
+					prefetch={false}
+					className={styles.card__link}
+				>
 					<Button variant="secondary">Читать подробнее</Button>
 				</Link>
 			</div>

@@ -21,7 +21,7 @@ export default function ArticlePage() {
 	return (
 		<div className="other-page">
 			<Breadcrumbs items={breadcrumbs} />
-			<h1 className="page-title container">Статьи</h1>
+			<h1 className="page-title container margin-bot">Статьи</h1>
 			<ArticleGrid articles={allArticles} />
 			<Contacts
 				idSection={SectionId.CONTACTS}

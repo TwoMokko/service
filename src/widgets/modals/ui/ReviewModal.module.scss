@@ -16,20 +16,16 @@
 }
 
 .modalContent {
-	background-color: $color-white;
-	padding: 40px;
-	max-width: 620px;
-	border-radius: 14px;
-	width: 90%;
+	max-width: 90%;
 	max-height: 90vh;
+	width: fit-content;
 	//overflow-y: auto;
 	overflow: visible;
 	position: relative;
 	animation: modalAppear 0.3s ease-out;
 
 	@include mobile {
-		max-width: 360px;
-		padding: 40px 30px 40px;
+		//max-width: 360px;
 	}
 }
 
@@ -73,135 +69,128 @@
 	}
 }
 
-.form {
+//.review {
+//	&__text {
+//		padding-top: 32px;
+//		font-weight: 400;
+//		font-size: 16px;
+//		line-height: 1.2;
+//		letter-spacing: -0.02em;
+//
+//		@include mobile {
+//			font-size: 14px;
+//		}
+//	}
+//}
+
+.reviewContent {
+	display: flex;
+	gap: 8px;
+
+	@include mobile {
+		flex-direction: column;
+	}
+}
+
+.reviewText {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
-	padding-top: 40px;
+	gap: 20px;
+	flex: none;
+	width: 610px;
+	padding: 24px;
+
+	background-color: $color-white;
+	border-radius: 14px;
+
+	@include laptop {
+		width: 600px;
+	}
 
 	@include mobile {
-		width: 100%;
-	}
-
-	input {
-		width: 100%;
-		background-color: $color-white;
-		border: none;
-		height: 48px;
-		padding: 10px;
-		text-align: center;
-		border-radius: 8px;
-
-		&::placeholder {
-			//text-transform: uppercase;
-		}
-	}
-
-	.checkboxWrap {
-		display: flex;
-		gap: 10px;
-		font-size: 12px;
-		line-height: 110%;
-		width: fit-content;
-		align-items: center;
-
-		input[type="checkbox"] {
-			display: none;
-		}
-
-		.checkbox {
-			width: 20px;
-			height: 20px;
-			border: 1px solid $color-gray;
-			flex: none;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.policyLink {
-			text-decoration: underline;
-			padding-left: 4px;
-		}
+		width: 360px;
 	}
 }
 
-.title {
-	font-size: 36px;
-	line-height: 100%;
-	letter-spacing: -0.04em;
-	margin: 0;
-	padding: 0;
-	font-weight: 400;
-
-	@include mobile {
-		font-size: 24px;
-		line-height: 100%;
-	}
-}
-
-.subtitle {
-	padding-top: 14px;
+.review__text {
 	font-size: 16px;
-	line-height: 120%;
-
-	a {
-		color: $color-primary;
-		font-weight: 600;
-	}
-
-	@include mobile {
-		font-size: 14px;
-	}
+	line-height: 1.4;
 }
 
-.list {
-	list-style: none;
-	padding-top: 40px;
+.reviewSource {
+	margin-top: auto;
+}
 
-	@include mobile {
-		padding-top: 20px;
+.reviewMedia {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-width: 0;
+	flex: none;
+	width: 610px;
+	min-height: 460px;
+	padding: 16px;
+
+	border-radius: 14px;
+	overflow: hidden;
+
+	@include laptop {
+		width: 400px;
+		min-height: 350px;
 	}
 
-	> li {
-		font-size: 16px;
-		padding-left: 20px;
+	@include mobile {
+		width: 360px;
+		min-height: 250px;
+	}
+
+	&__main {
+		position: absolute;
+		inset: 0;
+
+		img,
+		video {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__thumbnails {
+		display: flex;
+		gap: 8px;
+		overflow-x: auto;
 		position: relative;
-		list-style: none;
-
-		&:not(:last-child) {
-			margin-bottom: 20px;
-
-			@include mobile {
-				margin-bottom: 10px;
-			}
-		}
-
-		&::before {
-			content: "";
-			background-color: $color-primary;
-			width: 9px;
-			height: 9px;
-			border-radius: 50%;
-			position: absolute;
-			right: calc(100% - 9px);
-			top: 50%;
-			transform: translateY(-50%);
-			line-height: 1;
-		}
+		margin-top: auto;
+		z-index: 1;
 	}
-}
 
-.review {
-	&__text {
-		padding-top: 32px;
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 1.2;
-		letter-spacing: -0.02em;
+	&__thumbnail {
+		width: 80px;
+		height: 80px;
+		padding: 0;
+		border: 2px solid transparent;
+		background: transparent;
+		cursor: pointer;
+		border-radius: 10px;
+		overflow: hidden;
 
 		@include mobile {
-			font-size: 14px;
+			width: 60px;
+			height: 60px;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
 		}
 	}
+}
+
+.active {
+	border-color: $color-primary;
 }

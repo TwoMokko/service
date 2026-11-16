@@ -27,8 +27,10 @@ export function ArticleContent({ article }: { article: ArticleWithService }) {
 					</div>
 					<div className={styles.top__info}>
 						<div className={styles.badges}>
-							<span className={styles.tag}>{article.category.title}</span>
-							<span>{article.dateEnd}</span>
+							<span className={`${styles.tag} tag-${article.serviceSlug}`}>
+								{article.category.title}
+							</span>
+							<span>{article.date}</span>
 						</div>
 						<h1 className={styles.title}>{article.title}</h1>
 					</div>

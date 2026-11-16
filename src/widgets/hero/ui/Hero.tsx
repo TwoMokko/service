@@ -88,7 +88,7 @@ export function Hero() {
 								<a
 									href="/video/video4.mp4"
 									data-fancybox="video-hero"
-									datatype="html5video"
+									data-type="html5video"
 								>
 									<Button variant="outline" minWidth={306} className={styles.btn}>
 										Смотреть видео о сервисе

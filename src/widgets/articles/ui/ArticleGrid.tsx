@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { TbArrowsDownUp } from "react-icons/tb";
 
@@ -102,9 +102,16 @@ export function ArticleGrid({ articles }: ArticleGridProps) {
 		return filteredArticles.slice(start, start + itemsPerPage);
 	}, [filteredArticles, safePage, itemsPerPage]);
 
+	const sectionRef = useRef<HTMLElement>(null);
+
 	const handlePageChange = (page: number) => {
 		if (page >= 1 && page <= totalPages) {
 			setCurrentPage(page);
+
+			sectionRef.current?.scrollIntoView({
+				behavior: "smooth",
+				block: "start",
+			});
 		}
 	};
 
@@ -113,7 +120,7 @@ export function ArticleGrid({ articles }: ArticleGridProps) {
 		: `Выбрано: ${selectedTags.length}`;
 
 	return (
-		<section className="container block-bottom">
+		<section className="container block-bottom" ref={sectionRef}>
 			<div className={styles.articleGrid}>
 				<button
 					type="button"

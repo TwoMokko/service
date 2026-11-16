@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 import { metaDataAboutPage, sectionTitles } from "@/src/shared/config";
+import { getTextReviews } from "@/src/shared/data/reviews";
 import { getAllCategoriesWithServices } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";
@@ -21,6 +22,8 @@ export default function AboutPage() {
 		{ title: "О нас", href: "/about" },
 	];
 
+	const reviews = getTextReviews();
+
 	return (
 		<div className="other-page">
 			<Breadcrumbs items={breadcrumbs} />
@@ -40,6 +43,7 @@ export default function AboutPage() {
 				/>
 			</div>
 			<Reviews
+				reviews={reviews}
 				idSection={SectionId.REVIEWS}
 				titleSection={sectionTitles[SectionId.REVIEWS]}
 			/>

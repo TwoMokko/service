@@ -5,7 +5,7 @@ export interface Article {
 	title: string;
 	subtitle: ContentBlock[];
 	content: ContentBlock[];
-	dateEnd: string;
+	date: string;
 	serviceSlug: ServiceSlug;
 	img: string;
 	meta: Meta;
