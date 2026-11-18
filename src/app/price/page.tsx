@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { metaDataPricePage, sectionTitles } from "@/src/shared/config";
 import { getAllBrandsArray } from "@/src/shared/data/brands";
-import { Brand } from "@/src/shared/data/brands/brands";
+import { Brand } from "@/src/shared/data/brands/types";
 import { getAllCategoriesWithServices } from "@/src/shared/data/services";
 import { SectionId } from "@/src/shared/types/types";
 import { Breadcrumbs } from "@/src/shared/ui/breadcrumbs/Breadcrumbs";

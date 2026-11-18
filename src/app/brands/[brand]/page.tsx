@@ -48,7 +48,7 @@ export default async function BrandPage({ params }: BrandPageProps) {
 	const breadcrumbs = [
 		{ title: "Главная", href: "/" },
 		{ title: "Бренды", href: "/brands" },
-		{ title: currentBrand.title, href: `/brands/${brand}` },
+		{ title: currentBrand.title, href: `/types/${brand}` },
 	];
 
 	const bannerTitle = (

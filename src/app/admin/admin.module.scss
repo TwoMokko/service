@@ -535,3 +535,15 @@
 	text-align: center;
 	color: #ef4444;
 }
+
+.editorLayout {
+	display: flex;
+	gap: 40px;
+}
+.brandsList {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	max-height: 50svh;
+	overflow-y: auto;
+}

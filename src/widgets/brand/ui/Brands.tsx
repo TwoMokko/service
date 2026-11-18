@@ -12,23 +12,16 @@ interface BrandsProps {
 }
 
 export function Brands({ title, titlePage = false }: BrandsProps): ReactNode {
-	const officialBrands = Array.from(
-		new Set([
-			...brandsTitlesData.salon1,
-			...brandsTitlesData.salon2,
-			...brandsTitlesData.salon3,
-		]),
-	);
 	const brandsData = {
 		official: {
 			title: "Официальный сервис",
-			brands: officialBrands,
+			brands: brandsTitlesData.official,
 			showMoreBtn: false,
 			className: styles.list__bg,
 		},
 		other: {
 			title: "Другие обслуживаемые бренды",
-			brands: [...brandsTitlesData.other],
+			brands: brandsTitlesData.other,
 			showMoreBtn: true,
 			className: null,
 		},

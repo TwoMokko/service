@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 import Image from "next/image";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
-import { Brand } from "@/src/shared/data/brands/brands";
+import { Brand } from "@/src/shared/data/brands/types";
 import { Button } from "@/src/shared/ui/button/Button";
 
 import styles from "./Banner.module.scss";

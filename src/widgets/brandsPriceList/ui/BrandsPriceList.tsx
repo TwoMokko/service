@@ -6,7 +6,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import Image from "next/image";
 
 import { useModal } from "@/src/app/_providers/ModalProvider";
-import { BrandPrices } from "@/src/shared/data/brands/brands";
+import { BrandPrices } from "@/src/shared/data/brands/types";
 import { formatPrice } from "@/src/shared/lib/utils/format-price";
 import { Button } from "@/src/shared/ui/button/Button";
 

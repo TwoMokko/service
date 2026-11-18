@@ -1,4 +1,7 @@
-import { Brand, BrandSlug, SalonId, brands } from "./brands";
+import type { Brand, BrandSlug, SalonId } from "./types";
+import rawBrands from "@/data/brands.json";
+
+export const brands = rawBrands as Record<BrandSlug, Brand>;
 
 export const allSalons: SalonId[] = ["salon1", "salon2", "salon3"];
 const allBrandSlugs = Object.keys(brands) as BrandSlug[];

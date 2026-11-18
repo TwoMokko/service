@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Brand } from "@/src/shared/data/brands/brands";
+import { Brand } from "@/src/shared/data/brands/types";
 import { Button } from "@/src/shared/ui/button/Button";
 import { BrandsPriceList } from "@/src/widgets/brandsPriceList";
 

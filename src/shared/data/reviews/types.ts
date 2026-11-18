@@ -59,3 +59,10 @@ export interface ReviewsData {
 	reviews: Review[];
 }
 export type ReviewMedia = ReviewPhoto | ReviewVideo;
+
+export type ReviewChanges = {
+	author?: Review["author"];
+	rating?: number;
+	text?: string;
+	link?: string;
+};

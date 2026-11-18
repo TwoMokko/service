@@ -1,22 +1,11 @@
 {
 	"categories": {
-		"tekhnicheskoe-obsluzhivanie": {
-			"id": 1,
-			"title": "Техническое обслуживание",
-			"slug": "tekhnicheskoe-obsluzhivanie",
-			"description": "Полный спектр работ по ТО автомобиля",
-			"serviceSlugs": ["filtry-zhidkosti", "transmissia", "dvigatel"],
-			"meta": {
-				"title": "Техническое обслуживание | Автосервис",
-				"description": "Техническое обслуживание всех марок авто"
-			}
-		},
 		"slesarny-remont": {
 			"id": 3,
 			"title": "Слесарный ремонт",
 			"slug": "slesarny-remont",
 			"description": "Описание Слесарный Ремонт",
-			"serviceSlugs": ["new-4"],
+			"serviceSlugs": ["new-5"],
 			"meta": {
 				"title": "Слесарный Ремонт seo",
 				"description": "SEO описание"
@@ -44,12 +33,23 @@
 				"description": "SEO описание Шиномонтаж"
 			}
 		},
-		"test-cat": {
+		"tekhnicheskoe-obsluzhivanie": {
+			"id": 1,
+			"title": "Техническое обслуживание",
+			"slug": "tekhnicheskoe-obsluzhivanie",
+			"description": "Полный спектр работ по ТО автомобиля",
+			"serviceSlugs": ["filtry-zhidkosti", "transmissia", "dvigatel"],
+			"meta": {
+				"title": "Техническое обслуживание | Автосервис",
+				"description": "Техническое обслуживание всех марок авто"
+			}
+		},
+		"test-cat-1": {
 			"id": 6,
-			"slug": "test-cat",
+			"slug": "test-cat-1",
 			"title": "Новая категория",
 			"description": "описание тест",
-			"serviceSlugs": ["test-serv", "new-service-11"],
+			"serviceSlugs": ["test-serv", "new-service-444", "new-service-12"],
 			"meta": {
 				"title": "Новая категория",
 				"description": "сео категория"
@@ -141,50 +141,6 @@
 				},
 				{
 					"title": "Замена масла в АКПП",
-					"price": 5500
-				}
-			]
-		},
-		"new-4": {
-			"id": 4,
-			"slug": "new-4",
-			"title": "Ремонт трансмиссии",
-			"shortDescription": "Краткое описание Ремонт трансмиссии",
-			"description": "Полное описание Ремонт трансмиссии",
-			"price": 5500,
-			"time": "30 мин",
-			"categorySlug": "slesarny-remont",
-			"meta": {
-				"title": "Новая услуга",
-				"description": "SEO описание"
-			},
-			"items": [
-				{
-					"title": "Ремонт КПП",
-					"price": 25000
-				},
-				{
-					"title": "Замена крестовины карданного вала",
-					"price": 9500
-				},
-				{
-					"title": "Замена сцепления DSG",
-					"price": 25000
-				},
-				{
-					"title": "Замена диска сцепления МКПП",
-					"price": 26000
-				},
-				{
-					"title": "Замена главного цилиндра сцепления",
-					"price": 18000
-				},
-				{
-					"title": "Дефектовка МКПП",
-					"price": 25000
-				},
-				{
-					"title": "Адаптация КПП",
 					"price": 5500
 				}
 			]
@@ -329,35 +285,15 @@
 				}
 			]
 		},
-		"new-service-11": {
-			"id": 11,
-			"slug": "new-service-11",
-			"title": "Новая услуга тест 2",
-			"shortDescription": "опис Новая услуга тест 2",
-			"description": "полное опис Новая услуга тест 2",
-			"price": 0,
-			"time": "30 мин",
-			"categorySlug": "test-cat",
-			"meta": {
-				"title": "Новая услуга",
-				"description": "сео "
-			},
-			"items": [
-				{
-					"title": "аааа",
-					"price": 767458
-				}
-			]
-		},
 		"test-serv": {
 			"id": 10,
 			"slug": "test-serv",
-			"title": "Новая услуга тест",
+			"title": "Новая услуга 565",
 			"shortDescription": "тест",
 			"description": "тест",
 			"price": 0,
 			"time": "30 мин",
-			"categorySlug": "test-cat",
+			"categorySlug": "test-cat-1",
 			"meta": {
 				"title": "Новая услуга",
 				"description": "сео услуга"
@@ -372,6 +308,85 @@
 					"price": 656
 				}
 			]
+		},
+		"new-5": {
+			"id": 4,
+			"slug": "new-5",
+			"title": "Ремонт трансмиссии",
+			"shortDescription": "Краткое описание Ремонт трансмиссии",
+			"description": "Полное описание Ремонт трансмиссии",
+			"price": 5500,
+			"time": "30 мин",
+			"categorySlug": "slesarny-remont",
+			"meta": {
+				"title": "Новая услуга",
+				"description": "SEO описание"
+			},
+			"items": [
+				{
+					"title": "Ремонт КПП",
+					"price": 25000
+				},
+				{
+					"title": "Замена крестовины карданного вала",
+					"price": 9500
+				},
+				{
+					"title": "Замена сцепления DSG",
+					"price": 25000
+				},
+				{
+					"title": "Замена диска сцепления МКПП",
+					"price": 26000
+				},
+				{
+					"title": "Замена главного цилиндра сцепления",
+					"price": 18000
+				},
+				{
+					"title": "Дефектовка МКПП",
+					"price": 25000
+				},
+				{
+					"title": "Адаптация КПП",
+					"price": 5500
+				}
+			]
+		},
+		"new-service-444": {
+			"id": 11,
+			"slug": "new-service-444",
+			"title": "Новая услуга тест",
+			"shortDescription": "aaa",
+			"description": "aer",
+			"price": 0,
+			"time": "30 мин",
+			"categorySlug": "test-cat-1",
+			"meta": {
+				"title": "Новая услуга",
+				"description": ""
+			},
+			"items": [
+				{
+					"title": "12123",
+					"price": 1111
+				}
+			]
+		},
+		"new-service-12": {
+			"id": 12,
+			"slug": "new-service-12",
+			"title": "Новая услуга рррр",
+			"shortDescription": "",
+			"description": "",
+			"price": 0,
+			"time": "30 мин",
+			"categorySlug": "test-cat-1",
+			"meta": {
+				"title": "Новая услуга",
+				"description": ""
+			},
+			"items": []
 		}
 	}
 }

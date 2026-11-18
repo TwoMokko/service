@@ -1,6 +1,6 @@
 "use client";
 
-import { Brand } from "@/src/shared/data/brands/brands";
+import { Brand } from "@/src/shared/data/brands/types";
 import { BrandsPriceList } from "@/src/widgets/brandsPriceList";
 
 import styles from "./BrandsPriceList.module.scss";
